@@ -1,0 +1,126 @@
+App\Entity\Cep\LogLogradouro:
+    type: entity
+    table: cep.log_logradouro
+    indexes:
+        IDX_D853AC0FC484CFE5:
+            columns:
+                - bai_nu_sequencial_ini
+        IDX_D853AC0FE4B361A6:
+            columns:
+                - loc_nu_sequencial
+    id:
+        logNuSequencial:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+            id: true
+            column: log_nu_sequencial
+            generator:
+                strategy: SEQUENCE
+    fields:
+        ufeSg:
+            type: string
+            nullable: false
+            length: 2
+            options:
+                fixed: false
+            column: ufe_sg
+        logNo:
+            type: string
+            nullable: false
+            length: 70
+            options:
+                fixed: false
+            column: log_no
+        logNome:
+            type: string
+            nullable: false
+            length: 125
+            options:
+                fixed: false
+            column: log_nome
+        baiNuSequencialFim:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: bai_nu_sequencial_fim
+        cep:
+            type: string
+            nullable: false
+            length: 16
+            options:
+                fixed: false
+        logComplemento:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: log_complemento
+        logTipoLogradouro:
+            type: string
+            nullable: true
+            length: 72
+            options:
+                fixed: false
+            column: log_tipo_logradouro
+        logStatusTipoLog:
+            type: string
+            nullable: false
+            length: 1
+            options:
+                fixed: false
+            column: log_status_tipo_log
+        logNoSemAcento:
+            type: string
+            nullable: false
+            length: 70
+            options:
+                fixed: false
+            column: log_no_sem_acento
+        indUop:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: false
+            column: ind_uop
+        indGru:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: false
+            column: ind_gru
+        temp:
+            type: string
+            nullable: true
+            length: 8
+            options:
+                fixed: true
+    manyToOne:
+        baiNuSequencialIni:
+            targetEntity: App\Entity\Cep\LogBairro
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                bai_nu_sequencial_ini:
+                    referencedColumnName: bai_nu_sequencial
+            orphanRemoval: false
+        locNuSequencial:
+            targetEntity: App\Entity\Cep\LogLocalidade
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                loc_nu_sequencial:
+                    referencedColumnName: loc_nu_sequencial
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,75 @@
+App\Entity\Cep\LogFaixaLocalidade:
+    type: entity
+    table: cep.log_faixa_localidade
+    id:
+        locNuSequencial:
+            associationKey: true
+    fields:
+        locRad1Ini:
+            type: string
+            nullable: false
+            length: 5
+            options:
+                fixed: false
+            column: loc_rad1_ini
+        locSuf1Ini:
+            type: string
+            nullable: false
+            length: 3
+            options:
+                fixed: false
+            column: loc_suf1_ini
+        locRad1Fim:
+            type: string
+            nullable: false
+            length: 5
+            options:
+                fixed: false
+            column: loc_rad1_fim
+        locSuf1Fim:
+            type: string
+            nullable: false
+            length: 3
+            options:
+                fixed: false
+            column: loc_suf1_fim
+        locRad2Ini:
+            type: string
+            nullable: true
+            length: 5
+            options:
+                fixed: false
+            column: loc_rad2_ini
+        locSuf2Ini:
+            type: string
+            nullable: true
+            length: 3
+            options:
+                fixed: false
+            column: loc_suf2_ini
+        locRad2Fim:
+            type: string
+            nullable: true
+            length: 5
+            options:
+                fixed: false
+            column: loc_rad2_fim
+        locSuf2Fim:
+            type: string
+            nullable: true
+            length: 3
+            options:
+                fixed: false
+            column: loc_suf2_fim
+    oneToOne:
+        locNuSequencial:
+            targetEntity: App\Entity\Cep\LogLocalidade
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                loc_nu_sequencial:
+                    referencedColumnName: loc_nu_sequencial
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

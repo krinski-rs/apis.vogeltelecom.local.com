@@ -1,0 +1,77 @@
+App\Entity\Cep\LogCpc:
+    type: entity
+    table: cep.log_cpc
+    indexes:
+        IDX_35FD2E8AE4B361A6:
+            columns:
+                - loc_nu_sequencial
+    id:
+        cpcNuSequencial:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: cpc_nu_sequencial
+            generator:
+                strategy: SEQUENCE
+    fields:
+        ufeSg:
+            type: string
+            nullable: false
+            length: 2
+            options:
+                fixed: false
+            column: ufe_sg
+        cep:
+            type: string
+            nullable: false
+            length: 16
+            options:
+                fixed: false
+        cpcNo:
+            type: string
+            nullable: false
+            length: 96
+            options:
+                fixed: false
+            column: cpc_no
+        cpcEndereco:
+            type: string
+            nullable: false
+            length: 108
+            options:
+                fixed: false
+            column: cpc_endereco
+        cpcTipo:
+            type: string
+            nullable: true
+            length: 2
+            options:
+                fixed: false
+            column: cpc_tipo
+        cpcAbrangencia:
+            type: string
+            nullable: true
+            length: 80
+            options:
+                fixed: false
+            column: cpc_abrangencia
+        temp:
+            type: string
+            nullable: true
+            length: 8
+            options:
+                fixed: true
+    manyToOne:
+        locNuSequencial:
+            targetEntity: App\Entity\Cep\LogLocalidade
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                loc_nu_sequencial:
+                    referencedColumnName: loc_nu_sequencial
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

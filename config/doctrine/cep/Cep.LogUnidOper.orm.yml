@@ -1,0 +1,96 @@
+App\Entity\Cep\LogUnidOper:
+    type: entity
+    table: cep.log_unid_oper
+    indexes:
+        IDX_8C3CBC74E4B361A6:
+            columns:
+                - loc_nu_sequencial
+        IDX_8C3CBC746ECF04C5:
+            columns:
+                - log_nu_sequencial
+        IDX_8C3CBC74E21A128D:
+            columns:
+                - bai_nu_sequencial
+    id:
+        uopNuSequencial:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: uop_nu_sequencial
+            generator:
+                strategy: SEQUENCE
+    fields:
+        ufeSg:
+            type: string
+            nullable: false
+            length: 2
+            options:
+                fixed: false
+            column: ufe_sg
+        uopNo:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+            column: uop_no
+        cep:
+            type: string
+            nullable: false
+            length: 16
+            options:
+                fixed: false
+        uopEndereco:
+            type: string
+            nullable: false
+            length: 200
+            options:
+                fixed: false
+            column: uop_endereco
+        uopInCp:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: false
+            column: uop_in_cp
+        temp:
+            type: string
+            nullable: true
+            length: 8
+            options:
+                fixed: true
+    manyToOne:
+        locNuSequencial:
+            targetEntity: App\Entity\Cep\LogLocalidade
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                loc_nu_sequencial:
+                    referencedColumnName: loc_nu_sequencial
+            orphanRemoval: false
+        logNuSequencial:
+            targetEntity: App\Entity\Cep\LogLogradouro
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                log_nu_sequencial:
+                    referencedColumnName: log_nu_sequencial
+            orphanRemoval: false
+        baiNuSequencial:
+            targetEntity: App\Entity\Cep\LogBairro
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                bai_nu_sequencial:
+                    referencedColumnName: bai_nu_sequencial
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

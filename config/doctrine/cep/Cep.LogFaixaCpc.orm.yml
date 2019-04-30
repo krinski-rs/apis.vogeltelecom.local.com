@@ -1,0 +1,38 @@
+App\Entity\Cep\LogFaixaCpc:
+    type: entity
+    table: cep.log_faixa_cpc
+    indexes:
+        IDX_191A37054AFC0BD7:
+            columns:
+                - cpc_nu_sequencial
+    id:
+        cpcNuInicial:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+            id: true
+            column: cpc_nu_inicial
+        cpcNuSequencial:
+            associationKey: true
+    fields:
+        cpcNuFinal:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+            column: cpc_nu_final
+    oneToOne:
+        cpcNuSequencial:
+            targetEntity: App\Entity\Cep\LogCpc
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cpc_nu_sequencial:
+                    referencedColumnName: cpc_nu_sequencial
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,58 @@
+App\Entity\Cep\LogFaixaBairro:
+    type: entity
+    table: cep.log_faixa_bairro
+    indexes:
+        IDX_FAFF14DEE21A128D:
+            columns:
+                - bai_nu_sequencial
+    id:
+        fcbNuOrdem:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: fcb_nu_ordem
+        baiNuSequencial:
+            associationKey: true
+    fields:
+        fcbRadIni:
+            type: string
+            nullable: false
+            length: 5
+            options:
+                fixed: false
+            column: fcb_rad_ini
+        fcbSufIni:
+            type: string
+            nullable: false
+            length: 3
+            options:
+                fixed: false
+            column: fcb_suf_ini
+        fcbRadFim:
+            type: string
+            nullable: false
+            length: 5
+            options:
+                fixed: false
+            column: fcb_rad_fim
+        fcbSufFim:
+            type: string
+            nullable: false
+            length: 3
+            options:
+                fixed: false
+            column: fcb_suf_fim
+    oneToOne:
+        baiNuSequencial:
+            targetEntity: App\Entity\Cep\LogBairro
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                bai_nu_sequencial:
+                    referencedColumnName: bai_nu_sequencial
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,57 @@
+App\Entity\Cep\LogBairro:
+    type: entity
+    table: cep.log_bairro
+    indexes:
+        IDX_B5F8968CE4B361A6:
+            columns:
+                - loc_nu_sequencial
+    uniqueConstraints:
+        log_bairro_ufe_sg_loc_nu_sequencial_bai_no_un:
+            columns:
+                - ufe_sg
+                - loc_nu_sequencial
+                - bai_no
+    id:
+        baiNuSequencial:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: bai_nu_sequencial
+            generator:
+                strategy: SEQUENCE
+    fields:
+        ufeSg:
+            type: string
+            nullable: false
+            length: 2
+            options:
+                fixed: false
+            column: ufe_sg
+        baiNo:
+            type: string
+            nullable: false
+            length: 72
+            options:
+                fixed: false
+            column: bai_no
+        baiNoAbrev:
+            type: string
+            nullable: true
+            length: 36
+            options:
+                fixed: false
+            column: bai_no_abrev
+    manyToOne:
+        locNuSequencial:
+            targetEntity: App\Entity\Cep\LogLocalidade
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                loc_nu_sequencial:
+                    referencedColumnName: loc_nu_sequencial
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

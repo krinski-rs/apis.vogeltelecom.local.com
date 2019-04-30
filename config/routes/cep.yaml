@@ -1,0 +1,17 @@
+get_cep:
+    path: /{cep}
+    controller: 'App\Controller\Cep\CepController::getCep'
+    methods: [GET]
+    defaults:
+        _format: json
+    requirements:
+        cep: '\d+'
+search_cep:
+    path: /search/{cep}
+    controller: 'App\Controller\Cep\CepController::searchCep'
+    methods: [GET]
+    defaults:
+        _format: json
+    requirements:
+        cep: '\d+'
+        

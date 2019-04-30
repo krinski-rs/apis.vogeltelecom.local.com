@@ -1,0 +1,84 @@
+App\Entity\Cep\LogLocalidade:
+    type: entity
+    table: cep.log_localidade
+    indexes:
+        IDX_7E4223AD40830F4E:
+            columns:
+                - ufe_sg
+    uniqueConstraints:
+        log_localidade_cep_ufe_sg_temp_un:
+            columns:
+                - cep
+                - ufe_sg
+                - temp
+    id:
+        locNuSequencial:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+            id: true
+            column: loc_nu_sequencial
+            generator:
+                strategy: SEQUENCE
+    fields:
+        locNosub:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: loc_nosub
+        locNo:
+            type: string
+            nullable: true
+            length: 60
+            options:
+                fixed: false
+            column: loc_no
+        cep:
+            type: string
+            nullable: true
+            length: 16
+            options:
+                fixed: false
+        locInSituacao:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: loc_in_situacao
+        locInTipoLocalidade:
+            type: string
+            nullable: false
+            length: 1
+            options:
+                fixed: false
+            column: loc_in_tipo_localidade
+        locNuSequencialSub:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: loc_nu_sequencial_sub
+        temp:
+            type: string
+            nullable: true
+            length: 8
+            options:
+                fixed: true
+    manyToOne:
+        ufeSg:
+            targetEntity: App\Entity\Cep\LogFaixaUf
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ufe_sg:
+                    referencedColumnName: ufe_sg
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,14 @@
+App\Entity\Cep\LogTipoLogr:
+    type: entity
+    table: cep.log_tipo_logr
+    id:
+        tipologradouro:
+            type: string
+            nullable: false
+            length: 10
+            options:
+                fixed: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    lifecycleCallbacks: {  }

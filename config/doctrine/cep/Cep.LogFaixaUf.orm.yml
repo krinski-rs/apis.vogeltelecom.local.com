@@ -1,0 +1,79 @@
+App\Entity\Cep\LogFaixaUf:
+    type: entity
+    table: cep.log_faixa_uf
+    id:
+        ufeSg:
+            type: string
+            nullable: false
+            length: 5
+            options:
+                fixed: false
+            id: true
+            column: ufe_sg
+            generator:
+                strategy: SEQUENCE
+    fields:
+        ufeNo:
+            type: string
+            nullable: false
+            length: 72
+            options:
+                fixed: false
+            column: ufe_no
+        ufeRad1Ini:
+            type: string
+            nullable: false
+            length: 5
+            options:
+                fixed: false
+            column: ufe_rad1_ini
+        ufeSuf1Ini:
+            type: string
+            nullable: false
+            length: 3
+            options:
+                fixed: false
+            column: ufe_suf1_ini
+        ufeRad1Fim:
+            type: string
+            nullable: false
+            length: 5
+            options:
+                fixed: false
+            column: ufe_rad1_fim
+        ufeSuf1Fim:
+            type: string
+            nullable: false
+            length: 3
+            options:
+                fixed: false
+            column: ufe_suf1_fim
+        ufeRad2Ini:
+            type: string
+            nullable: true
+            length: 5
+            options:
+                fixed: false
+            column: ufe_rad2_ini
+        ufeSuf2Ini:
+            type: string
+            nullable: true
+            length: 3
+            options:
+                fixed: false
+            column: ufe_suf2_ini
+        ufeRad2Fim:
+            type: string
+            nullable: true
+            length: 5
+            options:
+                fixed: false
+            column: ufe_rad2_fim
+        ufeSuf2Fim:
+            type: string
+            nullable: true
+            length: 3
+            options:
+                fixed: false
+            column: ufe_suf2_fim
+    lifecycleCallbacks: {  }
