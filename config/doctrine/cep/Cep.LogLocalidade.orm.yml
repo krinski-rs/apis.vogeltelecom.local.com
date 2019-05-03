@@ -1,5 +1,6 @@
 App\Entity\Cep\LogLocalidade:
     type: entity
+    repositoryClass: App\Repository\Cep\LogLocalidadeRepository
     table: cep.log_localidade
     indexes:
         IDX_7E4223AD40830F4E:
@@ -81,4 +82,20 @@ App\Entity\Cep\LogLocalidade:
                 ufe_sg:
                     referencedColumnName: ufe_sg
             orphanRemoval: false
+    oneToMany:
+        logLogradouro:
+            targetEntity: App\Entity\Cep\LogLogradouro
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: logLocalidade
+        logBairro:
+            targetEntity: App\Entity\Cep\LogBairro
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: logLocalidade
+        logGrandeUsuario:
+            targetEntity: App\Entity\Cep\LogGrandeUsuario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: logLocalidade
     lifecycleCallbacks: {  }

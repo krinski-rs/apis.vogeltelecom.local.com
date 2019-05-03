@@ -2,6 +2,8 @@
 
 namespace App\Entity\Cep;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * LogLocalidade
  */
@@ -52,6 +54,27 @@ class LogLocalidade
      */
     private $ufeSg;
 
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    private $logLogradouro;
+
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    private $logBairro;
+
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    private $logGrandeUsuario;
+    
+    public function __construct() {
+        $this->logLogradouro = new ArrayCollection();
+        $this->logBairro = new ArrayCollection();
+        $this->logGrandeUsuario = new ArrayCollection();
+    }
+    
 
     /**
      * Get locNuSequencial.
@@ -253,5 +276,119 @@ class LogLocalidade
     public function getUfeSg()
     {
         return $this->ufeSg;
+    }
+
+    /**
+     * Add logLogradouro.
+     *
+     * @param \App\Entity\Cep\LogLogradouro|null $logLogradouro
+     *
+     * @return LogLocalidade
+     */
+    public function addLogLogradouro(\App\Entity\Cep\LogLogradouro $logLogradouro = null)
+    {
+        $this->logLogradouro[] = $logLogradouro;
+
+        return $this;
+    }
+
+    /**
+     * Remove logLogradouro.
+     *
+     * @param \App\Entity\Cep\LogLogradouro|null $logLogradouro
+     *
+     * @return LogLocalidade
+     */
+    public function removeLogLogradouro(\App\Entity\Cep\LogLogradouro $logLogradouro = null)
+    {
+        $this->logLogradouro->removeElement($logLogradouro);
+
+        return $this;
+    }
+
+    /**
+     * Get logLogradouro.
+     *
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getLogLogradouro()
+    {
+        return $this->logLogradouro;
+    }
+
+    /**
+     * Add logBairro.
+     *
+     * @param \App\Entity\Cep\LogBairro|null $logBairro
+     *
+     * @return LogLocalidade
+     */
+    public function addLogBairro(\App\Entity\Cep\LogBairro $logBairro = null)
+    {
+        $this->logBairro[] = $logBairro;
+
+        return $this;
+    }
+
+    /**
+     * Remove logBairro.
+     *
+     * @param \App\Entity\Cep\LogLogradouro|null $logBairro
+     *
+     * @return LogLocalidade
+     */
+    public function removeLogBairro(\App\Entity\Cep\LogBairro $logBairro = null)
+    {
+        $this->logBairro->removeElement($logBairro);
+
+        return $this;
+    }
+
+    /**
+     * Get logBairro.
+     *
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getLogBairro()
+    {
+        return $this->logBairro;
+    }
+
+    /**
+     * Add logGrandeUsuario.
+     *
+     * @param \App\Entity\Cep\LogGrandeUsuario|null $logGrandeUsuario
+     *
+     * @return LogLocalidade
+     */
+    public function addLogGrandeUsuario(\App\Entity\Cep\LogGrandeUsuario $logGrandeUsuario = null)
+    {
+        $this->logGrandeUsuario[] = $logGrandeUsuario;
+
+        return $this;
+    }
+
+    /**
+     * Remove logGrandeUsuario.
+     *
+     * @param \App\Entity\Cep\LogGrandeUsuario|null $logGrandeUsuario
+     *
+     * @return LogLocalidade
+     */
+    public function removeLogGrandeUsuario(\App\Entity\Cep\LogGrandeUsuario $logGrandeUsuario = null)
+    {
+        $this->logGrandeUsuario->removeElement($logGrandeUsuario);
+
+        return $this;
+    }
+
+    /**
+     * Get logGrandeUsuario.
+     *
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getLogGrandeUsuario()
+    {
+        return $this->logGrandeUsuario;
     }
 }

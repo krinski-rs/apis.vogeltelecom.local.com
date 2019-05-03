@@ -47,6 +47,8 @@ class CepController extends AbstractController
         } catch (\RuntimeException $e) {
             return new JsonResponse(['mensagem'=>$e->getMessage()], Response::HTTP_PRECONDITION_FAILED);
         } catch (\Exception $e) {
+            \Doctrine\Common\Util\Debug::dump($e);
+            exit();
             return new JsonResponse(['mensagem'=>$e->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }

@@ -38,9 +38,17 @@ class Listing
     public function search(int $cep)
     {
         try {
-            $objRepositoryLogLocalidade = $this->objEntityManager->getRepository('App\Entity\Cep\LogLocalidade');
-            $objLogLocalidade = $objRepositoryLogLocalidade->findOneBy(['cep' => $cep]);
-            return [];
+            if(strlen($cep) != 8){
+                throw new \RuntimeException("Quantidade de caracteres inválida.", 412);
+            }
+            $objRepositoryLogLocalidade = $this->objEntityManager->getRepository('\App\Entity\Cep\LogLocalidade');
+            
+            $objLogLocalidade = $objRepositoryLogLocalidade->search($cep);
+            
+//             if(!($objLogLocalidade instanceof LogLocalidade)){
+//                 return [];
+//             }
+            return $objLogLocalidade;
         } catch (\RuntimeException $e){
             throw $e;
         } catch (\Exception $e){

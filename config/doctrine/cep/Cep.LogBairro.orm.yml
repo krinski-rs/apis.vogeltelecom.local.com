@@ -43,8 +43,19 @@ App\Entity\Cep\LogBairro:
             options:
                 fixed: false
             column: bai_no_abrev
+    oneToMany:
+        logGrandeUsuario:
+            targetEntity: App\Entity\Cep\LogGrandeUsuario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: logBairro
+        logLogradouro:
+            targetEntity: App\Entity\Cep\LogLogradouro
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: logBairro
     manyToOne:
-        locNuSequencial:
+        logLocalidade:
             targetEntity: App\Entity\Cep\LogLocalidade
             cascade: {  }
             fetch: LAZY

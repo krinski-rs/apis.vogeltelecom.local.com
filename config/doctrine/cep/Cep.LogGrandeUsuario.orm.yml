@@ -56,7 +56,7 @@ App\Entity\Cep\LogGrandeUsuario:
             options:
                 fixed: true
     manyToOne:
-        locNuSequencial:
+        logLocalidade:
             targetEntity: App\Entity\Cep\LogLocalidade
             cascade: {  }
             fetch: LAZY
@@ -66,7 +66,7 @@ App\Entity\Cep\LogGrandeUsuario:
                 loc_nu_sequencial:
                     referencedColumnName: loc_nu_sequencial
             orphanRemoval: false
-        logNuSequencial:
+        logLogradouro:
             targetEntity: App\Entity\Cep\LogLogradouro
             cascade: {  }
             fetch: LAZY
@@ -76,7 +76,7 @@ App\Entity\Cep\LogGrandeUsuario:
                 log_nu_sequencial:
                     referencedColumnName: log_nu_sequencial
             orphanRemoval: false
-        baiNuSequencial:
+        logBairro:
             targetEntity: App\Entity\Cep\LogBairro
             cascade: {  }
             fetch: LAZY

@@ -40,17 +40,17 @@ class LogGrandeUsuario
     /**
      * @var \App\Entity\Cep\LogLocalidade
      */
-    private $locNuSequencial;
+    private $logLocalidade;
 
     /**
      * @var \App\Entity\Cep\LogLogradouro
      */
-    private $logNuSequencial;
+    private $logLogradouro;
 
     /**
      * @var \App\Entity\Cep\LogBairro
      */
-    private $baiNuSequencial;
+    private $logBairro;
 
 
     /**
@@ -184,74 +184,74 @@ class LogGrandeUsuario
     }
 
     /**
-     * Set locNuSequencial.
+     * Set logLocalidade.
      *
-     * @param \App\Entity\Cep\LogLocalidade|null $locNuSequencial
+     * @param \App\Entity\Cep\LogLocalidade|null $logLocalidade
      *
      * @return LogGrandeUsuario
      */
-    public function setLocNuSequencial(\App\Entity\Cep\LogLocalidade $locNuSequencial = null)
+    public function setLogLocalidade(\App\Entity\Cep\LogLocalidade $logLocalidade = null)
     {
-        $this->locNuSequencial = $locNuSequencial;
+        $this->logLocalidade = $logLocalidade;
 
         return $this;
     }
 
     /**
-     * Get locNuSequencial.
+     * Get logLocalidade.
      *
      * @return \App\Entity\Cep\LogLocalidade|null
      */
-    public function getLocNuSequencial()
+    public function getLogLocalidade()
     {
-        return $this->locNuSequencial;
+        return $this->logLocalidade;
     }
 
     /**
-     * Set logNuSequencial.
+     * Set logLogradouro.
      *
-     * @param \App\Entity\Cep\LogLogradouro|null $logNuSequencial
+     * @param \App\Entity\Cep\LogLogradouro|null $logLogradouro
      *
      * @return LogGrandeUsuario
      */
-    public function setLogNuSequencial(\App\Entity\Cep\LogLogradouro $logNuSequencial = null)
+    public function setLogLogradouro(\App\Entity\Cep\LogLogradouro $logLogradouro = null)
     {
-        $this->logNuSequencial = $logNuSequencial;
+        $this->logLogradouro = $logLogradouro;
 
         return $this;
     }
 
     /**
-     * Get logNuSequencial.
+     * Get logLogradouro.
      *
      * @return \App\Entity\Cep\LogLogradouro|null
      */
-    public function getLogNuSequencial()
+    public function getLogLogradouro()
     {
-        return $this->logNuSequencial;
+        return $this->logLogradouro;
     }
 
     /**
-     * Set baiNuSequencial.
+     * Set logBairro.
      *
-     * @param \App\Entity\Cep\LogBairro|null $baiNuSequencial
+     * @param \App\Entity\Cep\LogBairro|null $logBairro
      *
      * @return LogGrandeUsuario
      */
-    public function setBaiNuSequencial(\App\Entity\Cep\LogBairro $baiNuSequencial = null)
+    public function setLogBairro(\App\Entity\Cep\LogBairro $logBairro = null)
     {
-        $this->baiNuSequencial = $baiNuSequencial;
+        $this->logBairro = $logBairro;
 
         return $this;
     }
 
     /**
-     * Get baiNuSequencial.
+     * Get logBairro.
      *
      * @return \App\Entity\Cep\LogBairro|null
      */
-    public function getBaiNuSequencial()
+    public function getLogBairro()
     {
-        return $this->baiNuSequencial;
+        return $this->logBairro;
     }
 }

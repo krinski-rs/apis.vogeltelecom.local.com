@@ -2,6 +2,8 @@
 
 namespace App\Entity\Cep;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * LogLogradouro
  */
@@ -75,14 +77,22 @@ class LogLogradouro
     /**
      * @var \App\Entity\Cep\LogBairro
      */
-    private $baiNuSequencialIni;
+    private $logBairro;
 
     /**
      * @var \App\Entity\Cep\LogLocalidade
      */
-    private $locNuSequencial;
+    private $logLocalidade;
 
-
+    /**
+     * @var \Doctrine\Common\Collections\ArrayCollection
+     */
+    private $logGrandeUsuario;
+    
+    public function __construct() {
+        $this->logGrandeUsuario = new ArrayCollection();
+    }
+    
     /**
      * Get logNuSequencial.
      *
@@ -382,50 +392,88 @@ class LogLogradouro
     }
 
     /**
-     * Set baiNuSequencialIni.
+     * Set logBairro.
      *
-     * @param \App\Entity\Cep\LogBairro|null $baiNuSequencialIni
+     * @param \App\Entity\Cep\LogBairro|null $logBairro
      *
      * @return LogLogradouro
      */
-    public function setBaiNuSequencialIni(\App\Entity\Cep\LogBairro $baiNuSequencialIni = null)
+    public function setLogBairro(\App\Entity\Cep\LogBairro $logBairro = null)
     {
-        $this->baiNuSequencialIni = $baiNuSequencialIni;
+        $this->logBairro = $logBairro;
 
         return $this;
     }
 
     /**
-     * Get baiNuSequencialIni.
+     * Get logBairro.
      *
      * @return \App\Entity\Cep\LogBairro|null
      */
-    public function getBaiNuSequencialIni()
+    public function getLogBairro()
     {
-        return $this->baiNuSequencialIni;
+        return $this->logBairro;
     }
 
     /**
-     * Set locNuSequencial.
+     * Set logLocalidade.
      *
-     * @param \App\Entity\Cep\LogLocalidade|null $locNuSequencial
+     * @param \App\Entity\Cep\LogLocalidade|null $logLocalidade
      *
      * @return LogLogradouro
      */
-    public function setLocNuSequencial(\App\Entity\Cep\LogLocalidade $locNuSequencial = null)
+    public function setLogLocalidade(\App\Entity\Cep\LogLocalidade $logLocalidade = null)
     {
-        $this->locNuSequencial = $locNuSequencial;
+        $this->logLocalidade = $logLocalidade;
 
         return $this;
     }
 
     /**
-     * Get locNuSequencial.
+     * Get logLocalidade.
      *
      * @return \App\Entity\Cep\LogLocalidade|null
      */
-    public function getLocNuSequencial()
+    public function getLogLocalidade()
     {
-        return $this->locNuSequencial;
+        return $this->logLocalidade;
+    }
+    
+    /**
+     * Add logGrandeUsuario.
+     *
+     * @param \App\Entity\Cep\LogGrandeUsuario|null $logGrandeUsuario
+     *
+     * @return LogLogradouro
+     */
+    public function addLogGrandeUsuario(\App\Entity\Cep\LogGrandeUsuario $logGrandeUsuario = null)
+    {
+        $this->logGrandeUsuario[] = $logGrandeUsuario;
+        
+        return $this;
+    }
+    
+    /**
+     * Remove logGrandeUsuario.
+     *
+     * @param \App\Entity\Cep\LogGrandeUsuario|null $logGrandeUsuario
+     *
+     * @return LogLogradouro
+     */
+    public function removeLogGrandeUsuario(\App\Entity\Cep\LogGrandeUsuario $logGrandeUsuario = null)
+    {
+        $this->logGrandeUsuario->removeElement($logGrandeUsuario);
+        
+        return $this;
+    }
+    
+    /**
+     * Get logGrandeUsuario.
+     *
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getLogGrandeUsuario()
+    {
+        return $this->logGrandeUsuario;
     }
 }

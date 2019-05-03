@@ -102,8 +102,14 @@ App\Entity\Cep\LogLogradouro:
             length: 8
             options:
                 fixed: true
+    oneToMany:
+        logGrandeUsuario:
+            targetEntity: App\Entity\Cep\LogGrandeUsuario
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: logLogradouro
     manyToOne:
-        baiNuSequencialIni:
+        logBairro:
             targetEntity: App\Entity\Cep\LogBairro
             cascade: {  }
             fetch: LAZY
@@ -113,7 +119,7 @@ App\Entity\Cep\LogLogradouro:
                 bai_nu_sequencial_ini:
                     referencedColumnName: bai_nu_sequencial
             orphanRemoval: false
-        locNuSequencial:
+        logLocalidade:
             targetEntity: App\Entity\Cep\LogLocalidade
             cascade: {  }
             fetch: LAZY
