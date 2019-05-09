@@ -12,7 +12,7 @@ class LogLocalidade
     /**
      * @var int
      */
-    private $locNuSequencial = '0';
+    private $locNuSequencial;
 
     /**
      * @var string|null
@@ -42,7 +42,7 @@ class LogLocalidade
     /**
      * @var int|null
      */
-    private $locNuSequencialSub = '0';
+    private $locNuSequencialSub;
 
     /**
      * @var string|null

@@ -12,6 +12,8 @@
         "symfony/flex": "^1.1",
         "symfony/framework-bundle": "4.2.*",
         "symfony/monolog-bundle": "^3.3",
+        "symfony/translation": "4.2.*",
+        "symfony/validator": "4.2.*",
         "symfony/yaml": "4.2.*"
     },
     "config": {

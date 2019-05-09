@@ -51,7 +51,7 @@ App\Entity\Cep\LogBairro:
             mappedBy: logBairro
         logLogradouro:
             targetEntity: App\Entity\Cep\LogLogradouro
-            cascade: {  }
+            cascade: [persist]
             fetch: LAZY
             mappedBy: logBairro
     manyToOne:

@@ -90,7 +90,7 @@ App\Entity\Cep\LogLocalidade:
             mappedBy: logLocalidade
         logBairro:
             targetEntity: App\Entity\Cep\LogBairro
-            cascade: {  }
+            cascade: [persist]
             fetch: LAZY
             mappedBy: logLocalidade
         logGrandeUsuario:

@@ -1,0 +1,13 @@
+geo_latlon:
+    path: /latlon/{address}
+    controller: 'App\Controller\Geolocation\GeolocationController::getLatLon'
+    methods: [GET]
+    defaults:
+        _format: json
+geo_address:
+    path: /address/{lat},{lon}
+    controller: 'App\Controller\Geolocation\GeolocationController::getAddress'
+    methods: [GET]
+    defaults:
+        _format: json
+        

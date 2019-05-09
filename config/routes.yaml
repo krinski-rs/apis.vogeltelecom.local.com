@@ -4,3 +4,6 @@
 cep:
     prefix: /cep
     resource: './routes/cep.yaml'
+geolocation:
+    prefix: /geo
+    resource: './routes/geo.yaml'
