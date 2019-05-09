@@ -114,7 +114,7 @@ App\Entity\Cep\LogLogradouro:
             cascade: {  }
             fetch: LAZY
             mappedBy: null
-            inversedBy: null
+            inversedBy: logLogradouro
             joinColumns:
                 bai_nu_sequencial_ini:
                     referencedColumnName: bai_nu_sequencial
@@ -124,7 +124,7 @@ App\Entity\Cep\LogLogradouro:
             cascade: {  }
             fetch: LAZY
             mappedBy: null
-            inversedBy: null
+            inversedBy: logLogradouro
             joinColumns:
                 loc_nu_sequencial:
                     referencedColumnName: loc_nu_sequencial

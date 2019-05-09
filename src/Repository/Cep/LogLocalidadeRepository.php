@@ -19,7 +19,7 @@ class LogLocalidadeRepository extends ServiceEntityRepository
      * @param int $cep
      * @return array
      */
-    public function search(int $cep): array
+    public function search(string $cep): array
     {
         try {
             $objQueryBuilder = $this->createQueryBuilder('logLoc');
@@ -29,14 +29,12 @@ class LogLocalidadeRepository extends ServiceEntityRepository
                     ->add($objExpr->like('logLog.cep', ':cep'))
                     ->add($objExpr->like('logGra.cep', ':cep'));
             $fields = [
-                'logLog.logTipoLogradouro',
-                'logLog.logNo',
-                'logBai.baiNo',
-                'logLoc.locNo',
-                'LogUf.ufeNo',
-                'logLog.cep AS cepLog',
-                'logLoc.cep AS cepLoc',
-                'logGra.cep AS cepGra'
+                'DISTINCT logLog.logTipoLogradouro',
+                'logLog.logNome AS logradouro',
+                'logBai.baiNo AS bairro',
+                'logLoc.locNo AS localidade',
+                'LogUf.ufeNo AS estado',
+                '(CASE WHEN logLog.cep IS NOT NULL THEN logLog.cep WHEN logLoc.cep IS NOT NULL THEN logLoc.cep WHEN logGra.cep IS NOT NULL THEN logGra.cep ELSE \'\' END) AS cep'
             ];
             $objQueryBuilder
                             ->select(implode(",", $fields))
@@ -46,10 +44,6 @@ class LogLocalidadeRepository extends ServiceEntityRepository
                             ->leftJoin('logLoc.logGrandeUsuario', 'logGra', 'WITH', 'logGra.logLogradouro = logLog.logNuSequencial AND logGra.logBairro = logBai.baiNuSequencial')
                             ->where($objOrx);
             $objQueryBuilder->setParameters(new ArrayCollection([new Parameter('cep', $cep)]));
-//             echo  '<pre>';
-//             \Doctrine\Common\Util\Debug::dump($objQueryBuilder->getQuery()->getSQL(), 2);
-//             exit();
-            
             return $objQueryBuilder->getQuery()->execute();
             
         } catch (\Exception $e) {

@@ -2,27 +2,54 @@
 namespace App\EventListener;
 
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use Symfony\Component\HttpKernel\HttpKernel;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
+// use Symfony\Component\HttpKernel\HttpKernel;
+// use Symfony\Component\HttpFoundation\Request;
+// use Symfony\Component\HttpFoundation\JsonResponse;
+// use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 use Symfony\Bridge\Monolog\Logger;
 // use App\Service\SSO\AuthExceptions;
 // use App\Service\SSO\SSOClient;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+// use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\Response;
 
+
+/**
+ * Class SSOAuthEventListener
+ *
+ * @package     \App\EventListener
+ * @author      reinaldo.freitas@vogeltelecom.com
+ */
 class SSOAuthEventListener
 {
+    /**
+     * Variável que irá guardar a referência do serviço de log.
+     *
+     * @access  private
+     * @var     \Monolog\Logger
+     */
     private $objLogger                  = NULL;
-    private $objAuthExceptions          = NULL;
-    private $objSSoClient               = NULL;
-    private $objParameterBagInterface   = NULL;
+//     private $objAuthExceptions          = NULL;
+//     private $objSSoClient               = NULL;
+//     private $objParameterBagInterface   = NULL;
+
+    /**
+     * Variável que irá guardar os parâmetros do serviço.
+     *
+     * @access  private
+     * @var     array
+     */
     private $corsParameters             = NULL;
     
-    public function __construct($cors, Logger $objLogger)
+    /**
+     * Retorna a instância do objeto.
+     * 
+     * @access  public
+     * @param   array $cors
+     * @param   \Monolog\Logger $objLogger
+     */
+    public function __construct(array $cors, Logger $objLogger)
     {
         $this->corsParameters           = $cors;
         $this->objLogger                = $objLogger;
@@ -31,6 +58,11 @@ class SSOAuthEventListener
 //         $this->objParameterBagInterface = $objParameterBagInterface;
     }
     
+    /**
+     * @access  public
+     * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $objGetResponseEvent
+     * @return \Symfony\Component\HttpFoundation\Response|void
+     */
     public function onKernelRequest(GetResponseEvent $objGetResponseEvent)
     {
         /*
@@ -85,7 +117,11 @@ class SSOAuthEventListener
 //         $objGetResponseEvent->setResponse($response);
 //         $objGetResponseEvent->stopPropagation();
 //     }
-    
+    /**
+     * @access  public
+     * @param   \Symfony\Component\HttpKernel\Event\FilterResponseEvent $objFilterResponseEvent
+     * @return  void
+     */
     public function onKernelResponse(FilterResponseEvent $objFilterResponseEvent)
     {
         $objRequest = $objFilterResponseEvent->getRequest();

@@ -12,7 +12,7 @@ class LogLogradouro
     /**
      * @var int
      */
-    private $logNuSequencial = '0';
+    private $logNuSequencial;
 
     /**
      * @var string
@@ -32,7 +32,7 @@ class LogLogradouro
     /**
      * @var int|null
      */
-    private $baiNuSequencialFim = '0';
+    private $baiNuSequencialFim;
 
     /**
      * @var string

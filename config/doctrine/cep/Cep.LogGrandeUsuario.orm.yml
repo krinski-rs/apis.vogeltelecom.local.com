@@ -61,7 +61,7 @@ App\Entity\Cep\LogGrandeUsuario:
             cascade: {  }
             fetch: LAZY
             mappedBy: null
-            inversedBy: null
+            inversedBy: logGrandeUsuario
             joinColumns:
                 loc_nu_sequencial:
                     referencedColumnName: loc_nu_sequencial
@@ -71,7 +71,7 @@ App\Entity\Cep\LogGrandeUsuario:
             cascade: {  }
             fetch: LAZY
             mappedBy: null
-            inversedBy: null
+            inversedBy: logGrandeUsuario
             joinColumns:
                 log_nu_sequencial:
                     referencedColumnName: log_nu_sequencial
@@ -81,7 +81,7 @@ App\Entity\Cep\LogGrandeUsuario:
             cascade: {  }
             fetch: LAZY
             mappedBy: null
-            inversedBy: null
+            inversedBy: logGrandeUsuario
             joinColumns:
                 bai_nu_sequencial:
                     referencedColumnName: bai_nu_sequencial

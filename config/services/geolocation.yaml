@@ -1,0 +1,6 @@
+parameters:
+    geolocation:
+        uri_geolocation: "https://maps.google.com/maps/api/geocode/"
+        type: "json"
+        api_key: "AIzaSyAOVR9o2zqxa51mt4SLErE7_wonK9kDTVs"
+   

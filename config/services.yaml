@@ -3,6 +3,9 @@
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+imports:
+    - { resource: services/cep.yaml }
+    - { resource: services/geolocation.yaml }
 parameters:
     cors:
         allowed_origin:
@@ -56,10 +59,30 @@ services:
 
     App\Services\Cep:
           public: false
-          arguments: ["@doctrine", "@logger"]
+          arguments: ["@doctrine", "@viacep", "%cep%", "@logger"]
           
     App\Controller\Cep\CepController:
         arguments:
             $objCep: '@cep'
+
+    viacep:
+          alias: App\Services\ViaCep
+          public: true
+
+    App\Services\ViaCep:
+          public: false
+          arguments: ["@logger"]
+
+    geoloc:
+          alias: App\Services\Geolocation
+          public: true
+
+    App\Services\Geolocation:
+          public: false
+          arguments: ["@logger", "%geolocation%"]
+          
+    App\Controller\Geolocation\GeolocationController:
+        arguments:
+            $objGeolocation: '@geoloc'
 
     

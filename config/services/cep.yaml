@@ -1,0 +1,10 @@
+parameters:
+    cep:
+        tipo_logradouro:
+            - Avenida
+            - Beco
+            - Estrada
+            - Outros
+            - Rua
+            - Travessa
+    
