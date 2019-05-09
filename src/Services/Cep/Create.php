@@ -1,4 +1,10 @@
 <?php
+/**
+ * Classe de criação de CEP.
+ *
+ * Classe responsável por persistir os dados de um CEP na Base de dados.
+ */
+
 namespace App\Services\Cep;
 
 use Symfony\Component\HttpFoundation\Response;

@@ -1,4 +1,10 @@
 <?php
+/**
+ * Classe de listagem de CEP.
+ *
+ * Classe responsável por buscar os dados de CEP na base de dados.
+ */
+
 namespace App\Services\Cep;
 
 use Symfony\Component\HttpFoundation\Response;

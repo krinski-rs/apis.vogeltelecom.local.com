@@ -1,8 +1,14 @@
 <?php
+/**
+ * Classe de consulta ao serviço da viacep.
+ * 
+ * Classe responsável por consultar os dados do CEP no serviço externo ViaCep.
+ */
+
 namespace App\Services;
 
-use Monolog\Logger;
-use Symfony\Component\HttpFoundation\Response;
+use \Monolog\Logger;
+use \Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class ViaCep
@@ -26,7 +32,7 @@ class ViaCep
      * @access  public
      * @var     string
      */
-    public const VIA_CEP = 'http://viacep.com.br/ws/';
+    const VIA_CEP = 'http://viacep.com.br/ws/';
 
     /**
      * Constante que contêm parte da uri padrão para consulta de cep.
@@ -97,4 +103,13 @@ class ViaCep
         return $cep;
     }
 }
+
+
+
+
+
+
+
+
+
 

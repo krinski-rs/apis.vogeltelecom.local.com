@@ -1,7 +1,8 @@
 <?php
 /**
- *
- * @namespace \App\Controller\Geolocation
+ * Classe de roteamento dos serviços de geolocalização.
+ * 
+ * Contém os endpoints dos serviços de geolocalização.
  */
 namespace App\Controller\Geolocation;
 
@@ -28,6 +29,8 @@ class GeolocationController extends AbstractController
     private $objGeolocation = NULL;
     
     /**
+     * Retorna a instância do objeto.
+     * 
      * @access  public
      * @param   \App\Services\Geolocation $objGeolocation
      */

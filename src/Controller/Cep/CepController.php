@@ -1,7 +1,8 @@
 <?php
 /**
+ * Classe de roteamento dos serviços de cep.
  * 
- * @namespace \App\Controller\Cep
+ * Contém os endpoints dos serviços de CEP.
  */
 namespace App\Controller\Cep;
 
@@ -13,6 +14,7 @@ use App\Services\Cep;
 
 /**
  * Class CepController
+ * 
  * @package     \App\Controller
  * @subpackage  Cep
  * @author      reinaldo.freitas@vogeltelecom.com
@@ -28,6 +30,8 @@ class CepController extends AbstractController
     private $objCep = NULL;
     
     /**
+     * Retorna a instância do objeto.
+     * 
      * @access  public
      * @param   \App\Services\Cep $objCep
      */    

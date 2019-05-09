@@ -1,4 +1,9 @@
 <?php
+/**
+ * Classe de CEP
+ * 
+ * Classe responsável pela busca e inserção de um CEP.
+ */
 namespace App\Services;
 
 use Doctrine\Bundle\DoctrineBundle\Registry;
