@@ -9,4 +9,6 @@
 .buildpath
 .project
 .settings/
+/phpdoc/vendor
+/phpdoc/docs
 ###< symfony/framework-bundle ###

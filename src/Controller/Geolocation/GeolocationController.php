@@ -1,4 +1,8 @@
 <?php
+/**
+ *
+ * @namespace \App\Controller\Geolocation
+ */
 namespace App\Controller\Geolocation;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

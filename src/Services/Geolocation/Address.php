@@ -1,7 +1,7 @@
 <?php
 namespace App\Services\Geolocation;
 
-use Monolog\Logger;
+use \Monolog\Logger;
 use Symfony\Component\HttpFoundation\Response;
 
 class Address

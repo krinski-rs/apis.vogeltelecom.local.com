@@ -1,4 +1,8 @@
 <?php
+/**
+ * 
+ * @namespace \App\Controller\Cep
+ */
 namespace App\Controller\Cep;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -9,7 +13,6 @@ use App\Services\Cep;
 
 /**
  * Class CepController
- * 
  * @package     \App\Controller
  * @subpackage  Cep
  * @author      reinaldo.freitas@vogeltelecom.com
