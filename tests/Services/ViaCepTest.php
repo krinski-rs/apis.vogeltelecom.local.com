@@ -11,10 +11,6 @@ class ViaCepTest extends WebTestCase
         self::bootKernel();
         $container = self::$container;
         $objViaCep = $container->get('viacep');
-//         $container = self::$container;
-        //viacep
-//         $objLogger = new \Monolog\Logger("Teste");
-//         $objViaCep = new ViaCep($objLogger);
         $cep = $objViaCep->search("94440190");
         $this->assertInternalType('array', $cep);
         $this->assertCount(9, $cep);
@@ -37,7 +33,7 @@ class ViaCepTest extends WebTestCase
         $objViaCep = $container->get('viacep');
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionCode(412);
-        $this->expectExceptionMessage("CEP inválido");
+        $this->expectExceptionMessage("CEP inválido.");
         $objViaCep->search("999999");
     }
 }

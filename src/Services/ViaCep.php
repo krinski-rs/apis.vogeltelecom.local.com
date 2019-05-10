@@ -98,7 +98,7 @@ class ViaCep
     {
         $cep = preg_replace("/[^0-9]/", "", $cep);
         if (!preg_match('/^[0-9]{8}?$/', $cep)) {
-            throw new \RuntimeException("CEP inválido", Response::HTTP_PRECONDITION_FAILED);
+            throw new \RuntimeException("CEP inválido.", Response::HTTP_PRECONDITION_FAILED);
         }
         return $cep;
     }
