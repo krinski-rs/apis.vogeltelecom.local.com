@@ -50,7 +50,6 @@ class CepController extends AbstractController
     public function searchCep(string $cep)
     {
         try {
-            $a = new CepController($objCep);
             if(!$this->objCep instanceof Cep){
                 return new JsonResponse(['message'=> 'Class "App\Services\Cep" not found.'], Response::HTTP_INTERNAL_SERVER_ERROR);
             }
