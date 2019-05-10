@@ -60,7 +60,6 @@ class Listing
     public function search(string $cep)
     {
         try {
-            
             $cep = $this->validate($cep);
             $objRepositoryLogLocalidade = $this->objEntityManager->getRepository('\App\Entity\Cep\LogLocalidade');
             return $objRepositoryLogLocalidade->search($cep);
