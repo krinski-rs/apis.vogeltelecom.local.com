@@ -43,7 +43,7 @@ class LogLocalidadeRepository extends ServiceEntityRepository
                             ->leftJoin('logBai.logLogradouro', 'logLog')
                             ->leftJoin('logLoc.logGrandeUsuario', 'logGra', 'WITH', 'logGra.logLogradouro = logLog.logNuSequencial AND logGra.logBairro = logBai.baiNuSequencial')
                             ->where($objOrx);
-            $objQueryBuilder->setParameters(new ArrayCollection([new Parameter('cep', $cep)]));
+            $objQueryBuilder->setParameters(new ArrayCollection([new Parameter('cep', "%$cep%")]));
             return $objQueryBuilder->getQuery()->execute();
             
         } catch (\Exception $e) {
