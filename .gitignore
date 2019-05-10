@@ -9,4 +9,12 @@
 .buildpath
 .project
 .settings/
+/phpdoc/vendor
+/phpdoc/docs
+/phpdoc/reference
 ###< symfony/framework-bundle ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###

@@ -1,4 +1,9 @@
 <?php
+/**
+ * Classe de roteamento dos serviços de cep.
+ * 
+ * Contém os endpoints dos serviços de CEP.
+ */
 namespace App\Controller\Cep;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,6 +30,8 @@ class CepController extends AbstractController
     private $objCep = NULL;
     
     /**
+     * Retorna a instância do objeto.
+     * 
      * @access  public
      * @param   \App\Services\Cep $objCep
      */    

@@ -1,4 +1,10 @@
 <?php
+/**
+ * Classe de geolocalização
+ *
+ * Classe responsável pelas consultas a api do google geolocation.
+ */
+
 namespace App\Services;
 
 use Monolog\Logger;

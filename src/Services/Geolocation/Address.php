@@ -1,20 +1,61 @@
 <?php
+/**
+ * Classe Responsável pelo parseamento do endereço e coordenadas
+ * 
+ * Responsável pela consulta nos serviços da api de geolocalização do google.
+ */
 namespace App\Services\Geolocation;
 
-use Monolog\Logger;
+use \Monolog\Logger;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Class Address
+ *
+ * @package     \App\Services
+ * @subpackage  Geolocation
+ * @author      reinaldo.freitas@vogeltelecom.com
+ */
 class Address
 {
+    /**
+     * Variável que irá guardar a referência do manager do ORM.
+     *
+     * @access  private
+     * @var     \Doctrine\ORM\EntityManager
+     */
     private $objLogger  = NULL;
+    
+    /**
+     * Variável que irá guardar os parâmetros do serviço.
+     *
+     * @access  private
+     * @var     array
+     */
     private $params     = NULL;
     
-    public function __construct(Logger $objLogger, array $params)
+    /**
+     * Retorna a instância do objeto.
+     * 
+     * @access  public
+     * @param   \Monolog\Logger $objLogger
+     * @param   array $params
+     */
+    public function __construct (Logger $objLogger, array $params)
     {
         $this->objLogger    = $objLogger;
         $this->params       = $params;
     }
     
+    /**
+     * Metodo que responsável pela conversão do endereço em latitude e longitude.
+     * 
+     * @access  public
+     * @param   string $address
+     * @throws  \RuntimeException
+     * @throws  \Exception
+     * @return  array
+     */
     public function addressToLatLon(string $address)
     {
         try {
@@ -45,6 +86,16 @@ class Address
         }
     }
     
+    /**
+     * Metodo que responsável pela conversão da latitude e longitude em endereço.
+     *
+     * @access  public
+     * @param   float $lat
+     * @param   float $lon
+     * @throws  \RuntimeException
+     * @throws  \Exception
+     * @return  array
+     */
     public function latLonToAddress(float $lat, float $lon)
     {
         try {

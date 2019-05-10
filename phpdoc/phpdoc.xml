@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+    <title>Documetação API</title>
+    <parser>
+        <target>reference/docs</target>
+    </parser>
+    <transformer>
+        <target>reference/docs</target>
+    </transformer>
+    <files>
+        <directory>../src</directory>
+        <ignore>Kernel.php</ignore>
+        <ignore>Entity/</ignore>
+        <ignore>Repository/</ignore>
+    </files>
+</phpdoc>

@@ -1,4 +1,10 @@
 <?php
+/**
+ * Classe SSOAuthEventListener
+ * 
+ * Listener executando quando e feita qualquer requisição ao framework
+ */
+
 namespace App\EventListener;
 
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
@@ -14,10 +20,9 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
 // use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\Response;
 
-
 /**
  * Class SSOAuthEventListener
- *
+ * 
  * @package     \App\EventListener
  * @author      reinaldo.freitas@vogeltelecom.com
  */
@@ -27,7 +32,7 @@ class SSOAuthEventListener
      * Variável que irá guardar a referência do serviço de log.
      *
      * @access  private
-     * @var     \Monolog\Logger
+     * @var     \Symfony\Bridge\Monolog\Logger
      */
     private $objLogger                  = NULL;
 //     private $objAuthExceptions          = NULL;
@@ -47,7 +52,7 @@ class SSOAuthEventListener
      * 
      * @access  public
      * @param   array $cors
-     * @param   \Monolog\Logger $objLogger
+     * @param   \Symfony\Bridge\Monolog\Logger $objLogger
      */
     public function __construct(array $cors, Logger $objLogger)
     {
@@ -59,6 +64,8 @@ class SSOAuthEventListener
     }
     
     /**
+     * Método que trata o request do framwork.
+     * 
      * @access  public
      * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $objGetResponseEvent
      * @return \Symfony\Component\HttpFoundation\Response|void
@@ -118,6 +125,8 @@ class SSOAuthEventListener
 //         $objGetResponseEvent->stopPropagation();
 //     }
     /**
+     * Método que trata o response do framwork
+     * 
      * @access  public
      * @param   \Symfony\Component\HttpKernel\Event\FilterResponseEvent $objFilterResponseEvent
      * @return  void

@@ -1,4 +1,9 @@
 <?php
+/**
+ * Classe de roteamento dos serviços de geolocalização.
+ * 
+ * Contém os endpoints dos serviços de geolocalização.
+ */
 namespace App\Controller\Geolocation;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,6 +29,8 @@ class GeolocationController extends AbstractController
     private $objGeolocation = NULL;
     
     /**
+     * Retorna a instância do objeto.
+     * 
      * @access  public
      * @param   \App\Services\Geolocation $objGeolocation
      */
