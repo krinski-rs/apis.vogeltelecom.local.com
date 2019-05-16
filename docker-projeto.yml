@@ -1,0 +1,14 @@
+version: '2'
+services:
+  default:
+    image: vogeltelecombr/apis-vogel:v1.0-stable
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    tty: true
+    environment:
+      TERM: xterm
+    expose:
+     - "80"
+    volumes:
+      - ./:/var/www/html
