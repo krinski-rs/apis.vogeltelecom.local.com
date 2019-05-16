@@ -1,0 +1,16 @@
+version: '2'
+services:
+  apis:
+    container_name: apis.dev.vogeltelecom.com
+    hostname: apis.dev.vogeltelecom.com
+    extends:
+      file: ./docker-projeto.yml
+      service: default
+    volumes:
+      - /mnt/dados:/mnt/dados
+    ports:
+      - "4008:80"
+networks:
+ default:
+   external:
+     name: mynet
