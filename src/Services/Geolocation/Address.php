@@ -113,12 +113,12 @@ class Address
             if ($response->status == 'OK') {
                 $result = $response->results[0];
                 if(property_exists($result, 'address_components')){
-                    $retorno['logradouro'] = (array_key_exists(0, $result->address_components) ? $result->address_components[0]->long_name : '');
-                    $retorno['bairro'] = (array_key_exists(1, $result->address_components) ? $result->address_components[1]->long_name : '');
-                    $retorno['localidade'] = (array_key_exists(2, $result->address_components) ? $result->address_components[2]->long_name : '');
-                    $retorno['estado'] = (array_key_exists(3, $result->address_components) ? $result->address_components[3]->long_name : '');
-                    $retorno['pais'] = (array_key_exists(4, $result->address_components) ? $result->address_components[4]->long_name : '');
-                    $retorno['cep'] = (array_key_exists(5, $result->address_components) ? $result->address_components[5]->long_name : '');
+                    $retorno['logradouro'] = (array_key_exists(0, $result->address_components) ? $result->address_components[1]->long_name : '');
+                    $retorno['bairro'] = (array_key_exists(1, $result->address_components) ? $result->address_components[2]->long_name : '');
+                    $retorno['localidade'] = (array_key_exists(2, $result->address_components) ? $result->address_components[3]->long_name : '');
+                    $retorno['estado'] = (array_key_exists(3, $result->address_components) ? $result->address_components[4]->long_name : '');
+                    $retorno['pais'] = (array_key_exists(4, $result->address_components) ? $result->address_components[5]->long_name : '');
+                    $retorno['cep'] = (array_key_exists(5, $result->address_components) ? $result->address_components[6]->long_name : '');
                 }
                 if(property_exists($result, 'formatted_address')){
                     $retorno['endereco'] = $result->formatted_address;
