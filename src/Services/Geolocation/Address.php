@@ -99,7 +99,7 @@ class Address
     public function latLonToAddress(float $lat, float $lon)
     {
         try {
-            echo $url = "{$this->params['uri_geolocation']}{$this->params['type']}?latlng={$lat},{$lon}&key={$this->params['api_key']}";
+            $url = "{$this->params['uri_geolocation']}{$this->params['type']}?latlng={$lat},{$lon}&key={$this->params['api_key']}";
             $resource = curl_init();
             
             curl_setopt($resource, CURLOPT_URL, $url);
