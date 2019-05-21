@@ -180,6 +180,12 @@ class Create
                                 $objNotNull,
                                 $objNotBlank
                             ]
+                        ),
+                        'logNo' => new Assert\Optional(
+                            [
+                                $objNotNull,
+                                $objNotBlank
+                            ]
                         )
                     ]
                 ]
