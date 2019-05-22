@@ -71,6 +71,13 @@ App\Entity\Cep\LogLocalidade:
             length: 8
             options:
                 fixed: true
+        locCodigoIbge:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: null
+            column: loc_codigo_ibge
     manyToOne:
         ufeSg:
             targetEntity: App\Entity\Cep\LogFaixaUf
