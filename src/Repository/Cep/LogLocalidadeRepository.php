@@ -25,7 +25,6 @@ class LogLocalidadeRepository extends ServiceEntityRepository
             $objQueryBuilder = $this->createQueryBuilder('logLoc');
             $objExpr = $objQueryBuilder->expr();
             $objOrx = $objExpr->orX();
-            $objAndx = $objExpr->andX();
             $objOrx->add($objExpr->like('logLoc.cep', ':cep'))
                     ->add($objExpr->like('logLog.cep', ':cep'))
                     ->add($objExpr->like('logGra.cep', ':cep'));
