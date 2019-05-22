@@ -33,6 +33,7 @@ class LogLocalidadeRepository extends ServiceEntityRepository
                 'logLog.logNome AS logradouro',
                 'logBai.baiNo AS bairro',
                 'logLoc.locNo AS localidade',
+                'LogUf.ufeSg AS sigla',
                 'LogUf.ufeNo AS estado',
                 '(CASE WHEN logLog.cep IS NOT NULL THEN logLog.cep WHEN logLoc.cep IS NOT NULL THEN logLoc.cep WHEN logGra.cep IS NOT NULL THEN logGra.cep ELSE \'\' END) AS cep'
             ];
