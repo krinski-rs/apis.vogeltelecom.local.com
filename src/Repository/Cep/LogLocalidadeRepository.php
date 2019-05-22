@@ -32,6 +32,7 @@ class LogLocalidadeRepository extends ServiceEntityRepository
                 'DISTINCT logLog.logTipoLogradouro',
                 'logLog.logNome AS logradouro',
                 'logBai.baiNo AS bairro',
+                'logLoc.locCodigoIbge AS codigoIbge ',
                 'logLoc.locNo AS localidade',
                 'LogUf.ufeSg AS sigla',
                 'LogUf.ufeNo AS estado',
@@ -43,8 +44,8 @@ class LogLocalidadeRepository extends ServiceEntityRepository
                             ->leftJoin('logLoc.logBairro', 'logBai')
                             ->leftJoin('logBai.logLogradouro', 'logLog')
                             ->leftJoin('logLoc.logGrandeUsuario', 'logGra', 'WITH', 'logGra.logLogradouro = logLog.logNuSequencial AND logGra.logBairro = logBai.baiNuSequencial')
-                            ->where($objOrx);
-            $objQueryBuilder->setParameters(new ArrayCollection([new Parameter('cep', "%$cep%")]));
+                            ->andWhere($objOrx);
+                            $objQueryBuilder->setParameters(new ArrayCollection([new Parameter('cep', "%$cep%")]));
             return $objQueryBuilder->getQuery()->execute();
             
         } catch (\Exception $e) {

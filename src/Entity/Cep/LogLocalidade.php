@@ -55,6 +55,11 @@ class LogLocalidade
     private $ufeSg;
 
     /**
+     * @var int|null
+     */
+    private $locCodigoIbge;
+
+    /**
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
     private $logLogradouro;
@@ -252,6 +257,30 @@ class LogLocalidade
     public function getTemp()
     {
         return $this->temp;
+    }
+
+    /**
+     * Set locCodigoIbge.
+     *
+     * @param int|null $locCodigoIbge
+     *
+     * @return LogLocalidade
+     */
+    public function setLocCodigoIbge($locCodigoIbge = null)
+    {
+        $this->locCodigoIbge = $locCodigoIbge;
+
+        return $this;
+    }
+
+    /**
+     * Get locCodigoIbge.
+     *
+     * @return int|null
+     */
+    public function getLocCodigoIbge()
+    {
+        return $this->locCodigoIbge;
     }
 
     /**
