@@ -1,0 +1,76 @@
+App\Entity\Financeiro\Documento:
+    type: entity
+    table: documento
+    indexes:
+        fk_documento_contrato1_idx:
+            columns:
+                - cont_codigoid
+        fk_documento_tipodocumento1_idx:
+            columns:
+                - tipodocu_codigoid
+    id:
+        docuCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: docu_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        docuNome:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: docu_nome
+        docuDatainc:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: docu_datainc
+        docuUsuainc:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: docu_usuainc
+        docuDatafim:
+            type: datetime
+            nullable: true
+            column: docu_datafim
+        docuUsuafim:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: docu_usuafim
+        docuAprovado:
+            type: boolean
+            nullable: true
+            column: docu_aprovado
+    manyToOne:
+        contCodigoid:
+            targetEntity: App\Entity\Financeiro\Contrato
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+        tipodocuCodigoid:
+            targetEntity: App\Entity\Financeiro\Tipodocumento
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipodocu_codigoid:
+                    referencedColumnName: tipodocu_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

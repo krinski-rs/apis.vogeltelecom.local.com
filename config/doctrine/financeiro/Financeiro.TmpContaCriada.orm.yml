@@ -1,0 +1,83 @@
+App\Entity\Financeiro\TmpContaCriada:
+    type: entity
+    table: tmp_conta_criada
+    id:
+        idTmpContaCriada:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_tmp_conta_criada
+            generator:
+                strategy: IDENTITY
+    fields:
+        ramoAtividade:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: ramo_atividade
+        tipo:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        estado:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        cidade:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        cnpj:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        porte:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        tipoPessoa:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: tipo_pessoa
+        contaCriada:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: conta_criada
+        gc:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        canalVenda:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: canal_venda
+        cid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,53 @@
+App\Entity\Financeiro\ServicosWanServicosVogel:
+    type: entity
+    table: servicos_wan_servicos_vogel
+    indexes:
+        fk_servicos_wan_servicos_vogel_servico1_idx:
+            columns:
+                - servico_vogel_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        servicoWanId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: servico_wan_id
+        dataHoraCriacao:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: data_hora_criacao
+        tprIdServico:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+            column: tpr_id_servico
+        peso:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+    manyToOne:
+        servicoVogel:
+            targetEntity: App\Entity\Financeiro\Servico
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                servico_vogel_id:
+                    referencedColumnName: serv_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

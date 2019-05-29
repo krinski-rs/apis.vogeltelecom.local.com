@@ -1,0 +1,313 @@
+App\Entity\Financeiro\Contrato:
+    type: entity
+    table: contrato
+    indexes:
+        fk_contrato_designacao1_idx:
+            columns:
+                - desig_codigoid
+        fk_contrato_1_idx:
+            columns:
+                - cont_substituircodigoid
+        fk_consulta_index1:
+            columns:
+                - cont_proximocodigoid
+                - cont_paicodigoid
+                - cont_codigoid
+                - cont_numero
+        fk_contrato_contrato1_idx:
+            columns:
+                - cont_proximocodigoid
+        fk_contrato_status1_idx:
+            columns:
+                - stat_codigoid
+        fk_contrato_modelo_idx:
+            columns:
+                - mode_codigoid
+        fk_contrato_enderecoentrega_idx:
+            columns:
+                - endeentr_codigoid
+        clie_codigoid:
+            columns:
+                - clie_codigoid
+        contrato_cont_numero_idx:
+            columns:
+                - cont_numero
+        fk_contrato_sla1_idx:
+            columns:
+                - sla_codigoid
+        fk_contrato_multas1_idx:
+            columns:
+                - mult_codigoid
+        fk_contrato_contrato2_idx:
+            columns:
+                - cont_paicodigoid
+    id:
+        contCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: cont_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        clieCodigoid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: clie_codigoid
+        usuaCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: usua_codigoid
+        contNumero:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: cont_numero
+        contLimiteatraso:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: cont_limiteatraso
+        contMenorprazo:
+            type: boolean
+            nullable: false
+            column: cont_menorprazo
+        contPrazorescisao:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: cont_prazorescisao
+        contDataassinatura:
+            type: datetime
+            nullable: true
+            column: cont_dataassinatura
+        contDatainc:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: cont_datainc
+        contIndicereajuste:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+            column: cont_indicereajuste
+        contPrazoreajuste:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: cont_prazoreajuste
+        contIndisponibilidade:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            options:
+                default: '0.00'
+            column: cont_indisponibilidade
+        contDependentecodigoid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: cont_dependentecodigoid
+        unidCodigoid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: unid_codigoid
+        bancCodigoid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: banc_codigoid
+        enviCodigoid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: envi_codigoid
+        contDatacancelamento:
+            type: datetime
+            nullable: true
+            column: cont_datacancelamento
+        contDatacancelado:
+            type: datetime
+            nullable: true
+            column: cont_datacancelado
+        contDatareajustado:
+            type: datetime
+            nullable: true
+            column: cont_datareajustado
+        contUnidArquivado:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: cont_unid_arquivado
+        contClienteFinal:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: cont_cliente_final
+        integracaoSummit:
+            type: boolean
+            nullable: true
+            column: integracao_summit
+        contTipo:
+            type: string
+            nullable: false
+            length: 1
+            options:
+                fixed: true
+            column: cont_tipo
+        propcircuitCodigoid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: propcircuit_codigoid
+        contClassificacao:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: cont_classificacao
+        contValorDelta:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: cont_valor_delta
+        contDataInternalizacao:
+            type: date
+            nullable: true
+            column: cont_data_internalizacao
+        contInformacoesAdicionais:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: cont_informacoes_adicionais
+        contSegregarValor:
+            type: boolean
+            nullable: false
+            options:
+                default: '1'
+            column: cont_segregar_valor
+        salesforceId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: salesforce_id
+    manyToOne:
+        contSubstituircodigoid:
+            targetEntity: App\Entity\Financeiro\Contrato
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_substituircodigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+        contProximocodigoid:
+            targetEntity: App\Entity\Financeiro\Contrato
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_proximocodigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+        contPaicodigoid:
+            targetEntity: App\Entity\Financeiro\Contrato
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_paicodigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+        desigCodigoid:
+            targetEntity: App\Entity\Financeiro\Designacao
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                desig_codigoid:
+                    referencedColumnName: desig_codigoid
+            orphanRemoval: false
+        endeentrCodigoid:
+            targetEntity: App\Entity\Financeiro\Enderecoentrega
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                endeentr_codigoid:
+                    referencedColumnName: endeentr_codigoid
+            orphanRemoval: false
+        modeCodigoid:
+            targetEntity: App\Entity\Financeiro\Modelo
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                mode_codigoid:
+                    referencedColumnName: mode_codigoid
+            orphanRemoval: false
+        multCodigoid:
+            targetEntity: App\Entity\Financeiro\Multas
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                mult_codigoid:
+                    referencedColumnName: mult_codigoid
+            orphanRemoval: false
+        slaCodigoid:
+            targetEntity: App\Entity\Financeiro\Sla
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                sla_codigoid:
+                    referencedColumnName: sla_codigoid
+            orphanRemoval: false
+        statCodigoid:
+            targetEntity: App\Entity\Financeiro\Status
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                stat_codigoid:
+                    referencedColumnName: stat_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

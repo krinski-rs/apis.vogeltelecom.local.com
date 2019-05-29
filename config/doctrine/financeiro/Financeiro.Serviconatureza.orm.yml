@@ -1,0 +1,72 @@
+App\Entity\Financeiro\Serviconatureza:
+    type: entity
+    table: serviconatureza
+    indexes:
+        fk_serviconatureza_natureza1_idx:
+            columns:
+                - natu_codigoid
+        fk_serviconatureza_servico1_idx:
+            columns:
+                - serv_codigoid
+        fk_serviconatureza_dadosbancarios1_idx:
+            columns:
+                - dadobanc_codigoid
+    id:
+        servnatuCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: servnatu_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        servnatuPercentual:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            column: servnatu_percentual
+        servnatuBaseicms:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            column: servnatu_baseicms
+        servnatuCedente:
+            type: boolean
+            nullable: false
+            column: servnatu_cedente
+    manyToOne:
+        dadobancCodigoid:
+            targetEntity: App\Entity\Financeiro\Dadosbancarios
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                dadobanc_codigoid:
+                    referencedColumnName: dadobanc_codigoid
+            orphanRemoval: false
+        natuCodigoid:
+            targetEntity: App\Entity\Financeiro\Natureza
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                natu_codigoid:
+                    referencedColumnName: natu_codigoid
+            orphanRemoval: false
+        servCodigoid:
+            targetEntity: App\Entity\Financeiro\Servico
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                serv_codigoid:
+                    referencedColumnName: serv_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

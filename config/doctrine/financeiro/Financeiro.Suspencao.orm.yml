@@ -1,0 +1,46 @@
+App\Entity\Financeiro\Suspencao:
+    type: entity
+    table: suspencao
+    indexes:
+        fk_suspencao_contrato1_idx:
+            columns:
+                - cont_codigoid
+    id:
+        suspCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: susp_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        usuaCodigoid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: usua_codigoid
+        suspDatainc:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: susp_datainc
+        suspDatasuspenso:
+            type: datetime
+            nullable: true
+            column: susp_datasuspenso
+    manyToOne:
+        contCodigoid:
+            targetEntity: App\Entity\Financeiro\Contrato
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

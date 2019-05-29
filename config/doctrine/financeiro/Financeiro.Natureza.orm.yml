@@ -1,0 +1,22 @@
+App\Entity\Financeiro\Natureza:
+    type: entity
+    table: natureza
+    id:
+        natuCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: natu_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        natuDescricao:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: natu_descricao
+    lifecycleCallbacks: {  }

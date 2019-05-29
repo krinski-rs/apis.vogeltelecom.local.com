@@ -1,0 +1,40 @@
+App\Entity\Financeiro\TmpLogContrato:
+    type: entity
+    table: tmp_log_contrato
+    indexes:
+        fk_tmp_log_contrato_idx:
+            columns:
+                - id_tmp_contrato
+    id:
+        idLog:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_log
+            generator:
+                strategy: IDENTITY
+    fields:
+        dataInc:
+            type: datetime
+            nullable: false
+            column: data_inc
+        obs:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+    manyToOne:
+        idTmpContrato:
+            targetEntity: App\Entity\Financeiro\TmpContrato
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_tmp_contrato:
+                    referencedColumnName: id_tmp_contrato
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

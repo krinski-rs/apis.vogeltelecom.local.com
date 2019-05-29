@@ -1,0 +1,37 @@
+App\Entity\Financeiro\Ar:
+    type: entity
+    table: ar
+    indexes:
+        fk_ar_rangear1_idx:
+            columns:
+                - rangar_codigoid
+    id:
+        arCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ar_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        arNumero:
+            type: string
+            nullable: false
+            length: 10
+            options:
+                fixed: false
+            column: ar_numero
+    manyToOne:
+        rangarCodigoid:
+            targetEntity: App\Entity\Financeiro\Rangear
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                rangar_codigoid:
+                    referencedColumnName: rangar_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

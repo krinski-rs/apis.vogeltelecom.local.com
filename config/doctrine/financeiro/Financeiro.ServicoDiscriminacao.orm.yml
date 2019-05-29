@@ -1,0 +1,54 @@
+App\Entity\Financeiro\ServicoDiscriminacao:
+    type: entity
+    table: servico_discriminacao
+    indexes:
+        id_discriminacao:
+            columns:
+                - id_discriminacao
+        serv_codigoid:
+            columns:
+                - serv_codigoid
+    uniqueConstraints:
+        serv_codigoid_2:
+            columns:
+                - serv_codigoid
+                - id_discriminacao
+    id:
+        servdiscCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: servdisc_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        servdiscValorpadrao:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            column: servdisc_valorpadrao
+    manyToOne:
+        servCodigoid:
+            targetEntity: App\Entity\Financeiro\Servico
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                serv_codigoid:
+                    referencedColumnName: serv_codigoid
+            orphanRemoval: false
+        idDiscriminacao:
+            targetEntity: App\Entity\Financeiro\Discriminacao
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_discriminacao:
+                    referencedColumnName: id_discriminacao
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,67 @@
+App\Entity\Financeiro\Slanivel:
+    type: entity
+    table: slanivel
+    indexes:
+        fk_slanivel_sla1_idx:
+            columns:
+                - sla_codigoid
+        fk_slanivel_nivel1_idx:
+            columns:
+                - nive_codigoid
+    id:
+        slaniveCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: slanive_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        slaniveRespostacomercial:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: slanive_respostacomercial
+        slaniveResolucaocomercial:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: slanive_resolucaocomercial
+        slaniveResolucaoextra:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: slanive_resolucaoextra
+        slaniveRespostaextra:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: slanive_respostaextra
+    manyToOne:
+        niveCodigoid:
+            targetEntity: App\Entity\Financeiro\Nivel
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                nive_codigoid:
+                    referencedColumnName: nive_codigoid
+            orphanRemoval: false
+        slaCodigoid:
+            targetEntity: App\Entity\Financeiro\Sla
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                sla_codigoid:
+                    referencedColumnName: sla_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

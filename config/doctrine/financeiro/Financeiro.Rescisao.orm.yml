@@ -1,0 +1,42 @@
+App\Entity\Financeiro\Rescisao:
+    type: entity
+    table: rescisao
+    indexes:
+        fk_rescisao_contrato1_idx:
+            columns:
+                - cont_codigoid
+    id:
+        rescCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: resc_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        rescDatarecebimento:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: resc_datarecebimento
+        rescDatainc:
+            type: datetime
+            nullable: false
+            options:
+                default: '0000-00-00 00:00:00'
+            column: resc_datainc
+    manyToOne:
+        contCodigoid:
+            targetEntity: App\Entity\Financeiro\Contrato
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

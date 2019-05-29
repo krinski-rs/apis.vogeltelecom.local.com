@@ -1,0 +1,80 @@
+App\Entity\Financeiro\Enderecoentregaatributovalor:
+    type: entity
+    table: enderecoentregaatributovalor
+    indexes:
+        fk_enderecoentregaatributovalor_cont_codigoid_idx:
+            columns:
+                - cont_codigoid
+        fk_contratoservicoatributos_atributovalor1_idx:
+            columns:
+                - atrivalo_codigoid
+    id:
+        endeentratrivaloCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: endeentratrivalo_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        endeentratrivaloPaicodigoid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: endeentratrivalo_paicodigoid
+        contCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: cont_codigoid
+        endeentrCodigoid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: endeentr_codigoid
+        endeentratrivaloValor:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: endeentratrivalo_valor
+        endeentratrivaloDescricao:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: endeentratrivalo_descricao
+        dataInc:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: data_inc
+        registrante:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        endeentratrivaloDatafim:
+            type: datetime
+            nullable: true
+            column: endeentratrivalo_datafim
+    manyToOne:
+        atrivaloCodigoid:
+            targetEntity: App\Entity\Financeiro\Atributovalor
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                atrivalo_codigoid:
+                    referencedColumnName: atrivalo_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

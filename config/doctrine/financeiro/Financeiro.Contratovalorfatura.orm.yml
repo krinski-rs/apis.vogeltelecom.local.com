@@ -1,0 +1,42 @@
+App\Entity\Financeiro\Contratovalorfatura:
+    type: entity
+    table: contratovalorfatura
+    indexes:
+        fk_contratovalorfatura_contratovalor1_idx:
+            columns:
+                - contvalo_codigoid
+        fk_invoiceperiodicidade_fatura1_idx:
+            columns:
+                - fatu_codigoid
+    id:
+        contvalofatuCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: contvalofatu_codigoid
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        contvaloCodigoid:
+            targetEntity: App\Entity\Financeiro\Contratovalor
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                contvalo_codigoid:
+                    referencedColumnName: contvalo_codigoid
+            orphanRemoval: false
+        fatuCodigoid:
+            targetEntity: App\Entity\Financeiro\Fatura
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fatu_codigoid:
+                    referencedColumnName: fatu_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

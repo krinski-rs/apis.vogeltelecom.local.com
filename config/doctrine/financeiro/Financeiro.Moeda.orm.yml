@@ -1,0 +1,35 @@
+App\Entity\Financeiro\Moeda:
+    type: entity
+    table: moeda
+    id:
+        moedCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: moed_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        moedNome:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+            column: moed_nome
+        moedValor:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            column: moed_valor
+        moedSigla:
+            type: string
+            nullable: false
+            length: 10
+            options:
+                fixed: false
+            column: moed_sigla
+    lifecycleCallbacks: {  }

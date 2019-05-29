@@ -1,0 +1,131 @@
+App\Entity\Financeiro\ContratoServicoAgregado:
+    type: entity
+    table: contrato_servico_agregado
+    indexes:
+        servagre_codigoid:
+            columns:
+                - servagre_codigoid
+        peri_codigoid:
+            columns:
+                - peri_codigoid
+        serv_codigoid:
+            columns:
+                - serv_codigoid
+                - cont_codigoid
+                - servagre_codigoid
+                - natu_codigoid
+                - peri_codigoid
+                - moed_codigoid
+        natu_codigoid:
+            columns:
+                - natu_codigoid
+        moed_codigoid:
+            columns:
+                - moed_codigoid
+        IDX_2AD5F4AB770E28B6:
+            columns:
+                - serv_codigoid
+        IDX_2AD5F4AB8927E03C:
+            columns:
+                - cont_codigoid
+    uniqueConstraints:
+        cont_codigoid:
+            columns:
+                - cont_codigoid
+                - servagre_codigoid
+                - natu_codigoid
+    id:
+        contservagreCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: contservagre_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        contservagreValor:
+            type: decimal
+            nullable: false
+            precision: 15
+            scale: 2
+            column: contservagre_valor
+        contservagreDatainc:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: contservagre_datainc
+        contservagreDatafim:
+            type: datetime
+            nullable: true
+            column: contservagre_datafim
+        contservagreDesconto:
+            type: decimal
+            nullable: false
+            precision: 15
+            scale: 2
+            column: contservagre_desconto
+    manyToOne:
+        servCodigoid:
+            targetEntity: App\Entity\Financeiro\Servico
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                serv_codigoid:
+                    referencedColumnName: serv_codigoid
+            orphanRemoval: false
+        contCodigoid:
+            targetEntity: App\Entity\Financeiro\Contrato
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+        servagreCodigoid:
+            targetEntity: App\Entity\Financeiro\ServicoAgregado
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                servagre_codigoid:
+                    referencedColumnName: servagre_codigoid
+            orphanRemoval: false
+        natuCodigoid:
+            targetEntity: App\Entity\Financeiro\Natureza
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                natu_codigoid:
+                    referencedColumnName: natu_codigoid
+            orphanRemoval: false
+        periCodigoid:
+            targetEntity: App\Entity\Financeiro\Periodicidade
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                peri_codigoid:
+                    referencedColumnName: peri_codigoid
+            orphanRemoval: false
+        moedCodigoid:
+            targetEntity: App\Entity\Financeiro\Moeda
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                moed_codigoid:
+                    referencedColumnName: moed_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

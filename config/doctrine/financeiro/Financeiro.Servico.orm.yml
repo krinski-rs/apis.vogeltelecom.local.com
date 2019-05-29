@@ -1,0 +1,85 @@
+App\Entity\Financeiro\Servico:
+    type: entity
+    table: servico
+    indexes:
+        fk_sevico_gruposervico1_idx:
+            columns:
+                - grupserv_codigoid
+    id:
+        servCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: serv_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        servNome:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: serv_nome
+        servDescricao:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: serv_descricao
+        servDatainc:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: serv_datainc
+        servApelido:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+            column: serv_apelido
+        servDependente:
+            type: boolean
+            nullable: false
+            column: serv_dependente
+        servAtivo:
+            type: boolean
+            nullable: false
+            options:
+                default: '0'
+            column: serv_ativo
+    manyToOne:
+        grupservCodigoid:
+            targetEntity: App\Entity\Financeiro\Gruposervico
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                grupserv_codigoid:
+                    referencedColumnName: grupserv_codigoid
+            orphanRemoval: false
+    manyToMany:
+        servagreCodigoid:
+            targetEntity: App\Entity\Financeiro\ServicoAgregado
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: servCodigoid
+            joinTable:
+                name: servico_servico_agregado
+                joinColumns:
+                    -
+                        name: serv_codigoid
+                        referencedColumnName: serv_codigoid
+                inverseJoinColumns:
+                    -
+                        name: servagre_codigoid
+                        referencedColumnName: servagre_codigoid
+            orderBy: null
+    lifecycleCallbacks: {  }

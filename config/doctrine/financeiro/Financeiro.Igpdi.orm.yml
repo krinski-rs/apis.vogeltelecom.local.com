@@ -1,0 +1,53 @@
+App\Entity\Financeiro\Igpdi:
+    type: entity
+    table: igpdi
+    uniqueConstraints:
+        igpdi_prazo:
+            columns:
+                - igpdi_prazo
+    id:
+        igpdiCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: igpdi_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        igpdiDatainc:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: igpdi_datainc
+        igpdiPercentual:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            column: igpdi_percentual
+        igpdiAcumuladonoano:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            options:
+                default: '0.00'
+            column: igpdi_acumuladonoano
+        igpdiAcumulado12meses:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            options:
+                default: '0.00'
+            column: igpdi_acumulado12meses
+        igpdiPrazo:
+            type: datetime
+            nullable: false
+            options:
+                default: '0000-00-00 00:00:00'
+            column: igpdi_prazo
+    lifecycleCallbacks: {  }

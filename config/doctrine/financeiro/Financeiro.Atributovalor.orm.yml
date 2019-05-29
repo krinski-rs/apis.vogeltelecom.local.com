@@ -1,0 +1,43 @@
+App\Entity\Financeiro\Atributovalor:
+    type: entity
+    table: atributovalor
+    indexes:
+        fk_atributovalor_atributo1_idx:
+            columns:
+                - atri_codigoid
+    id:
+        atrivaloCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: atrivalo_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        atrivaloValor:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: atrivalo_valor
+        mask:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+    manyToOne:
+        atriCodigoid:
+            targetEntity: App\Entity\Financeiro\Atributo
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                atri_codigoid:
+                    referencedColumnName: atri_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

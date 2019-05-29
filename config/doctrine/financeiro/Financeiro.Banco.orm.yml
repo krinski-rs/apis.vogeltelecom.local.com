@@ -1,0 +1,43 @@
+App\Entity\Financeiro\Banco:
+    type: entity
+    table: banco
+    id:
+        bancCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: banc_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        bancCodigobacen:
+            type: string
+            nullable: false
+            length: 3
+            options:
+                fixed: false
+            column: banc_codigobacen
+        bancNome:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+            column: banc_nome
+        bancSegmento:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: banc_segmento
+        bancCnpj:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+            column: banc_cnpj
+    lifecycleCallbacks: {  }

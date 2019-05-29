@@ -1,0 +1,46 @@
+App\Entity\Financeiro\Restricao:
+    type: entity
+    table: restricao
+    indexes:
+        fk_restricao_contrato1_idx:
+            columns:
+                - cont_codigoid
+    id:
+        restCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: rest_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        restContratardeterceiro:
+            type: boolean
+            nullable: false
+            column: rest_contratardeterceiro
+        restDivulgaramarca:
+            type: boolean
+            nullable: false
+            column: rest_divulgaramarca
+        restMudarmeiotransmicao:
+            type: boolean
+            nullable: false
+            column: rest_mudarmeiotransmicao
+        restTransferirdireitos:
+            type: boolean
+            nullable: false
+            column: rest_transferirdireitos
+    manyToOne:
+        contCodigoid:
+            targetEntity: App\Entity\Financeiro\Contrato
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,26 @@
+App\Entity\Financeiro\ContratoLegado:
+    type: entity
+    table: contrato_legado
+    indexes:
+        fk_contrato_legado_contrato1_idx:
+            columns:
+                - cont_codigoid
+    id:
+        contCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: cont_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        propostaLegado:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: proposta_legado
+    lifecycleCallbacks: {  }

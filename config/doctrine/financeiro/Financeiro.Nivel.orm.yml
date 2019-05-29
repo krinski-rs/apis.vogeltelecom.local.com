@@ -1,0 +1,22 @@
+App\Entity\Financeiro\Nivel:
+    type: entity
+    table: nivel
+    id:
+        niveCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: nive_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        niveNome:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+            column: nive_nome
+    lifecycleCallbacks: {  }

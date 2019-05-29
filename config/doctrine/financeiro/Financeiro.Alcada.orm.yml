@@ -1,0 +1,27 @@
+App\Entity\Financeiro\Alcada:
+    type: entity
+    table: alcada
+    id:
+        alcaCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: alca_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        alcaPercentual:
+            type: decimal
+            nullable: false
+            precision: 3
+            scale: 2
+            column: alca_percentual
+        alcaDatainc:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: alca_datainc
+    lifecycleCallbacks: {  }

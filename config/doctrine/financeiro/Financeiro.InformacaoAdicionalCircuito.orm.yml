@@ -1,0 +1,76 @@
+App\Entity\Financeiro\InformacaoAdicionalCircuito:
+    type: entity
+    table: informacao_adicional_circuito
+    indexes:
+        fk_usua_codigoid_idx:
+            columns:
+                - usua_codigoid
+        fk_cont_codigoid_idx:
+            columns:
+                - cont_codigoid
+        fk_usua_codigoid_removido_idx:
+            columns:
+                - usua_codigoid_removido
+    id:
+        infoadiccircCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: infoadiccirc_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        infoadiccircDatainc:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: infoadiccirc_datainc
+        infoadiccircDescricao:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: infoadiccirc_descricao
+        infoadiccircTipo:
+            type: string
+            nullable: false
+            length: 1
+            options:
+                fixed: false
+            column: infoadiccirc_tipo
+    manyToOne:
+        contCodigoid:
+            targetEntity: App\Entity\Financeiro\Contrato
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+        usuaCodigoid:
+            targetEntity: App\Entity\Gcdb\AutUsuarios
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                usua_codigoid:
+                    referencedColumnName: id
+            orphanRemoval: false
+        usuaCodigoidRemovido:
+            targetEntity: App\Entity\Gcdb\AutUsuarios
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                usua_codigoid_removido:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
