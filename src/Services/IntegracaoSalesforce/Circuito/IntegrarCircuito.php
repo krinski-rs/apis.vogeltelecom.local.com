@@ -7,6 +7,7 @@
 
 namespace App\Services\IntegracaoSalesforce\Circuito;
 
+use Symfony\Component\HttpClient\HttpClient;
 use Doctrine\ORM\EntityManager;
 use Monolog\Logger;
 use App\Entity\Financeiro\CircuitoSalesforce;
@@ -56,9 +57,9 @@ class IntegrarCircuito
      */
     public function __construct(EntityManager $objEntityManager, EntityManager $objEntityManagerGcdb, Logger $objLogger)
     {
-        $this->objEntityManager = $objEntityManager;
+        $this->objEntityManager     = $objEntityManager;
         $this->objEntityManagerGcdb = $objEntityManagerGcdb;
-        $this->objLogger        = $objLogger;
+        $this->objLogger            = $objLogger;
     }
     
     public function integrar(CircuitoSalesforce $objCircuitoSalesforce)
@@ -83,7 +84,6 @@ class IntegrarCircuito
             }
             
             $rua = explode("-::-", $objEnderecoentrega->getEndeentrLogradouro());
-            
             return [
                 'id'=>$objContrato->getContCodigoid(),
                 'stt'=>$objContrato->getStt(),

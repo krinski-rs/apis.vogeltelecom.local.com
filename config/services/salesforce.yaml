@@ -1,0 +1,15 @@
+parameters:
+    salesforce:
+        oauth:
+            url_base: 'https://login.salesforce.com'
+            authorize: 'https://login.salesforce.com/services/oauth2/authorize'
+            token: 'https://login.salesforce.com/services/oauth2/token'
+            revoke: 'https://login.salesforce.com/services/oauth2/revoke'
+            redirect_uri: https://apis.dev.vogeltelecom.com
+            token_id: '5f46bb8231f948f798b9145a89435d24e09d1270'
+            auth:
+                grant_type: 'password'
+                client_id: '3MVG9ZF4bs_.MKujslTjSM6G2CBZdrW1tMy_FVUjuSzijMIB7Iv7mcIa_CLaLE6z5uHqph2kgkFDDp88YEqJQ'
+                client_secret: '47A84CEDBB6F848A425F75579F453CFE8B70CB553D672D9AF89AC2428DB14FAF'
+                username: 'reinaldo.krinski@gmail.com.treino'
+                password: 'jrd3j@22122009'

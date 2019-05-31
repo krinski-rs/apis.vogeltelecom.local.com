@@ -11,6 +11,7 @@ use Doctrine\Bundle\DoctrineBundle\Registry;
 use Monolog\Logger;
 use App\Services\IntegracaoSalesforce\Circuito\IntegrarCircuito;
 use App\Entity\Financeiro\CircuitoSalesforce;
+use App\Services\IntegracaoSalesforce\OAuthSalesforce;
 
 /**
  * Class IntegracaoSalesforce
@@ -37,6 +38,14 @@ class IntegracaoSalesforce
     private $objLogger  = NULL;
     
     /**
+     * Variável que irá guardar a referência do serviço de autenticação.
+     *
+     * @access  private
+     * @var     OAuthSalesforce
+     */
+    private $objOAuthSalesforce  = NULL;
+    
+    /**
      * Obejeto que irá guardar do serviço de integração de circuito.
      *
      * @access  private
@@ -51,13 +60,15 @@ class IntegracaoSalesforce
      * @access  public
      * @param   Registry $objRegistry
      * @param   \Monolog\Logger   $objLogger
+     * @param   OAuthSalesforce   $objOAuthSalesforce
      */
-    public function __construct(Registry $objRegistry, Logger $objLogger)
+    public function __construct(Registry $objRegistry, Logger $objLogger, OAuthSalesforce $objOAuthSalesforce)
     {
-        $this->objEntityManager = $objRegistry->getManager('financeiro');
+        $this->objEntityManager     = $objRegistry->getManager('financeiro');
         $this->objEntityManagerGcdb = $objRegistry->getManager('gcdb');
-        $this->objLogger        = $objLogger;
-        $this->objIntegrarCircuito = new IntegrarCircuito($this->objEntityManager, $this->objEntityManagerGcdb, $this->objLogger);
+        $this->objLogger            = $objLogger;
+        $this->objIntegrarCircuito  = new IntegrarCircuito($this->objEntityManager, $this->objEntityManagerGcdb, $this->objLogger);
+        $this->objOAuthSalesforce   = $objOAuthSalesforce;
     }
     
     /**
@@ -72,6 +83,8 @@ class IntegracaoSalesforce
     public function circuito(int $contCodigoid)
     {
         try {
+            $this->objOAuthSalesforce->login();
+            exit();
             $this->objLogger->error("teste");
             $objCircuitoSalesforceRepository = $this->objEntityManager->getRepository("App\Entity\Financeiro\CircuitoSalesforce");
             $arrayCircuitoSalesforce = $objCircuitoSalesforceRepository->findBy(['contCodigoid'=>$contCodigoid, 'dataIntegracao'=>NULL]);
@@ -81,7 +94,7 @@ class IntegracaoSalesforce
             
             reset($arrayCircuitoSalesforce);
             while ($objCircuitoSalesforce = current($arrayCircuitoSalesforce)){
-//                 $this->objIntegrarCircuito->integrar($objCircuitoSalesforce);
+                print_r($this->objIntegrarCircuito->integrar($objCircuitoSalesforce));
                 next($arrayCircuitoSalesforce);
             }
             
