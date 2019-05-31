@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Servico:
     type: entity
-    table: servico
+    table: financeiro.servico
     indexes:
         fk_sevico_gruposervico1_idx:
             columns:

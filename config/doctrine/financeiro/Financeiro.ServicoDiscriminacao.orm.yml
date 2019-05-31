@@ -1,6 +1,6 @@
 App\Entity\Financeiro\ServicoDiscriminacao:
     type: entity
-    table: servico_discriminacao
+    table: financeiro.servico_discriminacao
     indexes:
         id_discriminacao:
             columns:

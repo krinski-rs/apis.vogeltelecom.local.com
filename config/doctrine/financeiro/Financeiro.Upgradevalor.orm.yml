@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Upgradevalor:
     type: entity
-    table: upgradevalor
+    table: financeiro.upgradevalor
     indexes:
         fk_upgradevalor_moeda1_idx:
             columns:

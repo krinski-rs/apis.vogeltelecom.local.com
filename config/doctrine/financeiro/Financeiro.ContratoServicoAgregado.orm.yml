@@ -1,6 +1,6 @@
 App\Entity\Financeiro\ContratoServicoAgregado:
     type: entity
-    table: contrato_servico_agregado
+    table: financeiro.contrato_servico_agregado
     indexes:
         servagre_codigoid:
             columns:

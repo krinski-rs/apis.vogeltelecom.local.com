@@ -1,6 +1,6 @@
 App\Entity\Financeiro\TmpContrato:
     type: entity
-    table: tmp_contrato
+    table: financeiro.tmp_contrato
     indexes:
         fk_tmp_contrato_tmp_conta_criada1_idx:
             columns:

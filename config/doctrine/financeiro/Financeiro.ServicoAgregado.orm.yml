@@ -1,6 +1,6 @@
 App\Entity\Financeiro\ServicoAgregado:
     type: entity
-    table: servico_agregado
+    table: financeiro.servico_agregado
     indexes:
         servagre_tipo:
             columns:

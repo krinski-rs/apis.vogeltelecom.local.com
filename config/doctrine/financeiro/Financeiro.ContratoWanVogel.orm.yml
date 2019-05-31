@@ -1,6 +1,6 @@
 App\Entity\Financeiro\ContratoWanVogel:
     type: entity
-    table: contrato_wan_vogel
+    table: financeiro.contrato_wan_vogel
     indexes:
         contrato_wan_vogel_cont_codigoid_IDX:
             columns:

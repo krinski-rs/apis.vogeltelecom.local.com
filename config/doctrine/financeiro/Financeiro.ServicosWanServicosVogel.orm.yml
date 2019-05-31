@@ -1,6 +1,6 @@
 App\Entity\Financeiro\ServicosWanServicosVogel:
     type: entity
-    table: servicos_wan_servicos_vogel
+    table: financeiro.servicos_wan_servicos_vogel
     indexes:
         fk_servicos_wan_servicos_vogel_servico1_idx:
             columns:

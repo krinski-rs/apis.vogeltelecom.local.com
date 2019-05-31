@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Discriminacao:
     type: entity
-    table: discriminacao
+    table: financeiro.discriminacao
     id:
         idDiscriminacao:
             type: integer

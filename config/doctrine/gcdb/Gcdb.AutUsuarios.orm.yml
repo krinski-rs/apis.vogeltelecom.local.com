@@ -1,6 +1,6 @@
 App\Entity\Gcdb\AutUsuarios:
     type: entity
-    table: aut_usuarios
+    table: gcdb.aut_usuarios
     indexes:
         username:
             columns:

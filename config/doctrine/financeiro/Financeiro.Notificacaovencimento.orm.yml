@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Notificacaovencimento:
     type: entity
-    table: notificacaovencimento
+    table: financeiro.notificacaovencimento
     indexes:
         fk_notificacaovencimento_1_idx:
             columns:

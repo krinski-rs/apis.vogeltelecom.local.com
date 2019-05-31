@@ -1,6 +1,6 @@
 App\Entity\Financeiro\TmpPonta:
     type: entity
-    table: tmp_ponta
+    table: financeiro.tmp_ponta
     indexes:
         fk_tmp_ponta_tmp_circuito1_idx:
             columns:

@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Upgrade:
     type: entity
-    table: upgrade
+    table: financeiro.upgrade
     indexes:
         fk_upgrade_servicocapacidade1_idx:
             columns:

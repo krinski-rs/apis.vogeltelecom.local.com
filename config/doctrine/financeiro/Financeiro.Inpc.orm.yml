@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Inpc:
     type: entity
-    table: inpc
+    table: financeiro.inpc
     uniqueConstraints:
         inpc_prazo:
             columns:

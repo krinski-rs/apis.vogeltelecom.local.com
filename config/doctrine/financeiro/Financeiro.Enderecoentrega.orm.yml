@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Enderecoentrega:
     type: entity
-    table: enderecoentrega
+    table: financeiro.enderecoentrega
     indexes:
         idx_enderecoentrega_endeentr_id_index:
             columns:

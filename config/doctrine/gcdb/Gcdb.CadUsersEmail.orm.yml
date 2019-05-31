@@ -1,0 +1,50 @@
+App\Entity\Gcdb\CadUsersEmail:
+    type: entity
+    table: gcdb.cad_users_email
+    indexes:
+        cad_users_email_FKIndex1:
+            columns:
+                - cad_users_id
+        cad_users_email_FKIndex2:
+            columns:
+                - id_adm_tipo_ligacao
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        email:
+            type: string
+            nullable: true
+            length: 200
+            options:
+                fixed: false
+        mailing:
+            type: boolean
+            nullable: true
+        principal:
+            type: boolean
+            nullable: true
+        idAdmTipoLigacao:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: id_adm_tipo_ligacao
+    manyToOne:
+        cadUser:
+            targetEntity: App\Entity\Gcdb\CadUsers
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cad_users_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

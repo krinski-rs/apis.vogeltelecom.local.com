@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Suspencao:
     type: entity
-    table: suspencao
+    table: financeiro.suspencao
     indexes:
         fk_suspencao_contrato1_idx:
             columns:

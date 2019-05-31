@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Enderecocobranca:
     type: entity
-    table: enderecocobranca
+    table: financeiro.enderecocobranca
     indexes:
         fk_enderecocobranca_contrato1_idx:
             columns:

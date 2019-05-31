@@ -1,0 +1,70 @@
+App\Entity\Gcdb\CadUsersTelefone:
+    type: entity
+    table: gcdb.cad_users_telefone
+    indexes:
+        cad_users_telefones_FKIndex1:
+            columns:
+                - adm_tipos_telefone_id
+        cad_users_telefones_FKIndex2:
+            columns:
+                - cad_users_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        ddi:
+            type: integer
+            nullable: true
+            options:
+                unsigned: true
+        ddd:
+            type: string
+            nullable: true
+            length: 30
+            options:
+                fixed: false
+        telefone:
+            type: string
+            nullable: true
+            length: 30
+            options:
+                fixed: false
+        ramal:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        principal:
+            type: boolean
+            nullable: true
+        emergencia:
+            type: boolean
+            nullable: true
+    manyToOne:
+        admTiposTelefone:
+            targetEntity: App\Entity\Gcdb\AdmTipoTelefone
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                adm_tipos_telefone_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        cadUser:
+            targetEntity: App\Entity\Gcdb\CadUsers
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cad_users_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

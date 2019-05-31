@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Duracaocontrato:
     type: entity
-    table: duracaocontrato
+    table: financeiro.duracaocontrato
     indexes:
         fk_duracaocontrato_contrato1_idx:
             columns:

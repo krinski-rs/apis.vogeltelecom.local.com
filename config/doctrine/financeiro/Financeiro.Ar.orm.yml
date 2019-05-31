@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Ar:
     type: entity
-    table: ar
+    table: financeiro.ar
     indexes:
         fk_ar_rangear1_idx:
             columns:

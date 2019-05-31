@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Clienteaprovacao:
     type: entity
-    table: clienteaprovacao
+    table: financeiro.clienteaprovacao
     indexes:
         fk_clienteaprovacao_aprovacao1_idx:
             columns:

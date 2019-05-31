@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Contratoaprovacao:
     type: entity
-    table: contratoaprovacao
+    table: financeiro.contratoaprovacao
     indexes:
         fk_contratoaprovacao_contrato1_idx:
             columns:

@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Contratobloqueio:
     type: entity
-    table: contratobloqueio
+    table: financeiro.contratobloqueio
     indexes:
         fk_contratobloqueio_cont_codigoid_idx:
             columns:

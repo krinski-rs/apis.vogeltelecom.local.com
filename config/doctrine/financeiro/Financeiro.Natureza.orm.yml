@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Natureza:
     type: entity
-    table: natureza
+    table: financeiro.natureza
     id:
         natuCodigoid:
             type: integer

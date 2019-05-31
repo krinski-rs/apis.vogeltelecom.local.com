@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Contratoproposta:
     type: entity
-    table: contratoproposta
+    table: financeiro.contratoproposta
     indexes:
         idx_idcontrato:
             columns:

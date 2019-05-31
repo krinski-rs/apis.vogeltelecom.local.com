@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Confirmacao:
     type: entity
-    table: confirmacao
+    table: financeiro.confirmacao
     indexes:
         ativ_codigoid:
             columns:

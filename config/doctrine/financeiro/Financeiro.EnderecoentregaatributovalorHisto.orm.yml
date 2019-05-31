@@ -1,6 +1,6 @@
 App\Entity\Financeiro\EnderecoentregaatributovalorHisto:
     type: entity
-    table: enderecoentregaatributovalor_histo
+    table: financeiro.enderecoentregaatributovalor_histo
     indexes:
         fk_enderecoentregaatributovalor_histo_endeentratrivalo_codi_idx:
             columns:

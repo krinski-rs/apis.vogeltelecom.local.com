@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Contratovalorfatura:
     type: entity
-    table: contratovalorfatura
+    table: financeiro.contratovalorfatura
     indexes:
         fk_contratovalorfatura_contratovalor1_idx:
             columns:

@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Nivel:
     type: entity
-    table: nivel
+    table: financeiro.nivel
     id:
         niveCodigoid:
             type: integer

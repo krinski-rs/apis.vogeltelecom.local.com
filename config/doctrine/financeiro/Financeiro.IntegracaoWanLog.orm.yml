@@ -1,6 +1,6 @@
 App\Entity\Financeiro\IntegracaoWanLog:
     type: entity
-    table: integracao_wan_log
+    table: financeiro.integracao_wan_log
     indexes:
         integracao_wan_log_contrato_wan_id_IDX:
             columns:

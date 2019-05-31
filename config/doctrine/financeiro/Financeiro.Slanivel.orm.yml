@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Slanivel:
     type: entity
-    table: slanivel
+    table: financeiro.slanivel
     indexes:
         fk_slanivel_sla1_idx:
             columns:

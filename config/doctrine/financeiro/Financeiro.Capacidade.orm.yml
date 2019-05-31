@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Capacidade:
     type: entity
-    table: capacidade
+    table: financeiro.capacidade
     id:
         capaCodigoid:
             type: integer

@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Lotebancario:
     type: entity
-    table: lotebancario
+    table: financeiro.lotebancario
     indexes:
         fk_lotebancario_banco1_idx:
             columns:

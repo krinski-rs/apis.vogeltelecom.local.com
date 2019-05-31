@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Tipologging:
     type: entity
-    table: tipologging
+    table: financeiro.tipologging
     id:
         tipologgCodigoid:
             type: integer

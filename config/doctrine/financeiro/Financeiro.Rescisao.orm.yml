@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Rescisao:
     type: entity
-    table: rescisao
+    table: financeiro.rescisao
     indexes:
         fk_rescisao_contrato1_idx:
             columns:

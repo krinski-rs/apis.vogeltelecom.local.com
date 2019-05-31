@@ -1,6 +1,6 @@
 App\Entity\Financeiro\ContratoAprovacaoFechamento:
     type: entity
-    table: contrato_aprovacao_fechamento
+    table: financeiro.contrato_aprovacao_fechamento
     id:
         idContrato:
             type: integer

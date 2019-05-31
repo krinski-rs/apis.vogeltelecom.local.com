@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Medida:
     type: entity
-    table: medida
+    table: financeiro.medida
     id:
         mediCodigoid:
             type: integer

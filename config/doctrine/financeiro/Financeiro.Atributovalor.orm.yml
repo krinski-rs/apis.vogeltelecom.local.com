@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Atributovalor:
     type: entity
-    table: atributovalor
+    table: financeiro.atributovalor
     indexes:
         fk_atributovalor_atributo1_idx:
             columns:

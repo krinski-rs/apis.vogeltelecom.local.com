@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Textolegal:
     type: entity
-    table: textolegal
+    table: financeiro.textolegal
     indexes:
         fk_textologal_contrato1_idx:
             columns:

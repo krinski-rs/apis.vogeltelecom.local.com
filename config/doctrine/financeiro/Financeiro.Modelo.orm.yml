@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Modelo:
     type: entity
-    table: modelo
+    table: financeiro.modelo
     indexes:
         fk_modelo_contrato1_idx:
             columns:

@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Tipodocumento:
     type: entity
-    table: tipodocumento
+    table: financeiro.tipodocumento
     id:
         tipodocuCodigoid:
             type: integer

@@ -1,6 +1,6 @@
 App\Entity\Financeiro\ContratovalorDiscriminacao:
     type: entity
-    table: contratovalor_discriminacao
+    table: financeiro.contratovalor_discriminacao
     indexes:
         fk_contratovalor_has_discriminacao_contratovalor1_idx:
             columns:

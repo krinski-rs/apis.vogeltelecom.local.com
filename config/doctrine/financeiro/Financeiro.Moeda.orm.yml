@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Moeda:
     type: entity
-    table: moeda
+    table: financeiro.moeda
     id:
         moedCodigoid:
             type: integer

@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Atributo:
     type: entity
-    table: atributo
+    table: financeiro.atributo
     id:
         atriCodigoid:
             type: integer

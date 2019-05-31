@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Ativacaotemplatepermissao:
     type: entity
-    table: ativacaotemplatepermissao
+    table: financeiro.ativacaotemplatepermissao
     indexes:
         fk_atributovalor_atri_codigoid_idx:
             columns:

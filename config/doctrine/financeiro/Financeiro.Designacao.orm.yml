@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Designacao:
     type: entity
-    table: designacao
+    table: financeiro.designacao
     id:
         desigCodigoid:
             type: integer

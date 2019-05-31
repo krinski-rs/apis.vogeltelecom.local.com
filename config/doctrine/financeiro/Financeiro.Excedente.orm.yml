@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Excedente:
     type: entity
-    table: excedente
+    table: financeiro.excedente
     indexes:
         fk_excedente_contrato1_idx:
             columns:

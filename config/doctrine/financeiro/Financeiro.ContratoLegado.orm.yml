@@ -1,6 +1,6 @@
 App\Entity\Financeiro\ContratoLegado:
     type: entity
-    table: contrato_legado
+    table: financeiro.contrato_legado
     indexes:
         fk_contrato_legado_contrato1_idx:
             columns:

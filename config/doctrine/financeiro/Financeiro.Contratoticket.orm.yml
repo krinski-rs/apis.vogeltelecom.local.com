@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Contratoticket:
     type: entity
-    table: contratoticket
+    table: financeiro.contratoticket
     indexes:
         fk_contratoticket_contrato1_idx:
             columns:

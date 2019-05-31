@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Igpdi:
     type: entity
-    table: igpdi
+    table: financeiro.igpdi
     uniqueConstraints:
         igpdi_prazo:
             columns:

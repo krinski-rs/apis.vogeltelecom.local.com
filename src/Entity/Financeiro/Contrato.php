@@ -201,8 +201,20 @@ class Contrato
      * @var \App\Entity\Financeiro\Status
      */
     private $statCodigoid;
-
-
+    
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $contratos;
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->contratos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
     /**
      * Get contCodigoid.
      *
@@ -1123,5 +1135,62 @@ class Contrato
     public function getStatCodigoid()
     {
         return $this->statCodigoid;
+    }
+    
+    /**
+     * Add contrato
+     *
+     * @param \App\Entity\Financeiro\Contrato $contratoFilho
+     * @return Contrato
+     */
+    public function addContrato(\App\Entity\Financeiro\Contrato $contrato)
+    {
+        $this->contratos[] = $contrato;
+        
+        return $this;
+    }
+    
+    /**
+     * Remove contrato
+     *
+     * @param \App\Entity\Financeiro\Contrato $contratoFilho
+     */
+    public function removeContratoFilho(\App\Entity\Financeiro\Contrato $contrato)
+    {
+        $this->contratos->removeElement($contrato);
+    }
+    
+    /**
+     * Get contratos
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getContratos()
+    {
+        return $this->contratos;
+    }
+    
+    public function getStt()
+    {
+        if(!($this->contPaicodigoid instanceof Contrato)){
+            $filho = $this->getContratos()->first();
+            if(!($filho->getDesigCodigoid() instanceof Designacao)){
+                return "";
+            }
+            if($filho->getDesigCodigoid()->getDesigStt()){
+                return "STT{$filho->getDesigCodigoid()->getDesigStt()}".str_pad($filho->getDesigCodigoid()->getDesigNumero(), 4, "0", STR_PAD_LEFT);
+            }else{
+                return "STT-{$filho->getDesigCodigoid()->getClieCodigoid()}-{$filho->getDesigCodigoid()->getDesigNumero()}";
+            }
+        }
+        
+        if(!($this->desigCodigoid instanceof Designacao)){
+            return "";
+        }
+        if($this->desigCodigoid->getDesigStt()){
+            return "STT{$this->desigCodigoid->getDesigStt()}".str_pad($this->desigCodigoid->getDesigNumero(), 4, "0", STR_PAD_LEFT);
+        }else{
+            return "STT-{$this->desigCodigoid->getClieCodigoid()}-{$this->desigCodigoid->getDesigNumero()}-{$this->desigCodigoid->getDesigPonta()}";
+        }
     }
 }

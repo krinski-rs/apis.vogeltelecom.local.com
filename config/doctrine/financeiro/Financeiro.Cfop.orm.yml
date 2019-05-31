@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Cfop:
     type: entity
-    table: cfop
+    table: financeiro.cfop
     id:
         cfopCodigoid:
             type: integer

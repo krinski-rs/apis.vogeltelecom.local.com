@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Cancelamento:
     type: entity
-    table: cancelamento
+    table: financeiro.cancelamento
     indexes:
         cont_codigoid:
             columns:

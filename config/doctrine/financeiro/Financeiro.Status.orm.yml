@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Status:
     type: entity
-    table: status
+    table: financeiro.status
     id:
         statCodigoid:
             type: integer

@@ -1,6 +1,6 @@
 App\Entity\Financeiro\AtributoAdicional:
     type: entity
-    table: atributo_adicional
+    table: financeiro.atributo_adicional
     indexes:
         fk_atributo_adiconal_enderecoentregaatributovalor1_idx:
             columns:

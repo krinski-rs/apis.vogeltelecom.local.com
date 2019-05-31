@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Ipciepe:
     type: entity
-    table: ipciepe
+    table: financeiro.ipciepe
     indexes:
         ipciepe_prazo:
             columns:

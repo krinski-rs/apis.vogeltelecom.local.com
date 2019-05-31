@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Restricao:
     type: entity
-    table: restricao
+    table: financeiro.restricao
     indexes:
         fk_restricao_contrato1_idx:
             columns:

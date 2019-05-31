@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Envio:
     type: entity
-    table: envio
+    table: financeiro.envio
     id:
         enviCodigoid:
             type: integer

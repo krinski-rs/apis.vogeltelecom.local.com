@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Logging:
     type: entity
-    table: logging
+    table: financeiro.logging
     indexes:
         fk_logging_tipologging1_idx:
             columns:

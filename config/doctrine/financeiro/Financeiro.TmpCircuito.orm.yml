@@ -1,6 +1,6 @@
 App\Entity\Financeiro\TmpCircuito:
     type: entity
-    table: tmp_circuito
+    table: financeiro.tmp_circuito
     indexes:
         fk_tmp_circuito_tmp_contrato1_idx:
             columns:

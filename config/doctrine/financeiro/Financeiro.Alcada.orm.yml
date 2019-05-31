@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Alcada:
     type: entity
-    table: alcada
+    table: financeiro.alcada
     id:
         alcaCodigoid:
             type: integer

@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Scriptmedicao:
     type: entity
-    table: scriptmedicao
+    table: financeiro.scriptmedicao
     id:
         scrimediCodigoid:
             type: integer

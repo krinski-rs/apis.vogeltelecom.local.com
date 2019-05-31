@@ -1,6 +1,6 @@
 App\Entity\Financeiro\TmpContaCriada:
     type: entity
-    table: tmp_conta_criada
+    table: financeiro.tmp_conta_criada
     id:
         idTmpContaCriada:
             type: integer

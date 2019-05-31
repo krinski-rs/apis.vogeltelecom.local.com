@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Fatura:
     type: entity
-    table: fatura
+    table: financeiro.fatura
     indexes:
         fk_fatura_arquivoremessa1_idx:
             columns:

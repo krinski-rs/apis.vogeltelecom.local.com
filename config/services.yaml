@@ -85,4 +85,14 @@ services:
         arguments:
             $objGeolocation: '@geoloc'
 
+    integracao_salesforce:
+          alias: App\Services\IntegracaoSalesforce
+          public: true
+
+    App\Services\IntegracaoSalesforce:
+          public: false
+          arguments: ["@doctrine", "@logger"]
+          tags:
+              - { name: monolog.logger, channel: salesforce }
+
     

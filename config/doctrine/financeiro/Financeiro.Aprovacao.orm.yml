@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Aprovacao:
     type: entity
-    table: aprovacao
+    table: financeiro.aprovacao
     id:
         aproCodigoid:
             type: integer

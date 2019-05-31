@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Reativacao:
     type: entity
-    table: reativacao
+    table: financeiro.reativacao
     indexes:
         fk_reativacao_contrato1_idx:
             columns:

@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Impostoscontrato:
     type: entity
-    table: impostoscontrato
+    table: financeiro.impostoscontrato
     indexes:
         fk_impostoscontrato_contrato1_idx:
             columns:

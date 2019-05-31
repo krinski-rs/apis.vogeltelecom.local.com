@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Pesquisa:
     type: entity
-    table: pesquisa
+    table: financeiro.pesquisa
     id:
         pesqCodigoid:
             type: integer

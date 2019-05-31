@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Rangear:
     type: entity
-    table: rangear
+    table: financeiro.rangear
     id:
         rangarCodigoid:
             type: integer

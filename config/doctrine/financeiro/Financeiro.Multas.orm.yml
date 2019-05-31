@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Multas:
     type: entity
-    table: multas
+    table: financeiro.multas
     id:
         multCodigoid:
             type: integer

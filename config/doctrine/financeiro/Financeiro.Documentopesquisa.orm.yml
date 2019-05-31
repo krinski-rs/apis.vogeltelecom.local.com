@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Documentopesquisa:
     type: entity
-    table: documentopesquisa
+    table: financeiro.documentopesquisa
     indexes:
         fk_documentopesquisa_pesquisa1_idx:
             columns:

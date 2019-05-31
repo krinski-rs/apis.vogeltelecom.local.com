@@ -1,6 +1,6 @@
 App\Entity\Financeiro\TmpLogContrato:
     type: entity
-    table: tmp_log_contrato
+    table: financeiro.tmp_log_contrato
     indexes:
         fk_tmp_log_contrato_idx:
             columns:

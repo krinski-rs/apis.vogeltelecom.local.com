@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Ativacaotemplate:
     type: entity
-    table: ativacaotemplate
+    table: financeiro.ativacaotemplate
     indexes:
         fk_servico_serv_codigoid_idx:
             columns:

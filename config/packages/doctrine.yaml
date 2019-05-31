@@ -92,4 +92,3 @@ doctrine:
                         dir: '%kernel.project_dir%/config/doctrine/gcdb'
                         prefix: 'App\Entity'
                         alias: App\Entity
-                        

@@ -1,6 +1,6 @@
 App\Entity\Financeiro\ServicoAtributo:
     type: entity
-    table: servico_atributo
+    table: financeiro.servico_atributo
     indexes:
         fk_servico_idx:
             columns:

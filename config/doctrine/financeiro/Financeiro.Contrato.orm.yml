@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Contrato:
     type: entity
-    table: contrato
+    table: financeiro.contrato
     indexes:
         fk_contrato_designacao1_idx:
             columns:
@@ -310,4 +310,10 @@ App\Entity\Financeiro\Contrato:
                 stat_codigoid:
                     referencedColumnName: stat_codigoid
             orphanRemoval: false
+    oneToMany:
+        contratos:
+            targetEntity: App\Entity\Financeiro\Contrato
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: contPaicodigoid
     lifecycleCallbacks: {  }

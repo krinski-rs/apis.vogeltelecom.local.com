@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Gruposervico:
     type: entity
-    table: gruposervico
+    table: financeiro.gruposervico
     id:
         grupservCodigoid:
             type: integer

@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Pagina:
     type: entity
-    table: pagina
+    table: financeiro.pagina
     indexes:
         fk_pagina_pagina1_idx:
             columns:

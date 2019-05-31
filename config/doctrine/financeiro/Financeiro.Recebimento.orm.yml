@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Recebimento:
     type: entity
-    table: recebimento
+    table: financeiro.recebimento
     indexes:
         fk_recebimento_lotebancario1_idx:
             columns:

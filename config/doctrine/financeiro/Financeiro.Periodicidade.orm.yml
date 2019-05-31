@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Periodicidade:
     type: entity
-    table: periodicidade
+    table: financeiro.periodicidade
     indexes:
         fk_periodicidade_contratovalor1_idx:
             columns:

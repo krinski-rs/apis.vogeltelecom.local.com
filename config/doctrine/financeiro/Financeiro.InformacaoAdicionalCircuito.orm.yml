@@ -1,6 +1,6 @@
 App\Entity\Financeiro\InformacaoAdicionalCircuito:
     type: entity
-    table: informacao_adicional_circuito
+    table: financeiro.informacao_adicional_circuito
     indexes:
         fk_usua_codigoid_idx:
             columns:

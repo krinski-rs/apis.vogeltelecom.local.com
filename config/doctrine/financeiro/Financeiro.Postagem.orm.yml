@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Postagem:
     type: entity
-    table: postagem
+    table: financeiro.postagem
     indexes:
         fk_postagem_fatura1_idx:
             columns:

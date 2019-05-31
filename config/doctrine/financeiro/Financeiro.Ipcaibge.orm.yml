@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Ipcaibge:
     type: entity
-    table: ipcaibge
+    table: financeiro.ipcaibge
     indexes:
         ipcaibge_prazo:
             columns:

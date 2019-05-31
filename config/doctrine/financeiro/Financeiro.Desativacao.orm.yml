@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Desativacao:
     type: entity
-    table: desativacao
+    table: financeiro.desativacao
     indexes:
         fk_desativacao_contrato1_idx:
             columns:

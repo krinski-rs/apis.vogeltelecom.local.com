@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Ativacaopagamento:
     type: entity
-    table: ativacaopagamento
+    table: financeiro.ativacaopagamento
     indexes:
         fk_ativacaopagamento_1_idx:
             columns:

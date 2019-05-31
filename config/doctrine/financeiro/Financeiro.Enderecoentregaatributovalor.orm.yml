@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Enderecoentregaatributovalor:
     type: entity
-    table: enderecoentregaatributovalor
+    table: financeiro.enderecoentregaatributovalor
     indexes:
         fk_enderecoentregaatributovalor_cont_codigoid_idx:
             columns:

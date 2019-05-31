@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Contratocontato:
     type: entity
-    table: contratocontato
+    table: financeiro.contratocontato
     indexes:
         fk_contratocontato_contrato1_idx:
             columns:

@@ -1,6 +1,6 @@
 App\Entity\Financeiro\TmpLogCliente:
     type: entity
-    table: tmp_log_cliente
+    table: financeiro.tmp_log_cliente
     id:
         id:
             type: integer

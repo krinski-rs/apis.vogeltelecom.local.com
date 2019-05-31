@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Documento:
     type: entity
-    table: documento
+    table: financeiro.documento
     indexes:
         fk_documento_contrato1_idx:
             columns:

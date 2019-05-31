@@ -1,6 +1,6 @@
 App\Entity\Financeiro\ServicosWanServicoAgregado:
     type: entity
-    table: servicos_wan_servico_agregado
+    table: financeiro.servicos_wan_servico_agregado
     indexes:
         servagre_codigoid:
             columns:

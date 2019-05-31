@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Banco:
     type: entity
-    table: banco
+    table: financeiro.banco
     id:
         bancCodigoid:
             type: integer

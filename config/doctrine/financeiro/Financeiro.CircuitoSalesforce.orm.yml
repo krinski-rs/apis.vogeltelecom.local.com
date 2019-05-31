@@ -1,6 +1,6 @@
 App\Entity\Financeiro\CircuitoSalesforce:
     type: entity
-    table: circuito_salesforce
+    table: financeiro.circuito_salesforce
     indexes:
         fk_circuito_salesforce_cont_codigoid:
             columns:

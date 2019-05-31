@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Sla:
     type: entity
-    table: sla
+    table: financeiro.sla
     indexes:
         fk_sla_sla1_idx:
             columns:

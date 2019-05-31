@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Ist:
     type: entity
-    table: ist
+    table: financeiro.ist
     uniqueConstraints:
         ist_prazo:
             columns:

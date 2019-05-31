@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Serviconatureza:
     type: entity
-    table: serviconatureza
+    table: financeiro.serviconatureza
     indexes:
         fk_serviconatureza_natureza1_idx:
             columns:

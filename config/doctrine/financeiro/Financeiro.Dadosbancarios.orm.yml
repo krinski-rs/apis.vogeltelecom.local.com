@@ -1,6 +1,6 @@
 App\Entity\Financeiro\Dadosbancarios:
     type: entity
-    table: dadosbancarios
+    table: financeiro.dadosbancarios
     indexes:
         fk_dadosbancarios_banco1_idx:
             columns:
