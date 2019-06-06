@@ -121,7 +121,12 @@ class Customers
      * @var \Doctrine\Common\Collections\Collection
      */
     private $customers2users;
-
+    
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $prioridades;
+    
     /**
      * @var \App\Entity\Gcdb\Origemexterna
      */
@@ -133,7 +138,7 @@ class Customers
     public function __construct()
     {
         $this->customers2users = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+        $this->prioridades = new \Doctrine\Common\Collections\ArrayCollection();    }
 
     /**
      * Get customerid.
@@ -684,7 +689,43 @@ class Customers
     {
         return $this->customers2users;
     }
-
+    
+    /**
+     * Add prioridade.
+     *
+     * @param \App\Entity\Gcdb\Prioridade $prioridade
+     *
+     * @return Customers
+     */
+    public function addPrioridade(\App\Entity\Gcdb\Prioridade $prioridade)
+    {
+        $this->prioridades[] = $prioridade;
+        
+        return $this;
+    }
+    
+    /**
+     * Remove prioridade.
+     *
+     * @param \App\Entity\Gcdb\Prioridade $prioridade
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removePrioridade(\App\Entity\Gcdb\Prioridade $prioridade)
+    {
+        return $this->prioridades->removeElement($prioridade);
+    }
+    
+    /**
+     * Get prioridades.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPrioridades()
+    {
+        return $this->prioridades;
+    }
+    
     /**
      * Set origemexterna.
      *

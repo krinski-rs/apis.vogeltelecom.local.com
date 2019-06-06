@@ -1,0 +1,37 @@
+App\Entity\Gcdb\Prioridade:
+    type: entity
+    table: Prioridade
+    indexes:
+        CustomerID:
+            columns:
+                - CustomerID
+    id:
+        prioridadeid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: PrioridadeID
+            generator:
+                strategy: IDENTITY
+    fields:
+        nivel:
+            type: string
+            nullable: false
+            length: 10
+            options:
+                fixed: true
+            column: Nivel
+    manyToOne:
+        customer:
+            targetEntity: App\Entity\Gcdb\Customers
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                CustomerID:
+                    referencedColumnName: CustomerID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -23,14 +23,14 @@ final class Version20190529173902 extends AbstractMigration
         $this->addSql('CREATE TABLE circuito_salesforce (
   id int(11) NOT NULL AUTO_INCREMENT,
   cont_codigoid int(11) NOT NULL,
-  id_circuito_salesforce int(11) DEFAULT NULL,
+  id_circuito_salesforce VARCHAR(50) DEFAULT NULL,
   data_criacao timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   data_integracao timestamp NULL DEFAULT NULL,
   PRIMARY KEY (id),
   CONSTRAINT fk_circuito_salesforce_cont_codigoid FOREIGN KEY (cont_codigoid) REFERENCES contrato (cont_codigoid) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1');
         $this->addSql('ALTER TABLE financeiro.contrato 
-ADD COLUMN salesforce_id INT NULL AFTER cont_segregar_valor;
+ADD COLUMN salesforce_id VARCHAR(50) NULL AFTER cont_segregar_valor;
 ');
     }
 

@@ -12,6 +12,7 @@ use App\Entity\Gcdb\CadUsers;
 use App\Entity\Gcdb\Customers2users;
 use App\Entity\Gcdb\CadUsersNome;
 use App\Entity\Gcdb\CadUsersTelefone;
+use App\Services\IntegracaoSalesforce\Circuito\Cidade;
 
 /**
  * Class Account
@@ -47,6 +48,14 @@ class Account
     private $params  = NULL;
     
     /**
+     * Variável que irá guardar a referência do serviço de Cidade.
+     *
+     * @access  private
+     * @var     Cidade
+     */
+    private $objCidade  = NULL;
+    
+    /**
      * Variável que irá quardar o token de acesso fornecido pela api de autenticação.
      * 
      * @var string
@@ -59,6 +68,16 @@ class Account
      * @var string
      */
     private $id = NULL;
+    
+    private $arraySegmento = [
+        'Corporativo' => 'Corporativo',
+        'Fornecedor' => 'Corporativo',
+        'Canal' => 'Corporativo',
+        'Governo' => 'Governo',
+        'ISP' => 'ISP',
+        'Key Accounts' => 'KAM',
+        'Operadora' => 'Operadoras'
+    ];
     
     /**
      * Retorna a instância do objeto.
@@ -75,6 +94,7 @@ class Account
         $this->accessToken  = $accessToken;
         $this->id           = $id;
         $this->objClient    = new \GuzzleHttp\Client();
+        $this->objCidade = new Cidade($this->objLogger, $this->params, $accessToken);
     }
     
     public function describe()
@@ -96,7 +116,6 @@ class Account
     {
         try {
             $cnpj = $this->somenteNumeros($cnpj);
-            //             $url = "{$this->params['base']}{$this->params['account']['url']}/0012E00001r3jvUQAQ";
             $url = "{$this->params['base']}{$this->params['account']['url']}/CNPJ__c/{$cnpj}";
             $params = [
                 'headers' => ['Authorization' => $this->accessToken]
@@ -158,7 +177,7 @@ class Account
                 $this->objLogger->error("Erro na criação da Account", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
                 throw new \Exception($e->getResponse()->getBody()->getContents(), $e->getCode());
             }
-            $this->objLogger->error("Erro na criação do circuito", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
+            $this->objLogger->error("Erro na criação da Account", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
             throw new \Exception("Invalid creation request", $e->getCode());
         }catch (\Exception $e) {
             $this->objLogger->error("Erro na criação da Account", ['message' => $e->getMessage(), 'code' => $e->getCode()]);
@@ -183,6 +202,7 @@ class Account
             }
             
             $nome = "";
+            $nomeFantasia = "";
             if($objCadUser->getTipo() == 'J'){
                 $cnpj = $this->somenteNumeros($objCadUser->getCnpj());
                 $arrayCadUsersNome = $objCadUser->getCadUsersNome()->filter(
@@ -191,16 +211,22 @@ class Account
                     }
                 );
                 
+                $arrayCadUsersNomeFantasia = $objCadUser->getCadUsersNome()->filter(
+                    function(CadUsersNome $objCadUsersNome){
+                        return ($objCadUsersNome->getAdmTipoNome()->getId() == 6);//Nome Fantasia
+                    }
+                );
+                
+                if($arrayCadUsersNomeFantasia->count()){
+                    $nomeFantasia = trim($arrayCadUsersNomeFantasia->first()->getNome());
+                }
+               
                 if(!$arrayCadUsersNome->count()){
-                    $arrayCadUsersNome = $objCadUser->getCadUsersNome()->filter(
-                        function(CadUsersNome $objCadUsersNome){
-                            return ($objCadUsersNome->getAdmTipoNome()->getId() == 6);//Nome Fantasia
-                        }
-                    );
-                    if(!$arrayCadUsersNome->count()){
+                    if(!$arrayCadUsersNomeFantasia->count()){
                         $this->objLogger->error("Nome do cliente não localizado", ['cliente'=>$objCustomers->getClieCodigoid()]);
                         throw new \Exception("Nome do Customer tipo 'J' não encontrado.");
                     }
+                    $nome = trim($arrayCadUsersNomeFantasia->first()->getNome());
                 }
                 $nome = trim($arrayCadUsersNome->first()->getNome());
             }else{
@@ -234,29 +260,56 @@ class Account
             if(!$objCadUsersTelefone instanceof CadUsersTelefone){
                 $objCadUsersTelefone = $objCadUser->getCadUsersTelefone()->first();
             }
+            
+            $rua = trim($objCadUser->getAdmLogradouro()->getNome()).' '.trim($objCadUser->getEndereco());
+            $rua = iconv('UTF-8', 'ASCII//TRANSLIT', $this->rstrReplace($rua));
+            $bairro = trim($objCadUser->getBairro());
+            $cidade = trim($objCadUser->getAdmCidades()->getNome());
+            $objAdmUf = $objCadUser->getAdmCidades()->getAdmUf();
+            $estado = trim($objAdmUf->getNome());
+            
+            $objCidadeSalesforce = $this->objCidade->getByCodigoIbge($objCadUser->getAdmCidades()->getCodigoIbge());
+            
+            
             $fone = $this->formataFone($objCadUsersTelefone->getDdi().$objCadUsersTelefone->getDdd(). $objCadUsersTelefone->getTelefone());
             $arrayAccount = [
-                'BairroCobranca__c' => trim($objCadUser->getBairro()),
-                'BairroComercial__c' => trim($objCadUser->getBairro()),
+                'BairroCobranca__c' => $bairro,
+                'BairroComercial__c' => $bairro,
+                'Carga__c' => true,
+                'CEPCobranca__c' => $objCadUser->getCep(),
+                'CEPComercial__c' => $objCadUser->getCep(),
+                'CidadeCobranca__c' => $objCidadeSalesforce->Id,
+                'CidadeComercial__c' => $objCidadeSalesforce->Id,
+                'ClassificacaoCliente__c' => $objCustomers->getPrioridades()->first()->getNivel(),
                 'Name' => trim($nome),
-                'Type' => 'Cliente',
+                'CNPJ__c' => $cnpj,
+                'ComplementoCobranca__c' => '',
+                'ComplementoComercial__c' => '',
+                'Description' => '',
+                'EstadoCobranca__c' => $objAdmUf->getSigla(),
+                'EstadoComercial__c' => $objAdmUf->getSigla(),
+                'LogradouroCobranca__c' => iconv('UTF-8', 'ASCII//TRANSLIT', $this->rstrReplace($objCadUser->getEndereco())),
+                'LogradouroComercial__c' => iconv('UTF-8', 'ASCII//TRANSLIT', $this->rstrReplace($objCadUser->getEndereco())),
+                'NomeFantasia__c' => $nomeFantasia,
+                'NumeroCobranca__c' => $objCadUser->getNumero(),
+                'NumeroComercial__c' => $objCadUser->getNumero(),
+                'Segmento__c' => ($objCadUser->getSegmento() ? $this->arraySegmento[$objCadUser->getSegmento()->getDescricao()] : 'Corporativo'),
+                'Website' => trim($objCadUser->getSite()),
                 'Phone' => $fone,
+                'Type' => 'Cliente',
+                'TipoLogradouroCobranca__c' => $objCadUser->getAdmLogradouro()->getId(),
+                'TipoLogradouroComercial__c' => $objCadUser->getAdmLogradouro()->getId(),
                 'Jigsaw' => NULL,
                 'OwnerId' => $this->id,
-                'SicDesc' => 'Customer de teste',
-                'Website' => trim($objCadUser->getSite()),
-                'Industry' => 'Agriculture',
                 'ParentId' => NULL,
-                'BillingCity' => trim($objCadUser->getAdmCidades()->getNome()),
-                'Description' => '',
-                'BillingState' => trim($objCadUser->getAdmCidades()->getAdmUf()->getNome()),
-                'ShippingCity' => trim($objCadUser->getAdmCidades()->getNome()),
+                'BillingCity' => $cidade,
+                'BillingState' => $estado,
+                'ShippingCity' => $cidade,
                 'AccountSource' => NULL,
-                'CNPJ__c' => $cnpj,
-                'BillingStreet' => trim($objCadUser->getAdmLogradouro()->getNome()).' '.trim($objCadUser->getEndereco()),
-                'ShippingState' => trim($objCadUser->getAdmCidades()->getAdmUf()->getNome()),
+                'BillingStreet' => $rua,
+                'ShippingState' => $estado,
                 'BillingCountry' => trim($objCadUser->getAdmCidades()->getAdmUf()->getAdmPais()->getNome()),
-                'ShippingStreet' => trim($objCadUser->getAdmLogradouro()->getNome()).' '.trim($objCadUser->getEndereco()),
+                'ShippingStreet' => $rua,
                 'BillingLatitude' => $objCadUser->getLatitude(),
                 'ShippingCountry' => trim($objCadUser->getAdmCidades()->getAdmUf()->getAdmPais()->getNome()),
                 'BillingLongitude' => $objCadUser->getLongitude(),
@@ -284,6 +337,14 @@ class Account
         }
         
         return $fone;
+    }
+    
+    private function rstrReplace($str)
+    {
+        $arraReplace = [
+            '-' => ''
+        ];
+        return str_replace(array_keys($arraReplace), array_values($arraReplace), $str);
     }
     
     private function somenteNumeros($str)

@@ -173,4 +173,9 @@ App\Entity\Gcdb\Customers:
             cascade: {  }
             fetch: LAZY
             mappedBy: customer
+        prioridades:
+            targetEntity: App\Entity\Gcdb\Prioridade
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: customer
     lifecycleCallbacks: {  }

@@ -238,6 +238,8 @@ class IntegrarCircuito
             $objCircuito = $this->objCircuit->create($arrayCircuit);
             $objCircuitoSalesforce->setDataIntegracao(new \DateTime());
             $objCircuitoSalesforce->setIdCircuitoSalesforce($objCircuito->id);
+            $objContrato = $objCircuitoSalesforce->getContCodigoid();
+            $this->objEntityManager->merge($objContrato);
             $this->objEntityManager->merge($objCircuitoSalesforce);
             $this->objEntityManager->flush();
             return $objCircuito;

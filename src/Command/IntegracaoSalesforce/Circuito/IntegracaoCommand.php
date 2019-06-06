@@ -7,6 +7,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use App\Services\IntegracaoSalesforce;
+use phpDocumentor\Reflection\Types\Integer;
 
 class IntegracaoCommand extends Command
 {
@@ -29,7 +30,7 @@ class IntegracaoCommand extends Command
                 return 0;
             }
             
-            $contCodigoid = $objInputInterface->getOption('circ');
+            echo $contCodigoid = $objInputInterface->getOption('circ');
             if($contCodigoid){
                 if(!is_numeric($contCodigoid) || ((integer)$contCodigoid <= 0)){
                     $objOutputInterface->writeln("\n<error>O parâmetro [--circ|-c] deve ser um número inteiro maior que zero.</error>\n");
@@ -40,7 +41,7 @@ class IntegracaoCommand extends Command
                 $objOutputInterface->writeln("<info>Circuito '{$contCodigoid}' integrado</info>");
             }else{
                 $objOutputInterface->writeln("<info>Integrar circuitos'</info>");
-                $objIntegracaoSalesforce->circuitos();
+                $objIntegracaoSalesforce->circuitos($objInputInterface->getOption('limit'));
                 $objOutputInterface->writeln("<info>Circuitos integrados</info>");
             }
             
@@ -60,7 +61,8 @@ class IntegracaoCommand extends Command
     {
         $this->setName('salesforce:integracao:circuito')
             ->setDescription('Comando para integração dos circuitos com o Salesforce.')
-            ->addOption('circ', 'c', InputOption::VALUE_OPTIONAL, 'Id do circuito ex.: --circ=123456', "NULL")
+            ->addOption('circ', 'c', InputOption::VALUE_OPTIONAL, 'Id do circuito ex.: --circ=123456', NULL)
+            ->addOption('limit', 'l', InputOption::VALUE_OPTIONAL, 'Limite de registros por execusão ex.: --limit=10', 50)
             ->setHelp("Este comando permite que você realize as integraçõs \nde circuitos do Sistech com o Salesforce.")
         ;
     }
