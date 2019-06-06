@@ -16,10 +16,11 @@ App\Entity\Financeiro\CircuitoSalesforce:
                 strategy: IDENTITY
     fields:
         idCircuitoSalesforce:
-            type: integer
+            type: string
             nullable: true
+            length: 50
             options:
-                unsigned: false
+                fixed: false
             column: id_circuito_salesforce
         dataCriacao:
             type: datetime

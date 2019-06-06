@@ -36,9 +36,12 @@ class IntegracaoCommand extends Command
                     return 0;
                 }
                 $objOutputInterface->writeln("<info>Integrar circuito '{$contCodigoid}'</info>");
-                return $objIntegracaoSalesforce->circuito($contCodigoid);
+                $objIntegracaoSalesforce->circuito($contCodigoid);
+                $objOutputInterface->writeln("<info>Circuito '{$contCodigoid}' integrado</info>");
             }else{
-                return $objIntegracaoSalesforce->circuitos();
+                $objOutputInterface->writeln("<info>Integrar circuitos'</info>");
+                $objIntegracaoSalesforce->circuitos();
+                $objOutputInterface->writeln("<info>Circuitos integrados</info>");
             }
             
             $this->release();

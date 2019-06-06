@@ -10,7 +10,7 @@ namespace App\Services\IntegracaoSalesforce;
 use \Monolog\Logger;
 
 /**
- * Class IntegracaoSalesforce
+ * Class OAuthSalesforce
  *
  * @package \App\Services\IntegracaoSalesforce
  * @author  reinaldo.freitas@vogeltelecom.com
@@ -18,7 +18,7 @@ use \Monolog\Logger;
 class OAuthSalesforce
 {
     /**
-     * Variável que irá guardar a referência do serviço de log.
+     * Variável que irá guardar a referência do GuzzleHttp\Client.
      *
      * @access  private
      * @var     \GuzzleHttp\Client
@@ -42,10 +42,18 @@ class OAuthSalesforce
     private $params  = NULL;
     
     /**
+     * Variável que irá quardar os dados se o login for ralizado com sucesso.
+     * 
+     * @var object|NULL
+     */
+    private $objContents = NULL;
+    
+    /**
      * Retorna a instância do objeto.
      * 
      * @access  public
      * @param   \Monolog\Logger   $objLogger
+     * @param   array   $params
      */
     public function __construct(Logger $objLogger, array $params)
     {
@@ -56,27 +64,53 @@ class OAuthSalesforce
     
     private function authorize()
     {
-//         $url = $this->params['oauth']['base'].'?grant_type=authorization_code&cliente_id=3MVG9ZF4bs_.MKujslTjSM6G2CBZdrW1tMy_FVUjuSzijMIB7Iv7mcIa_CLaLE6z5uHqph2kgkFDDp88YEqJQ&client_secret=47A84CEDBB6F848A425F75579F453CFE8B70CB553D672D9AF89AC2428DB14FAF';
-        $params = [
-            'form_params' => $this->params['oauth']['auth'],
-            'headers' => ['Accept'=>'application/json']
-        ];
-        
-        $objGuzzleHttpResponse = $this->objClient->request("POST", $this->params['oauth']['token'], $params);
-        \Doctrine\Common\Util\Debug::dump($this->params['oauth']['url_base'], 2);
-        \Doctrine\Common\Util\Debug::dump($params, 2);
-        if($objGuzzleHttpResponse instanceof \GuzzleHttp\Psr7\Response){
-            \Doctrine\Common\Util\Debug::dump($objGuzzleHttpResponse->getStatusCode(), 2);
-            \Doctrine\Common\Util\Debug::dump($objGuzzleHttpResponse->getBody()->getContents(), 2);
-            \Doctrine\Common\Util\Debug::dump($objGuzzleHttpResponse->getBody(), 2);
+        try {
+            $params = [
+                'form_params' => $this->params['oauth']['auth'],
+                'headers' => ['Accept'=>'application/json']
+            ];
+            
+            $objGuzzleHttpResponse = $this->objClient->request("POST", $this->params['oauth']['token'], $params);
+            if(!($objGuzzleHttpResponse instanceof \GuzzleHttp\Psr7\Response) && !((integer)$objGuzzleHttpResponse->getStatusCode() === 200)){
+                throw new \Exception('Erro na autenticação.');
+            }
+            
+            return json_decode($objGuzzleHttpResponse->getBody()->getContents());
+            
+        } catch (\Exception $e) {
+            throw $e;
         }
-//         \Doctrine\Common\Util\Debug::dump($objGuzzleHttpResponse, 2);
+    }
+    
+    public function getContents()
+    {
+        return $this->objContents;
+    }
+    
+    public function getAccessToken()
+    {
+        if(!$this->objContents || !is_object($this->objContents) || !property_exists($this->objContents, 'access_token')){
+            return NULL;
+        }
+        return $this->objContents->access_token;
+    }
+    
+    public function getTokenType()
+    {
+        if(!$this->objContents || !is_object($this->objContents) || !property_exists($this->objContents, 'token_type')){
+            return NULL;
+        }
+        return $this->objContents->token_type;
     }
     
     public function login()
     {
-        $this->authorize();
-        exit("\nFIM\n");
+        try {
+            $this->objContents = $this->authorize();
+            return $this;
+        } catch (\Exception $e) {
+            throw $e;
+        }
     }
 }
 

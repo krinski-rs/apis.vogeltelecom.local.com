@@ -13,7 +13,7 @@ class CircuitoSalesforce
     private $id;
 
     /**
-     * @var int|null
+     * @var string|null
      */
     private $idCircuitoSalesforce;
 
@@ -46,7 +46,7 @@ class CircuitoSalesforce
     /**
      * Set idCircuitoSalesforce.
      *
-     * @param int|null $idCircuitoSalesforce
+     * @param string|null $idCircuitoSalesforce
      *
      * @return CircuitoSalesforce
      */
@@ -60,7 +60,7 @@ class CircuitoSalesforce
     /**
      * Get idCircuitoSalesforce.
      *
-     * @return int|null
+     * @return string|null
      */
     public function getIdCircuitoSalesforce()
     {

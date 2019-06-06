@@ -10,7 +10,6 @@ namespace App\Services;
 use Doctrine\Bundle\DoctrineBundle\Registry;
 use Monolog\Logger;
 use App\Services\IntegracaoSalesforce\Circuito\IntegrarCircuito;
-use App\Entity\Financeiro\CircuitoSalesforce;
 use App\Services\IntegracaoSalesforce\OAuthSalesforce;
 
 /**
@@ -38,14 +37,6 @@ class IntegracaoSalesforce
     private $objLogger  = NULL;
     
     /**
-     * Variável que irá guardar a referência do serviço de autenticação.
-     *
-     * @access  private
-     * @var     OAuthSalesforce
-     */
-    private $objOAuthSalesforce  = NULL;
-    
-    /**
      * Obejeto que irá guardar do serviço de integração de circuito.
      *
      * @access  private
@@ -62,13 +53,11 @@ class IntegracaoSalesforce
      * @param   \Monolog\Logger   $objLogger
      * @param   OAuthSalesforce   $objOAuthSalesforce
      */
-    public function __construct(Registry $objRegistry, Logger $objLogger, OAuthSalesforce $objOAuthSalesforce)
+    public function __construct(Registry $objRegistry, Logger $objLogger, IntegrarCircuito $objIntegrarCircuito)
     {
         $this->objEntityManager     = $objRegistry->getManager('financeiro');
-        $this->objEntityManagerGcdb = $objRegistry->getManager('gcdb');
         $this->objLogger            = $objLogger;
-        $this->objIntegrarCircuito  = new IntegrarCircuito($this->objEntityManager, $this->objEntityManagerGcdb, $this->objLogger);
-        $this->objOAuthSalesforce   = $objOAuthSalesforce;
+        $this->objIntegrarCircuito  = $objIntegrarCircuito;
     }
     
     /**
@@ -83,18 +72,17 @@ class IntegracaoSalesforce
     public function circuito(int $contCodigoid)
     {
         try {
-            $this->objOAuthSalesforce->login();
-            exit();
-            $this->objLogger->error("teste");
+            $this->objLogger->info("Início da integração do circuito {$contCodigoid}");
             $objCircuitoSalesforceRepository = $this->objEntityManager->getRepository("App\Entity\Financeiro\CircuitoSalesforce");
             $arrayCircuitoSalesforce = $objCircuitoSalesforceRepository->findBy(['contCodigoid'=>$contCodigoid, 'dataIntegracao'=>NULL]);
             if(!count($arrayCircuitoSalesforce)){
+                $this->objLogger->warning("Circuito '{$contCodigoid}' não encontrado");
                 throw new \Exception("Circuito '{$contCodigoid}' não encontrado.");
             }
             
             reset($arrayCircuitoSalesforce);
             while ($objCircuitoSalesforce = current($arrayCircuitoSalesforce)){
-                print_r($this->objIntegrarCircuito->integrar($objCircuitoSalesforce));
+                $this->objIntegrarCircuito->integrar($objCircuitoSalesforce);
                 next($arrayCircuitoSalesforce);
             }
             
@@ -124,7 +112,7 @@ class IntegracaoSalesforce
             
             reset($arrayCircuitoSalesforce);
             while ($objCircuitoSalesforce = current($arrayCircuitoSalesforce)){
-                print_r($this->objIntegrarCircuito->integrar($objCircuitoSalesforce));
+                $this->objIntegrarCircuito->integrar($objCircuitoSalesforce);
                 next($arrayCircuitoSalesforce);
             }
             
