@@ -1,0 +1,54 @@
+App\Entity\Financeiro\Designacao:
+    type: entity
+    table: financeiro.designacao
+    id:
+        desigCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: desig_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        endeentrCodigoid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: endeentr_codigoid
+        clieCodigoid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: clie_codigoid
+        desigStt:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+            column: desig_stt
+        desigNumero:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+            column: desig_numero
+        desigPedido:
+            type: string
+            nullable: true
+            length: 90
+            options:
+                fixed: false
+            column: desig_pedido
+        desigPonta:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: desig_ponta
+    lifecycleCallbacks: {  }

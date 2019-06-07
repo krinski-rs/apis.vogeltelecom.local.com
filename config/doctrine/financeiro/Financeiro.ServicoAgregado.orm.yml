@@ -1,0 +1,55 @@
+App\Entity\Financeiro\ServicoAgregado:
+    type: entity
+    table: financeiro.servico_agregado
+    indexes:
+        servagre_tipo:
+            columns:
+                - servagre_tipo
+    id:
+        servagreCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: servagre_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        servagreNome:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: servagre_nome
+        servagreAtivo:
+            type: boolean
+            nullable: false
+            options:
+                default: '1'
+            column: servagre_ativo
+        servagreTipo:
+            type: string
+            nullable: false
+            length: 0
+            options:
+                fixed: false
+            column: servagre_tipo
+        servagreApelido:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+            column: servagre_apelido
+    manyToMany:
+        servCodigoid:
+            targetEntity: App\Entity\Financeiro\Servico
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: servagreCodigoid
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

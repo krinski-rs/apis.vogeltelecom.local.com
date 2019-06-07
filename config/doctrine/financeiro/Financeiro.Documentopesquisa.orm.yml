@@ -1,0 +1,50 @@
+App\Entity\Financeiro\Documentopesquisa:
+    type: entity
+    table: financeiro.documentopesquisa
+    indexes:
+        fk_documentopesquisa_pesquisa1_idx:
+            columns:
+                - pesq_codigoid
+        fk_documentopesquisa_documento1_idx:
+            columns:
+                - docu_codigoid
+    id:
+        docupesqCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: docupesq_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        docupesqDado:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: docupesq_dado
+    manyToOne:
+        docuCodigoid:
+            targetEntity: App\Entity\Financeiro\Documento
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                docu_codigoid:
+                    referencedColumnName: docu_codigoid
+            orphanRemoval: false
+        pesqCodigoid:
+            targetEntity: App\Entity\Financeiro\Pesquisa
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                pesq_codigoid:
+                    referencedColumnName: pesq_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

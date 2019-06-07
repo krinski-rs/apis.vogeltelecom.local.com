@@ -1,0 +1,76 @@
+App\Entity\Financeiro\Logging:
+    type: entity
+    table: financeiro.logging
+    indexes:
+        fk_logging_tipologging1_idx:
+            columns:
+                - tipologg_codigoid
+    id:
+        loggCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: logg_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        usuaCodigoid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: usua_codigoid
+        loggDatainc:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: logg_datainc
+        loggIp:
+            type: string
+            nullable: false
+            length: 50
+            options:
+                fixed: false
+            column: logg_ip
+        loggOldendata:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: logg_oldendata
+        loggDatabase:
+            type: string
+            nullable: true
+            length: 25
+            options:
+                fixed: false
+            column: logg_database
+        loggTable:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: logg_table
+        loggTableid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: logg_tableid
+    manyToOne:
+        tipologgCodigoid:
+            targetEntity: App\Entity\Financeiro\Tipologging
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tipologg_codigoid:
+                    referencedColumnName: tipologg_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

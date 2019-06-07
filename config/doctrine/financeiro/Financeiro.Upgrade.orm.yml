@@ -1,0 +1,97 @@
+App\Entity\Financeiro\Upgrade:
+    type: entity
+    table: financeiro.upgrade
+    indexes:
+        fk_upgrade_servicocapacidade1_idx:
+            columns:
+                - servcapa_codigoid
+        fk_upgrade_contrato_idx:
+            columns:
+                - cont_codigoid
+        fk_upgrade_upgrade1_idx:
+            columns:
+                - upgr_proximocodigoid
+        fk_upgrade_enderecoentrega1_idx:
+            columns:
+                - endeentr_codigoid
+    id:
+        upgrCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: upgr_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        endeentrCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: endeentr_codigoid
+        upgrAposativacao:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: upgr_aposativacao
+        upgrDatafixa:
+            type: datetime
+            nullable: true
+            column: upgr_datafixa
+        upgrDataupgrade:
+            type: datetime
+            nullable: true
+            column: upgr_dataupgrade
+        upgrDatainc:
+            type: datetime
+            nullable: false
+            options:
+                default: '0000-00-00 00:00:00'
+            column: upgr_datainc
+        upgrUsuario:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: upgr_usuario
+        proposalId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: proposal_id
+    manyToOne:
+        contCodigoid:
+            targetEntity: App\Entity\Financeiro\Contrato
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+        servcapaCodigoid:
+            targetEntity: App\Entity\Financeiro\Servicocapacidade
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                servcapa_codigoid:
+                    referencedColumnName: servcapa_codigoid
+            orphanRemoval: false
+        upgrProximocodigoid:
+            targetEntity: App\Entity\Financeiro\Upgrade
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                upgr_proximocodigoid:
+                    referencedColumnName: upgr_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

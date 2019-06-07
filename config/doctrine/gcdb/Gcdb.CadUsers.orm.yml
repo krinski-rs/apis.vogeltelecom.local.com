@@ -1,0 +1,265 @@
+App\Entity\Gcdb\CadUsers:
+    type: entity
+    table: gcdb.cad_users
+    indexes:
+        cad_users_FKIndex1:
+            columns:
+                - adm_logradouro_id
+        cad_users_FKIndex3:
+            columns:
+                - adm_uf_id
+        fk_cad_users_4:
+            columns:
+                - segmento_id
+        erro_integracao:
+            columns:
+                - erro_integracao
+        cad_users_FKIndex2:
+            columns:
+                - adm_pais_id
+        cad_users_FKIndex4:
+            columns:
+                - adm_cidades_id
+        integrado:
+            columns:
+                - integrado
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        cnpj:
+            type: bigint
+            nullable: true
+            options:
+                unsigned: true
+        cpf:
+            type: bigint
+            nullable: true
+            options:
+                unsigned: true
+        inscEst:
+            type: string
+            nullable: true
+            length: 32
+            options:
+                fixed: false
+                comment: 'Tipo de Documento Estrangeiro'
+            column: insc_est
+        inscMun:
+            type: string
+            nullable: true
+            length: 32
+            options:
+                fixed: false
+                comment: 'documento Estrangeiro'
+            column: insc_mun
+        senha:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+        dtAbertura:
+            type: date
+            nullable: true
+            column: dt_abertura
+        cep:
+            type: string
+            nullable: true
+            length: 8
+            options:
+                fixed: false
+        endereco:
+            type: string
+            nullable: true
+            length: 200
+            options:
+                fixed: false
+        numero:
+            type: string
+            nullable: true
+            length: 15
+            options:
+                fixed: false
+        bairro:
+            type: string
+            nullable: true
+            length: 200
+            options:
+                fixed: false
+        site:
+            type: string
+            nullable: true
+            length: 80
+            options:
+                fixed: false
+        dtCadastro:
+            type: datetime
+            nullable: true
+            column: dt_cadastro
+        tipo:
+            type: string
+            nullable: true
+            length: 0
+            options:
+                fixed: false
+        qtfoto:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        latitude:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        longitude:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        simples:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        hashAcesso:
+            type: string
+            nullable: true
+            length: 32
+            options:
+                fixed: false
+            column: hash_acesso
+        hashDatainc:
+            type: datetime
+            nullable: true
+            column: hash_datainc
+        atividadeRamo:
+            type: string
+            nullable: true
+            length: 2
+            options:
+                fixed: true
+            column: atividade_ramo
+        tipoCliente:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: true
+            column: tipo_cliente
+        cadOrigemContato:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: cad_origem_contato
+        integrado:
+            type: boolean
+            nullable: false
+            options:
+                default: '0'
+        dtIntegrado:
+            type: datetime
+            nullable: true
+            column: dt_integrado
+        erroIntegracao:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                default: '0'
+            column: erro_integracao
+        msgErroIntegracao:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: msg_erro_integracao
+    oneToMany:
+        customers2users:
+            targetEntity: App\Entity\Gcdb\Customers2users
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: cadUser
+        cadUsersEmail:
+            targetEntity: App\Entity\Gcdb\CadUsersEmail
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: cadUser
+        cadUsersNome:
+            targetEntity: App\Entity\Gcdb\CadUsersNome
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: cadUser
+        CadUsersSite:
+            targetEntity: App\Entity\Gcdb\CadUsersSite
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: cadUser
+        CadUsersTelefone:
+            targetEntity: App\Entity\Gcdb\CadUsersTelefone
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: cadUser
+    manyToOne:
+        admLogradouro:
+            targetEntity: App\Entity\Gcdb\AdmLogradouro
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                adm_logradouro_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        admPais:
+            targetEntity: App\Entity\Gcdb\AdmPais
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                adm_pais_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        admUf:
+            targetEntity: App\Entity\Gcdb\AdmUf
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                adm_uf_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        admCidades:
+            targetEntity: App\Entity\Gcdb\AdmCidades
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                adm_cidades_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        segmento:
+            targetEntity: App\Entity\Gcdb\CadUsersSegmento
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                segmento_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

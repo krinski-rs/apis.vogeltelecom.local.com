@@ -1,0 +1,46 @@
+App\Entity\Financeiro\CircuitoSalesforce:
+    type: entity
+    table: financeiro.circuito_salesforce
+    indexes:
+        fk_circuito_salesforce_cont_codigoid:
+            columns:
+                - cont_codigoid
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        idCircuitoSalesforce:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: id_circuito_salesforce
+        dataCriacao:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: data_criacao
+        dataIntegracao:
+            type: datetime
+            nullable: true
+            column: data_integracao
+    manyToOne:
+        contCodigoid:
+            targetEntity: App\Entity\Financeiro\Contrato
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

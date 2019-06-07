@@ -1,0 +1,30 @@
+App\Entity\Gcdb\CadUsersSite:
+    type: entity
+    table: gcdb.cad_users_site
+    indexes:
+        cad_users_site_FKIndex1:
+            columns:
+                - cad_users_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        cadUser:
+            type: integer
+            nullable: true
+            options:
+                unsigned: true
+            column: cad_users_id
+        site:
+            type: string
+            nullable: true
+            length: 200
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

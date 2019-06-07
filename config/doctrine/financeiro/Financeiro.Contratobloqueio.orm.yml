@@ -1,0 +1,62 @@
+App\Entity\Financeiro\Contratobloqueio:
+    type: entity
+    table: financeiro.contratobloqueio
+    indexes:
+        fk_contratobloqueio_cont_codigoid_idx:
+            columns:
+                - cont_codigoid
+        fk_contratobloqueio_1_idx:
+            columns:
+                - bloq_codigoid
+    id:
+        contbloqCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: contbloq_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        contbloqMotivo:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: contbloq_motivo
+        contbloqUsuario:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: contbloq_usuario
+        contbloqDatainc:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: contbloq_datainc
+    manyToOne:
+        bloqCodigoid:
+            targetEntity: App\Entity\Financeiro\Bloqueio
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                bloq_codigoid:
+                    referencedColumnName: bloq_codigoid
+            orphanRemoval: false
+        contCodigoid:
+            targetEntity: App\Entity\Financeiro\Contrato
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,33 @@
+App\Entity\Gcdb\AdmPais:
+    type: entity
+    table: gcdb.adm_pais
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        sigla:
+            type: string
+            nullable: true
+            length: 3
+            options:
+                fixed: true
+        nome:
+            type: string
+            nullable: true
+            length: 30
+            options:
+                fixed: false
+        codigoBacen:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+            column: codigo_bacen
+    lifecycleCallbacks: {  }

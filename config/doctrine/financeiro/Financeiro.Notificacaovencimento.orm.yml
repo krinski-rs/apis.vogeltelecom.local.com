@@ -1,0 +1,53 @@
+App\Entity\Financeiro\Notificacaovencimento:
+    type: entity
+    table: financeiro.notificacaovencimento
+    indexes:
+        fk_notificacaovencimento_1_idx:
+            columns:
+                - cont_codigoid
+    id:
+        notvencCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: notvenc_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        notvencDatainc:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: notvenc_datainc
+        notvencUsuacodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: notvenc_usuacodigoid
+        notvencDataconfirmacao:
+            type: datetime
+            nullable: true
+            column: notvenc_dataconfirmacao
+        notvencDescricaoconfirmacao:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: notvenc_descricaoconfirmacao
+    manyToOne:
+        contCodigoid:
+            targetEntity: App\Entity\Financeiro\Contrato
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

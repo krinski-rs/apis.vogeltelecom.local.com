@@ -1,0 +1,78 @@
+App\Entity\Financeiro\TmpPonta:
+    type: entity
+    table: financeiro.tmp_ponta
+    indexes:
+        fk_tmp_ponta_tmp_circuito1_idx:
+            columns:
+                - id_tmp_circuito
+    id:
+        idTmpPonta:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_tmp_ponta
+            generator:
+                strategy: IDENTITY
+    fields:
+        ponta:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        interface:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        logradouro:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        numero:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        complemento:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        cidade:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        estado:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        idPop:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: id_pop
+    manyToOne:
+        idTmpCircuito:
+            targetEntity: App\Entity\Financeiro\TmpCircuito
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_tmp_circuito:
+                    referencedColumnName: id_tmp_circuito
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

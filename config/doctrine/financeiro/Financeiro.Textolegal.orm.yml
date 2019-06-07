@@ -1,0 +1,37 @@
+App\Entity\Financeiro\Textolegal:
+    type: entity
+    table: financeiro.textolegal
+    indexes:
+        fk_textologal_contrato1_idx:
+            columns:
+                - cont_codigoid
+    id:
+        textlegaCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: textlega_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        textlegaTexto:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: textlega_texto
+    manyToOne:
+        contCodigoid:
+            targetEntity: App\Entity\Financeiro\Contrato
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,53 @@
+App\Entity\Financeiro\Sla:
+    type: entity
+    table: financeiro.sla
+    indexes:
+        fk_sla_sla1_idx:
+            columns:
+                - sla_proximocodigoid
+    id:
+        slaCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: sla_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        slaNome:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: sla_nome
+        slaDatainc:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: sla_datainc
+        slaDatafim:
+            type: datetime
+            nullable: true
+            column: sla_datafim
+        slaDisponibilidade:
+            type: decimal
+            nullable: false
+            precision: 5
+            scale: 2
+            column: sla_disponibilidade
+    manyToOne:
+        slaProximocodigoid:
+            targetEntity: App\Entity\Financeiro\Sla
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                sla_proximocodigoid:
+                    referencedColumnName: sla_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

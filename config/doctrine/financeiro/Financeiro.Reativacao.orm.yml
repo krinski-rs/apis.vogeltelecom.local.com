@@ -1,0 +1,46 @@
+App\Entity\Financeiro\Reativacao:
+    type: entity
+    table: financeiro.reativacao
+    indexes:
+        fk_reativacao_contrato1_idx:
+            columns:
+                - cont_codigoid
+    id:
+        reatCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: reat_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        usuaCodigoid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: usua_codigoid
+        reatDatainc:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: reat_datainc
+        reatDatareativado:
+            type: datetime
+            nullable: true
+            column: reat_datareativado
+    manyToOne:
+        contCodigoid:
+            targetEntity: App\Entity\Financeiro\Contrato
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

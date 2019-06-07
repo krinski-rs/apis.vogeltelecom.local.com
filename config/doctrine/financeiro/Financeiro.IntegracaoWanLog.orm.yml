@@ -1,0 +1,71 @@
+App\Entity\Financeiro\IntegracaoWanLog:
+    type: entity
+    table: financeiro.integracao_wan_log
+    indexes:
+        integracao_wan_log_contrato_wan_id_IDX:
+            columns:
+                - contrato_wan_id
+        integracao_wan_log_customer_id_wan_IDX:
+            columns:
+                - customer_id_wan
+        fk_contrato-wan_contrato-vogel_contrato1_idx:
+            columns:
+                - contrato_vogel_id
+        integracao_wan_log_customer_id_IDX:
+            columns:
+                - customer_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        contratoWanId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: contrato_wan_id
+        customerId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: customer_id
+        customerIdWan:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: customer_id_wan
+        status:
+            type: boolean
+            nullable: true
+        dataHoraCriacao:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: data_hora_criacao
+        message:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+    manyToOne:
+        contratoVogel:
+            targetEntity: App\Entity\Financeiro\Contrato
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                contrato_vogel_id:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

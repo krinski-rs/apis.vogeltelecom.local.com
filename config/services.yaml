@@ -6,6 +6,7 @@
 imports:
     - { resource: services/cep.yaml }
     - { resource: services/geolocation.yaml }
+    - { resource: services/salesforce.yaml }
 parameters:
     cors:
         allowed_origin:
@@ -84,5 +85,35 @@ services:
     App\Controller\Geolocation\GeolocationController:
         arguments:
             $objGeolocation: '@geoloc'
+
+    integracao_salesforce:
+          alias: App\Services\IntegracaoSalesforce
+          public: true
+
+    App\Services\IntegracaoSalesforce:
+          public: false
+          arguments: ["@doctrine", "@logger", ""]
+          tags:
+              - { name: monolog.logger, channel: salesforce }
+
+    oauth_salesforce:
+          alias: App\Services\IntegracaoSalesforce\OAuthSalesforce
+          public: true
+
+    App\Services\IntegracaoSalesforce\OAuthSalesforce:
+          public: false
+          arguments: ["@logger", "%salesforce%"]
+          tags:
+              - { name: monolog.logger, channel: salesforce }
+
+    integracao_circuito_salesforce:
+          alias: App\Services\IntegracaoSalesforce\Circuito\IntegrarCircuito
+          public: true
+
+    App\Services\IntegracaoSalesforce\Circuito\IntegrarCircuito:
+          public: false
+          arguments: ["@doctrine", "@logger", "@oauth_salesforce", "%salesforce%"]
+          tags:
+              - { name: monolog.logger, channel: salesforce }
 
     

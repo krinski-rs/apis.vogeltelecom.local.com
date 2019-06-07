@@ -1,0 +1,51 @@
+App\Entity\Financeiro\Contratoservico:
+    type: entity
+    table: financeiro.contratoservico
+    indexes:
+        fk_contratoservico_servicocapacidade1_idx:
+            columns:
+                - servcapa_codigoid
+        fk_contratoservico_contrato1_idx:
+            columns:
+                - cont_codigoid
+    id:
+        contservCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: contserv_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        contservCircuito:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+                comment: 'cont_circuito - meios de entrega e designação de ckt clm (circuito carrier last mile)'
+            column: contserv_circuito
+    manyToOne:
+        contCodigoid:
+            targetEntity: App\Entity\Financeiro\Contrato
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+        servcapaCodigoid:
+            targetEntity: App\Entity\Financeiro\Servicocapacidade
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                servcapa_codigoid:
+                    referencedColumnName: servcapa_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

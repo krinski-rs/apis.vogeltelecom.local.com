@@ -1,0 +1,45 @@
+App\Entity\Financeiro\Arquivoremessa:
+    type: entity
+    table: financeiro.arquivoremessa
+    id:
+        arquremeCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: arqureme_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        arquremeNome:
+            type: string
+            nullable: false
+            length: 25
+            options:
+                fixed: false
+            column: arqureme_nome
+        arquremeIndice:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: arqureme_indice
+        arquremeTexto:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: arqureme_texto
+        arquremeDataenvio:
+            type: datetime
+            nullable: true
+            column: arqureme_dataenvio
+        arquremeDatainc:
+            type: datetime
+            nullable: false
+            options:
+                default: '0000-00-00 00:00:00'
+            column: arqureme_datainc
+    lifecycleCallbacks: {  }

@@ -1,0 +1,38 @@
+App\Entity\Financeiro\Ativacaopagamento:
+    type: entity
+    table: financeiro.ativacaopagamento
+    indexes:
+        fk_ativacaopagamento_1_idx:
+            columns:
+                - cont_codigoid
+    uniqueConstraints:
+        cont_codigoid:
+            columns:
+                - cont_codigoid
+    id:
+        ativpagCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ativpag_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        ativpagCobrado:
+            type: boolean
+            nullable: true
+            column: ativpag_cobrado
+    manyToOne:
+        contCodigoid:
+            targetEntity: App\Entity\Financeiro\Contrato
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

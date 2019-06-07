@@ -1,0 +1,45 @@
+App\Entity\Financeiro\ContratoWanVogel:
+    type: entity
+    table: financeiro.contrato_wan_vogel
+    indexes:
+        contrato_wan_vogel_cont_codigoid_IDX:
+            columns:
+                - cont_codigoid
+        contrato_wan_vogel_id_IDX:
+            columns:
+                - id
+        contrato_wan_vogel_ctr_codigo_IDX:
+            columns:
+                - ctr_codigo
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        ctrCodigo:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: ctr_codigo
+        dataInc:
+            type: datetime
+            nullable: true
+            column: data_inc
+    manyToOne:
+        contCodigoid:
+            targetEntity: App\Entity\Financeiro\Contrato
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

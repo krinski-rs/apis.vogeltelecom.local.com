@@ -1,0 +1,41 @@
+App\Entity\Gcdb\AdmUf:
+    type: entity
+    table: gcdb.adm_uf
+    indexes:
+        adm_uf_FKIndex1:
+            columns:
+                - adm_pais_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        sigla:
+            type: string
+            nullable: true
+            length: 2
+            options:
+                fixed: true
+        nome:
+            type: string
+            nullable: true
+            length: 30
+            options:
+                fixed: false
+    manyToOne:
+        admPais:
+            targetEntity: App\Entity\Gcdb\AdmPais
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                adm_pais_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

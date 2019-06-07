@@ -1,0 +1,181 @@
+App\Entity\Gcdb\Customers:
+    type: entity
+    table: gcdb.Customers
+    indexes:
+        origemexterna:
+            columns:
+                - origemexterna
+    id:
+        customerid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: CustomerID
+            generator:
+                strategy: IDENTITY
+    fields:
+        first:
+            type: string
+            nullable: true
+            length: 30
+            options:
+                fixed: false
+            column: First
+        mid:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: true
+            column: Mid
+        last:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+            column: Last
+        address:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: Address
+        telephone:
+            type: string
+            nullable: true
+            length: 16
+            options:
+                fixed: false
+            column: Telephone
+        fax:
+            type: string
+            nullable: true
+            length: 16
+            options:
+                fixed: false
+            column: Fax
+        email:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: Email
+        city:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: City
+        state:
+            type: string
+            nullable: true
+            length: 2
+            options:
+                fixed: true
+            column: State
+        zip:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: Zip
+        status:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+            column: Status
+        fantasia:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: Fantasia
+        razao:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: Razao
+        cnpj:
+            type: string
+            nullable: true
+            length: 18
+            options:
+                fixed: false
+            column: CNPJ
+        pais:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+            column: Pais
+        obs:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: Obs
+        emergencia:
+            type: string
+            nullable: true
+            length: 200
+            options:
+                fixed: false
+            column: Emergencia
+        cpf:
+            type: string
+            nullable: true
+            length: 14
+            options:
+                fixed: false
+            column: CPF
+        atpass:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+                default: temporar
+            column: ATPass
+        tributaicms:
+            type: boolean
+            nullable: true
+        delin:
+            type: boolean
+            nullable: true
+    manyToOne:
+        origemexterna:
+            targetEntity: App\Entity\Gcdb\Origemexterna
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                origemexterna:
+                    referencedColumnName: id
+            orphanRemoval: false
+    oneToMany:
+        customers2users:
+            targetEntity: App\Entity\Gcdb\Customers2users
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: customer
+        prioridades:
+            targetEntity: App\Entity\Gcdb\Prioridade
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: customer
+    lifecycleCallbacks: {  }

@@ -1,0 +1,42 @@
+App\Entity\Financeiro\Cfop:
+    type: entity
+    table: financeiro.cfop
+    id:
+        cfopCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: cfop_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        cfopPaicodigoid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: cfop_paicodigoid
+        cfopCfop:
+            type: string
+            nullable: false
+            length: 10
+            options:
+                fixed: false
+            column: cfop_cfop
+        cfopDescricao:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: cfop_descricao
+        cfopAplicacao:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: cfop_aplicacao
+    lifecycleCallbacks: {  }

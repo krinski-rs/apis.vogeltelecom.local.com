@@ -1,0 +1,66 @@
+App\Entity\Gcdb\Customers2users:
+    type: entity
+    table: gcdb.Customers2users
+    indexes:
+        fk_Customers2users_2_idx:
+            columns:
+                - id_customers
+        IDX_1BCCE4D6FA06E4D9:
+            columns:
+                - id_users
+    uniqueConstraints:
+        id_users:
+            columns:
+                - id_users
+                - id_customers
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        dataAbertura:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: data_abertura
+        alqtIcms:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '1'
+            column: alqt_icms
+        recebeBoleto:
+            type: boolean
+            nullable: true
+            options:
+                default: '1'
+            column: recebe_boleto
+    manyToOne:
+        cadUser:
+            targetEntity: App\Entity\Gcdb\CadUsers
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_users:
+                    referencedColumnName: id
+            orphanRemoval: false
+        customer:
+            targetEntity: App\Entity\Gcdb\Customers
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_customers:
+                    referencedColumnName: CustomerID
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

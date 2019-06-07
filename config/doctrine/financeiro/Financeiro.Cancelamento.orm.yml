@@ -1,0 +1,56 @@
+App\Entity\Financeiro\Cancelamento:
+    type: entity
+    table: financeiro.cancelamento
+    indexes:
+        cont_codigoid:
+            columns:
+                - cont_codigoid
+    id:
+        cancCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: canc_codigoid
+            generator:
+                strategy: IDENTITY
+    fields:
+        usrCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: usr_codigoid
+        cancDatasolicitacao:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: canc_datasolicitacao
+        cancDatacancelado:
+            type: datetime
+            nullable: true
+            column: canc_datacancelado
+        cancCumpriraviso:
+            type: boolean
+            nullable: false
+            options:
+                default: '1'
+            column: canc_cumpriraviso
+        cancDatainc:
+            type: datetime
+            nullable: true
+            column: canc_datainc
+    manyToOne:
+        contCodigoid:
+            targetEntity: App\Entity\Financeiro\Contrato
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

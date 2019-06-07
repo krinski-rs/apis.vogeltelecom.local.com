@@ -1,0 +1,61 @@
+App\Entity\Gcdb\AutUsuarios:
+    type: entity
+    table: gcdb.aut_usuarios
+    indexes:
+        username:
+            columns:
+                - username
+        sqlbi_idx_01:
+            columns:
+                - id
+                - nome
+        aut_usuarios_id_index:
+            columns:
+                - id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        username:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+                default: ''
+        pass:
+            type: string
+            nullable: false
+            length: 75
+            options:
+                fixed: false
+        nome:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+        ativo:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '1'
+        canal:
+            type: boolean
+            nullable: false
+            options:
+                default: '0'
+        passwordVersion:
+            type: boolean
+            nullable: false
+            options:
+                default: '1'
+            column: password_version
+    lifecycleCallbacks: {  }
