@@ -63,17 +63,45 @@ class Circuit
         $this->objClient    = new \GuzzleHttp\Client();
     }
     
-    public function describe()
+    public function getById(string $id)
     {
         try {
-            //             $url = "{$this->params['base']}{$this->params['account']['url']}/0012E00001r3jvUQAQ";
-            $url = "{$this->params['base']}{$this->params['account']['url']}/describe";
+            $url = "{$this->params['base']}{$this->params['circuito']['url']}/{$id}";
             $params = [
                 'headers' => ['Authorization' => $this->accessToken]
             ];
             
             $objGuzzleHttpResponse = $this->objClient->request("GET", $url, $params);
-            \Doctrine\Common\Util\Debug::dump($objGuzzleHttpResponse->getBody()->getContents());
+            return json_decode($objGuzzleHttpResponse->getBody()->getContents());
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            if($e->getCode() != 400){
+                $this->objLogger->error("Erro na busca do circuito", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
+                throw new \Exception($e->getResponse()->getBody()->getContents(), $e->getCode());
+            }
+            $this->objLogger->error("Erro na busca do circuito", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
+            throw new \Exception("Invalid creation request", $e->getCode());
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+    
+    public function describe()
+    {
+        try {
+            $url = "{$this->params['base']}{$this->params['circuito']['url']}/describe";
+            $params = [
+                'headers' => ['Authorization' => $this->accessToken]
+            ];
+            
+            $objGuzzleHttpResponse = $this->objClient->request("GET", $url, $params);
+            return json_decode($objGuzzleHttpResponse->getBody()->getContents());
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            if($e->getCode() != 400){
+                $this->objLogger->error("Erro na descrição do circuito", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
+                throw new \Exception($e->getResponse()->getBody()->getContents(), $e->getCode());
+            }
+            $this->objLogger->error("Erro na descrição do circuito", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
+            throw new \Exception("Invalid creation request", $e->getCode());
         } catch (\Exception $e) {
             throw $e;
         }
@@ -103,10 +131,10 @@ class Circuit
         }
     }
     
-    public function update(array $arrayCircuit)
+    public function update(array $arrayCircuit, string $id)
     {
         try {
-            $url = "{$this->params['base']}{$this->params['circuito']['url']}";
+            $url = "{$this->params['base']}{$this->params['circuito']['url']}/{$id}";
             $params = [
                 'headers' => ['Authorization' => $this->accessToken],
                 'json' => $arrayCircuit,
@@ -114,7 +142,12 @@ class Circuit
             $objGuzzleHttpResponse = $this->objClient->request("PATCH", $url, $params);
             return json_decode($objGuzzleHttpResponse->getBody()->getContents());
         } catch (\GuzzleHttp\Exception\ClientException $e) {
-            throw new \Exception($e->getResponse()->getBody()->getContents(), $e->getCode());
+            if($e->getCode() != 400){
+                $this->objLogger->error("Erro na atualização do circuito", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
+                throw new \Exception($e->getResponse()->getBody()->getContents(), $e->getCode());
+            }
+            $this->objLogger->error("Erro na atualização do circuito", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
+            throw new \Exception("Invalid creation request", $e->getCode());
         } catch (\Exception $e) {
             throw $e;
         }

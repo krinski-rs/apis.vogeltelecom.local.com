@@ -30,7 +30,7 @@ class IntegracaoCommand extends Command
                 return 0;
             }
             
-            echo $contCodigoid = $objInputInterface->getOption('circ');
+            $contCodigoid = $objInputInterface->getOption('circ');
             if($contCodigoid){
                 if(!is_numeric($contCodigoid) || ((integer)$contCodigoid <= 0)){
                     $objOutputInterface->writeln("\n<error>O parâmetro [--circ|-c] deve ser um número inteiro maior que zero.</error>\n");

@@ -244,7 +244,7 @@ class Account
                 
                 $arrayCadUsersNome->first();
                 while ($objCadUsersNome = $arrayCadUsersNome->current()){
-                    $nome.= trim($objCadUsers->getNome()).' ';
+                    $nome.= trim($objCadUsersNome->getNome()).' ';
                     $arrayCadUsersNome->next();
                 }
             }
@@ -262,7 +262,7 @@ class Account
             }
             
             $rua = trim($objCadUser->getAdmLogradouro()->getNome()).' '.trim($objCadUser->getEndereco());
-            $rua = iconv('UTF-8', 'ASCII//TRANSLIT', $this->rstrReplace($rua));
+            $rua = iconv('UTF-8', 'ASCII//TRANSLIT', $this->strReplaceLOgradouro($rua));
             $bairro = trim($objCadUser->getBairro());
             $cidade = trim($objCadUser->getAdmCidades()->getNome());
             $objAdmUf = $objCadUser->getAdmCidades()->getAdmUf();
@@ -288,8 +288,8 @@ class Account
                 'Description' => '',
                 'EstadoCobranca__c' => $objAdmUf->getSigla(),
                 'EstadoComercial__c' => $objAdmUf->getSigla(),
-                'LogradouroCobranca__c' => iconv('UTF-8', 'ASCII//TRANSLIT', $this->rstrReplace($objCadUser->getEndereco())),
-                'LogradouroComercial__c' => iconv('UTF-8', 'ASCII//TRANSLIT', $this->rstrReplace($objCadUser->getEndereco())),
+                'LogradouroCobranca__c' => iconv('UTF-8', 'ASCII//TRANSLIT', $this->strReplaceLOgradouro($objCadUser->getEndereco())),
+                'LogradouroComercial__c' => iconv('UTF-8', 'ASCII//TRANSLIT', $this->strReplaceLOgradouro($objCadUser->getEndereco())),
                 'NomeFantasia__c' => $nomeFantasia,
                 'NumeroCobranca__c' => $objCadUser->getNumero(),
                 'NumeroComercial__c' => $objCadUser->getNumero(),
@@ -339,10 +339,10 @@ class Account
         return $fone;
     }
     
-    private function rstrReplace($str)
+    private function strReplaceLOgradouro($str)
     {
         $arraReplace = [
-            '-' => ''
+            '-' => '', ',' => '', '.' => ''
         ];
         return str_replace(array_keys($arraReplace), array_values($arraReplace), $str);
     }

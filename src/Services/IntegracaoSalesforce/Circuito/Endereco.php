@@ -63,6 +63,40 @@ class Endereco
         $this->objClient    = new \GuzzleHttp\Client();
     }
     
+    public function getById(string $id)
+    {
+        try {
+            $url = "{$this->params['base']}{$this->params['endereco']['url']}/{$id}";
+            $params = [
+                'headers' => ['Authorization' => $this->accessToken]
+            ];
+            
+            $objGuzzleHttpResponse = $this->objClient->request("GET", $url, $params);
+            return json_decode($objGuzzleHttpResponse->getBody()->getContents());
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            throw new \Exception($e->getResponse()->getBody()->getContents(), $e->getCode());
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+    
+    public function getByDesignador(string $designador)
+    {
+        try {
+            $url = "{$this->params['base']}{$this->params['endereco']['url']}/Designador__c/{$designador}";
+            $params = [
+                'headers' => ['Authorization' => $this->accessToken]
+            ];
+            
+            $objGuzzleHttpResponse = $this->objClient->request("GET", $url, $params);
+            return json_decode($objGuzzleHttpResponse->getBody()->getContents());
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            throw new \Exception($e->getResponse()->getBody()->getContents(), $e->getCode());
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+    
     public function describe()
     {
         try {
@@ -101,6 +135,30 @@ class Endereco
             throw new \Exception("Invalid creation request", $e->getCode());
         } catch (\Exception $e) {
             $this->objLogger->error("Erro na criação do endereço", ['message' => $e->getMessage(), 'code' => $e->getCode()]);
+            throw $e;
+        }
+    }
+    
+    public function update(array $arrayEndereco, string $id)
+    {
+        try {
+            $url = "{$this->params['base']}{$this->params['endereco']['url']}/{$id}";
+            $params = [
+                'headers' => ['Authorization' => $this->accessToken],
+                'json' => $arrayEndereco,
+            ];
+            $this->objLogger->info("Dados da para criar Endereço", [$params, 'url'=>$url]);
+            $objGuzzleHttpResponse = $this->objClient->request("PATCH", $url, $params);
+            return json_decode($objGuzzleHttpResponse->getBody()->getContents());
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            if($e->getCode() != 400){
+                $this->objLogger->error("Erro na atualização da Account", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
+                throw new \Exception($e->getResponse()->getBody()->getContents(), $e->getCode());
+            }
+            $this->objLogger->error("Erro na atualização do endereço", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
+            throw new \Exception("Invalid creation request", $e->getCode());
+        } catch (\Exception $e) {
+            $this->objLogger->error("Erro na atualização do endereço", ['message' => $e->getMessage(), 'code' => $e->getCode()]);
             throw $e;
         }
     }
