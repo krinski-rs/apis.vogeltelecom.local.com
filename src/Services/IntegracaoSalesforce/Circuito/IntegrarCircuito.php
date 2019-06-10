@@ -386,7 +386,7 @@ class IntegrarCircuito
     private function strReplaceLOgradouro($str)
     {
         $arraReplace = [
-            '-' => '', ',' => '', '.' => ''
+            '-' => '', ',' => '', '.' => '', '/' => '', '°' => '', '\'' => '', '?' => ''
         ];
         return str_replace(array_keys($arraReplace), array_values($arraReplace), $str);
     }
