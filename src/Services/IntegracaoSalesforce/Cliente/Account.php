@@ -79,6 +79,19 @@ class Account
         'Operadora' => 'Operadoras'
     ];
     
+    private $arrayPrioridade = [
+        'Vogel 1000' => 'Premium',
+        'VIP1' => 'Vip',
+        'VIP2' => 'Top',
+        'VIP3' => 'Premium',
+        'Vip' => 'Vip',
+        'Top' => 'Top',
+        'Premium' => 'Premium',
+        'Ouro' => 'Vip',
+        'ISP1' => 'Top',
+        'Carrier1' => 'Premium'
+    ];
+    
     /**
      * Retorna a instância do objeto.
      * 
@@ -272,6 +285,7 @@ class Account
             
             
             $fone = $this->formataFone($objCadUsersTelefone->getDdi().$objCadUsersTelefone->getDdd(). $objCadUsersTelefone->getTelefone());
+            $nivel = trim($objCustomers->getPrioridades()->first()->getNivel());
             $arrayAccount = [
                 'BairroCobranca__c' => $bairro,
                 'BairroComercial__c' => $bairro,
@@ -280,7 +294,7 @@ class Account
                 'CEPComercial__c' => $objCadUser->getCep(),
                 'CidadeCobranca__c' => $objCidadeSalesforce->Id,
                 'CidadeComercial__c' => $objCidadeSalesforce->Id,
-                'ClassificacaoCliente__c' => $objCustomers->getPrioridades()->first()->getNivel(),
+                'ClassificacaoCliente__c' => $this->arrayPrioridade[$nivel],
                 'Name' => trim($nome),
                 'CNPJ__c' => $cnpj,
                 'ComplementoCobranca__c' => '',
@@ -342,7 +356,7 @@ class Account
     private function strReplaceLOgradouro($str)
     {
         $arraReplace = [
-            '-' => '', ',' => '', '.' => ''
+            '-' => '', ',' => '', '.' => '', '/' => '', '°' => '', '\'' => '', '?' => ''
         ];
         return str_replace(array_keys($arraReplace), array_values($arraReplace), $str);
     }
