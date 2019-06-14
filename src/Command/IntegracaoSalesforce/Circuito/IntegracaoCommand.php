@@ -62,8 +62,8 @@ class IntegracaoCommand extends Command
         $this->setName('salesforce:integracao:circuito')
             ->setDescription('Comando para integração dos circuitos com o Salesforce.')
             ->addOption('circ', 'c', InputOption::VALUE_OPTIONAL, 'Id do circuito ex.: --circ=123456', NULL)
-            ->addOption('limit', 'l', InputOption::VALUE_OPTIONAL, 'Limite de registros por execusão ex.: --limit=10', 50)
-            ->setHelp("Este comando permite que você realize as integraçõs \nde circuitos do Sistech com o Salesforce.")
+            ->addOption('limit', 'l', InputOption::VALUE_OPTIONAL, 'Limite de registros por execução ex.: --limit=10', 50)
+            ->setHelp("Este comando permite que você realize as integrações \nde circuitos do Sistech com o Salesforce.")
         ;
     }
 }

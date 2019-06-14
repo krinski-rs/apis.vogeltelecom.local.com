@@ -26,4 +26,7 @@ parameters:
             url: /services/data/v39.0/sobjects/Endereco__c
         cidade:
             url: /services/data/v39.0/sobjects/Cidade__c
+        circuito_atributo:
+            url: /services/data/v39.0/sobjects/CircuitoAtributo__c
+
             

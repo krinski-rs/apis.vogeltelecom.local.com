@@ -25,12 +25,6 @@ App\Entity\Financeiro\Enderecoentregaatributovalor:
             options:
                 unsigned: false
             column: endeentratrivalo_paicodigoid
-        contCodigoid:
-            type: integer
-            nullable: false
-            options:
-                unsigned: false
-            column: cont_codigoid
         endeentrCodigoid:
             type: integer
             nullable: true
@@ -76,5 +70,15 @@ App\Entity\Financeiro\Enderecoentregaatributovalor:
             joinColumns:
                 atrivalo_codigoid:
                     referencedColumnName: atrivalo_codigoid
+            orphanRemoval: false
+        contrato:
+            targetEntity: App\Entity\Financeiro\Contrato
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: enderecoentregaatributovalor
+            joinColumns:
+                cont_codigoid:
+                    referencedColumnName: cont_codigoid
             orphanRemoval: false
     lifecycleCallbacks: {  }
