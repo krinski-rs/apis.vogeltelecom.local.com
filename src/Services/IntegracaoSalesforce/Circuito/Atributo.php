@@ -80,10 +80,10 @@ class Atributo
         }
     }
     
-    public function describe()
+    public function getByAtributo(string $idC)
     {
         try {
-            $url = "{$this->params['base']}{$this->params['circuito_atributo']['url']}/describe";
+            $url = "{$this->params['base']}{$this->params['circuito_atributo']['url']}/ID__c/{$idC}";
             $params = [
                 'headers' => ['Authorization' => $this->accessToken]
             ];
@@ -114,8 +114,27 @@ class Atributo
                 $this->objLogger->error("Erro na criação do Atributo", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
                 throw new \Exception($e->getResponse()->getBody()->getContents(), $e->getCode());
             }
-            $this->objLogger->error("Erro na criação do Atributo", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
-            throw new \Exception("Invalid creation request", $e->getCode());
+            
+            $obj = json_decode($e->getResponse()->getBody()->getContents());
+            
+            if(is_array($obj) && array_key_exists(0, $obj) && is_object($obj[0]) && property_exists($obj[0], 'message')){
+                $this->objLogger->error("Tentando o Update do Atributo", ['message' => $obj[0]->message, 'code' => $e->getCode()]);
+                $arrayAttr = (array)$this->getByAtributo($arrayAtributo['ID__c']);
+                unset($arrayAtributo['Circuito__c']);
+                $arrayAttr = $this->update($arrayAtributo, $arrayAttr['Id']);
+                $arrayAtributo['id'] = $arrayAttr['Id'];
+                return (object)$arrayAtributo;
+            }elseif(is_object($obj) && property_exists($obj, 'message')){
+                $this->objLogger->error("Tentando o Update do Atributo", ['message' => $obj[0]->message, 'code' => $e->getCode()]);
+                $arrayAttr = (array)$this->getByAtributo($arrayAtributo['ID__c']);
+                unset($arrayAtributo['Circuito__c']);
+                $arrayAttr = $this->update($arrayAtributo, $arrayAttr['Id']);
+                $arrayAtributo['id'] = $arrayAttr['Id'];
+                return (object)$arrayAtributo;
+            }else{
+                $this->objLogger->error("Erro na criação do Atributo", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
+                throw new \Exception("Invalid creation request", $e->getCode());
+            }
         } catch (\Exception $e) {
             $this->objLogger->error("Erro na criação do Atributo", ['message' => $e->getMessage(), 'code' => $e->getCode()]);
             throw $e;
@@ -125,7 +144,7 @@ class Atributo
     public function update(array $arrayAtributo, string $id)
     {
         try {
-            $url = "{$this->params['base']}{$this->params['endereco']['url']}/{$id}";
+            $url = "{$this->params['base']}{$this->params['circuito_atributo']['url']}/{$id}";
             $params = [
                 'headers' => ['Authorization' => $this->accessToken],
                 'json' => $arrayAtributo,

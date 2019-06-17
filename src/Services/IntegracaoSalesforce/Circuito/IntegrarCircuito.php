@@ -205,7 +205,7 @@ class IntegrarCircuito
             }
             
             $objCidade = $objAdmCidadesRepository->find((integer)$objEnderecoentrega->getEndeentrCidade());
-            echo "-{$objEnderecoentrega->getEndeentrCidade()}x";
+//             echo "-{$objEnderecoentrega->getEndeentrCidade()}x";
             if(!($objCidade instanceof AdmCidades)){
                 $this->objLogger->error("Circuito {$objContrato->getContCodigoid()} Cidade não localizada", ['cliente'=>$objContrato->getContPaicodigoid()->getClieCodigoid()]);
                 throw new \Exception('Cidade não localizada');
@@ -352,7 +352,7 @@ class IntegrarCircuito
             $objEndereco->Cidade__c = $objCidadeSalesforce->Id;
             $objEndereco->Complemento__c = '';
             $objEndereco->Conta__c = $objAccountSalesforce->Id;
-            $objEndereco->Name = $objContrato->getStt();
+            $objEndereco->Name = trim($objContrato->getStt());
             $objEndereco->Designador__c = $objContrato->getStt();
             $objEndereco->Estado__c = $objCidade->getAdmUf()->getSigla();
             $objEndereco->EstruturaFisica__c = 'Predio';
@@ -366,7 +366,7 @@ class IntegrarCircuito
             unset($arrayEndereco['Id'], $arrayEndereco['LastModifiedDate'], $arrayEndereco['CreatedById'], $arrayEndereco['IsDeleted'], $arrayEndereco['SystemModstamp'], $arrayEndereco['CreatedDate'], $arrayEndereco['LastModifiedById'], $arrayEndereco['Geolocalizacao__c']);
             $this->objEndereco->update($arrayEndereco, $objEndereco->Id);
             
-            $objCircuit->Name = trim($objContrato->getStt()).'açsdkfjçdfksjçkasd';
+            $objCircuit->Name = trim($objContrato->getStt());
             $objCircuit->CNPJ__c = $objAccountSalesforce->CNPJ__c;
             $objCircuit->Conta__c = $objAccountSalesforce->Id;
             $objCircuit->Codigo__c = $objContrato->getStt();
@@ -418,7 +418,7 @@ class IntegrarCircuito
     {
         $arraReplace = [
             '-' => '', ',' => '', '.' => '', '/' => '', '°' => '', '\'' => '', '?' => '', '(' => '', ')' => '',
-            '+' => ''
+            '+' => '', ':' => ''
         ];
         return str_replace(array_keys($arraReplace), array_values($arraReplace), $str);
     }

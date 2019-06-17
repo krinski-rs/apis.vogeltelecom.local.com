@@ -357,7 +357,7 @@ class Account
     {
         $arraReplace = [
             '-' => '', ',' => '', '.' => '', '/' => '', '°' => '', '\'' => '', '?' => '', '(' => '', ')' => '',
-            '+' => ''
+            '+' => '', ':' => ''
         ];
         return str_replace(array_keys($arraReplace), array_values($arraReplace), $str);
     }

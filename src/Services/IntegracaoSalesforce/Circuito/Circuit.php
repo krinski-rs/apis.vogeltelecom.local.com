@@ -85,10 +85,10 @@ class Circuit
         }
     }
     
-    public function describe()
+    public function getByCircuito(string $circuitoIdC)
     {
         try {
-            $url = "{$this->params['base']}{$this->params['circuito']['url']}/describe";
+            $url = "{$this->params['base']}{$this->params['circuito']['url']}/CircuitoId__c/{$circuitoIdC}";
             $params = [
                 'headers' => ['Authorization' => $this->accessToken]
             ];
@@ -97,10 +97,10 @@ class Circuit
             return json_decode($objGuzzleHttpResponse->getBody()->getContents());
         } catch (\GuzzleHttp\Exception\ClientException $e) {
             if($e->getCode() != 400){
-                $this->objLogger->error("Erro na descrição do circuito", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
+                $this->objLogger->error("Erro na busca do circuito", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
                 throw new \Exception($e->getResponse()->getBody()->getContents(), $e->getCode());
             }
-            $this->objLogger->error("Erro na descrição do circuito", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
+            $this->objLogger->error("Erro na busca do circuito", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
             throw new \Exception("Invalid creation request", $e->getCode());
         } catch (\Exception $e) {
             throw $e;
@@ -123,8 +123,27 @@ class Circuit
                 $this->objLogger->error("Erro na criação do circuito", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
                 throw new \Exception($e->getResponse()->getBody()->getContents(), $e->getCode());
             }
-            $this->objLogger->error("Erro na criação do circuito", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
-            throw new \Exception("Invalid creation request", $e->getCode());
+           
+            $obj = json_decode($e->getResponse()->getBody()->getContents());
+            
+            if(is_array($obj) && array_key_exists(0, $obj) && is_object($obj[0]) && property_exists($obj[0], 'message')){
+                $this->objLogger->error("Tentando Update do circuito", ['message' => $obj[0]->message, 'code' => $e->getCode()]);
+                $arrayCircuito = (array)$this->getByCircuito($arrayCircuit['CircuitoId__c']);
+                unset($arrayCircuit['Conta__c'],$arrayCircuit['Endereco__c'],$arrayCircuit['PontaB__c']);
+                $arrayCircuit = $this->update($arrayCircuit, $arrayCircuito['Id']);
+                $arrayCircuit['id'] = $arrayCircuito['Id'];
+                return (object)$arrayCircuit;
+            }elseif(is_object($obj) && property_exists($obj, 'message')){
+                $this->objLogger->error("Tentando Update do circuito", ['message' => $obj->message, 'code' => $e->getCode()]);
+                $arrayCircuito = (array)$this->getByCircuito($arrayCircuit['CircuitoId__c']);
+                unset($arrayCircuit['Conta__c'],$arrayCircuit['Endereco__c'],$arrayCircuit['PontaB__c']);
+                $arrayCircuit = $this->update($arrayCircuit, $arrayCircuito['Id']);
+                $arrayCircuit['id'] = $arrayCircuito['Id'];
+                return (object)$arrayCircuit;
+            }else{
+                $this->objLogger->error("Erro na criação do circuito", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
+                throw new \Exception("Invalid creation request", $e->getCode());
+            }
         } catch (\Exception $e) {
             $this->objLogger->error("Erro na criação do circuito", ['message' => $e->getMessage(), 'code' => $e->getCode()]);
             throw $e;
