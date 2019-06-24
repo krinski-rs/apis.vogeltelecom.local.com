@@ -316,4 +316,9 @@ App\Entity\Financeiro\Contrato:
             cascade: {  }
             fetch: LAZY
             mappedBy: contPaicodigoid
+        enderecoentregaatributovalor:
+            targetEntity: App\Entity\Financeiro\Enderecoentregaatributovalor
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: contrato
     lifecycleCallbacks: {  }

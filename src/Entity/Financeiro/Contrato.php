@@ -208,11 +208,17 @@ class Contrato
     private $contratos;
     
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $enderecoentregaatributovalor;
+    
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->contratos = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->enderecoentregaatributovalor = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -1155,7 +1161,7 @@ class Contrato
      *
      * @param \App\Entity\Financeiro\Contrato $contratoFilho
      */
-    public function removeContratoFilho(\App\Entity\Financeiro\Contrato $contrato)
+    public function removeContrato(\App\Entity\Financeiro\Contrato $contrato)
     {
         $this->contratos->removeElement($contrato);
     }
@@ -1168,6 +1174,39 @@ class Contrato
     public function getContratos()
     {
         return $this->contratos;
+    }
+    
+    /**
+     * Add enderecoentregaatributovalor
+     *
+     * @param \App\Entity\Financeiro\Enderecoentregaatributovalor $enderecoentregaatributovalor
+     * @return Contrato
+     */
+    public function addEnderecoentregaatributovalor(\App\Entity\Financeiro\Enderecoentregaatributovalor $enderecoentregaatributovalor)
+    {
+        $this->enderecoentregaatributovalor[] = $enderecoentregaatributovalor;
+        
+        return $this;
+    }
+    
+    /**
+     * Remove enderecoentregaatributovalor
+     *
+     * @param \App\Entity\Financeiro\Enderecoentregaatributovalor $enderecoentregaatributovalor
+     */
+    public function removeEnderecoentregaatributovalor(\App\Entity\Financeiro\Enderecoentregaatributovalor $enderecoentregaatributovalor)
+    {
+        $this->enderecoentregaatributovalor->removeElement($enderecoentregaatributovalor);
+    }
+    
+    /**
+     * Get enderecoentregaatributovalor
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEnderecoentregaatributovalor()
+    {
+        return $this->enderecoentregaatributovalor;
     }
     
     public function getStt()

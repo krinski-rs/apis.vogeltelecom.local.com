@@ -128,13 +128,13 @@ class Endereco
             return json_decode($objGuzzleHttpResponse->getBody()->getContents());
         } catch (\GuzzleHttp\Exception\ClientException $e) {
             if($e->getCode() != 400){
-                $this->objLogger->error("Erro na criação da Account", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
+                $this->objLogger->error("Erro na criação do Endereço", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
                 throw new \Exception($e->getResponse()->getBody()->getContents(), $e->getCode());
             }
-            $this->objLogger->error("Erro na criação do endereço", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
+            $this->objLogger->error("Erro na criação do Endereço", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
             throw new \Exception("Invalid creation request", $e->getCode());
         } catch (\Exception $e) {
-            $this->objLogger->error("Erro na criação do endereço", ['message' => $e->getMessage(), 'code' => $e->getCode()]);
+            $this->objLogger->error("Erro na criação do Endereço", ['message' => $e->getMessage(), 'code' => $e->getCode()]);
             throw $e;
         }
     }
@@ -152,13 +152,13 @@ class Endereco
             return json_decode($objGuzzleHttpResponse->getBody()->getContents());
         } catch (\GuzzleHttp\Exception\ClientException $e) {
             if($e->getCode() != 400){
-                $this->objLogger->error("Erro na atualização da Account", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
+                $this->objLogger->error("Erro na atualização do Endereço", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
                 throw new \Exception($e->getResponse()->getBody()->getContents(), $e->getCode());
             }
-            $this->objLogger->error("Erro na atualização do endereço", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
+            $this->objLogger->error("Erro na atualização do Endereço", ['message' => $e->getResponse()->getBody()->getContents(), 'code' => $e->getCode()]);
             throw new \Exception("Invalid creation request", $e->getCode());
         } catch (\Exception $e) {
-            $this->objLogger->error("Erro na atualização do endereço", ['message' => $e->getMessage(), 'code' => $e->getCode()]);
+            $this->objLogger->error("Erro na atualização do Endereço", ['message' => $e->getMessage(), 'code' => $e->getCode()]);
             throw $e;
         }
     }

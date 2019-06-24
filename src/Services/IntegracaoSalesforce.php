@@ -105,7 +105,7 @@ class IntegracaoSalesforce
     {
         try {
             $objCircuitoSalesforceRepository = $this->objEntityManager->getRepository("App\Entity\Financeiro\CircuitoSalesforce");
-            $arrayCircuitoSalesforce = $objCircuitoSalesforceRepository->findBy(['dataIntegracao'=>NULL], [], $limit);
+            $arrayCircuitoSalesforce = $objCircuitoSalesforceRepository->findBy(['dataIntegracao'=>NULL], ['id'=>'ASC'], $limit);
             if(!count($arrayCircuitoSalesforce)){
                 throw new \Exception("Nenhum circuito à ser integrado.");
             }

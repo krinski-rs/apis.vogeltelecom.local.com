@@ -289,7 +289,7 @@ class Account
             $arrayAccount = [
                 'BairroCobranca__c' => $bairro,
                 'BairroComercial__c' => $bairro,
-                'Carga__c' => true,
+//                 'Carga__c' => true,
                 'CEPCobranca__c' => $objCadUser->getCep(),
                 'CEPComercial__c' => $objCadUser->getCep(),
                 'CidadeCobranca__c' => $objCidadeSalesforce->Id,
@@ -356,7 +356,8 @@ class Account
     private function strReplaceLOgradouro($str)
     {
         $arraReplace = [
-            '-' => '', ',' => '', '.' => '', '/' => '', '°' => '', '\'' => '', '?' => ''
+            '-' => '', ',' => '', '.' => '', '/' => '', '°' => '', '\'' => '', '?' => '', '(' => '', ')' => '',
+            '+' => '', ':' => ''
         ];
         return str_replace(array_keys($arraReplace), array_values($arraReplace), $str);
     }

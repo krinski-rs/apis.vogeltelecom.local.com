@@ -17,6 +17,7 @@ use App\Entity\Gcdb\CadUsers;
 use Doctrine\Bundle\DoctrineBundle\Registry;
 use App\Services\IntegracaoSalesforce\OAuthSalesforce;
 use App\Services\IntegracaoSalesforce\Cliente\Account;
+use App\Entity\Financeiro\Enderecoentregaatributovalor;
 
 /**
  * Class IntegrarCircuito
@@ -92,6 +93,14 @@ class IntegrarCircuito
     private $objCidade  = NULL;
     
     /**
+     * Variável que irá guardar a referência do serviço de Atributo.
+     *
+     * @access  private
+     * @var     Atributo
+     */
+    private $objAtributo  = NULL;
+    
+    /**
      * Variável que irá guardar os parametros de configuração.
      *
      * @access  private
@@ -124,6 +133,7 @@ class IntegrarCircuito
         $this->objCircuit = new Circuit($this->objLogger, $this->params, $token);
         $this->objEndereco = new Endereco($this->objLogger, $this->params, $token);
         $this->objCidade = new Cidade($this->objLogger, $this->params, $token);
+        $this->objAtributo = new Atributo($this->objLogger, $this->params, $token);
     }
     
     /**
@@ -195,6 +205,7 @@ class IntegrarCircuito
             }
             
             $objCidade = $objAdmCidadesRepository->find((integer)$objEnderecoentrega->getEndeentrCidade());
+//             echo "-{$objEnderecoentrega->getEndeentrCidade()}x";
             if(!($objCidade instanceof AdmCidades)){
                 $this->objLogger->error("Circuito {$objContrato->getContCodigoid()} Cidade não localizada", ['cliente'=>$objContrato->getContPaicodigoid()->getClieCodigoid()]);
                 throw new \Exception('Cidade não localizada');
@@ -232,8 +243,30 @@ class IntegrarCircuito
                 'CircuitoId__c' => $objContrato->getContCodigoid(),
                 'Endereco__c' => $objEndereco->id,
                 'NomeCliente__c' => $objAccountSalesforce->Name,
+                'PontaB__c' => $objEndereco->id
             ];
             $objCircuito = $this->objCircuit->create($arrayCircuit);
+            
+            $arrayEnderecoentregaatributovalor = $objContrato->getEnderecoentregaatributovalor();
+            if($arrayEnderecoentregaatributovalor->count()){
+                $arrayEnderecoentregaatributovalor->first();
+                while ($objEnderecoentregaatributovalor = $arrayEnderecoentregaatributovalor->current()){
+                    if($objEnderecoentregaatributovalor instanceof Enderecoentregaatributovalor){
+                        $name = $objEnderecoentregaatributovalor->getAtrivaloCodigoid()->getAtriCodigoid()->getAtriNome();
+                        $valor = $objEnderecoentregaatributovalor->getAtrivaloCodigoid()->getAtrivaloValor();
+                        $valor.= " {$objEnderecoentregaatributovalor->getEndeentratrivaloValor()}";
+                        $arrayAtributo = [
+                            'Name' => $name,
+                            'Circuito__c' => $objCircuito->id,
+                            'ID__c' => $objEnderecoentregaatributovalor->getEndeentratrivaloCodigoid(),
+                            'Valor__c' => substr($valor, 0, 255)
+                        ];
+                        $this->objAtributo->create($arrayAtributo);
+                   }
+                    $arrayEnderecoentregaatributovalor->next();
+                }
+            }
+            
             $objCircuitoSalesforce->setDataIntegracao(new \DateTime());
             $objCircuitoSalesforce->setIdCircuitoSalesforce($objCircuito->id);
             $objContrato = $objCircuitoSalesforce->getContCodigoid();
@@ -242,7 +275,6 @@ class IntegrarCircuito
             $this->objEntityManager->flush();
             return $objCircuito;
         } catch (\Exception $e){
-            echo $e->getMessage();
             throw $e;
         }
     }
@@ -320,7 +352,7 @@ class IntegrarCircuito
             $objEndereco->Cidade__c = $objCidadeSalesforce->Id;
             $objEndereco->Complemento__c = '';
             $objEndereco->Conta__c = $objAccountSalesforce->Id;
-            $objEndereco->Name = $objContrato->getStt();
+            $objEndereco->Name = trim($objContrato->getStt());
             $objEndereco->Designador__c = $objContrato->getStt();
             $objEndereco->Estado__c = $objCidade->getAdmUf()->getSigla();
             $objEndereco->EstruturaFisica__c = 'Predio';
@@ -334,7 +366,7 @@ class IntegrarCircuito
             unset($arrayEndereco['Id'], $arrayEndereco['LastModifiedDate'], $arrayEndereco['CreatedById'], $arrayEndereco['IsDeleted'], $arrayEndereco['SystemModstamp'], $arrayEndereco['CreatedDate'], $arrayEndereco['LastModifiedById'], $arrayEndereco['Geolocalizacao__c']);
             $this->objEndereco->update($arrayEndereco, $objEndereco->Id);
             
-            $objCircuit->Name = trim($objContrato->getStt()).'açsdkfjçdfksjçkasd';
+            $objCircuit->Name = trim($objContrato->getStt());
             $objCircuit->CNPJ__c = $objAccountSalesforce->CNPJ__c;
             $objCircuit->Conta__c = $objAccountSalesforce->Id;
             $objCircuit->Codigo__c = $objContrato->getStt();
@@ -357,7 +389,6 @@ class IntegrarCircuito
             $this->objEntityManager->flush();
             return $objCircuito;
         } catch (\Exception $e){
-            echo $e->getMessage();
             throw $e;
         }
     }
@@ -386,7 +417,8 @@ class IntegrarCircuito
     private function strReplaceLOgradouro($str)
     {
         $arraReplace = [
-            '-' => '', ',' => '', '.' => '', '/' => '', '°' => '', '\'' => '', '?' => ''
+            '-' => '', ',' => '', '.' => '', '/' => '', '°' => '', '\'' => '', '?' => '', '(' => '', ')' => '',
+            '+' => '', ':' => ''
         ];
         return str_replace(array_keys($arraReplace), array_values($arraReplace), $str);
     }

@@ -18,11 +18,6 @@ class Enderecoentregaatributovalor
     private $endeentratrivaloPaicodigoid;
 
     /**
-     * @var int
-     */
-    private $contCodigoid;
-
-    /**
      * @var int|null
      */
     private $endeentrCodigoid;
@@ -56,6 +51,11 @@ class Enderecoentregaatributovalor
      * @var \App\Entity\Financeiro\Atributovalor
      */
     private $atrivaloCodigoid;
+
+    /**
+     * @var \App\Entity\Financeiro\Contrato
+     */
+    private $contrato;
 
 
     /**
@@ -282,5 +282,29 @@ class Enderecoentregaatributovalor
     public function getAtrivaloCodigoid()
     {
         return $this->atrivaloCodigoid;
+    }
+
+    /**
+     * Set contrato.
+     *
+     * @param \App\Entity\Financeiro\Contrato|null $contrato
+     *
+     * @return Enderecoentregaatributovalor
+     */
+    public function setContrato(\App\Entity\Financeiro\Contrato $contrato = null)
+    {
+        $this->contrato = $contrato;
+
+        return $this;
+    }
+
+    /**
+     * Get contrato.
+     *
+     * @return \App\Entity\Financeiro\Contrato|null
+     */
+    public function getContrato()
+    {
+        return $this->contrato;
     }
 }
