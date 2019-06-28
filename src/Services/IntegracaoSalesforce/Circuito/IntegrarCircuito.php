@@ -194,7 +194,15 @@ class IntegrarCircuito
             if($objCadUser->getTipo() == 'J'){
                 $objAccountSalesforce = $this->objAccount->getByCnpj($objCadUser->getCnpj());
             }else{
-                $objAccountSalesforce = $this->objAccount->getByCnpj($objCadUser->getCpf());
+                /*
+                 * ********************************************* * 
+                 * NÃO ESTÁ INTEGRANDO OS CLIENTES PESSOA FÍSICA *
+                 * ********************************************* * 
+                 */
+                $objCircuitoSalesforce->setDataIntegracao(new \DateTime());
+                $this->objEntityManager->merge($objCircuitoSalesforce);
+                $this->objEntityManager->flush();
+                return true;
             }
             
             if(!$objAccountSalesforce || !is_object($objAccountSalesforce) || !property_exists($objAccountSalesforce, 'Id')){
@@ -205,7 +213,6 @@ class IntegrarCircuito
             }
             
             $objCidade = $objAdmCidadesRepository->find((integer)$objEnderecoentrega->getEndeentrCidade());
-//             echo "-{$objEnderecoentrega->getEndeentrCidade()}x";
             if(!($objCidade instanceof AdmCidades)){
                 $this->objLogger->error("Circuito {$objContrato->getContCodigoid()} Cidade não localizada", ['cliente'=>$objContrato->getContPaicodigoid()->getClieCodigoid()]);
                 throw new \Exception('Cidade não localizada');
@@ -227,7 +234,6 @@ class IntegrarCircuito
                 'Designador__c' => $objContrato->getStt(),
                 'Estado__c' => $objCidade->getAdmUf()->getSigla(),
                 'EstruturaFisica__c' => 'Predio',
-//                 'Geolocalizacao__c' => ['latitude'=> -30.08504430000,'longitude'=> -51.04619710000],
                 'Logradouro__c' => ((count($logradouro) > 1) ? trim(iconv('UTF-8', 'ASCII//TRANSLIT', $this->strReplaceLOgradouro($logradouro[1]))) : iconv('UTF-8', 'ASCII//TRANSLIT', $this->strReplaceLOgradouro($logradouro[0]))),
                 'Numero__c' => $objEnderecoentrega->getEndeentrNumero(),
                 'TipoEndereco__c' => 'Instalação',
@@ -259,10 +265,12 @@ class IntegrarCircuito
                             'Name' => $name,
                             'Circuito__c' => $objCircuito->id,
                             'ID__c' => $objEnderecoentregaatributovalor->getEndeentratrivaloCodigoid(),
-                            'Valor__c' => substr($valor, 0, 255)
+                            'Valor__c' => iconv('UTF-8', 'ASCII//TRANSLIT', trim(substr($valor, 0, 255)))
                         ];
-                        $this->objAtributo->create($arrayAtributo);
-                   }
+                        if(count($arrayAtributo)){
+                            $this->objAtributo->create($arrayAtributo);
+                        }
+                    }
                     $arrayEnderecoentregaatributovalor->next();
                 }
             }
@@ -270,11 +278,25 @@ class IntegrarCircuito
             $objCircuitoSalesforce->setDataIntegracao(new \DateTime());
             $objCircuitoSalesforce->setIdCircuitoSalesforce($objCircuito->id);
             $objContrato = $objCircuitoSalesforce->getContCodigoid();
+            $objContrato->setSalesforceId($objCircuito->id);
             $this->objEntityManager->merge($objContrato);
             $this->objEntityManager->merge($objCircuitoSalesforce);
             $this->objEntityManager->flush();
             return $objCircuito;
         } catch (\Exception $e){
+            if(isset($objCircuito) && is_object($objCircuito) &&property_exists($objCircuito, 'id')){
+                $objCircuitoSalesforce->setDataIntegracao(new \DateTime());
+                $objCircuitoSalesforce->setIdCircuitoSalesforce($objCircuito->id);
+                $objContrato = $objCircuitoSalesforce->getContCodigoid();
+                $objContrato->setSalesforceId($objCircuito->id);
+                $this->objEntityManager->merge($objContrato);
+                $this->objEntityManager->merge($objCircuitoSalesforce);
+                $this->objEntityManager->flush();
+            }else{
+                $objCircuitoSalesforce->setDataIntegracao(new \DateTime());
+                $this->objEntityManager->merge($objCircuitoSalesforce);
+                $this->objEntityManager->flush();
+            }
             throw $e;
         }
     }
@@ -289,17 +311,7 @@ class IntegrarCircuito
     protected function update(CircuitoSalesforce $objCircuitoSalesforce)
     {
         try {
-            $objCircuit = $this->objCircuit->getById($objCircuitoSalesforce->getIdCircuitoSalesforce());
             $objContrato = $objCircuitoSalesforce->getContCodigoid();
-            if(!$objCircuit  || !is_object($objCircuit) || !property_exists($objCircuit, 'Id')){
-                throw new \Exception("Circuito '{$objCircuitoSalesforce->getContCodigoid()->getContCodigoid()}' não encontrado.");
-            }
-            
-            $objEndereco = $this->objEndereco->getById($objCircuit->Endereco__c);
-            if(!$objEndereco  || !is_object($objEndereco) || !property_exists($objEndereco, 'Id')){
-                throw new \Exception("Endereços do circuito '{$objCircuitoSalesforce->getContCodigoid()->getContCodigoid()}' não encontrado.");
-            }
-            
             $objEnderecoentrega = $objContrato->getEndeentrCodigoid();
             $objAdmCidadesRepository = $this->objEntityManagerGcdb->getRepository('App\Entity\Gcdb\AdmCidades');
             $objAdmLogradouroRepository = $this->objEntityManagerGcdb->getRepository('App\Entity\Gcdb\AdmLogradouro');
@@ -325,14 +337,20 @@ class IntegrarCircuito
             if($objCadUser->getTipo() == 'J'){
                 $objAccountSalesforce = $this->objAccount->getByCnpj($objCadUser->getCnpj());
             }else{
-                $objAccountSalesforce = $this->objAccount->getByCnpj($objCadUser->getCpf());
+                /*
+                 * ********************************************* *
+                 * NÃO ESTÁ INTEGRANDO OS CLIENTES PESSOA FÍSICA *
+                 * ********************************************* *
+                 */
+                $objCircuitoSalesforce->setDataIntegracao(new \DateTime());
+                $this->objEntityManager->merge($objCircuitoSalesforce);
+                $this->objEntityManager->flush();
+                return true;
             }
             
             if(!$objAccountSalesforce || !is_object($objAccountSalesforce) || !property_exists($objAccountSalesforce, 'Id')){
-                $this->objLogger->info("Circuito {$objContrato->getContCodigoid()} criando Account", ['cliente'=>$objContrato->getContPaicodigoid()->getClieCodigoid()]);
-                $retorno = $this->objAccount->createFromCustomer($objCustomers);
-                $objAccountSalesforce = $this->objAccount->getById($retorno->id);
-                $this->objLogger->info("Circuito {$objContrato->getContCodigoid()} Account criada com sucesso", ['account'=>$objAccountSalesforce]);
+                $this->objLogger->info("Circuito {$objContrato->getContCodigoid()} Account NÃO LOCALIZADO", ['cliente'=>$objContrato->getContPaicodigoid()->getClieCodigoid()]);
+                throw new \Exception('Account NÃO LOCALIZADO');
             }
             
             $objCidade = $objAdmCidadesRepository->find((integer)$objEnderecoentrega->getEndeentrCidade());
@@ -344,51 +362,90 @@ class IntegrarCircuito
             $objCidadeSalesforce = $this->objCidade->getByCodigoIbge($objCidade->getCodigoIbge());
             $id = explode('/', $this->objOAuthSalesforce->getContents()->id);
             $logradouro = explode('-::-', $objEnderecoentrega->getEndeentrLogradouro());
-            
-            $arrayEndereco = [];
+            $arrayEndereco = (array)$this->objEndereco->getByDesignador($objContrato->getStt());
             $tipoLogradouro = $objAdmLogradouroRepository->find((integer)$objEnderecoentrega->getAdmLogradouro());
-            $objEndereco->Bairro__c = trim($objEnderecoentrega->getEndeentrBairro());
-            $objEndereco->CEP__c = $this->somenteNumeros($objEnderecoentrega->getEndeentrCep());
-            $objEndereco->Cidade__c = $objCidadeSalesforce->Id;
-            $objEndereco->Complemento__c = '';
-            $objEndereco->Conta__c = $objAccountSalesforce->Id;
-            $objEndereco->Name = trim($objContrato->getStt());
-            $objEndereco->Designador__c = $objContrato->getStt();
-            $objEndereco->Estado__c = $objCidade->getAdmUf()->getSigla();
-            $objEndereco->EstruturaFisica__c = 'Predio';
-//             $objEndereco->Geolocalizacao__c = ['latitude'=> -30.08504430000,'longitude'=> -51.04619710000];
-            $objEndereco->Logradouro__c = ((count($logradouro) > 1) ? trim(iconv('UTF-8', 'ASCII//TRANSLIT', $this->strReplaceLOgradouro($logradouro[1]))) : iconv('UTF-8', 'ASCII//TRANSLIT', $this->strReplaceLOgradouro($logradouro[0])));
-            $objEndereco->Numero__c = $objEnderecoentrega->getEndeentrNumero();
-            $objEndereco->TipoEndereco__c = 'Instalação';
-            $objEndereco->TipoLogradouro__c = ($tipoLogradouro ? $tipoLogradouro->getId() : '160');
+            $arrayEndereco['Bairro__c'] = trim($objEnderecoentrega->getEndeentrBairro());
+            $arrayEndereco['CEP__c'] = $this->somenteNumeros($objEnderecoentrega->getEndeentrCep());
+            $arrayEndereco['Cidade__c'] = $objCidadeSalesforce->Id;
+            $arrayEndereco['Complemento__c'] = '';
+            $arrayEndereco['Conta__c'] = $objAccountSalesforce->Id;
+            $arrayEndereco['Name'] = $objContrato->getStt();
+            $arrayEndereco['Designador__c'] = $objContrato->getStt();
+            $arrayEndereco['Estado__c'] = $objCidade->getAdmUf()->getSigla();
+            $arrayEndereco['EstruturaFisica__c'] = 'Predio';
+            $arrayEndereco['Logradouro__c'] = ((count($logradouro) > 1) ? trim(iconv('UTF-8', 'ASCII//TRANSLIT', $this->strReplaceLOgradouro($logradouro[1]))) : iconv('UTF-8', 'ASCII//TRANSLIT', $this->strReplaceLOgradouro($logradouro[0])));
+            $arrayEndereco['Numero__c'] = $objEnderecoentrega->getEndeentrNumero();
+            $arrayEndereco['TipoEndereco__c'] = 'Instalação';
+            $arrayEndereco['TipoLogradouro__c'] = ($tipoLogradouro ? $tipoLogradouro->getId() : '160');
+            $idEndereco = $arrayEndereco['Id'];
+            unset($arrayEndereco['Id'], $arrayEndereco['LastModifiedDate'], $arrayEndereco['LastReferencedDate'], $arrayEndereco['Geolocalizacao__c']);
+            unset($arrayEndereco['CreatedById'], $arrayEndereco['IsDeleted'], $arrayEndereco['LastViewedDate'], $arrayEndereco['SystemModstamp']);
+            unset($arrayEndereco['CreatedDate'], $arrayEndereco['LastModifiedById']);
+//             print_r($id);
+//             print_r($arrayEndereco);
             
-            $arrayEndereco = (array)$objEndereco;
-            unset($arrayEndereco['Id'], $arrayEndereco['LastModifiedDate'], $arrayEndereco['CreatedById'], $arrayEndereco['IsDeleted'], $arrayEndereco['SystemModstamp'], $arrayEndereco['CreatedDate'], $arrayEndereco['LastModifiedById'], $arrayEndereco['Geolocalizacao__c']);
-            $this->objEndereco->update($arrayEndereco, $objEndereco->Id);
+            $objEndereco = $this->objEndereco->update($arrayEndereco, $idEndereco);
             
-            $objCircuit->Name = trim($objContrato->getStt());
-            $objCircuit->CNPJ__c = $objAccountSalesforce->CNPJ__c;
-            $objCircuit->Conta__c = $objAccountSalesforce->Id;
-            $objCircuit->Codigo__c = $objContrato->getStt();
-            $objCircuit->CircuitoId__c = $objContrato->getContCodigoid();
-            $objCircuit->Endereco__c = $objEndereco->Id;
-            $objCircuit->NomeCliente__c = $objAccountSalesforce->Name.' teste chitos';
+            $arrayCircuit = (array)$this->objCircuit->getByCircuito($objContrato->getContCodigoid());
+            $arrayCircuit['Name'] = trim($objContrato->getStt());
+            $arrayCircuit['CNPJ__c'] = $objAccountSalesforce->CNPJ__c;
+            $arrayCircuit['Codigo__c'] = $objContrato->getStt();
+            $arrayCircuit['CircuitoId__c'] = $objContrato->getContCodigoid();
+            $arrayCircuit['Endereco__c'] = $idEndereco;
+            $arrayCircuit['NomeCliente__c'] = $objAccountSalesforce->Name;
+            $arrayCircuit['PontaB__c'] = $idEndereco;
+            $idCircuit = $arrayCircuit['Id'];
+            unset($arrayCircuit['Id'], $arrayCircuit['LastModifiedDate'], $arrayCircuit['LastReferencedDate'], $arrayCircuit['EnderecoPontaA__c']);
+            unset($arrayCircuit['CreatedById'], $arrayCircuit['Identificador__c'], $arrayCircuit['IsDeleted'], $arrayCircuit['EnderecoCompleto__c']);
+            unset($arrayCircuit['Acessar__c'], $arrayCircuit['LastViewedDate'], $arrayCircuit['EnderecoPontaB__c'], $arrayCircuit['SystemModstamp']);
+            unset($arrayCircuit['CreatedDate'], $arrayCircuit['LastActivityDate'], $arrayCircuit['LastModifiedById'], $arrayCircuit['Conta__c']);
+            $objCircuito = $this->objCircuit->update($arrayCircuit, $idCircuit);
             
-            $arrayCircuit = (array)$objCircuit;
-            unset($arrayCircuit['Id'], $arrayCircuit['LastModifiedDate'], $arrayCircuit['CreatedById'], $arrayCircuit['IsDeleted'], $arrayCircuit['SystemModstamp']);
-            unset($arrayCircuit['CreatedDate'], $arrayCircuit['LastModifiedById'], $arrayCircuit['EnderecoCompleto__c'], $arrayCircuit['Acessar__c']);
-            unset($arrayCircuit['LastViewedDate'], $arrayCircuit['LastReferencedDate,'], $arrayCircuit['Conta__c'], $arrayCircuit['Identificador__c']);
-            unset($arrayCircuit['LastActivityDate'], $arrayCircuit['LastReferencedDate']);
-            $objCircuito = $this->objCircuit->update($arrayCircuit, $objCircuit->Id);
+            $arrayEnderecoentregaatributovalor = $objContrato->getEnderecoentregaatributovalor();
+            if($arrayEnderecoentregaatributovalor->count()){
+                $arrayEnderecoentregaatributovalor->first();
+                while ($objEnderecoentregaatributovalor = $arrayEnderecoentregaatributovalor->current()){
+                    if($objEnderecoentregaatributovalor instanceof Enderecoentregaatributovalor){
+                        $name = $objEnderecoentregaatributovalor->getAtrivaloCodigoid()->getAtriCodigoid()->getAtriNome();
+                        $valor = $objEnderecoentregaatributovalor->getAtrivaloCodigoid()->getAtrivaloValor();
+                        $valor.= " {$objEnderecoentregaatributovalor->getEndeentratrivaloValor()}";
+                        $arrayAtributo = (array)$this->objAtributo->getByAtributo($objEnderecoentregaatributovalor->getEndeentratrivaloCodigoid());
+                        if(count($arrayAtributo)){
+                            $idAtributo = $arrayAtributo['Id'];
+                            $arrayAtributo['Name'] = $name;
+                            $arrayAtributo['Valor__c'] = iconv('UTF-8', 'ASCII//TRANSLIT', trim(substr($valor, 0, 255)));
+                            unset($arrayAtributo['Id'], $arrayAtributo['LastModifiedDate'], $arrayAtributo['IsDeleted'], $arrayAtributo['SystemModstamp']);
+                            unset($arrayAtributo['Id'], $arrayAtributo['CreatedById'], $arrayAtributo['CreatedDate'], $arrayAtributo['LastActivityDate']);
+                            unset($arrayAtributo['LastModifiedById']);
+                            $this->objAtributo->update($arrayAtributo, $idAtributo);
+                        }
+                    }
+                    $arrayEnderecoentregaatributovalor->next();
+                }
+            }
             
             $objCircuitoSalesforce->setDataIntegracao(new \DateTime());
-            $objCircuitoSalesforce->setIdCircuitoSalesforce($objCircuito->id);
+            $objCircuitoSalesforce->setIdCircuitoSalesforce($idCircuit);
             $objContrato = $objCircuitoSalesforce->getContCodigoid();
+            $objContrato->setSalesforceId($idCircuit);
             $this->objEntityManager->merge($objContrato);
             $this->objEntityManager->merge($objCircuitoSalesforce);
             $this->objEntityManager->flush();
             return $objCircuito;
         } catch (\Exception $e){
+            if(isset($idCircuit)){
+                $objCircuitoSalesforce->setDataIntegracao(new \DateTime());
+                $objCircuitoSalesforce->setIdCircuitoSalesforce($idCircuit);
+                $objContrato = $objCircuitoSalesforce->getContCodigoid();
+                $objContrato->setSalesforceId($idCircuit);
+                $this->objEntityManager->merge($objContrato);
+                $this->objEntityManager->merge($objCircuitoSalesforce);
+                $this->objEntityManager->flush();
+            }else{
+                $objCircuitoSalesforce->setDataIntegracao(new \DateTime());
+                $this->objEntityManager->merge($objCircuitoSalesforce);
+                $this->objEntityManager->flush();
+            }
             throw $e;
         }
     }

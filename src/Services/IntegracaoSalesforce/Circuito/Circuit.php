@@ -158,6 +158,7 @@ class Circuit
                 'headers' => ['Authorization' => $this->accessToken],
                 'json' => $arrayCircuit,
             ];
+            $this->objLogger->info("Dados da para atualizar Circuito", [$params, 'url'=>$url]);
             $objGuzzleHttpResponse = $this->objClient->request("PATCH", $url, $params);
             return json_decode($objGuzzleHttpResponse->getBody()->getContents());
         } catch (\GuzzleHttp\Exception\ClientException $e) {

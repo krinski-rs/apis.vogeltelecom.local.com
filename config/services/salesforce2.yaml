@@ -1,17 +1,23 @@
 parameters:
     salesforce:
-        base: 'https://vogeltelecom--uat.my.salesforce.com'
+        base: 'https://vogeltelecom--dev.my.salesforce.com'
         oauth:
             authorize: 'https://test.salesforce.com/services/oauth2/authorize'
             token: 'https://test.salesforce.com/services/oauth2/token'
             revoke: 'https://test.salesforce.com/services/oauth2/revoke'
             redirect_uri: https://apis.dev.vogeltelecom.com
+#            auth:
+#                grant_type: 'password'
+#                client_id: '3MVG9ZF4bs_.MKujslTjSM6G2CBZdrW1tMy_FVUjuSzijMIB7Iv7mcIa_CLaLE6z5uHqph2kgkFDDp88YEqJQ'
+#                client_secret: '47A84CEDBB6F848A425F75579F453CFE8B70CB553D672D9AF89AC2428DB14FAF'
+#                username: 'reinaldo.krinski@gmail.com.treino'
+#                password: 'jrd3j@22122009'
             auth:
                 grant_type: 'password'
-                client_id: '3MVG9U_dUptXGpYLfWWXIlYB2gaLSuV22vX1WBF6bZx8SDTmLKlUUa4sTwUryTZW80hNoaf0RBnPXseSJHgOP'
-                client_secret: '814C48B5097DAD1B9902D765247883500B54034DCEF1DBB17D503DBFB5087A0A'
-                username: 'sistemas@vogeltelecom.com.uat'
-                password: 'Vogel#telecom27H2B2SsgBXxvtCfMmVRx0n18'
+                client_id: '3MVG9pHRjzOBdkd9X2dM7TaZ0FUCEAjbyR0fBCHfOy7ZRWSTpOFbiJu207Yx4Ab9_AcTlRgF2dL7tclho6AwV'
+                client_secret: '8F1D1D903AA320A6D50B4021C15A23D110DD6CB6DFF41F12DA83471D6D1E6338'
+                username: 'build@vogeltelecom.com.br.dev'
+                password: 'Salesforce1wMwetgIVImEZnShqLq5M3eqQ'
         account:
             url: /services/data/v39.0/sobjects/Account
         circuito:
