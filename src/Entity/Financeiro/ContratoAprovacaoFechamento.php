@@ -2,401 +2,194 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * ContratoAprovacaoFechamento
- */
 class ContratoAprovacaoFechamento
 {
-    /**
-     * @var int
-     */
     private $idContrato;
 
-    /**
-     * @var bool|null
-     */
     private $active;
 
-    /**
-     * @var int|null
-     */
     private $aprovedBy;
 
-    /**
-     * @var int|null
-     */
     private $chanceId;
 
-    /**
-     * @var \DateTime|null
-     */
     private $dateAproval;
 
-    /**
-     * @var \DateTime|null
-     */
     private $dateClosed;
 
-    /**
-     * @var \DateTime|null
-     */
     private $dateRecord;
 
-    /**
-     * @var float|null
-     */
     private $delta;
 
-    /**
-     * @var string|null
-     */
     private $description;
 
-    /**
-     * @var string|null
-     */
     private $tag;
 
-    /**
-     * @var int|null
-     */
     private $walletId;
 
-    /**
-     * @var int|null
-     */
     private $classification;
 
-    /**
-     * @var int|null
-     */
     private $vendaValeu;
 
-    /**
-     * @var int|null
-     */
     private $tipovenda;
 
-
-    /**
-     * Get idContrato.
-     *
-     * @return int
-     */
-    public function getIdContrato()
+    public function getIdContrato(): ?int
     {
         return $this->idContrato;
     }
 
-    /**
-     * Set active.
-     *
-     * @param bool|null $active
-     *
-     * @return ContratoAprovacaoFechamento
-     */
-    public function setActive($active = null)
+    public function getActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(?bool $active): self
     {
         $this->active = $active;
 
         return $this;
     }
 
-    /**
-     * Get active.
-     *
-     * @return bool|null
-     */
-    public function getActive()
+    public function getAprovedBy(): ?int
     {
-        return $this->active;
+        return $this->aprovedBy;
     }
 
-    /**
-     * Set aprovedBy.
-     *
-     * @param int|null $aprovedBy
-     *
-     * @return ContratoAprovacaoFechamento
-     */
-    public function setAprovedBy($aprovedBy = null)
+    public function setAprovedBy(?int $aprovedBy): self
     {
         $this->aprovedBy = $aprovedBy;
 
         return $this;
     }
 
-    /**
-     * Get aprovedBy.
-     *
-     * @return int|null
-     */
-    public function getAprovedBy()
+    public function getChanceId(): ?int
     {
-        return $this->aprovedBy;
+        return $this->chanceId;
     }
 
-    /**
-     * Set chanceId.
-     *
-     * @param int|null $chanceId
-     *
-     * @return ContratoAprovacaoFechamento
-     */
-    public function setChanceId($chanceId = null)
+    public function setChanceId(?int $chanceId): self
     {
         $this->chanceId = $chanceId;
 
         return $this;
     }
 
-    /**
-     * Get chanceId.
-     *
-     * @return int|null
-     */
-    public function getChanceId()
+    public function getDateAproval(): ?\DateTimeInterface
     {
-        return $this->chanceId;
+        return $this->dateAproval;
     }
 
-    /**
-     * Set dateAproval.
-     *
-     * @param \DateTime|null $dateAproval
-     *
-     * @return ContratoAprovacaoFechamento
-     */
-    public function setDateAproval($dateAproval = null)
+    public function setDateAproval(?\DateTimeInterface $dateAproval): self
     {
         $this->dateAproval = $dateAproval;
 
         return $this;
     }
 
-    /**
-     * Get dateAproval.
-     *
-     * @return \DateTime|null
-     */
-    public function getDateAproval()
+    public function getDateClosed(): ?\DateTimeInterface
     {
-        return $this->dateAproval;
+        return $this->dateClosed;
     }
 
-    /**
-     * Set dateClosed.
-     *
-     * @param \DateTime|null $dateClosed
-     *
-     * @return ContratoAprovacaoFechamento
-     */
-    public function setDateClosed($dateClosed = null)
+    public function setDateClosed(?\DateTimeInterface $dateClosed): self
     {
         $this->dateClosed = $dateClosed;
 
         return $this;
     }
 
-    /**
-     * Get dateClosed.
-     *
-     * @return \DateTime|null
-     */
-    public function getDateClosed()
+    public function getDateRecord(): ?\DateTimeInterface
     {
-        return $this->dateClosed;
+        return $this->dateRecord;
     }
 
-    /**
-     * Set dateRecord.
-     *
-     * @param \DateTime|null $dateRecord
-     *
-     * @return ContratoAprovacaoFechamento
-     */
-    public function setDateRecord($dateRecord = null)
+    public function setDateRecord(?\DateTimeInterface $dateRecord): self
     {
         $this->dateRecord = $dateRecord;
 
         return $this;
     }
 
-    /**
-     * Get dateRecord.
-     *
-     * @return \DateTime|null
-     */
-    public function getDateRecord()
+    public function getDelta(): ?float
     {
-        return $this->dateRecord;
+        return $this->delta;
     }
 
-    /**
-     * Set delta.
-     *
-     * @param float|null $delta
-     *
-     * @return ContratoAprovacaoFechamento
-     */
-    public function setDelta($delta = null)
+    public function setDelta(?float $delta): self
     {
         $this->delta = $delta;
 
         return $this;
     }
 
-    /**
-     * Get delta.
-     *
-     * @return float|null
-     */
-    public function getDelta()
+    public function getDescription(): ?string
     {
-        return $this->delta;
+        return $this->description;
     }
 
-    /**
-     * Set description.
-     *
-     * @param string|null $description
-     *
-     * @return ContratoAprovacaoFechamento
-     */
-    public function setDescription($description = null)
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * Get description.
-     *
-     * @return string|null
-     */
-    public function getDescription()
+    public function getTag(): ?string
     {
-        return $this->description;
+        return $this->tag;
     }
 
-    /**
-     * Set tag.
-     *
-     * @param string|null $tag
-     *
-     * @return ContratoAprovacaoFechamento
-     */
-    public function setTag($tag = null)
+    public function setTag(?string $tag): self
     {
         $this->tag = $tag;
 
         return $this;
     }
 
-    /**
-     * Get tag.
-     *
-     * @return string|null
-     */
-    public function getTag()
+    public function getWalletId(): ?int
     {
-        return $this->tag;
+        return $this->walletId;
     }
 
-    /**
-     * Set walletId.
-     *
-     * @param int|null $walletId
-     *
-     * @return ContratoAprovacaoFechamento
-     */
-    public function setWalletId($walletId = null)
+    public function setWalletId(?int $walletId): self
     {
         $this->walletId = $walletId;
 
         return $this;
     }
 
-    /**
-     * Get walletId.
-     *
-     * @return int|null
-     */
-    public function getWalletId()
+    public function getClassification(): ?int
     {
-        return $this->walletId;
+        return $this->classification;
     }
 
-    /**
-     * Set classification.
-     *
-     * @param int|null $classification
-     *
-     * @return ContratoAprovacaoFechamento
-     */
-    public function setClassification($classification = null)
+    public function setClassification(?int $classification): self
     {
         $this->classification = $classification;
 
         return $this;
     }
 
-    /**
-     * Get classification.
-     *
-     * @return int|null
-     */
-    public function getClassification()
+    public function getVendaValeu(): ?int
     {
-        return $this->classification;
+        return $this->vendaValeu;
     }
 
-    /**
-     * Set vendaValeu.
-     *
-     * @param int|null $vendaValeu
-     *
-     * @return ContratoAprovacaoFechamento
-     */
-    public function setVendaValeu($vendaValeu = null)
+    public function setVendaValeu(?int $vendaValeu): self
     {
         $this->vendaValeu = $vendaValeu;
 
         return $this;
     }
 
-    /**
-     * Get vendaValeu.
-     *
-     * @return int|null
-     */
-    public function getVendaValeu()
+    public function getTipovenda(): ?int
     {
-        return $this->vendaValeu;
+        return $this->tipovenda;
     }
 
-    /**
-     * Set tipovenda.
-     *
-     * @param int|null $tipovenda
-     *
-     * @return ContratoAprovacaoFechamento
-     */
-    public function setTipovenda($tipovenda = null)
+    public function setTipovenda(?int $tipovenda): self
     {
         $this->tipovenda = $tipovenda;
 
         return $this;
-    }
-
-    /**
-     * Get tipovenda.
-     *
-     * @return int|null
-     */
-    public function getTipovenda()
-    {
-        return $this->tipovenda;
     }
 }

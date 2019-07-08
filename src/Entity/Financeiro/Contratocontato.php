@@ -2,111 +2,54 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Contratocontato
- */
 class Contratocontato
 {
-    /**
-     * @var int
-     */
     private $contcontCodigoid;
 
-    /**
-     * @var int
-     */
     private $usrCodigoid;
 
-    /**
-     * @var string
-     */
     private $contcontContato;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
     private $contCodigoid;
 
-
-    /**
-     * Get contcontCodigoid.
-     *
-     * @return int
-     */
-    public function getContcontCodigoid()
+    public function getContcontCodigoid(): ?int
     {
         return $this->contcontCodigoid;
     }
 
-    /**
-     * Set usrCodigoid.
-     *
-     * @param int $usrCodigoid
-     *
-     * @return Contratocontato
-     */
-    public function setUsrCodigoid($usrCodigoid)
+    public function getUsrCodigoid(): ?int
+    {
+        return $this->usrCodigoid;
+    }
+
+    public function setUsrCodigoid(int $usrCodigoid): self
     {
         $this->usrCodigoid = $usrCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get usrCodigoid.
-     *
-     * @return int
-     */
-    public function getUsrCodigoid()
+    public function getContcontContato(): ?string
     {
-        return $this->usrCodigoid;
+        return $this->contcontContato;
     }
 
-    /**
-     * Set contcontContato.
-     *
-     * @param string $contcontContato
-     *
-     * @return Contratocontato
-     */
-    public function setContcontContato($contcontContato)
+    public function setContcontContato(string $contcontContato): self
     {
         $this->contcontContato = $contcontContato;
 
         return $this;
     }
 
-    /**
-     * Get contcontContato.
-     *
-     * @return string
-     */
-    public function getContcontContato()
+    public function getContCodigoid(): ?Contrato
     {
-        return $this->contcontContato;
+        return $this->contCodigoid;
     }
 
-    /**
-     * Set contCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contCodigoid
-     *
-     * @return Contratocontato
-     */
-    public function setContCodigoid(\App\Entity\Financeiro\Contrato $contCodigoid = null)
+    public function setContCodigoid(?Contrato $contCodigoid): self
     {
         $this->contCodigoid = $contCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get contCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContCodigoid()
-    {
-        return $this->contCodigoid;
     }
 }

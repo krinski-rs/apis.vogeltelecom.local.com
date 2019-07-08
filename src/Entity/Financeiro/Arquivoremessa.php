@@ -2,169 +2,82 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Arquivoremessa
- */
 class Arquivoremessa
 {
-    /**
-     * @var int
-     */
     private $arquremeCodigoid;
 
-    /**
-     * @var string
-     */
     private $arquremeNome;
 
-    /**
-     * @var int
-     */
     private $arquremeIndice;
 
-    /**
-     * @var string
-     */
     private $arquremeTexto;
 
-    /**
-     * @var \DateTime|null
-     */
     private $arquremeDataenvio;
 
-    /**
-     * @var \DateTime
-     */
-    private $arquremeDatainc = '0000-00-00 00:00:00';
+    private $arquremeDatainc;
 
-
-    /**
-     * Get arquremeCodigoid.
-     *
-     * @return int
-     */
-    public function getArquremeCodigoid()
+    public function getArquremeCodigoid(): ?int
     {
         return $this->arquremeCodigoid;
     }
 
-    /**
-     * Set arquremeNome.
-     *
-     * @param string $arquremeNome
-     *
-     * @return Arquivoremessa
-     */
-    public function setArquremeNome($arquremeNome)
+    public function getArquremeNome(): ?string
+    {
+        return $this->arquremeNome;
+    }
+
+    public function setArquremeNome(string $arquremeNome): self
     {
         $this->arquremeNome = $arquremeNome;
 
         return $this;
     }
 
-    /**
-     * Get arquremeNome.
-     *
-     * @return string
-     */
-    public function getArquremeNome()
+    public function getArquremeIndice(): ?int
     {
-        return $this->arquremeNome;
+        return $this->arquremeIndice;
     }
 
-    /**
-     * Set arquremeIndice.
-     *
-     * @param int $arquremeIndice
-     *
-     * @return Arquivoremessa
-     */
-    public function setArquremeIndice($arquremeIndice)
+    public function setArquremeIndice(int $arquremeIndice): self
     {
         $this->arquremeIndice = $arquremeIndice;
 
         return $this;
     }
 
-    /**
-     * Get arquremeIndice.
-     *
-     * @return int
-     */
-    public function getArquremeIndice()
+    public function getArquremeTexto(): ?string
     {
-        return $this->arquremeIndice;
+        return $this->arquremeTexto;
     }
 
-    /**
-     * Set arquremeTexto.
-     *
-     * @param string $arquremeTexto
-     *
-     * @return Arquivoremessa
-     */
-    public function setArquremeTexto($arquremeTexto)
+    public function setArquremeTexto(string $arquremeTexto): self
     {
         $this->arquremeTexto = $arquremeTexto;
 
         return $this;
     }
 
-    /**
-     * Get arquremeTexto.
-     *
-     * @return string
-     */
-    public function getArquremeTexto()
+    public function getArquremeDataenvio(): ?\DateTimeInterface
     {
-        return $this->arquremeTexto;
+        return $this->arquremeDataenvio;
     }
 
-    /**
-     * Set arquremeDataenvio.
-     *
-     * @param \DateTime|null $arquremeDataenvio
-     *
-     * @return Arquivoremessa
-     */
-    public function setArquremeDataenvio($arquremeDataenvio = null)
+    public function setArquremeDataenvio(?\DateTimeInterface $arquremeDataenvio): self
     {
         $this->arquremeDataenvio = $arquremeDataenvio;
 
         return $this;
     }
 
-    /**
-     * Get arquremeDataenvio.
-     *
-     * @return \DateTime|null
-     */
-    public function getArquremeDataenvio()
+    public function getArquremeDatainc(): ?\DateTimeInterface
     {
-        return $this->arquremeDataenvio;
+        return $this->arquremeDatainc;
     }
 
-    /**
-     * Set arquremeDatainc.
-     *
-     * @param \DateTime $arquremeDatainc
-     *
-     * @return Arquivoremessa
-     */
-    public function setArquremeDatainc($arquremeDatainc)
+    public function setArquremeDatainc(\DateTimeInterface $arquremeDatainc): self
     {
         $this->arquremeDatainc = $arquremeDatainc;
 
         return $this;
-    }
-
-    /**
-     * Get arquremeDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getArquremeDatainc()
-    {
-        return $this->arquremeDatainc;
     }
 }

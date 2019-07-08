@@ -2,140 +2,68 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * ServicoAtributo
- */
 class ServicoAtributo
 {
-    /**
-     * @var int
-     */
     private $idServicoAtributo;
 
-    /**
-     * @var int|null
-     */
     private $registrante;
 
-    /**
-     * @var bool|null
-     */
     private $ativo;
 
-    /**
-     * @var \App\Entity\Financeiro\Atributo
-     */
     private $atriCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Servico
-     */
     private $servCodigoid;
 
-
-    /**
-     * Get idServicoAtributo.
-     *
-     * @return int
-     */
-    public function getIdServicoAtributo()
+    public function getIdServicoAtributo(): ?int
     {
         return $this->idServicoAtributo;
     }
 
-    /**
-     * Set registrante.
-     *
-     * @param int|null $registrante
-     *
-     * @return ServicoAtributo
-     */
-    public function setRegistrante($registrante = null)
+    public function getRegistrante(): ?int
+    {
+        return $this->registrante;
+    }
+
+    public function setRegistrante(?int $registrante): self
     {
         $this->registrante = $registrante;
 
         return $this;
     }
 
-    /**
-     * Get registrante.
-     *
-     * @return int|null
-     */
-    public function getRegistrante()
+    public function getAtivo(): ?bool
     {
-        return $this->registrante;
+        return $this->ativo;
     }
 
-    /**
-     * Set ativo.
-     *
-     * @param bool|null $ativo
-     *
-     * @return ServicoAtributo
-     */
-    public function setAtivo($ativo = null)
+    public function setAtivo(?bool $ativo): self
     {
         $this->ativo = $ativo;
 
         return $this;
     }
 
-    /**
-     * Get ativo.
-     *
-     * @return bool|null
-     */
-    public function getAtivo()
+    public function getAtriCodigoid(): ?Atributo
     {
-        return $this->ativo;
+        return $this->atriCodigoid;
     }
 
-    /**
-     * Set atriCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Atributo|null $atriCodigoid
-     *
-     * @return ServicoAtributo
-     */
-    public function setAtriCodigoid(\App\Entity\Financeiro\Atributo $atriCodigoid = null)
+    public function setAtriCodigoid(?Atributo $atriCodigoid): self
     {
         $this->atriCodigoid = $atriCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get atriCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Atributo|null
-     */
-    public function getAtriCodigoid()
+    public function getServCodigoid(): ?Servico
     {
-        return $this->atriCodigoid;
+        return $this->servCodigoid;
     }
 
-    /**
-     * Set servCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Servico|null $servCodigoid
-     *
-     * @return ServicoAtributo
-     */
-    public function setServCodigoid(\App\Entity\Financeiro\Servico $servCodigoid = null)
+    public function setServCodigoid(?Servico $servCodigoid): self
     {
         $this->servCodigoid = $servCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get servCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Servico|null
-     */
-    public function getServCodigoid()
-    {
-        return $this->servCodigoid;
     }
 }

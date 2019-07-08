@@ -2,111 +2,54 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Atributo
- */
 class Atributo
 {
-    /**
-     * @var int
-     */
     private $atriCodigoid;
 
-    /**
-     * @var string
-     */
     private $atriNome;
 
-    /**
-     * @var string
-     */
     private $atribTipohtml;
 
-    /**
-     * @var string|null
-     */
     private $atribMask;
 
-
-    /**
-     * Get atriCodigoid.
-     *
-     * @return int
-     */
-    public function getAtriCodigoid()
+    public function getAtriCodigoid(): ?int
     {
         return $this->atriCodigoid;
     }
 
-    /**
-     * Set atriNome.
-     *
-     * @param string $atriNome
-     *
-     * @return Atributo
-     */
-    public function setAtriNome($atriNome)
+    public function getAtriNome(): ?string
+    {
+        return $this->atriNome;
+    }
+
+    public function setAtriNome(string $atriNome): self
     {
         $this->atriNome = $atriNome;
 
         return $this;
     }
 
-    /**
-     * Get atriNome.
-     *
-     * @return string
-     */
-    public function getAtriNome()
+    public function getAtribTipohtml(): ?string
     {
-        return $this->atriNome;
+        return $this->atribTipohtml;
     }
 
-    /**
-     * Set atribTipohtml.
-     *
-     * @param string $atribTipohtml
-     *
-     * @return Atributo
-     */
-    public function setAtribTipohtml($atribTipohtml)
+    public function setAtribTipohtml(string $atribTipohtml): self
     {
         $this->atribTipohtml = $atribTipohtml;
 
         return $this;
     }
 
-    /**
-     * Get atribTipohtml.
-     *
-     * @return string
-     */
-    public function getAtribTipohtml()
+    public function getAtribMask(): ?string
     {
-        return $this->atribTipohtml;
+        return $this->atribMask;
     }
 
-    /**
-     * Set atribMask.
-     *
-     * @param string|null $atribMask
-     *
-     * @return Atributo
-     */
-    public function setAtribMask($atribMask = null)
+    public function setAtribMask(?string $atribMask): self
     {
         $this->atribMask = $atribMask;
 
         return $this;
-    }
-
-    /**
-     * Get atribMask.
-     *
-     * @return string|null
-     */
-    public function getAtribMask()
-    {
-        return $this->atribMask;
     }
 }

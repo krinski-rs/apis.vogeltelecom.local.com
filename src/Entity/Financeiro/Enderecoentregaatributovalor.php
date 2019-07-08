@@ -2,309 +2,138 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Enderecoentregaatributovalor
- */
 class Enderecoentregaatributovalor
 {
-    /**
-     * @var int
-     */
     private $endeentratrivaloCodigoid;
 
-    /**
-     * @var int|null
-     */
     private $endeentratrivaloPaicodigoid;
 
-    /**
-     * @var int|null
-     */
     private $endeentrCodigoid;
 
-    /**
-     * @var string|null
-     */
     private $endeentratrivaloValor;
 
-    /**
-     * @var string|null
-     */
     private $endeentratrivaloDescricao;
 
-    /**
-     * @var \DateTime
-     */
-    private $dataInc = 'CURRENT_TIMESTAMP';
+    private $dataInc;
 
-    /**
-     * @var int|null
-     */
     private $registrante;
 
-    /**
-     * @var \DateTime|null
-     */
     private $endeentratrivaloDatafim;
 
-    /**
-     * @var \App\Entity\Financeiro\Atributovalor
-     */
     private $atrivaloCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
     private $contrato;
 
-
-    /**
-     * Get endeentratrivaloCodigoid.
-     *
-     * @return int
-     */
-    public function getEndeentratrivaloCodigoid()
+    public function getEndeentratrivaloCodigoid(): ?int
     {
         return $this->endeentratrivaloCodigoid;
     }
 
-    /**
-     * Set endeentratrivaloPaicodigoid.
-     *
-     * @param int|null $endeentratrivaloPaicodigoid
-     *
-     * @return Enderecoentregaatributovalor
-     */
-    public function setEndeentratrivaloPaicodigoid($endeentratrivaloPaicodigoid = null)
+    public function getEndeentratrivaloPaicodigoid(): ?int
+    {
+        return $this->endeentratrivaloPaicodigoid;
+    }
+
+    public function setEndeentratrivaloPaicodigoid(?int $endeentratrivaloPaicodigoid): self
     {
         $this->endeentratrivaloPaicodigoid = $endeentratrivaloPaicodigoid;
 
         return $this;
     }
 
-    /**
-     * Get endeentratrivaloPaicodigoid.
-     *
-     * @return int|null
-     */
-    public function getEndeentratrivaloPaicodigoid()
+    public function getEndeentrCodigoid(): ?int
     {
-        return $this->endeentratrivaloPaicodigoid;
+        return $this->endeentrCodigoid;
     }
 
-    /**
-     * Set contCodigoid.
-     *
-     * @param int $contCodigoid
-     *
-     * @return Enderecoentregaatributovalor
-     */
-    public function setContCodigoid($contCodigoid)
-    {
-        $this->contCodigoid = $contCodigoid;
-
-        return $this;
-    }
-
-    /**
-     * Get contCodigoid.
-     *
-     * @return int
-     */
-    public function getContCodigoid()
-    {
-        return $this->contCodigoid;
-    }
-
-    /**
-     * Set endeentrCodigoid.
-     *
-     * @param int|null $endeentrCodigoid
-     *
-     * @return Enderecoentregaatributovalor
-     */
-    public function setEndeentrCodigoid($endeentrCodigoid = null)
+    public function setEndeentrCodigoid(?int $endeentrCodigoid): self
     {
         $this->endeentrCodigoid = $endeentrCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get endeentrCodigoid.
-     *
-     * @return int|null
-     */
-    public function getEndeentrCodigoid()
+    public function getEndeentratrivaloValor(): ?string
     {
-        return $this->endeentrCodigoid;
+        return $this->endeentratrivaloValor;
     }
 
-    /**
-     * Set endeentratrivaloValor.
-     *
-     * @param string|null $endeentratrivaloValor
-     *
-     * @return Enderecoentregaatributovalor
-     */
-    public function setEndeentratrivaloValor($endeentratrivaloValor = null)
+    public function setEndeentratrivaloValor(?string $endeentratrivaloValor): self
     {
         $this->endeentratrivaloValor = $endeentratrivaloValor;
 
         return $this;
     }
 
-    /**
-     * Get endeentratrivaloValor.
-     *
-     * @return string|null
-     */
-    public function getEndeentratrivaloValor()
+    public function getEndeentratrivaloDescricao(): ?string
     {
-        return $this->endeentratrivaloValor;
+        return $this->endeentratrivaloDescricao;
     }
 
-    /**
-     * Set endeentratrivaloDescricao.
-     *
-     * @param string|null $endeentratrivaloDescricao
-     *
-     * @return Enderecoentregaatributovalor
-     */
-    public function setEndeentratrivaloDescricao($endeentratrivaloDescricao = null)
+    public function setEndeentratrivaloDescricao(?string $endeentratrivaloDescricao): self
     {
         $this->endeentratrivaloDescricao = $endeentratrivaloDescricao;
 
         return $this;
     }
 
-    /**
-     * Get endeentratrivaloDescricao.
-     *
-     * @return string|null
-     */
-    public function getEndeentratrivaloDescricao()
+    public function getDataInc(): ?\DateTimeInterface
     {
-        return $this->endeentratrivaloDescricao;
+        return $this->dataInc;
     }
 
-    /**
-     * Set dataInc.
-     *
-     * @param \DateTime $dataInc
-     *
-     * @return Enderecoentregaatributovalor
-     */
-    public function setDataInc($dataInc)
+    public function setDataInc(\DateTimeInterface $dataInc): self
     {
         $this->dataInc = $dataInc;
 
         return $this;
     }
 
-    /**
-     * Get dataInc.
-     *
-     * @return \DateTime
-     */
-    public function getDataInc()
+    public function getRegistrante(): ?int
     {
-        return $this->dataInc;
+        return $this->registrante;
     }
 
-    /**
-     * Set registrante.
-     *
-     * @param int|null $registrante
-     *
-     * @return Enderecoentregaatributovalor
-     */
-    public function setRegistrante($registrante = null)
+    public function setRegistrante(?int $registrante): self
     {
         $this->registrante = $registrante;
 
         return $this;
     }
 
-    /**
-     * Get registrante.
-     *
-     * @return int|null
-     */
-    public function getRegistrante()
+    public function getEndeentratrivaloDatafim(): ?\DateTimeInterface
     {
-        return $this->registrante;
+        return $this->endeentratrivaloDatafim;
     }
 
-    /**
-     * Set endeentratrivaloDatafim.
-     *
-     * @param \DateTime|null $endeentratrivaloDatafim
-     *
-     * @return Enderecoentregaatributovalor
-     */
-    public function setEndeentratrivaloDatafim($endeentratrivaloDatafim = null)
+    public function setEndeentratrivaloDatafim(?\DateTimeInterface $endeentratrivaloDatafim): self
     {
         $this->endeentratrivaloDatafim = $endeentratrivaloDatafim;
 
         return $this;
     }
 
-    /**
-     * Get endeentratrivaloDatafim.
-     *
-     * @return \DateTime|null
-     */
-    public function getEndeentratrivaloDatafim()
+    public function getAtrivaloCodigoid(): ?Atributovalor
     {
-        return $this->endeentratrivaloDatafim;
+        return $this->atrivaloCodigoid;
     }
 
-    /**
-     * Set atrivaloCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Atributovalor|null $atrivaloCodigoid
-     *
-     * @return Enderecoentregaatributovalor
-     */
-    public function setAtrivaloCodigoid(\App\Entity\Financeiro\Atributovalor $atrivaloCodigoid = null)
+    public function setAtrivaloCodigoid(?Atributovalor $atrivaloCodigoid): self
     {
         $this->atrivaloCodigoid = $atrivaloCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get atrivaloCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Atributovalor|null
-     */
-    public function getAtrivaloCodigoid()
+    public function getContrato(): ?Contrato
     {
-        return $this->atrivaloCodigoid;
+        return $this->contrato;
     }
 
-    /**
-     * Set contrato.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contrato
-     *
-     * @return Enderecoentregaatributovalor
-     */
-    public function setContrato(\App\Entity\Financeiro\Contrato $contrato = null)
+    public function setContrato(?Contrato $contrato): self
     {
         $this->contrato = $contrato;
 
         return $this;
-    }
-
-    /**
-     * Get contrato.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContrato()
-    {
-        return $this->contrato;
     }
 }

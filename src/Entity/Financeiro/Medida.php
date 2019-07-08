@@ -2,169 +2,82 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Medida
- */
 class Medida
 {
-    /**
-     * @var int
-     */
     private $mediCodigoid;
 
-    /**
-     * @var string
-     */
     private $mediNome;
 
-    /**
-     * @var string
-     */
     private $mediSigla;
 
-    /**
-     * @var int
-     */
-    private $mediMultiplicador = '1024';
+    private $mediMultiplicador;
 
-    /**
-     * @var int
-     */
-    private $mediVezes = '0';
+    private $mediVezes;
 
-    /**
-     * @var int
-     */
     private $mediCategoria;
 
-
-    /**
-     * Get mediCodigoid.
-     *
-     * @return int
-     */
-    public function getMediCodigoid()
+    public function getMediCodigoid(): ?int
     {
         return $this->mediCodigoid;
     }
 
-    /**
-     * Set mediNome.
-     *
-     * @param string $mediNome
-     *
-     * @return Medida
-     */
-    public function setMediNome($mediNome)
+    public function getMediNome(): ?string
+    {
+        return $this->mediNome;
+    }
+
+    public function setMediNome(string $mediNome): self
     {
         $this->mediNome = $mediNome;
 
         return $this;
     }
 
-    /**
-     * Get mediNome.
-     *
-     * @return string
-     */
-    public function getMediNome()
+    public function getMediSigla(): ?string
     {
-        return $this->mediNome;
+        return $this->mediSigla;
     }
 
-    /**
-     * Set mediSigla.
-     *
-     * @param string $mediSigla
-     *
-     * @return Medida
-     */
-    public function setMediSigla($mediSigla)
+    public function setMediSigla(string $mediSigla): self
     {
         $this->mediSigla = $mediSigla;
 
         return $this;
     }
 
-    /**
-     * Get mediSigla.
-     *
-     * @return string
-     */
-    public function getMediSigla()
+    public function getMediMultiplicador(): ?int
     {
-        return $this->mediSigla;
+        return $this->mediMultiplicador;
     }
 
-    /**
-     * Set mediMultiplicador.
-     *
-     * @param int $mediMultiplicador
-     *
-     * @return Medida
-     */
-    public function setMediMultiplicador($mediMultiplicador)
+    public function setMediMultiplicador(int $mediMultiplicador): self
     {
         $this->mediMultiplicador = $mediMultiplicador;
 
         return $this;
     }
 
-    /**
-     * Get mediMultiplicador.
-     *
-     * @return int
-     */
-    public function getMediMultiplicador()
+    public function getMediVezes(): ?int
     {
-        return $this->mediMultiplicador;
+        return $this->mediVezes;
     }
 
-    /**
-     * Set mediVezes.
-     *
-     * @param int $mediVezes
-     *
-     * @return Medida
-     */
-    public function setMediVezes($mediVezes)
+    public function setMediVezes(int $mediVezes): self
     {
         $this->mediVezes = $mediVezes;
 
         return $this;
     }
 
-    /**
-     * Get mediVezes.
-     *
-     * @return int
-     */
-    public function getMediVezes()
+    public function getMediCategoria(): ?int
     {
-        return $this->mediVezes;
+        return $this->mediCategoria;
     }
 
-    /**
-     * Set mediCategoria.
-     *
-     * @param int $mediCategoria
-     *
-     * @return Medida
-     */
-    public function setMediCategoria($mediCategoria)
+    public function setMediCategoria(int $mediCategoria): self
     {
         $this->mediCategoria = $mediCategoria;
 
         return $this;
-    }
-
-    /**
-     * Get mediCategoria.
-     *
-     * @return int
-     */
-    public function getMediCategoria()
-    {
-        return $this->mediCategoria;
     }
 }

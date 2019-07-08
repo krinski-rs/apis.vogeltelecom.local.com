@@ -2,256 +2,124 @@
 
 namespace App\Entity\Gcdb;
 
-/**
- * CadUsersTelefone
- */
 class CadUsersTelefone
 {
-    /**
-     * @var int
-     */
     private $id;
 
-    /**
-     * @var int|null
-     */
     private $ddi;
 
-    /**
-     * @var string|null
-     */
     private $ddd;
 
-    /**
-     * @var string|null
-     */
     private $telefone;
 
-    /**
-     * @var int|null
-     */
     private $ramal;
 
-    /**
-     * @var bool|null
-     */
     private $principal;
 
-    /**
-     * @var bool|null
-     */
     private $emergencia;
 
-    /**
-     * @var \App\Entity\Gcdb\AdmTipoTelefone
-     */
     private $admTiposTelefone;
 
-    /**
-     * @var \App\Entity\Gcdb\CadUsers
-     */
     private $cadUser;
 
-
-    /**
-     * Get id.
-     *
-     * @return int
-     */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * Set ddi.
-     *
-     * @param int|null $ddi
-     *
-     * @return CadUsersTelefone
-     */
-    public function setDdi($ddi = null)
+    public function getDdi(): ?int
+    {
+        return $this->ddi;
+    }
+
+    public function setDdi(?int $ddi): self
     {
         $this->ddi = $ddi;
 
         return $this;
     }
 
-    /**
-     * Get ddi.
-     *
-     * @return int|null
-     */
-    public function getDdi()
+    public function getDdd(): ?string
     {
-        return $this->ddi;
+        return $this->ddd;
     }
 
-    /**
-     * Set ddd.
-     *
-     * @param string|null $ddd
-     *
-     * @return CadUsersTelefone
-     */
-    public function setDdd($ddd = null)
+    public function setDdd(?string $ddd): self
     {
         $this->ddd = $ddd;
 
         return $this;
     }
 
-    /**
-     * Get ddd.
-     *
-     * @return string|null
-     */
-    public function getDdd()
+    public function getTelefone(): ?string
     {
-        return $this->ddd;
+        return $this->telefone;
     }
 
-    /**
-     * Set telefone.
-     *
-     * @param string|null $telefone
-     *
-     * @return CadUsersTelefone
-     */
-    public function setTelefone($telefone = null)
+    public function setTelefone(?string $telefone): self
     {
         $this->telefone = $telefone;
 
         return $this;
     }
 
-    /**
-     * Get telefone.
-     *
-     * @return string|null
-     */
-    public function getTelefone()
+    public function getRamal(): ?int
     {
-        return $this->telefone;
+        return $this->ramal;
     }
 
-    /**
-     * Set ramal.
-     *
-     * @param int|null $ramal
-     *
-     * @return CadUsersTelefone
-     */
-    public function setRamal($ramal = null)
+    public function setRamal(?int $ramal): self
     {
         $this->ramal = $ramal;
 
         return $this;
     }
 
-    /**
-     * Get ramal.
-     *
-     * @return int|null
-     */
-    public function getRamal()
+    public function getPrincipal(): ?bool
     {
-        return $this->ramal;
+        return $this->principal;
     }
 
-    /**
-     * Set principal.
-     *
-     * @param bool|null $principal
-     *
-     * @return CadUsersTelefone
-     */
-    public function setPrincipal($principal = null)
+    public function setPrincipal(?bool $principal): self
     {
         $this->principal = $principal;
 
         return $this;
     }
 
-    /**
-     * Get principal.
-     *
-     * @return bool|null
-     */
-    public function getPrincipal()
+    public function getEmergencia(): ?bool
     {
-        return $this->principal;
+        return $this->emergencia;
     }
 
-    /**
-     * Set emergencia.
-     *
-     * @param bool|null $emergencia
-     *
-     * @return CadUsersTelefone
-     */
-    public function setEmergencia($emergencia = null)
+    public function setEmergencia(?bool $emergencia): self
     {
         $this->emergencia = $emergencia;
 
         return $this;
     }
 
-    /**
-     * Get emergencia.
-     *
-     * @return bool|null
-     */
-    public function getEmergencia()
+    public function getAdmTiposTelefone(): ?AdmTipoTelefone
     {
-        return $this->emergencia;
+        return $this->admTiposTelefone;
     }
 
-    /**
-     * Set admTiposTelefone.
-     *
-     * @param \App\Entity\Gcdb\AdmTipoTelefone|null $admTiposTelefone
-     *
-     * @return CadUsersTelefone
-     */
-    public function setAdmTiposTelefone(\App\Entity\Gcdb\AdmTipoTelefone $admTiposTelefone = null)
+    public function setAdmTiposTelefone(?AdmTipoTelefone $admTiposTelefone): self
     {
         $this->admTiposTelefone = $admTiposTelefone;
 
         return $this;
     }
 
-    /**
-     * Get admTiposTelefone.
-     *
-     * @return \App\Entity\Gcdb\AdmTipoTelefone|null
-     */
-    public function getAdmTiposTelefone()
+    public function getCadUser(): ?CadUsers
     {
-        return $this->admTiposTelefone;
+        return $this->cadUser;
     }
 
-    /**
-     * Set cadUser.
-     *
-     * @param \App\Entity\Gcdb\CadUsers|null $cadUser
-     *
-     * @return CadUsersTelefone
-     */
-    public function setCadUser(\App\Entity\Gcdb\CadUsers $cadUser = null)
+    public function setCadUser(?CadUsers $cadUser): self
     {
         $this->cadUser = $cadUser;
 
         return $this;
-    }
-
-    /**
-     * Get cadUser.
-     *
-     * @return \App\Entity\Gcdb\CadUsers|null
-     */
-    public function getCadUser()
-    {
-        return $this->cadUser;
     }
 }

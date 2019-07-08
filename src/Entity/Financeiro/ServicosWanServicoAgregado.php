@@ -2,111 +2,54 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * ServicosWanServicoAgregado
- */
 class ServicosWanServicoAgregado
 {
-    /**
-     * @var int
-     */
     private $id;
 
-    /**
-     * @var string
-     */
     private $tprIdServico;
 
-    /**
-     * @var \DateTime
-     */
-    private $dataInc = 'CURRENT_TIMESTAMP';
+    private $dataInc;
 
-    /**
-     * @var \App\Entity\Financeiro\ServicoAgregado
-     */
     private $servagreCodigoid;
 
-
-    /**
-     * Get id.
-     *
-     * @return int
-     */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * Set tprIdServico.
-     *
-     * @param string $tprIdServico
-     *
-     * @return ServicosWanServicoAgregado
-     */
-    public function setTprIdServico($tprIdServico)
+    public function getTprIdServico(): ?string
+    {
+        return $this->tprIdServico;
+    }
+
+    public function setTprIdServico(string $tprIdServico): self
     {
         $this->tprIdServico = $tprIdServico;
 
         return $this;
     }
 
-    /**
-     * Get tprIdServico.
-     *
-     * @return string
-     */
-    public function getTprIdServico()
+    public function getDataInc(): ?\DateTimeInterface
     {
-        return $this->tprIdServico;
+        return $this->dataInc;
     }
 
-    /**
-     * Set dataInc.
-     *
-     * @param \DateTime $dataInc
-     *
-     * @return ServicosWanServicoAgregado
-     */
-    public function setDataInc($dataInc)
+    public function setDataInc(\DateTimeInterface $dataInc): self
     {
         $this->dataInc = $dataInc;
 
         return $this;
     }
 
-    /**
-     * Get dataInc.
-     *
-     * @return \DateTime
-     */
-    public function getDataInc()
+    public function getServagreCodigoid(): ?ServicoAgregado
     {
-        return $this->dataInc;
+        return $this->servagreCodigoid;
     }
 
-    /**
-     * Set servagreCodigoid.
-     *
-     * @param \App\Entity\Financeiro\ServicoAgregado|null $servagreCodigoid
-     *
-     * @return ServicosWanServicoAgregado
-     */
-    public function setServagreCodigoid(\App\Entity\Financeiro\ServicoAgregado $servagreCodigoid = null)
+    public function setServagreCodigoid(?ServicoAgregado $servagreCodigoid): self
     {
         $this->servagreCodigoid = $servagreCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get servagreCodigoid.
-     *
-     * @return \App\Entity\Financeiro\ServicoAgregado|null
-     */
-    public function getServagreCodigoid()
-    {
-        return $this->servagreCodigoid;
     }
 }

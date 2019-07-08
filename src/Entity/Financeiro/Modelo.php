@@ -2,169 +2,82 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Modelo
- */
 class Modelo
 {
-    /**
-     * @var int
-     */
     private $modeCodigoid;
 
-    /**
-     * @var string
-     */
     private $modeNome;
 
-    /**
-     * @var bool
-     */
     private $modeAtivo;
 
-    /**
-     * @var \DateTime
-     */
-    private $modeDatainc = 'CURRENT_TIMESTAMP';
+    private $modeDatainc;
 
-    /**
-     * @var \DateTime|null
-     */
     private $modeDatafim;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
     private $contCodigoid;
 
-
-    /**
-     * Get modeCodigoid.
-     *
-     * @return int
-     */
-    public function getModeCodigoid()
+    public function getModeCodigoid(): ?int
     {
         return $this->modeCodigoid;
     }
 
-    /**
-     * Set modeNome.
-     *
-     * @param string $modeNome
-     *
-     * @return Modelo
-     */
-    public function setModeNome($modeNome)
+    public function getModeNome(): ?string
+    {
+        return $this->modeNome;
+    }
+
+    public function setModeNome(string $modeNome): self
     {
         $this->modeNome = $modeNome;
 
         return $this;
     }
 
-    /**
-     * Get modeNome.
-     *
-     * @return string
-     */
-    public function getModeNome()
+    public function getModeAtivo(): ?bool
     {
-        return $this->modeNome;
+        return $this->modeAtivo;
     }
 
-    /**
-     * Set modeAtivo.
-     *
-     * @param bool $modeAtivo
-     *
-     * @return Modelo
-     */
-    public function setModeAtivo($modeAtivo)
+    public function setModeAtivo(bool $modeAtivo): self
     {
         $this->modeAtivo = $modeAtivo;
 
         return $this;
     }
 
-    /**
-     * Get modeAtivo.
-     *
-     * @return bool
-     */
-    public function getModeAtivo()
+    public function getModeDatainc(): ?\DateTimeInterface
     {
-        return $this->modeAtivo;
+        return $this->modeDatainc;
     }
 
-    /**
-     * Set modeDatainc.
-     *
-     * @param \DateTime $modeDatainc
-     *
-     * @return Modelo
-     */
-    public function setModeDatainc($modeDatainc)
+    public function setModeDatainc(\DateTimeInterface $modeDatainc): self
     {
         $this->modeDatainc = $modeDatainc;
 
         return $this;
     }
 
-    /**
-     * Get modeDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getModeDatainc()
+    public function getModeDatafim(): ?\DateTimeInterface
     {
-        return $this->modeDatainc;
+        return $this->modeDatafim;
     }
 
-    /**
-     * Set modeDatafim.
-     *
-     * @param \DateTime|null $modeDatafim
-     *
-     * @return Modelo
-     */
-    public function setModeDatafim($modeDatafim = null)
+    public function setModeDatafim(?\DateTimeInterface $modeDatafim): self
     {
         $this->modeDatafim = $modeDatafim;
 
         return $this;
     }
 
-    /**
-     * Get modeDatafim.
-     *
-     * @return \DateTime|null
-     */
-    public function getModeDatafim()
+    public function getContCodigoid(): ?Contrato
     {
-        return $this->modeDatafim;
+        return $this->contCodigoid;
     }
 
-    /**
-     * Set contCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contCodigoid
-     *
-     * @return Modelo
-     */
-    public function setContCodigoid(\App\Entity\Financeiro\Contrato $contCodigoid = null)
+    public function setContCodigoid(?Contrato $contCodigoid): self
     {
         $this->contCodigoid = $contCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get contCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContCodigoid()
-    {
-        return $this->contCodigoid;
     }
 }

@@ -2,183 +2,82 @@
 
 namespace App\Entity\Cep;
 
-/**
- * LogFaixaBairro
- */
 class LogFaixaBairro
 {
-    /**
-     * @var int
-     */
     private $fcbNuOrdem;
 
-    /**
-     * @var string
-     */
     private $fcbRadIni;
 
-    /**
-     * @var string
-     */
     private $fcbSufIni;
 
-    /**
-     * @var string
-     */
     private $fcbRadFim;
 
-    /**
-     * @var string
-     */
     private $fcbSufFim;
 
-    /**
-     * @var \App\Entity\Cep\LogBairro
-     */
     private $baiNuSequencial;
 
-
-    /**
-     * Set fcbNuOrdem.
-     *
-     * @param int $fcbNuOrdem
-     *
-     * @return LogFaixaBairro
-     */
-    public function setFcbNuOrdem($fcbNuOrdem)
-    {
-        $this->fcbNuOrdem = $fcbNuOrdem;
-
-        return $this;
-    }
-
-    /**
-     * Get fcbNuOrdem.
-     *
-     * @return int
-     */
-    public function getFcbNuOrdem()
+    public function getFcbNuOrdem(): ?int
     {
         return $this->fcbNuOrdem;
     }
 
-    /**
-     * Set fcbRadIni.
-     *
-     * @param string $fcbRadIni
-     *
-     * @return LogFaixaBairro
-     */
-    public function setFcbRadIni($fcbRadIni)
+    public function getFcbRadIni(): ?string
+    {
+        return $this->fcbRadIni;
+    }
+
+    public function setFcbRadIni(string $fcbRadIni): self
     {
         $this->fcbRadIni = $fcbRadIni;
 
         return $this;
     }
 
-    /**
-     * Get fcbRadIni.
-     *
-     * @return string
-     */
-    public function getFcbRadIni()
+    public function getFcbSufIni(): ?string
     {
-        return $this->fcbRadIni;
+        return $this->fcbSufIni;
     }
 
-    /**
-     * Set fcbSufIni.
-     *
-     * @param string $fcbSufIni
-     *
-     * @return LogFaixaBairro
-     */
-    public function setFcbSufIni($fcbSufIni)
+    public function setFcbSufIni(string $fcbSufIni): self
     {
         $this->fcbSufIni = $fcbSufIni;
 
         return $this;
     }
 
-    /**
-     * Get fcbSufIni.
-     *
-     * @return string
-     */
-    public function getFcbSufIni()
+    public function getFcbRadFim(): ?string
     {
-        return $this->fcbSufIni;
+        return $this->fcbRadFim;
     }
 
-    /**
-     * Set fcbRadFim.
-     *
-     * @param string $fcbRadFim
-     *
-     * @return LogFaixaBairro
-     */
-    public function setFcbRadFim($fcbRadFim)
+    public function setFcbRadFim(string $fcbRadFim): self
     {
         $this->fcbRadFim = $fcbRadFim;
 
         return $this;
     }
 
-    /**
-     * Get fcbRadFim.
-     *
-     * @return string
-     */
-    public function getFcbRadFim()
+    public function getFcbSufFim(): ?string
     {
-        return $this->fcbRadFim;
+        return $this->fcbSufFim;
     }
 
-    /**
-     * Set fcbSufFim.
-     *
-     * @param string $fcbSufFim
-     *
-     * @return LogFaixaBairro
-     */
-    public function setFcbSufFim($fcbSufFim)
+    public function setFcbSufFim(string $fcbSufFim): self
     {
         $this->fcbSufFim = $fcbSufFim;
 
         return $this;
     }
 
-    /**
-     * Get fcbSufFim.
-     *
-     * @return string
-     */
-    public function getFcbSufFim()
+    public function getBaiNuSequencial(): ?LogBairro
     {
-        return $this->fcbSufFim;
+        return $this->baiNuSequencial;
     }
 
-    /**
-     * Set baiNuSequencial.
-     *
-     * @param \App\Entity\Cep\LogBairro $baiNuSequencial
-     *
-     * @return LogFaixaBairro
-     */
-    public function setBaiNuSequencial(\App\Entity\Cep\LogBairro $baiNuSequencial)
+    public function setBaiNuSequencial(?LogBairro $baiNuSequencial): self
     {
         $this->baiNuSequencial = $baiNuSequencial;
 
         return $this;
-    }
-
-    /**
-     * Get baiNuSequencial.
-     *
-     * @return \App\Entity\Cep\LogBairro
-     */
-    public function getBaiNuSequencial()
-    {
-        return $this->baiNuSequencial;
     }
 }

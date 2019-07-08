@@ -2,459 +2,222 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Ativacao
- */
 class Ativacao
 {
-    /**
-     * @var int
-     */
     private $ativCodigoid;
 
-    /**
-     * @var int|null
-     */
     private $usuaCodigoid;
 
-    /**
-     * @var \DateTime
-     */
-    private $ativDatainc = 'CURRENT_TIMESTAMP';
+    private $ativDatainc;
 
-    /**
-     * @var \DateTime|null
-     */
     private $ativDataativado;
 
-    /**
-     * @var bool
-     */
     private $ativApospagamento;
 
-    /**
-     * @var bool
-     */
     private $ativAposassinatura;
 
-    /**
-     * @var \DateTime|null
-     */
     private $ativDatafixa;
 
-    /**
-     * @var int|null
-     */
     private $ativDiasapos;
 
-    /**
-     * @var bool
-     */
     private $ativCobraraposativacao;
 
-    /**
-     * @var bool
-     */
     private $ativCobraraposassinatura;
 
-    /**
-     * @var \DateTime|null
-     */
     private $ativCobrardatafixa;
 
-    /**
-     * @var int|null
-     */
     private $ativCobrardiasapos;
 
-    /**
-     * @var bool|null
-     */
     private $ativCobraraposprimeiraparcela;
 
-    /**
-     * @var \DateTime|null
-     */
     private $ativDataalterado;
 
-    /**
-     * @var \DateTime|null
-     */
     private $ativPagamentotaxa;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
     private $contCodigoid;
 
-
-    /**
-     * Get ativCodigoid.
-     *
-     * @return int
-     */
-    public function getAtivCodigoid()
+    public function getAtivCodigoid(): ?int
     {
         return $this->ativCodigoid;
     }
 
-    /**
-     * Set usuaCodigoid.
-     *
-     * @param int|null $usuaCodigoid
-     *
-     * @return Ativacao
-     */
-    public function setUsuaCodigoid($usuaCodigoid = null)
+    public function getUsuaCodigoid(): ?int
+    {
+        return $this->usuaCodigoid;
+    }
+
+    public function setUsuaCodigoid(?int $usuaCodigoid): self
     {
         $this->usuaCodigoid = $usuaCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get usuaCodigoid.
-     *
-     * @return int|null
-     */
-    public function getUsuaCodigoid()
+    public function getAtivDatainc(): ?\DateTimeInterface
     {
-        return $this->usuaCodigoid;
+        return $this->ativDatainc;
     }
 
-    /**
-     * Set ativDatainc.
-     *
-     * @param \DateTime $ativDatainc
-     *
-     * @return Ativacao
-     */
-    public function setAtivDatainc($ativDatainc)
+    public function setAtivDatainc(\DateTimeInterface $ativDatainc): self
     {
         $this->ativDatainc = $ativDatainc;
 
         return $this;
     }
 
-    /**
-     * Get ativDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getAtivDatainc()
+    public function getAtivDataativado(): ?\DateTimeInterface
     {
-        return $this->ativDatainc;
+        return $this->ativDataativado;
     }
 
-    /**
-     * Set ativDataativado.
-     *
-     * @param \DateTime|null $ativDataativado
-     *
-     * @return Ativacao
-     */
-    public function setAtivDataativado($ativDataativado = null)
+    public function setAtivDataativado(?\DateTimeInterface $ativDataativado): self
     {
         $this->ativDataativado = $ativDataativado;
 
         return $this;
     }
 
-    /**
-     * Get ativDataativado.
-     *
-     * @return \DateTime|null
-     */
-    public function getAtivDataativado()
+    public function getAtivApospagamento(): ?bool
     {
-        return $this->ativDataativado;
+        return $this->ativApospagamento;
     }
 
-    /**
-     * Set ativApospagamento.
-     *
-     * @param bool $ativApospagamento
-     *
-     * @return Ativacao
-     */
-    public function setAtivApospagamento($ativApospagamento)
+    public function setAtivApospagamento(bool $ativApospagamento): self
     {
         $this->ativApospagamento = $ativApospagamento;
 
         return $this;
     }
 
-    /**
-     * Get ativApospagamento.
-     *
-     * @return bool
-     */
-    public function getAtivApospagamento()
+    public function getAtivAposassinatura(): ?bool
     {
-        return $this->ativApospagamento;
+        return $this->ativAposassinatura;
     }
 
-    /**
-     * Set ativAposassinatura.
-     *
-     * @param bool $ativAposassinatura
-     *
-     * @return Ativacao
-     */
-    public function setAtivAposassinatura($ativAposassinatura)
+    public function setAtivAposassinatura(bool $ativAposassinatura): self
     {
         $this->ativAposassinatura = $ativAposassinatura;
 
         return $this;
     }
 
-    /**
-     * Get ativAposassinatura.
-     *
-     * @return bool
-     */
-    public function getAtivAposassinatura()
+    public function getAtivDatafixa(): ?\DateTimeInterface
     {
-        return $this->ativAposassinatura;
+        return $this->ativDatafixa;
     }
 
-    /**
-     * Set ativDatafixa.
-     *
-     * @param \DateTime|null $ativDatafixa
-     *
-     * @return Ativacao
-     */
-    public function setAtivDatafixa($ativDatafixa = null)
+    public function setAtivDatafixa(?\DateTimeInterface $ativDatafixa): self
     {
         $this->ativDatafixa = $ativDatafixa;
 
         return $this;
     }
 
-    /**
-     * Get ativDatafixa.
-     *
-     * @return \DateTime|null
-     */
-    public function getAtivDatafixa()
+    public function getAtivDiasapos(): ?int
     {
-        return $this->ativDatafixa;
+        return $this->ativDiasapos;
     }
 
-    /**
-     * Set ativDiasapos.
-     *
-     * @param int|null $ativDiasapos
-     *
-     * @return Ativacao
-     */
-    public function setAtivDiasapos($ativDiasapos = null)
+    public function setAtivDiasapos(?int $ativDiasapos): self
     {
         $this->ativDiasapos = $ativDiasapos;
 
         return $this;
     }
 
-    /**
-     * Get ativDiasapos.
-     *
-     * @return int|null
-     */
-    public function getAtivDiasapos()
+    public function getAtivCobraraposativacao(): ?bool
     {
-        return $this->ativDiasapos;
+        return $this->ativCobraraposativacao;
     }
 
-    /**
-     * Set ativCobraraposativacao.
-     *
-     * @param bool $ativCobraraposativacao
-     *
-     * @return Ativacao
-     */
-    public function setAtivCobraraposativacao($ativCobraraposativacao)
+    public function setAtivCobraraposativacao(bool $ativCobraraposativacao): self
     {
         $this->ativCobraraposativacao = $ativCobraraposativacao;
 
         return $this;
     }
 
-    /**
-     * Get ativCobraraposativacao.
-     *
-     * @return bool
-     */
-    public function getAtivCobraraposativacao()
+    public function getAtivCobraraposassinatura(): ?bool
     {
-        return $this->ativCobraraposativacao;
+        return $this->ativCobraraposassinatura;
     }
 
-    /**
-     * Set ativCobraraposassinatura.
-     *
-     * @param bool $ativCobraraposassinatura
-     *
-     * @return Ativacao
-     */
-    public function setAtivCobraraposassinatura($ativCobraraposassinatura)
+    public function setAtivCobraraposassinatura(bool $ativCobraraposassinatura): self
     {
         $this->ativCobraraposassinatura = $ativCobraraposassinatura;
 
         return $this;
     }
 
-    /**
-     * Get ativCobraraposassinatura.
-     *
-     * @return bool
-     */
-    public function getAtivCobraraposassinatura()
+    public function getAtivCobrardatafixa(): ?\DateTimeInterface
     {
-        return $this->ativCobraraposassinatura;
+        return $this->ativCobrardatafixa;
     }
 
-    /**
-     * Set ativCobrardatafixa.
-     *
-     * @param \DateTime|null $ativCobrardatafixa
-     *
-     * @return Ativacao
-     */
-    public function setAtivCobrardatafixa($ativCobrardatafixa = null)
+    public function setAtivCobrardatafixa(?\DateTimeInterface $ativCobrardatafixa): self
     {
         $this->ativCobrardatafixa = $ativCobrardatafixa;
 
         return $this;
     }
 
-    /**
-     * Get ativCobrardatafixa.
-     *
-     * @return \DateTime|null
-     */
-    public function getAtivCobrardatafixa()
+    public function getAtivCobrardiasapos(): ?int
     {
-        return $this->ativCobrardatafixa;
+        return $this->ativCobrardiasapos;
     }
 
-    /**
-     * Set ativCobrardiasapos.
-     *
-     * @param int|null $ativCobrardiasapos
-     *
-     * @return Ativacao
-     */
-    public function setAtivCobrardiasapos($ativCobrardiasapos = null)
+    public function setAtivCobrardiasapos(?int $ativCobrardiasapos): self
     {
         $this->ativCobrardiasapos = $ativCobrardiasapos;
 
         return $this;
     }
 
-    /**
-     * Get ativCobrardiasapos.
-     *
-     * @return int|null
-     */
-    public function getAtivCobrardiasapos()
+    public function getAtivCobraraposprimeiraparcela(): ?bool
     {
-        return $this->ativCobrardiasapos;
+        return $this->ativCobraraposprimeiraparcela;
     }
 
-    /**
-     * Set ativCobraraposprimeiraparcela.
-     *
-     * @param bool|null $ativCobraraposprimeiraparcela
-     *
-     * @return Ativacao
-     */
-    public function setAtivCobraraposprimeiraparcela($ativCobraraposprimeiraparcela = null)
+    public function setAtivCobraraposprimeiraparcela(?bool $ativCobraraposprimeiraparcela): self
     {
         $this->ativCobraraposprimeiraparcela = $ativCobraraposprimeiraparcela;
 
         return $this;
     }
 
-    /**
-     * Get ativCobraraposprimeiraparcela.
-     *
-     * @return bool|null
-     */
-    public function getAtivCobraraposprimeiraparcela()
+    public function getAtivDataalterado(): ?\DateTimeInterface
     {
-        return $this->ativCobraraposprimeiraparcela;
+        return $this->ativDataalterado;
     }
 
-    /**
-     * Set ativDataalterado.
-     *
-     * @param \DateTime|null $ativDataalterado
-     *
-     * @return Ativacao
-     */
-    public function setAtivDataalterado($ativDataalterado = null)
+    public function setAtivDataalterado(?\DateTimeInterface $ativDataalterado): self
     {
         $this->ativDataalterado = $ativDataalterado;
 
         return $this;
     }
 
-    /**
-     * Get ativDataalterado.
-     *
-     * @return \DateTime|null
-     */
-    public function getAtivDataalterado()
+    public function getAtivPagamentotaxa(): ?\DateTimeInterface
     {
-        return $this->ativDataalterado;
+        return $this->ativPagamentotaxa;
     }
 
-    /**
-     * Set ativPagamentotaxa.
-     *
-     * @param \DateTime|null $ativPagamentotaxa
-     *
-     * @return Ativacao
-     */
-    public function setAtivPagamentotaxa($ativPagamentotaxa = null)
+    public function setAtivPagamentotaxa(?\DateTimeInterface $ativPagamentotaxa): self
     {
         $this->ativPagamentotaxa = $ativPagamentotaxa;
 
         return $this;
     }
 
-    /**
-     * Get ativPagamentotaxa.
-     *
-     * @return \DateTime|null
-     */
-    public function getAtivPagamentotaxa()
+    public function getContCodigoid(): ?Contrato
     {
-        return $this->ativPagamentotaxa;
+        return $this->contCodigoid;
     }
 
-    /**
-     * Set contCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contCodigoid
-     *
-     * @return Ativacao
-     */
-    public function setContCodigoid(\App\Entity\Financeiro\Contrato $contCodigoid = null)
+    public function setContCodigoid(?Contrato $contCodigoid): self
     {
         $this->contCodigoid = $contCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get contCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContCodigoid()
-    {
-        return $this->contCodigoid;
     }
 }

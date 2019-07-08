@@ -2,256 +2,124 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Confirmacao
- */
 class Confirmacao
 {
-    /**
-     * @var int
-     */
     private $confCodigoid;
 
-    /**
-     * @var string
-     */
     private $confTipo;
 
-    /**
-     * @var \DateTime
-     */
-    private $confDatainc = 'CURRENT_TIMESTAMP';
+    private $confDatainc;
 
-    /**
-     * @var \DateTime
-     */
-    private $confDataconfi = '0000-00-00 00:00:00';
+    private $confDataconfi;
 
-    /**
-     * @var int
-     */
     private $usuaCodigoid;
 
-    /**
-     * @var bool
-     */
     private $confCiente;
 
-    /**
-     * @var string|null
-     */
     private $confJustificativa;
 
-    /**
-     * @var string|null
-     */
     private $confContato;
 
-    /**
-     * @var \App\Entity\Financeiro\Ativacao
-     */
     private $ativCodigoid;
 
-
-    /**
-     * Get confCodigoid.
-     *
-     * @return int
-     */
-    public function getConfCodigoid()
+    public function getConfCodigoid(): ?int
     {
         return $this->confCodigoid;
     }
 
-    /**
-     * Set confTipo.
-     *
-     * @param string $confTipo
-     *
-     * @return Confirmacao
-     */
-    public function setConfTipo($confTipo)
+    public function getConfTipo(): ?string
+    {
+        return $this->confTipo;
+    }
+
+    public function setConfTipo(string $confTipo): self
     {
         $this->confTipo = $confTipo;
 
         return $this;
     }
 
-    /**
-     * Get confTipo.
-     *
-     * @return string
-     */
-    public function getConfTipo()
+    public function getConfDatainc(): ?\DateTimeInterface
     {
-        return $this->confTipo;
+        return $this->confDatainc;
     }
 
-    /**
-     * Set confDatainc.
-     *
-     * @param \DateTime $confDatainc
-     *
-     * @return Confirmacao
-     */
-    public function setConfDatainc($confDatainc)
+    public function setConfDatainc(\DateTimeInterface $confDatainc): self
     {
         $this->confDatainc = $confDatainc;
 
         return $this;
     }
 
-    /**
-     * Get confDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getConfDatainc()
+    public function getConfDataconfi(): ?\DateTimeInterface
     {
-        return $this->confDatainc;
+        return $this->confDataconfi;
     }
 
-    /**
-     * Set confDataconfi.
-     *
-     * @param \DateTime $confDataconfi
-     *
-     * @return Confirmacao
-     */
-    public function setConfDataconfi($confDataconfi)
+    public function setConfDataconfi(\DateTimeInterface $confDataconfi): self
     {
         $this->confDataconfi = $confDataconfi;
 
         return $this;
     }
 
-    /**
-     * Get confDataconfi.
-     *
-     * @return \DateTime
-     */
-    public function getConfDataconfi()
+    public function getUsuaCodigoid(): ?int
     {
-        return $this->confDataconfi;
+        return $this->usuaCodigoid;
     }
 
-    /**
-     * Set usuaCodigoid.
-     *
-     * @param int $usuaCodigoid
-     *
-     * @return Confirmacao
-     */
-    public function setUsuaCodigoid($usuaCodigoid)
+    public function setUsuaCodigoid(int $usuaCodigoid): self
     {
         $this->usuaCodigoid = $usuaCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get usuaCodigoid.
-     *
-     * @return int
-     */
-    public function getUsuaCodigoid()
+    public function getConfCiente(): ?bool
     {
-        return $this->usuaCodigoid;
+        return $this->confCiente;
     }
 
-    /**
-     * Set confCiente.
-     *
-     * @param bool $confCiente
-     *
-     * @return Confirmacao
-     */
-    public function setConfCiente($confCiente)
+    public function setConfCiente(bool $confCiente): self
     {
         $this->confCiente = $confCiente;
 
         return $this;
     }
 
-    /**
-     * Get confCiente.
-     *
-     * @return bool
-     */
-    public function getConfCiente()
+    public function getConfJustificativa(): ?string
     {
-        return $this->confCiente;
+        return $this->confJustificativa;
     }
 
-    /**
-     * Set confJustificativa.
-     *
-     * @param string|null $confJustificativa
-     *
-     * @return Confirmacao
-     */
-    public function setConfJustificativa($confJustificativa = null)
+    public function setConfJustificativa(?string $confJustificativa): self
     {
         $this->confJustificativa = $confJustificativa;
 
         return $this;
     }
 
-    /**
-     * Get confJustificativa.
-     *
-     * @return string|null
-     */
-    public function getConfJustificativa()
+    public function getConfContato(): ?string
     {
-        return $this->confJustificativa;
+        return $this->confContato;
     }
 
-    /**
-     * Set confContato.
-     *
-     * @param string|null $confContato
-     *
-     * @return Confirmacao
-     */
-    public function setConfContato($confContato = null)
+    public function setConfContato(?string $confContato): self
     {
         $this->confContato = $confContato;
 
         return $this;
     }
 
-    /**
-     * Get confContato.
-     *
-     * @return string|null
-     */
-    public function getConfContato()
+    public function getAtivCodigoid(): ?Ativacao
     {
-        return $this->confContato;
+        return $this->ativCodigoid;
     }
 
-    /**
-     * Set ativCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Ativacao|null $ativCodigoid
-     *
-     * @return Confirmacao
-     */
-    public function setAtivCodigoid(\App\Entity\Financeiro\Ativacao $ativCodigoid = null)
+    public function setAtivCodigoid(?Ativacao $ativCodigoid): self
     {
         $this->ativCodigoid = $ativCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get ativCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Ativacao|null
-     */
-    public function getAtivCodigoid()
-    {
-        return $this->ativCodigoid;
     }
 }

@@ -2,111 +2,54 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * TmpLogCliente
- */
 class TmpLogCliente
 {
-    /**
-     * @var int
-     */
     private $id;
 
-    /**
-     * @var string|null
-     */
     private $descricao;
 
-    /**
-     * @var string|null
-     */
     private $dataInc;
 
-    /**
-     * @var string|null
-     */
     private $cnpj;
 
-
-    /**
-     * Get id.
-     *
-     * @return int
-     */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * Set descricao.
-     *
-     * @param string|null $descricao
-     *
-     * @return TmpLogCliente
-     */
-    public function setDescricao($descricao = null)
+    public function getDescricao(): ?string
+    {
+        return $this->descricao;
+    }
+
+    public function setDescricao(?string $descricao): self
     {
         $this->descricao = $descricao;
 
         return $this;
     }
 
-    /**
-     * Get descricao.
-     *
-     * @return string|null
-     */
-    public function getDescricao()
+    public function getDataInc(): ?string
     {
-        return $this->descricao;
+        return $this->dataInc;
     }
 
-    /**
-     * Set dataInc.
-     *
-     * @param string|null $dataInc
-     *
-     * @return TmpLogCliente
-     */
-    public function setDataInc($dataInc = null)
+    public function setDataInc(?string $dataInc): self
     {
         $this->dataInc = $dataInc;
 
         return $this;
     }
 
-    /**
-     * Get dataInc.
-     *
-     * @return string|null
-     */
-    public function getDataInc()
+    public function getCnpj(): ?string
     {
-        return $this->dataInc;
+        return $this->cnpj;
     }
 
-    /**
-     * Set cnpj.
-     *
-     * @param string|null $cnpj
-     *
-     * @return TmpLogCliente
-     */
-    public function setCnpj($cnpj = null)
+    public function setCnpj(?string $cnpj): self
     {
         $this->cnpj = $cnpj;
 
         return $this;
-    }
-
-    /**
-     * Get cnpj.
-     *
-     * @return string|null
-     */
-    public function getCnpj()
-    {
-        return $this->cnpj;
     }
 }

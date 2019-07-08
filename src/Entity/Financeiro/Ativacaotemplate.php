@@ -2,82 +2,40 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Ativacaotemplate
- */
 class Ativacaotemplate
 {
-    /**
-     * @var int
-     */
     private $ativtempCodigoid;
 
-    /**
-     * @var string
-     */
     private $ativtempNome;
 
-    /**
-     * @var \App\Entity\Financeiro\Servico
-     */
     private $servCodigoid;
 
-
-    /**
-     * Get ativtempCodigoid.
-     *
-     * @return int
-     */
-    public function getAtivtempCodigoid()
+    public function getAtivtempCodigoid(): ?int
     {
         return $this->ativtempCodigoid;
     }
 
-    /**
-     * Set ativtempNome.
-     *
-     * @param string $ativtempNome
-     *
-     * @return Ativacaotemplate
-     */
-    public function setAtivtempNome($ativtempNome)
+    public function getAtivtempNome(): ?string
+    {
+        return $this->ativtempNome;
+    }
+
+    public function setAtivtempNome(string $ativtempNome): self
     {
         $this->ativtempNome = $ativtempNome;
 
         return $this;
     }
 
-    /**
-     * Get ativtempNome.
-     *
-     * @return string
-     */
-    public function getAtivtempNome()
+    public function getServCodigoid(): ?Servico
     {
-        return $this->ativtempNome;
+        return $this->servCodigoid;
     }
 
-    /**
-     * Set servCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Servico|null $servCodigoid
-     *
-     * @return Ativacaotemplate
-     */
-    public function setServCodigoid(\App\Entity\Financeiro\Servico $servCodigoid = null)
+    public function setServCodigoid(?Servico $servCodigoid): self
     {
         $this->servCodigoid = $servCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get servCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Servico|null
-     */
-    public function getServCodigoid()
-    {
-        return $this->servCodigoid;
     }
 }

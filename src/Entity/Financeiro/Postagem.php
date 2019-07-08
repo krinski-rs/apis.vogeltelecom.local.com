@@ -2,169 +2,82 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Postagem
- */
 class Postagem
 {
-    /**
-     * @var int
-     */
     private $postCodigoid;
 
-    /**
-     * @var int
-     */
     private $usuaCodigoid;
 
-    /**
-     * @var \DateTime
-     */
-    private $postDatainc = 'CURRENT_TIMESTAMP';
+    private $postDatainc;
 
-    /**
-     * @var \DateTime|null
-     */
     private $postDatarecebimento;
 
-    /**
-     * @var \App\Entity\Financeiro\Ar
-     */
     private $arCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Fatura
-     */
     private $fatuCodigoid;
 
-
-    /**
-     * Get postCodigoid.
-     *
-     * @return int
-     */
-    public function getPostCodigoid()
+    public function getPostCodigoid(): ?int
     {
         return $this->postCodigoid;
     }
 
-    /**
-     * Set usuaCodigoid.
-     *
-     * @param int $usuaCodigoid
-     *
-     * @return Postagem
-     */
-    public function setUsuaCodigoid($usuaCodigoid)
+    public function getUsuaCodigoid(): ?int
+    {
+        return $this->usuaCodigoid;
+    }
+
+    public function setUsuaCodigoid(int $usuaCodigoid): self
     {
         $this->usuaCodigoid = $usuaCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get usuaCodigoid.
-     *
-     * @return int
-     */
-    public function getUsuaCodigoid()
+    public function getPostDatainc(): ?\DateTimeInterface
     {
-        return $this->usuaCodigoid;
+        return $this->postDatainc;
     }
 
-    /**
-     * Set postDatainc.
-     *
-     * @param \DateTime $postDatainc
-     *
-     * @return Postagem
-     */
-    public function setPostDatainc($postDatainc)
+    public function setPostDatainc(\DateTimeInterface $postDatainc): self
     {
         $this->postDatainc = $postDatainc;
 
         return $this;
     }
 
-    /**
-     * Get postDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getPostDatainc()
+    public function getPostDatarecebimento(): ?\DateTimeInterface
     {
-        return $this->postDatainc;
+        return $this->postDatarecebimento;
     }
 
-    /**
-     * Set postDatarecebimento.
-     *
-     * @param \DateTime|null $postDatarecebimento
-     *
-     * @return Postagem
-     */
-    public function setPostDatarecebimento($postDatarecebimento = null)
+    public function setPostDatarecebimento(?\DateTimeInterface $postDatarecebimento): self
     {
         $this->postDatarecebimento = $postDatarecebimento;
 
         return $this;
     }
 
-    /**
-     * Get postDatarecebimento.
-     *
-     * @return \DateTime|null
-     */
-    public function getPostDatarecebimento()
+    public function getArCodigoid(): ?Ar
     {
-        return $this->postDatarecebimento;
+        return $this->arCodigoid;
     }
 
-    /**
-     * Set arCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Ar|null $arCodigoid
-     *
-     * @return Postagem
-     */
-    public function setArCodigoid(\App\Entity\Financeiro\Ar $arCodigoid = null)
+    public function setArCodigoid(?Ar $arCodigoid): self
     {
         $this->arCodigoid = $arCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get arCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Ar|null
-     */
-    public function getArCodigoid()
+    public function getFatuCodigoid(): ?Fatura
     {
-        return $this->arCodigoid;
+        return $this->fatuCodigoid;
     }
 
-    /**
-     * Set fatuCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Fatura|null $fatuCodigoid
-     *
-     * @return Postagem
-     */
-    public function setFatuCodigoid(\App\Entity\Financeiro\Fatura $fatuCodigoid = null)
+    public function setFatuCodigoid(?Fatura $fatuCodigoid): self
     {
         $this->fatuCodigoid = $fatuCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get fatuCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Fatura|null
-     */
-    public function getFatuCodigoid()
-    {
-        return $this->fatuCodigoid;
     }
 }

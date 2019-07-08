@@ -2,169 +2,82 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Igpdi
- */
 class Igpdi
 {
-    /**
-     * @var int
-     */
     private $igpdiCodigoid;
 
-    /**
-     * @var \DateTime
-     */
-    private $igpdiDatainc = 'CURRENT_TIMESTAMP';
+    private $igpdiDatainc;
 
-    /**
-     * @var string
-     */
     private $igpdiPercentual;
 
-    /**
-     * @var string
-     */
-    private $igpdiAcumuladonoano = '0.00';
+    private $igpdiAcumuladonoano;
 
-    /**
-     * @var string
-     */
-    private $igpdiAcumulado12meses = '0.00';
+    private $igpdiAcumulado12meses;
 
-    /**
-     * @var \DateTime
-     */
-    private $igpdiPrazo = '0000-00-00 00:00:00';
+    private $igpdiPrazo;
 
-
-    /**
-     * Get igpdiCodigoid.
-     *
-     * @return int
-     */
-    public function getIgpdiCodigoid()
+    public function getIgpdiCodigoid(): ?int
     {
         return $this->igpdiCodigoid;
     }
 
-    /**
-     * Set igpdiDatainc.
-     *
-     * @param \DateTime $igpdiDatainc
-     *
-     * @return Igpdi
-     */
-    public function setIgpdiDatainc($igpdiDatainc)
+    public function getIgpdiDatainc(): ?\DateTimeInterface
+    {
+        return $this->igpdiDatainc;
+    }
+
+    public function setIgpdiDatainc(\DateTimeInterface $igpdiDatainc): self
     {
         $this->igpdiDatainc = $igpdiDatainc;
 
         return $this;
     }
 
-    /**
-     * Get igpdiDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getIgpdiDatainc()
+    public function getIgpdiPercentual()
     {
-        return $this->igpdiDatainc;
+        return $this->igpdiPercentual;
     }
 
-    /**
-     * Set igpdiPercentual.
-     *
-     * @param string $igpdiPercentual
-     *
-     * @return Igpdi
-     */
-    public function setIgpdiPercentual($igpdiPercentual)
+    public function setIgpdiPercentual($igpdiPercentual): self
     {
         $this->igpdiPercentual = $igpdiPercentual;
 
         return $this;
     }
 
-    /**
-     * Get igpdiPercentual.
-     *
-     * @return string
-     */
-    public function getIgpdiPercentual()
+    public function getIgpdiAcumuladonoano()
     {
-        return $this->igpdiPercentual;
+        return $this->igpdiAcumuladonoano;
     }
 
-    /**
-     * Set igpdiAcumuladonoano.
-     *
-     * @param string $igpdiAcumuladonoano
-     *
-     * @return Igpdi
-     */
-    public function setIgpdiAcumuladonoano($igpdiAcumuladonoano)
+    public function setIgpdiAcumuladonoano($igpdiAcumuladonoano): self
     {
         $this->igpdiAcumuladonoano = $igpdiAcumuladonoano;
 
         return $this;
     }
 
-    /**
-     * Get igpdiAcumuladonoano.
-     *
-     * @return string
-     */
-    public function getIgpdiAcumuladonoano()
+    public function getIgpdiAcumulado12meses()
     {
-        return $this->igpdiAcumuladonoano;
+        return $this->igpdiAcumulado12meses;
     }
 
-    /**
-     * Set igpdiAcumulado12meses.
-     *
-     * @param string $igpdiAcumulado12meses
-     *
-     * @return Igpdi
-     */
-    public function setIgpdiAcumulado12meses($igpdiAcumulado12meses)
+    public function setIgpdiAcumulado12meses($igpdiAcumulado12meses): self
     {
         $this->igpdiAcumulado12meses = $igpdiAcumulado12meses;
 
         return $this;
     }
 
-    /**
-     * Get igpdiAcumulado12meses.
-     *
-     * @return string
-     */
-    public function getIgpdiAcumulado12meses()
+    public function getIgpdiPrazo(): ?\DateTimeInterface
     {
-        return $this->igpdiAcumulado12meses;
+        return $this->igpdiPrazo;
     }
 
-    /**
-     * Set igpdiPrazo.
-     *
-     * @param \DateTime $igpdiPrazo
-     *
-     * @return Igpdi
-     */
-    public function setIgpdiPrazo($igpdiPrazo)
+    public function setIgpdiPrazo(\DateTimeInterface $igpdiPrazo): self
     {
         $this->igpdiPrazo = $igpdiPrazo;
 
         return $this;
-    }
-
-    /**
-     * Get igpdiPrazo.
-     *
-     * @return \DateTime
-     */
-    public function getIgpdiPrazo()
-    {
-        return $this->igpdiPrazo;
     }
 }

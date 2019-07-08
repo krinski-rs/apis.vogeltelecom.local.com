@@ -2,111 +2,54 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Contratoservico
- */
 class Contratoservico
 {
-    /**
-     * @var int
-     */
     private $contservCodigoid;
 
-    /**
-     * @var string|null
-     */
     private $contservCircuito;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
     private $contCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Servicocapacidade
-     */
     private $servcapaCodigoid;
 
-
-    /**
-     * Get contservCodigoid.
-     *
-     * @return int
-     */
-    public function getContservCodigoid()
+    public function getContservCodigoid(): ?int
     {
         return $this->contservCodigoid;
     }
 
-    /**
-     * Set contservCircuito.
-     *
-     * @param string|null $contservCircuito
-     *
-     * @return Contratoservico
-     */
-    public function setContservCircuito($contservCircuito = null)
+    public function getContservCircuito(): ?string
+    {
+        return $this->contservCircuito;
+    }
+
+    public function setContservCircuito(?string $contservCircuito): self
     {
         $this->contservCircuito = $contservCircuito;
 
         return $this;
     }
 
-    /**
-     * Get contservCircuito.
-     *
-     * @return string|null
-     */
-    public function getContservCircuito()
+    public function getContCodigoid(): ?Contrato
     {
-        return $this->contservCircuito;
+        return $this->contCodigoid;
     }
 
-    /**
-     * Set contCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contCodigoid
-     *
-     * @return Contratoservico
-     */
-    public function setContCodigoid(\App\Entity\Financeiro\Contrato $contCodigoid = null)
+    public function setContCodigoid(?Contrato $contCodigoid): self
     {
         $this->contCodigoid = $contCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get contCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContCodigoid()
+    public function getServcapaCodigoid(): ?Servicocapacidade
     {
-        return $this->contCodigoid;
+        return $this->servcapaCodigoid;
     }
 
-    /**
-     * Set servcapaCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Servicocapacidade|null $servcapaCodigoid
-     *
-     * @return Contratoservico
-     */
-    public function setServcapaCodigoid(\App\Entity\Financeiro\Servicocapacidade $servcapaCodigoid = null)
+    public function setServcapaCodigoid(?Servicocapacidade $servcapaCodigoid): self
     {
         $this->servcapaCodigoid = $servcapaCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get servcapaCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Servicocapacidade|null
-     */
-    public function getServcapaCodigoid()
-    {
-        return $this->servcapaCodigoid;
     }
 }

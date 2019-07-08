@@ -2,111 +2,54 @@
 
 namespace App\Entity\Gcdb;
 
-/**
- * AdmPais
- */
 class AdmPais
 {
-    /**
-     * @var int
-     */
     private $id;
 
-    /**
-     * @var string|null
-     */
     private $sigla;
 
-    /**
-     * @var string|null
-     */
     private $nome;
 
-    /**
-     * @var int
-     */
-    private $codigoBacen = '0';
+    private $codigoBacen;
 
-
-    /**
-     * Get id.
-     *
-     * @return int
-     */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * Set sigla.
-     *
-     * @param string|null $sigla
-     *
-     * @return AdmPais
-     */
-    public function setSigla($sigla = null)
+    public function getSigla(): ?string
+    {
+        return $this->sigla;
+    }
+
+    public function setSigla(?string $sigla): self
     {
         $this->sigla = $sigla;
 
         return $this;
     }
 
-    /**
-     * Get sigla.
-     *
-     * @return string|null
-     */
-    public function getSigla()
+    public function getNome(): ?string
     {
-        return $this->sigla;
+        return $this->nome;
     }
 
-    /**
-     * Set nome.
-     *
-     * @param string|null $nome
-     *
-     * @return AdmPais
-     */
-    public function setNome($nome = null)
+    public function setNome(?string $nome): self
     {
         $this->nome = $nome;
 
         return $this;
     }
 
-    /**
-     * Get nome.
-     *
-     * @return string|null
-     */
-    public function getNome()
+    public function getCodigoBacen(): ?int
     {
-        return $this->nome;
+        return $this->codigoBacen;
     }
 
-    /**
-     * Set codigoBacen.
-     *
-     * @param int $codigoBacen
-     *
-     * @return AdmPais
-     */
-    public function setCodigoBacen($codigoBacen)
+    public function setCodigoBacen(int $codigoBacen): self
     {
         $this->codigoBacen = $codigoBacen;
 
         return $this;
-    }
-
-    /**
-     * Get codigoBacen.
-     *
-     * @return int
-     */
-    public function getCodigoBacen()
-    {
-        return $this->codigoBacen;
     }
 }

@@ -2,285 +2,138 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * TmpPonta
- */
 class TmpPonta
 {
-    /**
-     * @var int
-     */
     private $idTmpPonta;
 
-    /**
-     * @var string|null
-     */
     private $ponta;
 
-    /**
-     * @var string|null
-     */
     private $interface;
 
-    /**
-     * @var string|null
-     */
     private $logradouro;
 
-    /**
-     * @var string|null
-     */
     private $numero;
 
-    /**
-     * @var string|null
-     */
     private $complemento;
 
-    /**
-     * @var string|null
-     */
     private $cidade;
 
-    /**
-     * @var string|null
-     */
     private $estado;
 
-    /**
-     * @var int|null
-     */
     private $idPop;
 
-    /**
-     * @var \App\Entity\Financeiro\TmpCircuito
-     */
     private $idTmpCircuito;
 
-
-    /**
-     * Get idTmpPonta.
-     *
-     * @return int
-     */
-    public function getIdTmpPonta()
+    public function getIdTmpPonta(): ?int
     {
         return $this->idTmpPonta;
     }
 
-    /**
-     * Set ponta.
-     *
-     * @param string|null $ponta
-     *
-     * @return TmpPonta
-     */
-    public function setPonta($ponta = null)
+    public function getPonta(): ?string
+    {
+        return $this->ponta;
+    }
+
+    public function setPonta(?string $ponta): self
     {
         $this->ponta = $ponta;
 
         return $this;
     }
 
-    /**
-     * Get ponta.
-     *
-     * @return string|null
-     */
-    public function getPonta()
+    public function getInterface(): ?string
     {
-        return $this->ponta;
+        return $this->interface;
     }
 
-    /**
-     * Set interface.
-     *
-     * @param string|null $interface
-     *
-     * @return TmpPonta
-     */
-    public function setInterface($interface = null)
+    public function setInterface(?string $interface): self
     {
         $this->interface = $interface;
 
         return $this;
     }
 
-    /**
-     * Get interface.
-     *
-     * @return string|null
-     */
-    public function getInterface()
+    public function getLogradouro(): ?string
     {
-        return $this->interface;
+        return $this->logradouro;
     }
 
-    /**
-     * Set logradouro.
-     *
-     * @param string|null $logradouro
-     *
-     * @return TmpPonta
-     */
-    public function setLogradouro($logradouro = null)
+    public function setLogradouro(?string $logradouro): self
     {
         $this->logradouro = $logradouro;
 
         return $this;
     }
 
-    /**
-     * Get logradouro.
-     *
-     * @return string|null
-     */
-    public function getLogradouro()
+    public function getNumero(): ?string
     {
-        return $this->logradouro;
+        return $this->numero;
     }
 
-    /**
-     * Set numero.
-     *
-     * @param string|null $numero
-     *
-     * @return TmpPonta
-     */
-    public function setNumero($numero = null)
+    public function setNumero(?string $numero): self
     {
         $this->numero = $numero;
 
         return $this;
     }
 
-    /**
-     * Get numero.
-     *
-     * @return string|null
-     */
-    public function getNumero()
+    public function getComplemento(): ?string
     {
-        return $this->numero;
+        return $this->complemento;
     }
 
-    /**
-     * Set complemento.
-     *
-     * @param string|null $complemento
-     *
-     * @return TmpPonta
-     */
-    public function setComplemento($complemento = null)
+    public function setComplemento(?string $complemento): self
     {
         $this->complemento = $complemento;
 
         return $this;
     }
 
-    /**
-     * Get complemento.
-     *
-     * @return string|null
-     */
-    public function getComplemento()
+    public function getCidade(): ?string
     {
-        return $this->complemento;
+        return $this->cidade;
     }
 
-    /**
-     * Set cidade.
-     *
-     * @param string|null $cidade
-     *
-     * @return TmpPonta
-     */
-    public function setCidade($cidade = null)
+    public function setCidade(?string $cidade): self
     {
         $this->cidade = $cidade;
 
         return $this;
     }
 
-    /**
-     * Get cidade.
-     *
-     * @return string|null
-     */
-    public function getCidade()
+    public function getEstado(): ?string
     {
-        return $this->cidade;
+        return $this->estado;
     }
 
-    /**
-     * Set estado.
-     *
-     * @param string|null $estado
-     *
-     * @return TmpPonta
-     */
-    public function setEstado($estado = null)
+    public function setEstado(?string $estado): self
     {
         $this->estado = $estado;
 
         return $this;
     }
 
-    /**
-     * Get estado.
-     *
-     * @return string|null
-     */
-    public function getEstado()
+    public function getIdPop(): ?int
     {
-        return $this->estado;
+        return $this->idPop;
     }
 
-    /**
-     * Set idPop.
-     *
-     * @param int|null $idPop
-     *
-     * @return TmpPonta
-     */
-    public function setIdPop($idPop = null)
+    public function setIdPop(?int $idPop): self
     {
         $this->idPop = $idPop;
 
         return $this;
     }
 
-    /**
-     * Get idPop.
-     *
-     * @return int|null
-     */
-    public function getIdPop()
+    public function getIdTmpCircuito(): ?TmpCircuito
     {
-        return $this->idPop;
+        return $this->idTmpCircuito;
     }
 
-    /**
-     * Set idTmpCircuito.
-     *
-     * @param \App\Entity\Financeiro\TmpCircuito|null $idTmpCircuito
-     *
-     * @return TmpPonta
-     */
-    public function setIdTmpCircuito(\App\Entity\Financeiro\TmpCircuito $idTmpCircuito = null)
+    public function setIdTmpCircuito(?TmpCircuito $idTmpCircuito): self
     {
         $this->idTmpCircuito = $idTmpCircuito;
 
         return $this;
-    }
-
-    /**
-     * Get idTmpCircuito.
-     *
-     * @return \App\Entity\Financeiro\TmpCircuito|null
-     */
-    public function getIdTmpCircuito()
-    {
-        return $this->idTmpCircuito;
     }
 }

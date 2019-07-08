@@ -2,169 +2,82 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Desativacao
- */
 class Desativacao
 {
-    /**
-     * @var int
-     */
     private $desaCodigoid;
 
-    /**
-     * @var int|null
-     */
     private $usuaCodigoid;
 
-    /**
-     * @var \DateTime
-     */
-    private $desaDatainc = 'CURRENT_TIMESTAMP';
+    private $desaDatainc;
 
-    /**
-     * @var \DateTime|null
-     */
     private $desaDatadesativado;
 
-    /**
-     * @var bool
-     */
-    private $desaAtivo = '1';
+    private $desaAtivo;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
     private $contCodigoid;
 
-
-    /**
-     * Get desaCodigoid.
-     *
-     * @return int
-     */
-    public function getDesaCodigoid()
+    public function getDesaCodigoid(): ?int
     {
         return $this->desaCodigoid;
     }
 
-    /**
-     * Set usuaCodigoid.
-     *
-     * @param int|null $usuaCodigoid
-     *
-     * @return Desativacao
-     */
-    public function setUsuaCodigoid($usuaCodigoid = null)
+    public function getUsuaCodigoid(): ?int
+    {
+        return $this->usuaCodigoid;
+    }
+
+    public function setUsuaCodigoid(?int $usuaCodigoid): self
     {
         $this->usuaCodigoid = $usuaCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get usuaCodigoid.
-     *
-     * @return int|null
-     */
-    public function getUsuaCodigoid()
+    public function getDesaDatainc(): ?\DateTimeInterface
     {
-        return $this->usuaCodigoid;
+        return $this->desaDatainc;
     }
 
-    /**
-     * Set desaDatainc.
-     *
-     * @param \DateTime $desaDatainc
-     *
-     * @return Desativacao
-     */
-    public function setDesaDatainc($desaDatainc)
+    public function setDesaDatainc(\DateTimeInterface $desaDatainc): self
     {
         $this->desaDatainc = $desaDatainc;
 
         return $this;
     }
 
-    /**
-     * Get desaDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getDesaDatainc()
+    public function getDesaDatadesativado(): ?\DateTimeInterface
     {
-        return $this->desaDatainc;
+        return $this->desaDatadesativado;
     }
 
-    /**
-     * Set desaDatadesativado.
-     *
-     * @param \DateTime|null $desaDatadesativado
-     *
-     * @return Desativacao
-     */
-    public function setDesaDatadesativado($desaDatadesativado = null)
+    public function setDesaDatadesativado(?\DateTimeInterface $desaDatadesativado): self
     {
         $this->desaDatadesativado = $desaDatadesativado;
 
         return $this;
     }
 
-    /**
-     * Get desaDatadesativado.
-     *
-     * @return \DateTime|null
-     */
-    public function getDesaDatadesativado()
+    public function getDesaAtivo(): ?bool
     {
-        return $this->desaDatadesativado;
+        return $this->desaAtivo;
     }
 
-    /**
-     * Set desaAtivo.
-     *
-     * @param bool $desaAtivo
-     *
-     * @return Desativacao
-     */
-    public function setDesaAtivo($desaAtivo)
+    public function setDesaAtivo(bool $desaAtivo): self
     {
         $this->desaAtivo = $desaAtivo;
 
         return $this;
     }
 
-    /**
-     * Get desaAtivo.
-     *
-     * @return bool
-     */
-    public function getDesaAtivo()
+    public function getContCodigoid(): ?Contrato
     {
-        return $this->desaAtivo;
+        return $this->contCodigoid;
     }
 
-    /**
-     * Set contCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contCodigoid
-     *
-     * @return Desativacao
-     */
-    public function setContCodigoid(\App\Entity\Financeiro\Contrato $contCodigoid = null)
+    public function setContCodigoid(?Contrato $contCodigoid): self
     {
         $this->contCodigoid = $contCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get contCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContCodigoid()
-    {
-        return $this->contCodigoid;
     }
 }

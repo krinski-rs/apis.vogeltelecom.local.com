@@ -2,82 +2,40 @@
 
 namespace App\Entity\Gcdb;
 
-/**
- * CadUsersSite
- */
 class CadUsersSite
 {
-    /**
-     * @var int
-     */
     private $id;
 
-    /**
-     * @var int|null
-     */
     private $cadUser;
 
-    /**
-     * @var string|null
-     */
     private $site;
 
-
-    /**
-     * Get id.
-     *
-     * @return int
-     */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * Set cadUser.
-     *
-     * @param int|null $cadUser
-     *
-     * @return CadUsersSite
-     */
-    public function setCadUser($cadUser = null)
+    public function getCadUser(): ?int
+    {
+        return $this->cadUser;
+    }
+
+    public function setCadUser(?int $cadUser): self
     {
         $this->cadUser = $cadUser;
 
         return $this;
     }
 
-    /**
-     * Get cadUser.
-     *
-     * @return int|null
-     */
-    public function getCadUser()
+    public function getSite(): ?string
     {
-        return $this->cadUser;
+        return $this->site;
     }
 
-    /**
-     * Set site.
-     *
-     * @param string|null $site
-     *
-     * @return CadUsersSite
-     */
-    public function setSite($site = null)
+    public function setSite(?string $site): self
     {
         $this->site = $site;
 
         return $this;
-    }
-
-    /**
-     * Get site.
-     *
-     * @return string|null
-     */
-    public function getSite()
-    {
-        return $this->site;
     }
 }

@@ -2,53 +2,26 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Discriminacao
- */
 class Discriminacao
 {
-    /**
-     * @var int
-     */
     private $idDiscriminacao;
 
-    /**
-     * @var string|null
-     */
     private $descricao;
 
-
-    /**
-     * Get idDiscriminacao.
-     *
-     * @return int
-     */
-    public function getIdDiscriminacao()
+    public function getIdDiscriminacao(): ?int
     {
         return $this->idDiscriminacao;
     }
 
-    /**
-     * Set descricao.
-     *
-     * @param string|null $descricao
-     *
-     * @return Discriminacao
-     */
-    public function setDescricao($descricao = null)
+    public function getDescricao(): ?string
+    {
+        return $this->descricao;
+    }
+
+    public function setDescricao(?string $descricao): self
     {
         $this->descricao = $descricao;
 
         return $this;
-    }
-
-    /**
-     * Get descricao.
-     *
-     * @return string|null
-     */
-    public function getDescricao()
-    {
-        return $this->descricao;
     }
 }

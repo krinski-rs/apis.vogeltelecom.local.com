@@ -2,111 +2,54 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * ContratovalorDiscriminacao
- */
 class ContratovalorDiscriminacao
 {
-    /**
-     * @var int
-     */
     private $contDiscriminacaoCodigoid;
 
-    /**
-     * @var string
-     */
     private $valor;
 
-    /**
-     * @var \App\Entity\Financeiro\Contratovalor
-     */
     private $contvaloCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Discriminacao
-     */
     private $discriminacaoCodigoid;
 
-
-    /**
-     * Get contDiscriminacaoCodigoid.
-     *
-     * @return int
-     */
-    public function getContDiscriminacaoCodigoid()
+    public function getContDiscriminacaoCodigoid(): ?int
     {
         return $this->contDiscriminacaoCodigoid;
     }
 
-    /**
-     * Set valor.
-     *
-     * @param string $valor
-     *
-     * @return ContratovalorDiscriminacao
-     */
-    public function setValor($valor)
+    public function getValor()
+    {
+        return $this->valor;
+    }
+
+    public function setValor($valor): self
     {
         $this->valor = $valor;
 
         return $this;
     }
 
-    /**
-     * Get valor.
-     *
-     * @return string
-     */
-    public function getValor()
+    public function getContvaloCodigoid(): ?Contratovalor
     {
-        return $this->valor;
+        return $this->contvaloCodigoid;
     }
 
-    /**
-     * Set contvaloCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contratovalor|null $contvaloCodigoid
-     *
-     * @return ContratovalorDiscriminacao
-     */
-    public function setContvaloCodigoid(\App\Entity\Financeiro\Contratovalor $contvaloCodigoid = null)
+    public function setContvaloCodigoid(?Contratovalor $contvaloCodigoid): self
     {
         $this->contvaloCodigoid = $contvaloCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get contvaloCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contratovalor|null
-     */
-    public function getContvaloCodigoid()
+    public function getDiscriminacaoCodigoid(): ?Discriminacao
     {
-        return $this->contvaloCodigoid;
+        return $this->discriminacaoCodigoid;
     }
 
-    /**
-     * Set discriminacaoCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Discriminacao|null $discriminacaoCodigoid
-     *
-     * @return ContratovalorDiscriminacao
-     */
-    public function setDiscriminacaoCodigoid(\App\Entity\Financeiro\Discriminacao $discriminacaoCodigoid = null)
+    public function setDiscriminacaoCodigoid(?Discriminacao $discriminacaoCodigoid): self
     {
         $this->discriminacaoCodigoid = $discriminacaoCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get discriminacaoCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Discriminacao|null
-     */
-    public function getDiscriminacaoCodigoid()
-    {
-        return $this->discriminacaoCodigoid;
     }
 }

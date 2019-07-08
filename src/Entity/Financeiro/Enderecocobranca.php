@@ -2,343 +2,166 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Enderecocobranca
- */
 class Enderecocobranca
 {
-    /**
-     * @var int
-     */
     private $endecobrCodigoid;
 
-    /**
-     * @var int
-     */
     private $endecobrPais;
 
-    /**
-     * @var string
-     */
     private $endecobrEstado;
 
-    /**
-     * @var string
-     */
     private $endecobrCidade;
 
-    /**
-     * @var string
-     */
     private $endecobrBairro;
 
-    /**
-     * @var string
-     */
     private $endecobrLogradouro;
 
-    /**
-     * @var string
-     */
     private $endecobrCep;
 
-    /**
-     * @var string
-     */
     private $endecobrNumero;
 
-    /**
-     * @var string|null
-     */
     private $endecobrComplemento;
 
-    /**
-     * @var string|null
-     */
     private $endecobrLatitude;
 
-    /**
-     * @var string|null
-     */
     private $endecobrLongitude;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
     private $contCodigoid;
 
-
-    /**
-     * Get endecobrCodigoid.
-     *
-     * @return int
-     */
-    public function getEndecobrCodigoid()
+    public function getEndecobrCodigoid(): ?int
     {
         return $this->endecobrCodigoid;
     }
 
-    /**
-     * Set endecobrPais.
-     *
-     * @param int $endecobrPais
-     *
-     * @return Enderecocobranca
-     */
-    public function setEndecobrPais($endecobrPais)
+    public function getEndecobrPais(): ?int
+    {
+        return $this->endecobrPais;
+    }
+
+    public function setEndecobrPais(int $endecobrPais): self
     {
         $this->endecobrPais = $endecobrPais;
 
         return $this;
     }
 
-    /**
-     * Get endecobrPais.
-     *
-     * @return int
-     */
-    public function getEndecobrPais()
+    public function getEndecobrEstado(): ?string
     {
-        return $this->endecobrPais;
+        return $this->endecobrEstado;
     }
 
-    /**
-     * Set endecobrEstado.
-     *
-     * @param string $endecobrEstado
-     *
-     * @return Enderecocobranca
-     */
-    public function setEndecobrEstado($endecobrEstado)
+    public function setEndecobrEstado(string $endecobrEstado): self
     {
         $this->endecobrEstado = $endecobrEstado;
 
         return $this;
     }
 
-    /**
-     * Get endecobrEstado.
-     *
-     * @return string
-     */
-    public function getEndecobrEstado()
+    public function getEndecobrCidade(): ?string
     {
-        return $this->endecobrEstado;
+        return $this->endecobrCidade;
     }
 
-    /**
-     * Set endecobrCidade.
-     *
-     * @param string $endecobrCidade
-     *
-     * @return Enderecocobranca
-     */
-    public function setEndecobrCidade($endecobrCidade)
+    public function setEndecobrCidade(string $endecobrCidade): self
     {
         $this->endecobrCidade = $endecobrCidade;
 
         return $this;
     }
 
-    /**
-     * Get endecobrCidade.
-     *
-     * @return string
-     */
-    public function getEndecobrCidade()
+    public function getEndecobrBairro(): ?string
     {
-        return $this->endecobrCidade;
+        return $this->endecobrBairro;
     }
 
-    /**
-     * Set endecobrBairro.
-     *
-     * @param string $endecobrBairro
-     *
-     * @return Enderecocobranca
-     */
-    public function setEndecobrBairro($endecobrBairro)
+    public function setEndecobrBairro(string $endecobrBairro): self
     {
         $this->endecobrBairro = $endecobrBairro;
 
         return $this;
     }
 
-    /**
-     * Get endecobrBairro.
-     *
-     * @return string
-     */
-    public function getEndecobrBairro()
+    public function getEndecobrLogradouro(): ?string
     {
-        return $this->endecobrBairro;
+        return $this->endecobrLogradouro;
     }
 
-    /**
-     * Set endecobrLogradouro.
-     *
-     * @param string $endecobrLogradouro
-     *
-     * @return Enderecocobranca
-     */
-    public function setEndecobrLogradouro($endecobrLogradouro)
+    public function setEndecobrLogradouro(string $endecobrLogradouro): self
     {
         $this->endecobrLogradouro = $endecobrLogradouro;
 
         return $this;
     }
 
-    /**
-     * Get endecobrLogradouro.
-     *
-     * @return string
-     */
-    public function getEndecobrLogradouro()
+    public function getEndecobrCep(): ?string
     {
-        return $this->endecobrLogradouro;
+        return $this->endecobrCep;
     }
 
-    /**
-     * Set endecobrCep.
-     *
-     * @param string $endecobrCep
-     *
-     * @return Enderecocobranca
-     */
-    public function setEndecobrCep($endecobrCep)
+    public function setEndecobrCep(string $endecobrCep): self
     {
         $this->endecobrCep = $endecobrCep;
 
         return $this;
     }
 
-    /**
-     * Get endecobrCep.
-     *
-     * @return string
-     */
-    public function getEndecobrCep()
+    public function getEndecobrNumero(): ?string
     {
-        return $this->endecobrCep;
+        return $this->endecobrNumero;
     }
 
-    /**
-     * Set endecobrNumero.
-     *
-     * @param string $endecobrNumero
-     *
-     * @return Enderecocobranca
-     */
-    public function setEndecobrNumero($endecobrNumero)
+    public function setEndecobrNumero(string $endecobrNumero): self
     {
         $this->endecobrNumero = $endecobrNumero;
 
         return $this;
     }
 
-    /**
-     * Get endecobrNumero.
-     *
-     * @return string
-     */
-    public function getEndecobrNumero()
+    public function getEndecobrComplemento(): ?string
     {
-        return $this->endecobrNumero;
+        return $this->endecobrComplemento;
     }
 
-    /**
-     * Set endecobrComplemento.
-     *
-     * @param string|null $endecobrComplemento
-     *
-     * @return Enderecocobranca
-     */
-    public function setEndecobrComplemento($endecobrComplemento = null)
+    public function setEndecobrComplemento(?string $endecobrComplemento): self
     {
         $this->endecobrComplemento = $endecobrComplemento;
 
         return $this;
     }
 
-    /**
-     * Get endecobrComplemento.
-     *
-     * @return string|null
-     */
-    public function getEndecobrComplemento()
+    public function getEndecobrLatitude(): ?string
     {
-        return $this->endecobrComplemento;
+        return $this->endecobrLatitude;
     }
 
-    /**
-     * Set endecobrLatitude.
-     *
-     * @param string|null $endecobrLatitude
-     *
-     * @return Enderecocobranca
-     */
-    public function setEndecobrLatitude($endecobrLatitude = null)
+    public function setEndecobrLatitude(?string $endecobrLatitude): self
     {
         $this->endecobrLatitude = $endecobrLatitude;
 
         return $this;
     }
 
-    /**
-     * Get endecobrLatitude.
-     *
-     * @return string|null
-     */
-    public function getEndecobrLatitude()
+    public function getEndecobrLongitude(): ?string
     {
-        return $this->endecobrLatitude;
+        return $this->endecobrLongitude;
     }
 
-    /**
-     * Set endecobrLongitude.
-     *
-     * @param string|null $endecobrLongitude
-     *
-     * @return Enderecocobranca
-     */
-    public function setEndecobrLongitude($endecobrLongitude = null)
+    public function setEndecobrLongitude(?string $endecobrLongitude): self
     {
         $this->endecobrLongitude = $endecobrLongitude;
 
         return $this;
     }
 
-    /**
-     * Get endecobrLongitude.
-     *
-     * @return string|null
-     */
-    public function getEndecobrLongitude()
+    public function getContCodigoid(): ?Contrato
     {
-        return $this->endecobrLongitude;
+        return $this->contCodigoid;
     }
 
-    /**
-     * Set contCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contCodigoid
-     *
-     * @return Enderecocobranca
-     */
-    public function setContCodigoid(\App\Entity\Financeiro\Contrato $contCodigoid = null)
+    public function setContCodigoid(?Contrato $contCodigoid): self
     {
         $this->contCodigoid = $contCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get contCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContCodigoid()
-    {
-        return $this->contCodigoid;
     }
 }

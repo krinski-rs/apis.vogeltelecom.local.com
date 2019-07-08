@@ -2,227 +2,110 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Multas
- */
 class Multas
 {
-    /**
-     * @var int
-     */
     private $multCodigoid;
 
-    /**
-     * @var string
-     */
     private $multAtraso;
 
-    /**
-     * @var string
-     */
     private $multJuro;
 
-    /**
-     * @var string
-     */
     private $multMora;
 
-    /**
-     * @var string
-     */
     private $multDowngrade;
 
-    /**
-     * @var string
-     */
     private $multRecisao;
 
-    /**
-     * @var bool
-     */
     private $multCobrardesconto;
 
-    /**
-     * @var bool
-     */
     private $multCobrardescontofuturo;
 
-
-    /**
-     * Get multCodigoid.
-     *
-     * @return int
-     */
-    public function getMultCodigoid()
+    public function getMultCodigoid(): ?int
     {
         return $this->multCodigoid;
     }
 
-    /**
-     * Set multAtraso.
-     *
-     * @param string $multAtraso
-     *
-     * @return Multas
-     */
-    public function setMultAtraso($multAtraso)
+    public function getMultAtraso()
+    {
+        return $this->multAtraso;
+    }
+
+    public function setMultAtraso($multAtraso): self
     {
         $this->multAtraso = $multAtraso;
 
         return $this;
     }
 
-    /**
-     * Get multAtraso.
-     *
-     * @return string
-     */
-    public function getMultAtraso()
+    public function getMultJuro()
     {
-        return $this->multAtraso;
+        return $this->multJuro;
     }
 
-    /**
-     * Set multJuro.
-     *
-     * @param string $multJuro
-     *
-     * @return Multas
-     */
-    public function setMultJuro($multJuro)
+    public function setMultJuro($multJuro): self
     {
         $this->multJuro = $multJuro;
 
         return $this;
     }
 
-    /**
-     * Get multJuro.
-     *
-     * @return string
-     */
-    public function getMultJuro()
+    public function getMultMora()
     {
-        return $this->multJuro;
+        return $this->multMora;
     }
 
-    /**
-     * Set multMora.
-     *
-     * @param string $multMora
-     *
-     * @return Multas
-     */
-    public function setMultMora($multMora)
+    public function setMultMora($multMora): self
     {
         $this->multMora = $multMora;
 
         return $this;
     }
 
-    /**
-     * Get multMora.
-     *
-     * @return string
-     */
-    public function getMultMora()
+    public function getMultDowngrade()
     {
-        return $this->multMora;
+        return $this->multDowngrade;
     }
 
-    /**
-     * Set multDowngrade.
-     *
-     * @param string $multDowngrade
-     *
-     * @return Multas
-     */
-    public function setMultDowngrade($multDowngrade)
+    public function setMultDowngrade($multDowngrade): self
     {
         $this->multDowngrade = $multDowngrade;
 
         return $this;
     }
 
-    /**
-     * Get multDowngrade.
-     *
-     * @return string
-     */
-    public function getMultDowngrade()
+    public function getMultRecisao()
     {
-        return $this->multDowngrade;
+        return $this->multRecisao;
     }
 
-    /**
-     * Set multRecisao.
-     *
-     * @param string $multRecisao
-     *
-     * @return Multas
-     */
-    public function setMultRecisao($multRecisao)
+    public function setMultRecisao($multRecisao): self
     {
         $this->multRecisao = $multRecisao;
 
         return $this;
     }
 
-    /**
-     * Get multRecisao.
-     *
-     * @return string
-     */
-    public function getMultRecisao()
+    public function getMultCobrardesconto(): ?bool
     {
-        return $this->multRecisao;
+        return $this->multCobrardesconto;
     }
 
-    /**
-     * Set multCobrardesconto.
-     *
-     * @param bool $multCobrardesconto
-     *
-     * @return Multas
-     */
-    public function setMultCobrardesconto($multCobrardesconto)
+    public function setMultCobrardesconto(bool $multCobrardesconto): self
     {
         $this->multCobrardesconto = $multCobrardesconto;
 
         return $this;
     }
 
-    /**
-     * Get multCobrardesconto.
-     *
-     * @return bool
-     */
-    public function getMultCobrardesconto()
+    public function getMultCobrardescontofuturo(): ?bool
     {
-        return $this->multCobrardesconto;
+        return $this->multCobrardescontofuturo;
     }
 
-    /**
-     * Set multCobrardescontofuturo.
-     *
-     * @param bool $multCobrardescontofuturo
-     *
-     * @return Multas
-     */
-    public function setMultCobrardescontofuturo($multCobrardescontofuturo)
+    public function setMultCobrardescontofuturo(bool $multCobrardescontofuturo): self
     {
         $this->multCobrardescontofuturo = $multCobrardescontofuturo;
 
         return $this;
-    }
-
-    /**
-     * Get multCobrardescontofuturo.
-     *
-     * @return bool
-     */
-    public function getMultCobrardescontofuturo()
-    {
-        return $this->multCobrardescontofuturo;
     }
 }

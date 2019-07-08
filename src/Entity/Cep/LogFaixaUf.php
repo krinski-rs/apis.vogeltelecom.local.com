@@ -2,285 +2,138 @@
 
 namespace App\Entity\Cep;
 
-/**
- * LogFaixaUf
- */
 class LogFaixaUf
 {
-    /**
-     * @var string
-     */
     private $ufeSg;
 
-    /**
-     * @var string
-     */
     private $ufeNo;
 
-    /**
-     * @var string
-     */
     private $ufeRad1Ini;
 
-    /**
-     * @var string
-     */
     private $ufeSuf1Ini;
 
-    /**
-     * @var string
-     */
     private $ufeRad1Fim;
 
-    /**
-     * @var string
-     */
     private $ufeSuf1Fim;
 
-    /**
-     * @var string|null
-     */
     private $ufeRad2Ini;
 
-    /**
-     * @var string|null
-     */
     private $ufeSuf2Ini;
 
-    /**
-     * @var string|null
-     */
     private $ufeRad2Fim;
 
-    /**
-     * @var string|null
-     */
     private $ufeSuf2Fim;
 
-
-    /**
-     * Get ufeSg.
-     *
-     * @return string
-     */
-    public function getUfeSg()
+    public function getUfeSg(): ?string
     {
         return $this->ufeSg;
     }
 
-    /**
-     * Set ufeNo.
-     *
-     * @param string $ufeNo
-     *
-     * @return LogFaixaUf
-     */
-    public function setUfeNo($ufeNo)
+    public function getUfeNo(): ?string
+    {
+        return $this->ufeNo;
+    }
+
+    public function setUfeNo(string $ufeNo): self
     {
         $this->ufeNo = $ufeNo;
 
         return $this;
     }
 
-    /**
-     * Get ufeNo.
-     *
-     * @return string
-     */
-    public function getUfeNo()
+    public function getUfeRad1Ini(): ?string
     {
-        return $this->ufeNo;
+        return $this->ufeRad1Ini;
     }
 
-    /**
-     * Set ufeRad1Ini.
-     *
-     * @param string $ufeRad1Ini
-     *
-     * @return LogFaixaUf
-     */
-    public function setUfeRad1Ini($ufeRad1Ini)
+    public function setUfeRad1Ini(string $ufeRad1Ini): self
     {
         $this->ufeRad1Ini = $ufeRad1Ini;
 
         return $this;
     }
 
-    /**
-     * Get ufeRad1Ini.
-     *
-     * @return string
-     */
-    public function getUfeRad1Ini()
+    public function getUfeSuf1Ini(): ?string
     {
-        return $this->ufeRad1Ini;
+        return $this->ufeSuf1Ini;
     }
 
-    /**
-     * Set ufeSuf1Ini.
-     *
-     * @param string $ufeSuf1Ini
-     *
-     * @return LogFaixaUf
-     */
-    public function setUfeSuf1Ini($ufeSuf1Ini)
+    public function setUfeSuf1Ini(string $ufeSuf1Ini): self
     {
         $this->ufeSuf1Ini = $ufeSuf1Ini;
 
         return $this;
     }
 
-    /**
-     * Get ufeSuf1Ini.
-     *
-     * @return string
-     */
-    public function getUfeSuf1Ini()
+    public function getUfeRad1Fim(): ?string
     {
-        return $this->ufeSuf1Ini;
+        return $this->ufeRad1Fim;
     }
 
-    /**
-     * Set ufeRad1Fim.
-     *
-     * @param string $ufeRad1Fim
-     *
-     * @return LogFaixaUf
-     */
-    public function setUfeRad1Fim($ufeRad1Fim)
+    public function setUfeRad1Fim(string $ufeRad1Fim): self
     {
         $this->ufeRad1Fim = $ufeRad1Fim;
 
         return $this;
     }
 
-    /**
-     * Get ufeRad1Fim.
-     *
-     * @return string
-     */
-    public function getUfeRad1Fim()
+    public function getUfeSuf1Fim(): ?string
     {
-        return $this->ufeRad1Fim;
+        return $this->ufeSuf1Fim;
     }
 
-    /**
-     * Set ufeSuf1Fim.
-     *
-     * @param string $ufeSuf1Fim
-     *
-     * @return LogFaixaUf
-     */
-    public function setUfeSuf1Fim($ufeSuf1Fim)
+    public function setUfeSuf1Fim(string $ufeSuf1Fim): self
     {
         $this->ufeSuf1Fim = $ufeSuf1Fim;
 
         return $this;
     }
 
-    /**
-     * Get ufeSuf1Fim.
-     *
-     * @return string
-     */
-    public function getUfeSuf1Fim()
+    public function getUfeRad2Ini(): ?string
     {
-        return $this->ufeSuf1Fim;
+        return $this->ufeRad2Ini;
     }
 
-    /**
-     * Set ufeRad2Ini.
-     *
-     * @param string|null $ufeRad2Ini
-     *
-     * @return LogFaixaUf
-     */
-    public function setUfeRad2Ini($ufeRad2Ini = null)
+    public function setUfeRad2Ini(?string $ufeRad2Ini): self
     {
         $this->ufeRad2Ini = $ufeRad2Ini;
 
         return $this;
     }
 
-    /**
-     * Get ufeRad2Ini.
-     *
-     * @return string|null
-     */
-    public function getUfeRad2Ini()
+    public function getUfeSuf2Ini(): ?string
     {
-        return $this->ufeRad2Ini;
+        return $this->ufeSuf2Ini;
     }
 
-    /**
-     * Set ufeSuf2Ini.
-     *
-     * @param string|null $ufeSuf2Ini
-     *
-     * @return LogFaixaUf
-     */
-    public function setUfeSuf2Ini($ufeSuf2Ini = null)
+    public function setUfeSuf2Ini(?string $ufeSuf2Ini): self
     {
         $this->ufeSuf2Ini = $ufeSuf2Ini;
 
         return $this;
     }
 
-    /**
-     * Get ufeSuf2Ini.
-     *
-     * @return string|null
-     */
-    public function getUfeSuf2Ini()
+    public function getUfeRad2Fim(): ?string
     {
-        return $this->ufeSuf2Ini;
+        return $this->ufeRad2Fim;
     }
 
-    /**
-     * Set ufeRad2Fim.
-     *
-     * @param string|null $ufeRad2Fim
-     *
-     * @return LogFaixaUf
-     */
-    public function setUfeRad2Fim($ufeRad2Fim = null)
+    public function setUfeRad2Fim(?string $ufeRad2Fim): self
     {
         $this->ufeRad2Fim = $ufeRad2Fim;
 
         return $this;
     }
 
-    /**
-     * Get ufeRad2Fim.
-     *
-     * @return string|null
-     */
-    public function getUfeRad2Fim()
+    public function getUfeSuf2Fim(): ?string
     {
-        return $this->ufeRad2Fim;
+        return $this->ufeSuf2Fim;
     }
 
-    /**
-     * Set ufeSuf2Fim.
-     *
-     * @param string|null $ufeSuf2Fim
-     *
-     * @return LogFaixaUf
-     */
-    public function setUfeSuf2Fim($ufeSuf2Fim = null)
+    public function setUfeSuf2Fim(?string $ufeSuf2Fim): self
     {
         $this->ufeSuf2Fim = $ufeSuf2Fim;
 
         return $this;
-    }
-
-    /**
-     * Get ufeSuf2Fim.
-     *
-     * @return string|null
-     */
-    public function getUfeSuf2Fim()
-    {
-        return $this->ufeSuf2Fim;
     }
 }

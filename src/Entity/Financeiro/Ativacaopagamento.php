@@ -2,82 +2,40 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Ativacaopagamento
- */
 class Ativacaopagamento
 {
-    /**
-     * @var int
-     */
     private $ativpagCodigoid;
 
-    /**
-     * @var bool|null
-     */
     private $ativpagCobrado;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
     private $contCodigoid;
 
-
-    /**
-     * Get ativpagCodigoid.
-     *
-     * @return int
-     */
-    public function getAtivpagCodigoid()
+    public function getAtivpagCodigoid(): ?int
     {
         return $this->ativpagCodigoid;
     }
 
-    /**
-     * Set ativpagCobrado.
-     *
-     * @param bool|null $ativpagCobrado
-     *
-     * @return Ativacaopagamento
-     */
-    public function setAtivpagCobrado($ativpagCobrado = null)
+    public function getAtivpagCobrado(): ?bool
+    {
+        return $this->ativpagCobrado;
+    }
+
+    public function setAtivpagCobrado(?bool $ativpagCobrado): self
     {
         $this->ativpagCobrado = $ativpagCobrado;
 
         return $this;
     }
 
-    /**
-     * Get ativpagCobrado.
-     *
-     * @return bool|null
-     */
-    public function getAtivpagCobrado()
+    public function getContCodigoid(): ?Contrato
     {
-        return $this->ativpagCobrado;
+        return $this->contCodigoid;
     }
 
-    /**
-     * Set contCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contCodigoid
-     *
-     * @return Ativacaopagamento
-     */
-    public function setContCodigoid(\App\Entity\Financeiro\Contrato $contCodigoid = null)
+    public function setContCodigoid(?Contrato $contCodigoid): self
     {
         $this->contCodigoid = $contCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get contCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContCodigoid()
-    {
-        return $this->contCodigoid;
     }
 }

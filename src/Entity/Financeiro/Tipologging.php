@@ -2,53 +2,26 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Tipologging
- */
 class Tipologging
 {
-    /**
-     * @var int
-     */
     private $tipologgCodigoid;
 
-    /**
-     * @var string
-     */
     private $tipologgNome;
 
-
-    /**
-     * Get tipologgCodigoid.
-     *
-     * @return int
-     */
-    public function getTipologgCodigoid()
+    public function getTipologgCodigoid(): ?int
     {
         return $this->tipologgCodigoid;
     }
 
-    /**
-     * Set tipologgNome.
-     *
-     * @param string $tipologgNome
-     *
-     * @return Tipologging
-     */
-    public function setTipologgNome($tipologgNome)
+    public function getTipologgNome(): ?string
+    {
+        return $this->tipologgNome;
+    }
+
+    public function setTipologgNome(string $tipologgNome): self
     {
         $this->tipologgNome = $tipologgNome;
 
         return $this;
-    }
-
-    /**
-     * Get tipologgNome.
-     *
-     * @return string
-     */
-    public function getTipologgNome()
-    {
-        return $this->tipologgNome;
     }
 }

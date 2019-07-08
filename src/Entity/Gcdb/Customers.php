@@ -2,642 +2,318 @@
 
 namespace App\Entity\Gcdb;
 
-/**
- * Customers
- */
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 class Customers
 {
-    /**
-     * @var int
-     */
     private $customerid;
 
-    /**
-     * @var string|null
-     */
     private $first;
 
-    /**
-     * @var string|null
-     */
     private $mid;
 
-    /**
-     * @var string|null
-     */
     private $last;
 
-    /**
-     * @var string|null
-     */
     private $address;
 
-    /**
-     * @var string|null
-     */
     private $telephone;
 
-    /**
-     * @var string|null
-     */
     private $fax;
 
-    /**
-     * @var string|null
-     */
     private $email;
 
-    /**
-     * @var string|null
-     */
     private $city;
 
-    /**
-     * @var string|null
-     */
     private $state;
 
-    /**
-     * @var string|null
-     */
     private $zip;
 
-    /**
-     * @var string|null
-     */
     private $status;
 
-    /**
-     * @var string|null
-     */
     private $fantasia;
 
-    /**
-     * @var string|null
-     */
     private $razao;
 
-    /**
-     * @var string|null
-     */
     private $cnpj;
 
-    /**
-     * @var string|null
-     */
     private $pais;
 
-    /**
-     * @var string|null
-     */
     private $obs;
 
-    /**
-     * @var string|null
-     */
     private $emergencia;
 
-    /**
-     * @var string|null
-     */
     private $cpf;
 
-    /**
-     * @var string
-     */
-    private $atpass = 'temporar';
+    private $atpass;
 
-    /**
-     * @var bool|null
-     */
     private $tributaicms;
 
-    /**
-     * @var bool|null
-     */
     private $delin;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
     private $customers2users;
-    
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
+
     private $prioridades;
-    
-    /**
-     * @var \App\Entity\Gcdb\Origemexterna
-     */
+
     private $origemexterna;
 
-    /**
-     * Constructor
-     */
     public function __construct()
     {
-        $this->customers2users = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->prioridades = new \Doctrine\Common\Collections\ArrayCollection();    }
+        $this->customers2users = new ArrayCollection();
+        $this->prioridades = new ArrayCollection();
+    }
 
-    /**
-     * Get customerid.
-     *
-     * @return int
-     */
-    public function getCustomerid()
+    public function getCustomerid(): ?int
     {
         return $this->customerid;
     }
 
-    /**
-     * Set first.
-     *
-     * @param string|null $first
-     *
-     * @return Customers
-     */
-    public function setFirst($first = null)
+    public function getFirst(): ?string
+    {
+        return $this->first;
+    }
+
+    public function setFirst(?string $first): self
     {
         $this->first = $first;
 
         return $this;
     }
 
-    /**
-     * Get first.
-     *
-     * @return string|null
-     */
-    public function getFirst()
+    public function getMid(): ?string
     {
-        return $this->first;
+        return $this->mid;
     }
 
-    /**
-     * Set mid.
-     *
-     * @param string|null $mid
-     *
-     * @return Customers
-     */
-    public function setMid($mid = null)
+    public function setMid(?string $mid): self
     {
         $this->mid = $mid;
 
         return $this;
     }
 
-    /**
-     * Get mid.
-     *
-     * @return string|null
-     */
-    public function getMid()
+    public function getLast(): ?string
     {
-        return $this->mid;
+        return $this->last;
     }
 
-    /**
-     * Set last.
-     *
-     * @param string|null $last
-     *
-     * @return Customers
-     */
-    public function setLast($last = null)
+    public function setLast(?string $last): self
     {
         $this->last = $last;
 
         return $this;
     }
 
-    /**
-     * Get last.
-     *
-     * @return string|null
-     */
-    public function getLast()
+    public function getAddress(): ?string
     {
-        return $this->last;
+        return $this->address;
     }
 
-    /**
-     * Set address.
-     *
-     * @param string|null $address
-     *
-     * @return Customers
-     */
-    public function setAddress($address = null)
+    public function setAddress(?string $address): self
     {
         $this->address = $address;
 
         return $this;
     }
 
-    /**
-     * Get address.
-     *
-     * @return string|null
-     */
-    public function getAddress()
+    public function getTelephone(): ?string
     {
-        return $this->address;
+        return $this->telephone;
     }
 
-    /**
-     * Set telephone.
-     *
-     * @param string|null $telephone
-     *
-     * @return Customers
-     */
-    public function setTelephone($telephone = null)
+    public function setTelephone(?string $telephone): self
     {
         $this->telephone = $telephone;
 
         return $this;
     }
 
-    /**
-     * Get telephone.
-     *
-     * @return string|null
-     */
-    public function getTelephone()
+    public function getFax(): ?string
     {
-        return $this->telephone;
+        return $this->fax;
     }
 
-    /**
-     * Set fax.
-     *
-     * @param string|null $fax
-     *
-     * @return Customers
-     */
-    public function setFax($fax = null)
+    public function setFax(?string $fax): self
     {
         $this->fax = $fax;
 
         return $this;
     }
 
-    /**
-     * Get fax.
-     *
-     * @return string|null
-     */
-    public function getFax()
+    public function getEmail(): ?string
     {
-        return $this->fax;
+        return $this->email;
     }
 
-    /**
-     * Set email.
-     *
-     * @param string|null $email
-     *
-     * @return Customers
-     */
-    public function setEmail($email = null)
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
 
         return $this;
     }
 
-    /**
-     * Get email.
-     *
-     * @return string|null
-     */
-    public function getEmail()
+    public function getCity(): ?string
     {
-        return $this->email;
+        return $this->city;
     }
 
-    /**
-     * Set city.
-     *
-     * @param string|null $city
-     *
-     * @return Customers
-     */
-    public function setCity($city = null)
+    public function setCity(?string $city): self
     {
         $this->city = $city;
 
         return $this;
     }
 
-    /**
-     * Get city.
-     *
-     * @return string|null
-     */
-    public function getCity()
+    public function getState(): ?string
     {
-        return $this->city;
+        return $this->state;
     }
 
-    /**
-     * Set state.
-     *
-     * @param string|null $state
-     *
-     * @return Customers
-     */
-    public function setState($state = null)
+    public function setState(?string $state): self
     {
         $this->state = $state;
 
         return $this;
     }
 
-    /**
-     * Get state.
-     *
-     * @return string|null
-     */
-    public function getState()
+    public function getZip(): ?string
     {
-        return $this->state;
+        return $this->zip;
     }
 
-    /**
-     * Set zip.
-     *
-     * @param string|null $zip
-     *
-     * @return Customers
-     */
-    public function setZip($zip = null)
+    public function setZip(?string $zip): self
     {
         $this->zip = $zip;
 
         return $this;
     }
 
-    /**
-     * Get zip.
-     *
-     * @return string|null
-     */
-    public function getZip()
+    public function getStatus(): ?string
     {
-        return $this->zip;
+        return $this->status;
     }
 
-    /**
-     * Set status.
-     *
-     * @param string|null $status
-     *
-     * @return Customers
-     */
-    public function setStatus($status = null)
+    public function setStatus(?string $status): self
     {
         $this->status = $status;
 
         return $this;
     }
 
-    /**
-     * Get status.
-     *
-     * @return string|null
-     */
-    public function getStatus()
+    public function getFantasia(): ?string
     {
-        return $this->status;
+        return $this->fantasia;
     }
 
-    /**
-     * Set fantasia.
-     *
-     * @param string|null $fantasia
-     *
-     * @return Customers
-     */
-    public function setFantasia($fantasia = null)
+    public function setFantasia(?string $fantasia): self
     {
         $this->fantasia = $fantasia;
 
         return $this;
     }
 
-    /**
-     * Get fantasia.
-     *
-     * @return string|null
-     */
-    public function getFantasia()
+    public function getRazao(): ?string
     {
-        return $this->fantasia;
+        return $this->razao;
     }
 
-    /**
-     * Set razao.
-     *
-     * @param string|null $razao
-     *
-     * @return Customers
-     */
-    public function setRazao($razao = null)
+    public function setRazao(?string $razao): self
     {
         $this->razao = $razao;
 
         return $this;
     }
 
-    /**
-     * Get razao.
-     *
-     * @return string|null
-     */
-    public function getRazao()
+    public function getCnpj(): ?string
     {
-        return $this->razao;
+        return $this->cnpj;
     }
 
-    /**
-     * Set cnpj.
-     *
-     * @param string|null $cnpj
-     *
-     * @return Customers
-     */
-    public function setCnpj($cnpj = null)
+    public function setCnpj(?string $cnpj): self
     {
         $this->cnpj = $cnpj;
 
         return $this;
     }
 
-    /**
-     * Get cnpj.
-     *
-     * @return string|null
-     */
-    public function getCnpj()
+    public function getPais(): ?string
     {
-        return $this->cnpj;
+        return $this->pais;
     }
 
-    /**
-     * Set pais.
-     *
-     * @param string|null $pais
-     *
-     * @return Customers
-     */
-    public function setPais($pais = null)
+    public function setPais(?string $pais): self
     {
         $this->pais = $pais;
 
         return $this;
     }
 
-    /**
-     * Get pais.
-     *
-     * @return string|null
-     */
-    public function getPais()
+    public function getObs(): ?string
     {
-        return $this->pais;
+        return $this->obs;
     }
 
-    /**
-     * Set obs.
-     *
-     * @param string|null $obs
-     *
-     * @return Customers
-     */
-    public function setObs($obs = null)
+    public function setObs(?string $obs): self
     {
         $this->obs = $obs;
 
         return $this;
     }
 
-    /**
-     * Get obs.
-     *
-     * @return string|null
-     */
-    public function getObs()
+    public function getEmergencia(): ?string
     {
-        return $this->obs;
+        return $this->emergencia;
     }
 
-    /**
-     * Set emergencia.
-     *
-     * @param string|null $emergencia
-     *
-     * @return Customers
-     */
-    public function setEmergencia($emergencia = null)
+    public function setEmergencia(?string $emergencia): self
     {
         $this->emergencia = $emergencia;
 
         return $this;
     }
 
-    /**
-     * Get emergencia.
-     *
-     * @return string|null
-     */
-    public function getEmergencia()
+    public function getCpf(): ?string
     {
-        return $this->emergencia;
+        return $this->cpf;
     }
 
-    /**
-     * Set cpf.
-     *
-     * @param string|null $cpf
-     *
-     * @return Customers
-     */
-    public function setCpf($cpf = null)
+    public function setCpf(?string $cpf): self
     {
         $this->cpf = $cpf;
 
         return $this;
     }
 
-    /**
-     * Get cpf.
-     *
-     * @return string|null
-     */
-    public function getCpf()
+    public function getAtpass(): ?string
     {
-        return $this->cpf;
+        return $this->atpass;
     }
 
-    /**
-     * Set atpass.
-     *
-     * @param string $atpass
-     *
-     * @return Customers
-     */
-    public function setAtpass($atpass)
+    public function setAtpass(string $atpass): self
     {
         $this->atpass = $atpass;
 
         return $this;
     }
 
-    /**
-     * Get atpass.
-     *
-     * @return string
-     */
-    public function getAtpass()
+    public function getTributaicms(): ?bool
     {
-        return $this->atpass;
+        return $this->tributaicms;
     }
 
-    /**
-     * Set tributaicms.
-     *
-     * @param bool|null $tributaicms
-     *
-     * @return Customers
-     */
-    public function setTributaicms($tributaicms = null)
+    public function setTributaicms(?bool $tributaicms): self
     {
         $this->tributaicms = $tributaicms;
 
         return $this;
     }
 
-    /**
-     * Get tributaicms.
-     *
-     * @return bool|null
-     */
-    public function getTributaicms()
+    public function getDelin(): ?bool
     {
-        return $this->tributaicms;
+        return $this->delin;
     }
 
-    /**
-     * Set delin.
-     *
-     * @param bool|null $delin
-     *
-     * @return Customers
-     */
-    public function setDelin($delin = null)
+    public function setDelin(?bool $delin): self
     {
         $this->delin = $delin;
 
@@ -645,108 +321,76 @@ class Customers
     }
 
     /**
-     * Get delin.
-     *
-     * @return bool|null
+     * @return Collection|Customers2users[]
      */
-    public function getDelin()
-    {
-        return $this->delin;
-    }
-
-    /**
-     * Add customers2user.
-     *
-     * @param \App\Entity\Gcdb\Customers2users $customers2user
-     *
-     * @return Customers
-     */
-    public function addCustomers2user(\App\Entity\Gcdb\Customers2users $customers2user)
-    {
-        $this->customers2users[] = $customers2user;
-
-        return $this;
-    }
-
-    /**
-     * Remove customers2user.
-     *
-     * @param \App\Entity\Gcdb\Customers2users $customers2user
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
-     */
-    public function removeCustomers2user(\App\Entity\Gcdb\Customers2users $customers2user)
-    {
-        return $this->customers2users->removeElement($customers2user);
-    }
-
-    /**
-     * Get customers2users.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCustomers2users()
+    public function getCustomers2users(): Collection
     {
         return $this->customers2users;
     }
-    
-    /**
-     * Add prioridade.
-     *
-     * @param \App\Entity\Gcdb\Prioridade $prioridade
-     *
-     * @return Customers
-     */
-    public function addPrioridade(\App\Entity\Gcdb\Prioridade $prioridade)
+
+    public function addCustomers2user(Customers2users $customers2user): self
     {
-        $this->prioridades[] = $prioridade;
-        
+        if (!$this->customers2users->contains($customers2user)) {
+            $this->customers2users[] = $customers2user;
+            $customers2user->setCustomer($this);
+        }
+
         return $this;
     }
-    
-    /**
-     * Remove prioridade.
-     *
-     * @param \App\Entity\Gcdb\Prioridade $prioridade
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
-     */
-    public function removePrioridade(\App\Entity\Gcdb\Prioridade $prioridade)
+
+    public function removeCustomers2user(Customers2users $customers2user): self
     {
-        return $this->prioridades->removeElement($prioridade);
+        if ($this->customers2users->contains($customers2user)) {
+            $this->customers2users->removeElement($customers2user);
+            // set the owning side to null (unless already changed)
+            if ($customers2user->getCustomer() === $this) {
+                $customers2user->setCustomer(null);
+            }
+        }
+
+        return $this;
     }
-    
+
     /**
-     * Get prioridades.
-     *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Collection|Prioridade[]
      */
-    public function getPrioridades()
+    public function getPrioridades(): Collection
     {
         return $this->prioridades;
     }
-    
-    /**
-     * Set origemexterna.
-     *
-     * @param \App\Entity\Gcdb\Origemexterna|null $origemexterna
-     *
-     * @return Customers
-     */
-    public function setOrigemexterna(\App\Entity\Gcdb\Origemexterna $origemexterna = null)
+
+    public function addPrioridade(Prioridade $prioridade): self
+    {
+        if (!$this->prioridades->contains($prioridade)) {
+            $this->prioridades[] = $prioridade;
+            $prioridade->setCustomer($this);
+        }
+
+        return $this;
+    }
+
+    public function removePrioridade(Prioridade $prioridade): self
+    {
+        if ($this->prioridades->contains($prioridade)) {
+            $this->prioridades->removeElement($prioridade);
+            // set the owning side to null (unless already changed)
+            if ($prioridade->getCustomer() === $this) {
+                $prioridade->setCustomer(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getOrigemexterna(): ?Origemexterna
+    {
+        return $this->origemexterna;
+    }
+
+    public function setOrigemexterna(?Origemexterna $origemexterna): self
     {
         $this->origemexterna = $origemexterna;
 
         return $this;
-    }
-
-    /**
-     * Get origemexterna.
-     *
-     * @return \App\Entity\Gcdb\Origemexterna|null
-     */
-    public function getOrigemexterna()
-    {
-        return $this->origemexterna;
     }
 }

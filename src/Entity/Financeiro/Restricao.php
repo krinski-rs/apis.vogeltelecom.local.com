@@ -2,169 +2,82 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Restricao
- */
 class Restricao
 {
-    /**
-     * @var int
-     */
     private $restCodigoid;
 
-    /**
-     * @var bool
-     */
     private $restContratardeterceiro;
 
-    /**
-     * @var bool
-     */
     private $restDivulgaramarca;
 
-    /**
-     * @var bool
-     */
     private $restMudarmeiotransmicao;
 
-    /**
-     * @var bool
-     */
     private $restTransferirdireitos;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
     private $contCodigoid;
 
-
-    /**
-     * Get restCodigoid.
-     *
-     * @return int
-     */
-    public function getRestCodigoid()
+    public function getRestCodigoid(): ?int
     {
         return $this->restCodigoid;
     }
 
-    /**
-     * Set restContratardeterceiro.
-     *
-     * @param bool $restContratardeterceiro
-     *
-     * @return Restricao
-     */
-    public function setRestContratardeterceiro($restContratardeterceiro)
+    public function getRestContratardeterceiro(): ?bool
+    {
+        return $this->restContratardeterceiro;
+    }
+
+    public function setRestContratardeterceiro(bool $restContratardeterceiro): self
     {
         $this->restContratardeterceiro = $restContratardeterceiro;
 
         return $this;
     }
 
-    /**
-     * Get restContratardeterceiro.
-     *
-     * @return bool
-     */
-    public function getRestContratardeterceiro()
+    public function getRestDivulgaramarca(): ?bool
     {
-        return $this->restContratardeterceiro;
+        return $this->restDivulgaramarca;
     }
 
-    /**
-     * Set restDivulgaramarca.
-     *
-     * @param bool $restDivulgaramarca
-     *
-     * @return Restricao
-     */
-    public function setRestDivulgaramarca($restDivulgaramarca)
+    public function setRestDivulgaramarca(bool $restDivulgaramarca): self
     {
         $this->restDivulgaramarca = $restDivulgaramarca;
 
         return $this;
     }
 
-    /**
-     * Get restDivulgaramarca.
-     *
-     * @return bool
-     */
-    public function getRestDivulgaramarca()
+    public function getRestMudarmeiotransmicao(): ?bool
     {
-        return $this->restDivulgaramarca;
+        return $this->restMudarmeiotransmicao;
     }
 
-    /**
-     * Set restMudarmeiotransmicao.
-     *
-     * @param bool $restMudarmeiotransmicao
-     *
-     * @return Restricao
-     */
-    public function setRestMudarmeiotransmicao($restMudarmeiotransmicao)
+    public function setRestMudarmeiotransmicao(bool $restMudarmeiotransmicao): self
     {
         $this->restMudarmeiotransmicao = $restMudarmeiotransmicao;
 
         return $this;
     }
 
-    /**
-     * Get restMudarmeiotransmicao.
-     *
-     * @return bool
-     */
-    public function getRestMudarmeiotransmicao()
+    public function getRestTransferirdireitos(): ?bool
     {
-        return $this->restMudarmeiotransmicao;
+        return $this->restTransferirdireitos;
     }
 
-    /**
-     * Set restTransferirdireitos.
-     *
-     * @param bool $restTransferirdireitos
-     *
-     * @return Restricao
-     */
-    public function setRestTransferirdireitos($restTransferirdireitos)
+    public function setRestTransferirdireitos(bool $restTransferirdireitos): self
     {
         $this->restTransferirdireitos = $restTransferirdireitos;
 
         return $this;
     }
 
-    /**
-     * Get restTransferirdireitos.
-     *
-     * @return bool
-     */
-    public function getRestTransferirdireitos()
+    public function getContCodigoid(): ?Contrato
     {
-        return $this->restTransferirdireitos;
+        return $this->contCodigoid;
     }
 
-    /**
-     * Set contCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contCodigoid
-     *
-     * @return Restricao
-     */
-    public function setContCodigoid(\App\Entity\Financeiro\Contrato $contCodigoid = null)
+    public function setContCodigoid(?Contrato $contCodigoid): self
     {
         $this->contCodigoid = $contCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get contCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContCodigoid()
-    {
-        return $this->contCodigoid;
     }
 }

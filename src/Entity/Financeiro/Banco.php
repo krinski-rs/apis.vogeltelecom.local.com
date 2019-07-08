@@ -2,140 +2,68 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Banco
- */
 class Banco
 {
-    /**
-     * @var int
-     */
     private $bancCodigoid;
 
-    /**
-     * @var string
-     */
     private $bancCodigobacen;
 
-    /**
-     * @var string
-     */
     private $bancNome;
 
-    /**
-     * @var string
-     */
     private $bancSegmento;
 
-    /**
-     * @var string
-     */
     private $bancCnpj;
 
-
-    /**
-     * Get bancCodigoid.
-     *
-     * @return int
-     */
-    public function getBancCodigoid()
+    public function getBancCodigoid(): ?int
     {
         return $this->bancCodigoid;
     }
 
-    /**
-     * Set bancCodigobacen.
-     *
-     * @param string $bancCodigobacen
-     *
-     * @return Banco
-     */
-    public function setBancCodigobacen($bancCodigobacen)
+    public function getBancCodigobacen(): ?string
+    {
+        return $this->bancCodigobacen;
+    }
+
+    public function setBancCodigobacen(string $bancCodigobacen): self
     {
         $this->bancCodigobacen = $bancCodigobacen;
 
         return $this;
     }
 
-    /**
-     * Get bancCodigobacen.
-     *
-     * @return string
-     */
-    public function getBancCodigobacen()
+    public function getBancNome(): ?string
     {
-        return $this->bancCodigobacen;
+        return $this->bancNome;
     }
 
-    /**
-     * Set bancNome.
-     *
-     * @param string $bancNome
-     *
-     * @return Banco
-     */
-    public function setBancNome($bancNome)
+    public function setBancNome(string $bancNome): self
     {
         $this->bancNome = $bancNome;
 
         return $this;
     }
 
-    /**
-     * Get bancNome.
-     *
-     * @return string
-     */
-    public function getBancNome()
+    public function getBancSegmento(): ?string
     {
-        return $this->bancNome;
+        return $this->bancSegmento;
     }
 
-    /**
-     * Set bancSegmento.
-     *
-     * @param string $bancSegmento
-     *
-     * @return Banco
-     */
-    public function setBancSegmento($bancSegmento)
+    public function setBancSegmento(string $bancSegmento): self
     {
         $this->bancSegmento = $bancSegmento;
 
         return $this;
     }
 
-    /**
-     * Get bancSegmento.
-     *
-     * @return string
-     */
-    public function getBancSegmento()
+    public function getBancCnpj(): ?string
     {
-        return $this->bancSegmento;
+        return $this->bancCnpj;
     }
 
-    /**
-     * Set bancCnpj.
-     *
-     * @param string $bancCnpj
-     *
-     * @return Banco
-     */
-    public function setBancCnpj($bancCnpj)
+    public function setBancCnpj(string $bancCnpj): self
     {
         $this->bancCnpj = $bancCnpj;
 
         return $this;
-    }
-
-    /**
-     * Get bancCnpj.
-     *
-     * @return string
-     */
-    public function getBancCnpj()
-    {
-        return $this->bancCnpj;
     }
 }

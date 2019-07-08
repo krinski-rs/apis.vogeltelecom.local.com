@@ -2,314 +2,152 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * ContratoServicoAgregado
- */
 class ContratoServicoAgregado
 {
-    /**
-     * @var int
-     */
     private $contservagreCodigoid;
 
-    /**
-     * @var string
-     */
     private $contservagreValor;
 
-    /**
-     * @var \DateTime
-     */
-    private $contservagreDatainc = 'CURRENT_TIMESTAMP';
+    private $contservagreDatainc;
 
-    /**
-     * @var \DateTime|null
-     */
     private $contservagreDatafim;
 
-    /**
-     * @var string
-     */
     private $contservagreDesconto;
 
-    /**
-     * @var \App\Entity\Financeiro\Servico
-     */
     private $servCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
     private $contCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\ServicoAgregado
-     */
     private $servagreCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Natureza
-     */
     private $natuCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Periodicidade
-     */
     private $periCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Moeda
-     */
     private $moedCodigoid;
 
-
-    /**
-     * Get contservagreCodigoid.
-     *
-     * @return int
-     */
-    public function getContservagreCodigoid()
+    public function getContservagreCodigoid(): ?int
     {
         return $this->contservagreCodigoid;
     }
 
-    /**
-     * Set contservagreValor.
-     *
-     * @param string $contservagreValor
-     *
-     * @return ContratoServicoAgregado
-     */
-    public function setContservagreValor($contservagreValor)
+    public function getContservagreValor()
+    {
+        return $this->contservagreValor;
+    }
+
+    public function setContservagreValor($contservagreValor): self
     {
         $this->contservagreValor = $contservagreValor;
 
         return $this;
     }
 
-    /**
-     * Get contservagreValor.
-     *
-     * @return string
-     */
-    public function getContservagreValor()
+    public function getContservagreDatainc(): ?\DateTimeInterface
     {
-        return $this->contservagreValor;
+        return $this->contservagreDatainc;
     }
 
-    /**
-     * Set contservagreDatainc.
-     *
-     * @param \DateTime $contservagreDatainc
-     *
-     * @return ContratoServicoAgregado
-     */
-    public function setContservagreDatainc($contservagreDatainc)
+    public function setContservagreDatainc(\DateTimeInterface $contservagreDatainc): self
     {
         $this->contservagreDatainc = $contservagreDatainc;
 
         return $this;
     }
 
-    /**
-     * Get contservagreDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getContservagreDatainc()
+    public function getContservagreDatafim(): ?\DateTimeInterface
     {
-        return $this->contservagreDatainc;
+        return $this->contservagreDatafim;
     }
 
-    /**
-     * Set contservagreDatafim.
-     *
-     * @param \DateTime|null $contservagreDatafim
-     *
-     * @return ContratoServicoAgregado
-     */
-    public function setContservagreDatafim($contservagreDatafim = null)
+    public function setContservagreDatafim(?\DateTimeInterface $contservagreDatafim): self
     {
         $this->contservagreDatafim = $contservagreDatafim;
 
         return $this;
     }
 
-    /**
-     * Get contservagreDatafim.
-     *
-     * @return \DateTime|null
-     */
-    public function getContservagreDatafim()
+    public function getContservagreDesconto()
     {
-        return $this->contservagreDatafim;
+        return $this->contservagreDesconto;
     }
 
-    /**
-     * Set contservagreDesconto.
-     *
-     * @param string $contservagreDesconto
-     *
-     * @return ContratoServicoAgregado
-     */
-    public function setContservagreDesconto($contservagreDesconto)
+    public function setContservagreDesconto($contservagreDesconto): self
     {
         $this->contservagreDesconto = $contservagreDesconto;
 
         return $this;
     }
 
-    /**
-     * Get contservagreDesconto.
-     *
-     * @return string
-     */
-    public function getContservagreDesconto()
+    public function getServCodigoid(): ?Servico
     {
-        return $this->contservagreDesconto;
+        return $this->servCodigoid;
     }
 
-    /**
-     * Set servCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Servico|null $servCodigoid
-     *
-     * @return ContratoServicoAgregado
-     */
-    public function setServCodigoid(\App\Entity\Financeiro\Servico $servCodigoid = null)
+    public function setServCodigoid(?Servico $servCodigoid): self
     {
         $this->servCodigoid = $servCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get servCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Servico|null
-     */
-    public function getServCodigoid()
+    public function getContCodigoid(): ?Contrato
     {
-        return $this->servCodigoid;
+        return $this->contCodigoid;
     }
 
-    /**
-     * Set contCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contCodigoid
-     *
-     * @return ContratoServicoAgregado
-     */
-    public function setContCodigoid(\App\Entity\Financeiro\Contrato $contCodigoid = null)
+    public function setContCodigoid(?Contrato $contCodigoid): self
     {
         $this->contCodigoid = $contCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get contCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContCodigoid()
+    public function getServagreCodigoid(): ?ServicoAgregado
     {
-        return $this->contCodigoid;
+        return $this->servagreCodigoid;
     }
 
-    /**
-     * Set servagreCodigoid.
-     *
-     * @param \App\Entity\Financeiro\ServicoAgregado|null $servagreCodigoid
-     *
-     * @return ContratoServicoAgregado
-     */
-    public function setServagreCodigoid(\App\Entity\Financeiro\ServicoAgregado $servagreCodigoid = null)
+    public function setServagreCodigoid(?ServicoAgregado $servagreCodigoid): self
     {
         $this->servagreCodigoid = $servagreCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get servagreCodigoid.
-     *
-     * @return \App\Entity\Financeiro\ServicoAgregado|null
-     */
-    public function getServagreCodigoid()
+    public function getNatuCodigoid(): ?Natureza
     {
-        return $this->servagreCodigoid;
+        return $this->natuCodigoid;
     }
 
-    /**
-     * Set natuCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Natureza|null $natuCodigoid
-     *
-     * @return ContratoServicoAgregado
-     */
-    public function setNatuCodigoid(\App\Entity\Financeiro\Natureza $natuCodigoid = null)
+    public function setNatuCodigoid(?Natureza $natuCodigoid): self
     {
         $this->natuCodigoid = $natuCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get natuCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Natureza|null
-     */
-    public function getNatuCodigoid()
+    public function getPeriCodigoid(): ?Periodicidade
     {
-        return $this->natuCodigoid;
+        return $this->periCodigoid;
     }
 
-    /**
-     * Set periCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Periodicidade|null $periCodigoid
-     *
-     * @return ContratoServicoAgregado
-     */
-    public function setPeriCodigoid(\App\Entity\Financeiro\Periodicidade $periCodigoid = null)
+    public function setPeriCodigoid(?Periodicidade $periCodigoid): self
     {
         $this->periCodigoid = $periCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get periCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Periodicidade|null
-     */
-    public function getPeriCodigoid()
+    public function getMoedCodigoid(): ?Moeda
     {
-        return $this->periCodigoid;
+        return $this->moedCodigoid;
     }
 
-    /**
-     * Set moedCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Moeda|null $moedCodigoid
-     *
-     * @return ContratoServicoAgregado
-     */
-    public function setMoedCodigoid(\App\Entity\Financeiro\Moeda $moedCodigoid = null)
+    public function setMoedCodigoid(?Moeda $moedCodigoid): self
     {
         $this->moedCodigoid = $moedCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get moedCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Moeda|null
-     */
-    public function getMoedCodigoid()
-    {
-        return $this->moedCodigoid;
     }
 }

@@ -2,169 +2,82 @@
 
 namespace App\Entity\Gcdb;
 
-/**
- * Customers2users
- */
 class Customers2users
 {
-    /**
-     * @var int
-     */
     private $id;
 
-    /**
-     * @var \DateTime
-     */
-    private $dataAbertura = 'CURRENT_TIMESTAMP';
+    private $dataAbertura;
 
-    /**
-     * @var int
-     */
-    private $alqtIcms = '1';
+    private $alqtIcms;
 
-    /**
-     * @var bool|null
-     */
-    private $recebeBoleto = '1';
+    private $recebeBoleto;
 
-    /**
-     * @var \App\Entity\Gcdb\CadUsers
-     */
     private $cadUser;
 
-    /**
-     * @var \App\Entity\Gcdb\Customers
-     */
     private $customer;
 
-
-    /**
-     * Get id.
-     *
-     * @return int
-     */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * Set dataAbertura.
-     *
-     * @param \DateTime $dataAbertura
-     *
-     * @return Customers2users
-     */
-    public function setDataAbertura($dataAbertura)
+    public function getDataAbertura(): ?\DateTimeInterface
+    {
+        return $this->dataAbertura;
+    }
+
+    public function setDataAbertura(\DateTimeInterface $dataAbertura): self
     {
         $this->dataAbertura = $dataAbertura;
 
         return $this;
     }
 
-    /**
-     * Get dataAbertura.
-     *
-     * @return \DateTime
-     */
-    public function getDataAbertura()
+    public function getAlqtIcms(): ?int
     {
-        return $this->dataAbertura;
+        return $this->alqtIcms;
     }
 
-    /**
-     * Set alqtIcms.
-     *
-     * @param int $alqtIcms
-     *
-     * @return Customers2users
-     */
-    public function setAlqtIcms($alqtIcms)
+    public function setAlqtIcms(int $alqtIcms): self
     {
         $this->alqtIcms = $alqtIcms;
 
         return $this;
     }
 
-    /**
-     * Get alqtIcms.
-     *
-     * @return int
-     */
-    public function getAlqtIcms()
+    public function getRecebeBoleto(): ?bool
     {
-        return $this->alqtIcms;
+        return $this->recebeBoleto;
     }
 
-    /**
-     * Set recebeBoleto.
-     *
-     * @param bool|null $recebeBoleto
-     *
-     * @return Customers2users
-     */
-    public function setRecebeBoleto($recebeBoleto = null)
+    public function setRecebeBoleto(?bool $recebeBoleto): self
     {
         $this->recebeBoleto = $recebeBoleto;
 
         return $this;
     }
 
-    /**
-     * Get recebeBoleto.
-     *
-     * @return bool|null
-     */
-    public function getRecebeBoleto()
+    public function getCadUser(): ?CadUsers
     {
-        return $this->recebeBoleto;
+        return $this->cadUser;
     }
 
-    /**
-     * Set cadUser.
-     *
-     * @param \App\Entity\Gcdb\CadUsers|null $cadUser
-     *
-     * @return Customers2users
-     */
-    public function setCadUser(\App\Entity\Gcdb\CadUsers $cadUser = null)
+    public function setCadUser(?CadUsers $cadUser): self
     {
         $this->cadUser = $cadUser;
 
         return $this;
     }
 
-    /**
-     * Get cadUser.
-     *
-     * @return \App\Entity\Gcdb\CadUsers|null
-     */
-    public function getCadUser()
+    public function getCustomer(): ?Customers
     {
-        return $this->cadUser;
+        return $this->customer;
     }
 
-    /**
-     * Set customer.
-     *
-     * @param \App\Entity\Gcdb\Customers|null $customer
-     *
-     * @return Customers2users
-     */
-    public function setCustomer(\App\Entity\Gcdb\Customers $customer = null)
+    public function setCustomer(?Customers $customer): self
     {
         $this->customer = $customer;
 
         return $this;
-    }
-
-    /**
-     * Get customer.
-     *
-     * @return \App\Entity\Gcdb\Customers|null
-     */
-    public function getCustomer()
-    {
-        return $this->customer;
     }
 }

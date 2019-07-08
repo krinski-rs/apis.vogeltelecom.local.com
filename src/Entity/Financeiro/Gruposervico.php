@@ -2,111 +2,54 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Gruposervico
- */
 class Gruposervico
 {
-    /**
-     * @var int
-     */
     private $grupservCodigoid;
 
-    /**
-     * @var string
-     */
     private $grupservNome;
 
-    /**
-     * @var string
-     */
     private $grupservDescricao;
 
-    /**
-     * @var \DateTime
-     */
-    private $grupservDatainc = 'CURRENT_TIMESTAMP';
+    private $grupservDatainc;
 
-
-    /**
-     * Get grupservCodigoid.
-     *
-     * @return int
-     */
-    public function getGrupservCodigoid()
+    public function getGrupservCodigoid(): ?int
     {
         return $this->grupservCodigoid;
     }
 
-    /**
-     * Set grupservNome.
-     *
-     * @param string $grupservNome
-     *
-     * @return Gruposervico
-     */
-    public function setGrupservNome($grupservNome)
+    public function getGrupservNome(): ?string
+    {
+        return $this->grupservNome;
+    }
+
+    public function setGrupservNome(string $grupservNome): self
     {
         $this->grupservNome = $grupservNome;
 
         return $this;
     }
 
-    /**
-     * Get grupservNome.
-     *
-     * @return string
-     */
-    public function getGrupservNome()
+    public function getGrupservDescricao(): ?string
     {
-        return $this->grupservNome;
+        return $this->grupservDescricao;
     }
 
-    /**
-     * Set grupservDescricao.
-     *
-     * @param string $grupservDescricao
-     *
-     * @return Gruposervico
-     */
-    public function setGrupservDescricao($grupservDescricao)
+    public function setGrupservDescricao(string $grupservDescricao): self
     {
         $this->grupservDescricao = $grupservDescricao;
 
         return $this;
     }
 
-    /**
-     * Get grupservDescricao.
-     *
-     * @return string
-     */
-    public function getGrupservDescricao()
+    public function getGrupservDatainc(): ?\DateTimeInterface
     {
-        return $this->grupservDescricao;
+        return $this->grupservDatainc;
     }
 
-    /**
-     * Set grupservDatainc.
-     *
-     * @param \DateTime $grupservDatainc
-     *
-     * @return Gruposervico
-     */
-    public function setGrupservDatainc($grupservDatainc)
+    public function setGrupservDatainc(\DateTimeInterface $grupservDatainc): self
     {
         $this->grupservDatainc = $grupservDatainc;
 
         return $this;
-    }
-
-    /**
-     * Get grupservDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getGrupservDatainc()
-    {
-        return $this->grupservDatainc;
     }
 }

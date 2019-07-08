@@ -2,314 +2,152 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Upgrade
- */
 class Upgrade
 {
-    /**
-     * @var int
-     */
     private $upgrCodigoid;
 
-    /**
-     * @var int
-     */
     private $endeentrCodigoid;
 
-    /**
-     * @var int|null
-     */
     private $upgrAposativacao;
 
-    /**
-     * @var \DateTime|null
-     */
     private $upgrDatafixa;
 
-    /**
-     * @var \DateTime|null
-     */
     private $upgrDataupgrade;
 
-    /**
-     * @var \DateTime
-     */
-    private $upgrDatainc = '0000-00-00 00:00:00';
+    private $upgrDatainc;
 
-    /**
-     * @var int|null
-     */
     private $upgrUsuario;
 
-    /**
-     * @var int|null
-     */
     private $proposalId;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
     private $contCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Servicocapacidade
-     */
     private $servcapaCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Upgrade
-     */
     private $upgrProximocodigoid;
 
-
-    /**
-     * Get upgrCodigoid.
-     *
-     * @return int
-     */
-    public function getUpgrCodigoid()
+    public function getUpgrCodigoid(): ?int
     {
         return $this->upgrCodigoid;
     }
 
-    /**
-     * Set endeentrCodigoid.
-     *
-     * @param int $endeentrCodigoid
-     *
-     * @return Upgrade
-     */
-    public function setEndeentrCodigoid($endeentrCodigoid)
+    public function getEndeentrCodigoid(): ?int
+    {
+        return $this->endeentrCodigoid;
+    }
+
+    public function setEndeentrCodigoid(int $endeentrCodigoid): self
     {
         $this->endeentrCodigoid = $endeentrCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get endeentrCodigoid.
-     *
-     * @return int
-     */
-    public function getEndeentrCodigoid()
+    public function getUpgrAposativacao(): ?int
     {
-        return $this->endeentrCodigoid;
+        return $this->upgrAposativacao;
     }
 
-    /**
-     * Set upgrAposativacao.
-     *
-     * @param int|null $upgrAposativacao
-     *
-     * @return Upgrade
-     */
-    public function setUpgrAposativacao($upgrAposativacao = null)
+    public function setUpgrAposativacao(?int $upgrAposativacao): self
     {
         $this->upgrAposativacao = $upgrAposativacao;
 
         return $this;
     }
 
-    /**
-     * Get upgrAposativacao.
-     *
-     * @return int|null
-     */
-    public function getUpgrAposativacao()
+    public function getUpgrDatafixa(): ?\DateTimeInterface
     {
-        return $this->upgrAposativacao;
+        return $this->upgrDatafixa;
     }
 
-    /**
-     * Set upgrDatafixa.
-     *
-     * @param \DateTime|null $upgrDatafixa
-     *
-     * @return Upgrade
-     */
-    public function setUpgrDatafixa($upgrDatafixa = null)
+    public function setUpgrDatafixa(?\DateTimeInterface $upgrDatafixa): self
     {
         $this->upgrDatafixa = $upgrDatafixa;
 
         return $this;
     }
 
-    /**
-     * Get upgrDatafixa.
-     *
-     * @return \DateTime|null
-     */
-    public function getUpgrDatafixa()
+    public function getUpgrDataupgrade(): ?\DateTimeInterface
     {
-        return $this->upgrDatafixa;
+        return $this->upgrDataupgrade;
     }
 
-    /**
-     * Set upgrDataupgrade.
-     *
-     * @param \DateTime|null $upgrDataupgrade
-     *
-     * @return Upgrade
-     */
-    public function setUpgrDataupgrade($upgrDataupgrade = null)
+    public function setUpgrDataupgrade(?\DateTimeInterface $upgrDataupgrade): self
     {
         $this->upgrDataupgrade = $upgrDataupgrade;
 
         return $this;
     }
 
-    /**
-     * Get upgrDataupgrade.
-     *
-     * @return \DateTime|null
-     */
-    public function getUpgrDataupgrade()
+    public function getUpgrDatainc(): ?\DateTimeInterface
     {
-        return $this->upgrDataupgrade;
+        return $this->upgrDatainc;
     }
 
-    /**
-     * Set upgrDatainc.
-     *
-     * @param \DateTime $upgrDatainc
-     *
-     * @return Upgrade
-     */
-    public function setUpgrDatainc($upgrDatainc)
+    public function setUpgrDatainc(\DateTimeInterface $upgrDatainc): self
     {
         $this->upgrDatainc = $upgrDatainc;
 
         return $this;
     }
 
-    /**
-     * Get upgrDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getUpgrDatainc()
+    public function getUpgrUsuario(): ?int
     {
-        return $this->upgrDatainc;
+        return $this->upgrUsuario;
     }
 
-    /**
-     * Set upgrUsuario.
-     *
-     * @param int|null $upgrUsuario
-     *
-     * @return Upgrade
-     */
-    public function setUpgrUsuario($upgrUsuario = null)
+    public function setUpgrUsuario(?int $upgrUsuario): self
     {
         $this->upgrUsuario = $upgrUsuario;
 
         return $this;
     }
 
-    /**
-     * Get upgrUsuario.
-     *
-     * @return int|null
-     */
-    public function getUpgrUsuario()
+    public function getProposalId(): ?int
     {
-        return $this->upgrUsuario;
+        return $this->proposalId;
     }
 
-    /**
-     * Set proposalId.
-     *
-     * @param int|null $proposalId
-     *
-     * @return Upgrade
-     */
-    public function setProposalId($proposalId = null)
+    public function setProposalId(?int $proposalId): self
     {
         $this->proposalId = $proposalId;
 
         return $this;
     }
 
-    /**
-     * Get proposalId.
-     *
-     * @return int|null
-     */
-    public function getProposalId()
+    public function getContCodigoid(): ?Contrato
     {
-        return $this->proposalId;
+        return $this->contCodigoid;
     }
 
-    /**
-     * Set contCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contCodigoid
-     *
-     * @return Upgrade
-     */
-    public function setContCodigoid(\App\Entity\Financeiro\Contrato $contCodigoid = null)
+    public function setContCodigoid(?Contrato $contCodigoid): self
     {
         $this->contCodigoid = $contCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get contCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContCodigoid()
+    public function getServcapaCodigoid(): ?Servicocapacidade
     {
-        return $this->contCodigoid;
+        return $this->servcapaCodigoid;
     }
 
-    /**
-     * Set servcapaCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Servicocapacidade|null $servcapaCodigoid
-     *
-     * @return Upgrade
-     */
-    public function setServcapaCodigoid(\App\Entity\Financeiro\Servicocapacidade $servcapaCodigoid = null)
+    public function setServcapaCodigoid(?Servicocapacidade $servcapaCodigoid): self
     {
         $this->servcapaCodigoid = $servcapaCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get servcapaCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Servicocapacidade|null
-     */
-    public function getServcapaCodigoid()
+    public function getUpgrProximocodigoid(): ?self
     {
-        return $this->servcapaCodigoid;
+        return $this->upgrProximocodigoid;
     }
 
-    /**
-     * Set upgrProximocodigoid.
-     *
-     * @param \App\Entity\Financeiro\Upgrade|null $upgrProximocodigoid
-     *
-     * @return Upgrade
-     */
-    public function setUpgrProximocodigoid(\App\Entity\Financeiro\Upgrade $upgrProximocodigoid = null)
+    public function setUpgrProximocodigoid(?self $upgrProximocodigoid): self
     {
         $this->upgrProximocodigoid = $upgrProximocodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get upgrProximocodigoid.
-     *
-     * @return \App\Entity\Financeiro\Upgrade|null
-     */
-    public function getUpgrProximocodigoid()
-    {
-        return $this->upgrProximocodigoid;
     }
 }

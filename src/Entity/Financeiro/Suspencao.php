@@ -2,140 +2,68 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Suspencao
- */
 class Suspencao
 {
-    /**
-     * @var int
-     */
     private $suspCodigoid;
 
-    /**
-     * @var int|null
-     */
     private $usuaCodigoid;
 
-    /**
-     * @var \DateTime
-     */
-    private $suspDatainc = 'CURRENT_TIMESTAMP';
+    private $suspDatainc;
 
-    /**
-     * @var \DateTime|null
-     */
     private $suspDatasuspenso;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
     private $contCodigoid;
 
-
-    /**
-     * Get suspCodigoid.
-     *
-     * @return int
-     */
-    public function getSuspCodigoid()
+    public function getSuspCodigoid(): ?int
     {
         return $this->suspCodigoid;
     }
 
-    /**
-     * Set usuaCodigoid.
-     *
-     * @param int|null $usuaCodigoid
-     *
-     * @return Suspencao
-     */
-    public function setUsuaCodigoid($usuaCodigoid = null)
+    public function getUsuaCodigoid(): ?int
+    {
+        return $this->usuaCodigoid;
+    }
+
+    public function setUsuaCodigoid(?int $usuaCodigoid): self
     {
         $this->usuaCodigoid = $usuaCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get usuaCodigoid.
-     *
-     * @return int|null
-     */
-    public function getUsuaCodigoid()
+    public function getSuspDatainc(): ?\DateTimeInterface
     {
-        return $this->usuaCodigoid;
+        return $this->suspDatainc;
     }
 
-    /**
-     * Set suspDatainc.
-     *
-     * @param \DateTime $suspDatainc
-     *
-     * @return Suspencao
-     */
-    public function setSuspDatainc($suspDatainc)
+    public function setSuspDatainc(\DateTimeInterface $suspDatainc): self
     {
         $this->suspDatainc = $suspDatainc;
 
         return $this;
     }
 
-    /**
-     * Get suspDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getSuspDatainc()
+    public function getSuspDatasuspenso(): ?\DateTimeInterface
     {
-        return $this->suspDatainc;
+        return $this->suspDatasuspenso;
     }
 
-    /**
-     * Set suspDatasuspenso.
-     *
-     * @param \DateTime|null $suspDatasuspenso
-     *
-     * @return Suspencao
-     */
-    public function setSuspDatasuspenso($suspDatasuspenso = null)
+    public function setSuspDatasuspenso(?\DateTimeInterface $suspDatasuspenso): self
     {
         $this->suspDatasuspenso = $suspDatasuspenso;
 
         return $this;
     }
 
-    /**
-     * Get suspDatasuspenso.
-     *
-     * @return \DateTime|null
-     */
-    public function getSuspDatasuspenso()
+    public function getContCodigoid(): ?Contrato
     {
-        return $this->suspDatasuspenso;
+        return $this->contCodigoid;
     }
 
-    /**
-     * Set contCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contCodigoid
-     *
-     * @return Suspencao
-     */
-    public function setContCodigoid(\App\Entity\Financeiro\Contrato $contCodigoid = null)
+    public function setContCodigoid(?Contrato $contCodigoid): self
     {
         $this->contCodigoid = $contCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get contCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContCodigoid()
-    {
-        return $this->contCodigoid;
     }
 }

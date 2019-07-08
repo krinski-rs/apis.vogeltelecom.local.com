@@ -2,227 +2,110 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Duracaocontrato
- */
 class Duracaocontrato
 {
-    /**
-     * @var int
-     */
     private $duracontCodigoid;
 
-    /**
-     * @var bool
-     */
     private $duracontMeses;
 
-    /**
-     * @var int
-     */
     private $duracontPeriodo;
 
-    /**
-     * @var \DateTime|null
-     */
     private $duracontInicio;
 
-    /**
-     * @var \DateTime|null
-     */
     private $duracontFim;
 
-    /**
-     * @var bool|null
-     */
     private $duracontRenovado;
 
-    /**
-     * @var \App\Entity\Financeiro\Duracaocontrato
-     */
     private $duracontProximocodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
     private $contCodigoid;
 
-
-    /**
-     * Get duracontCodigoid.
-     *
-     * @return int
-     */
-    public function getDuracontCodigoid()
+    public function getDuracontCodigoid(): ?int
     {
         return $this->duracontCodigoid;
     }
 
-    /**
-     * Set duracontMeses.
-     *
-     * @param bool $duracontMeses
-     *
-     * @return Duracaocontrato
-     */
-    public function setDuracontMeses($duracontMeses)
+    public function getDuracontMeses(): ?bool
+    {
+        return $this->duracontMeses;
+    }
+
+    public function setDuracontMeses(bool $duracontMeses): self
     {
         $this->duracontMeses = $duracontMeses;
 
         return $this;
     }
 
-    /**
-     * Get duracontMeses.
-     *
-     * @return bool
-     */
-    public function getDuracontMeses()
+    public function getDuracontPeriodo(): ?int
     {
-        return $this->duracontMeses;
+        return $this->duracontPeriodo;
     }
 
-    /**
-     * Set duracontPeriodo.
-     *
-     * @param int $duracontPeriodo
-     *
-     * @return Duracaocontrato
-     */
-    public function setDuracontPeriodo($duracontPeriodo)
+    public function setDuracontPeriodo(int $duracontPeriodo): self
     {
         $this->duracontPeriodo = $duracontPeriodo;
 
         return $this;
     }
 
-    /**
-     * Get duracontPeriodo.
-     *
-     * @return int
-     */
-    public function getDuracontPeriodo()
+    public function getDuracontInicio(): ?\DateTimeInterface
     {
-        return $this->duracontPeriodo;
+        return $this->duracontInicio;
     }
 
-    /**
-     * Set duracontInicio.
-     *
-     * @param \DateTime|null $duracontInicio
-     *
-     * @return Duracaocontrato
-     */
-    public function setDuracontInicio($duracontInicio = null)
+    public function setDuracontInicio(?\DateTimeInterface $duracontInicio): self
     {
         $this->duracontInicio = $duracontInicio;
 
         return $this;
     }
 
-    /**
-     * Get duracontInicio.
-     *
-     * @return \DateTime|null
-     */
-    public function getDuracontInicio()
+    public function getDuracontFim(): ?\DateTimeInterface
     {
-        return $this->duracontInicio;
+        return $this->duracontFim;
     }
 
-    /**
-     * Set duracontFim.
-     *
-     * @param \DateTime|null $duracontFim
-     *
-     * @return Duracaocontrato
-     */
-    public function setDuracontFim($duracontFim = null)
+    public function setDuracontFim(?\DateTimeInterface $duracontFim): self
     {
         $this->duracontFim = $duracontFim;
 
         return $this;
     }
 
-    /**
-     * Get duracontFim.
-     *
-     * @return \DateTime|null
-     */
-    public function getDuracontFim()
+    public function getDuracontRenovado(): ?bool
     {
-        return $this->duracontFim;
+        return $this->duracontRenovado;
     }
 
-    /**
-     * Set duracontRenovado.
-     *
-     * @param bool|null $duracontRenovado
-     *
-     * @return Duracaocontrato
-     */
-    public function setDuracontRenovado($duracontRenovado = null)
+    public function setDuracontRenovado(?bool $duracontRenovado): self
     {
         $this->duracontRenovado = $duracontRenovado;
 
         return $this;
     }
 
-    /**
-     * Get duracontRenovado.
-     *
-     * @return bool|null
-     */
-    public function getDuracontRenovado()
+    public function getDuracontProximocodigoid(): ?self
     {
-        return $this->duracontRenovado;
+        return $this->duracontProximocodigoid;
     }
 
-    /**
-     * Set duracontProximocodigoid.
-     *
-     * @param \App\Entity\Financeiro\Duracaocontrato|null $duracontProximocodigoid
-     *
-     * @return Duracaocontrato
-     */
-    public function setDuracontProximocodigoid(\App\Entity\Financeiro\Duracaocontrato $duracontProximocodigoid = null)
+    public function setDuracontProximocodigoid(?self $duracontProximocodigoid): self
     {
         $this->duracontProximocodigoid = $duracontProximocodigoid;
 
         return $this;
     }
 
-    /**
-     * Get duracontProximocodigoid.
-     *
-     * @return \App\Entity\Financeiro\Duracaocontrato|null
-     */
-    public function getDuracontProximocodigoid()
+    public function getContCodigoid(): ?Contrato
     {
-        return $this->duracontProximocodigoid;
+        return $this->contCodigoid;
     }
 
-    /**
-     * Set contCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contCodigoid
-     *
-     * @return Duracaocontrato
-     */
-    public function setContCodigoid(\App\Entity\Financeiro\Contrato $contCodigoid = null)
+    public function setContCodigoid(?Contrato $contCodigoid): self
     {
         $this->contCodigoid = $contCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get contCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContCodigoid()
-    {
-        return $this->contCodigoid;
     }
 }

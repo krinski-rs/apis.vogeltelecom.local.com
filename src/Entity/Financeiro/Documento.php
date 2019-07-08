@@ -2,256 +2,124 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Documento
- */
 class Documento
 {
-    /**
-     * @var int
-     */
     private $docuCodigoid;
 
-    /**
-     * @var string
-     */
     private $docuNome;
 
-    /**
-     * @var \DateTime
-     */
-    private $docuDatainc = 'CURRENT_TIMESTAMP';
+    private $docuDatainc;
 
-    /**
-     * @var int|null
-     */
     private $docuUsuainc;
 
-    /**
-     * @var \DateTime|null
-     */
     private $docuDatafim;
 
-    /**
-     * @var int|null
-     */
     private $docuUsuafim;
 
-    /**
-     * @var bool|null
-     */
     private $docuAprovado;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
     private $contCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Tipodocumento
-     */
     private $tipodocuCodigoid;
 
-
-    /**
-     * Get docuCodigoid.
-     *
-     * @return int
-     */
-    public function getDocuCodigoid()
+    public function getDocuCodigoid(): ?int
     {
         return $this->docuCodigoid;
     }
 
-    /**
-     * Set docuNome.
-     *
-     * @param string $docuNome
-     *
-     * @return Documento
-     */
-    public function setDocuNome($docuNome)
+    public function getDocuNome(): ?string
+    {
+        return $this->docuNome;
+    }
+
+    public function setDocuNome(string $docuNome): self
     {
         $this->docuNome = $docuNome;
 
         return $this;
     }
 
-    /**
-     * Get docuNome.
-     *
-     * @return string
-     */
-    public function getDocuNome()
+    public function getDocuDatainc(): ?\DateTimeInterface
     {
-        return $this->docuNome;
+        return $this->docuDatainc;
     }
 
-    /**
-     * Set docuDatainc.
-     *
-     * @param \DateTime $docuDatainc
-     *
-     * @return Documento
-     */
-    public function setDocuDatainc($docuDatainc)
+    public function setDocuDatainc(\DateTimeInterface $docuDatainc): self
     {
         $this->docuDatainc = $docuDatainc;
 
         return $this;
     }
 
-    /**
-     * Get docuDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getDocuDatainc()
+    public function getDocuUsuainc(): ?int
     {
-        return $this->docuDatainc;
+        return $this->docuUsuainc;
     }
 
-    /**
-     * Set docuUsuainc.
-     *
-     * @param int|null $docuUsuainc
-     *
-     * @return Documento
-     */
-    public function setDocuUsuainc($docuUsuainc = null)
+    public function setDocuUsuainc(?int $docuUsuainc): self
     {
         $this->docuUsuainc = $docuUsuainc;
 
         return $this;
     }
 
-    /**
-     * Get docuUsuainc.
-     *
-     * @return int|null
-     */
-    public function getDocuUsuainc()
+    public function getDocuDatafim(): ?\DateTimeInterface
     {
-        return $this->docuUsuainc;
+        return $this->docuDatafim;
     }
 
-    /**
-     * Set docuDatafim.
-     *
-     * @param \DateTime|null $docuDatafim
-     *
-     * @return Documento
-     */
-    public function setDocuDatafim($docuDatafim = null)
+    public function setDocuDatafim(?\DateTimeInterface $docuDatafim): self
     {
         $this->docuDatafim = $docuDatafim;
 
         return $this;
     }
 
-    /**
-     * Get docuDatafim.
-     *
-     * @return \DateTime|null
-     */
-    public function getDocuDatafim()
+    public function getDocuUsuafim(): ?int
     {
-        return $this->docuDatafim;
+        return $this->docuUsuafim;
     }
 
-    /**
-     * Set docuUsuafim.
-     *
-     * @param int|null $docuUsuafim
-     *
-     * @return Documento
-     */
-    public function setDocuUsuafim($docuUsuafim = null)
+    public function setDocuUsuafim(?int $docuUsuafim): self
     {
         $this->docuUsuafim = $docuUsuafim;
 
         return $this;
     }
 
-    /**
-     * Get docuUsuafim.
-     *
-     * @return int|null
-     */
-    public function getDocuUsuafim()
+    public function getDocuAprovado(): ?bool
     {
-        return $this->docuUsuafim;
+        return $this->docuAprovado;
     }
 
-    /**
-     * Set docuAprovado.
-     *
-     * @param bool|null $docuAprovado
-     *
-     * @return Documento
-     */
-    public function setDocuAprovado($docuAprovado = null)
+    public function setDocuAprovado(?bool $docuAprovado): self
     {
         $this->docuAprovado = $docuAprovado;
 
         return $this;
     }
 
-    /**
-     * Get docuAprovado.
-     *
-     * @return bool|null
-     */
-    public function getDocuAprovado()
+    public function getContCodigoid(): ?Contrato
     {
-        return $this->docuAprovado;
+        return $this->contCodigoid;
     }
 
-    /**
-     * Set contCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contCodigoid
-     *
-     * @return Documento
-     */
-    public function setContCodigoid(\App\Entity\Financeiro\Contrato $contCodigoid = null)
+    public function setContCodigoid(?Contrato $contCodigoid): self
     {
         $this->contCodigoid = $contCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get contCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContCodigoid()
+    public function getTipodocuCodigoid(): ?Tipodocumento
     {
-        return $this->contCodigoid;
+        return $this->tipodocuCodigoid;
     }
 
-    /**
-     * Set tipodocuCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Tipodocumento|null $tipodocuCodigoid
-     *
-     * @return Documento
-     */
-    public function setTipodocuCodigoid(\App\Entity\Financeiro\Tipodocumento $tipodocuCodigoid = null)
+    public function setTipodocuCodigoid(?Tipodocumento $tipodocuCodigoid): self
     {
         $this->tipodocuCodigoid = $tipodocuCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get tipodocuCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Tipodocumento|null
-     */
-    public function getTipodocuCodigoid()
-    {
-        return $this->tipodocuCodigoid;
     }
 }

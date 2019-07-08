@@ -2,546 +2,264 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * TmpContrato
- */
 class TmpContrato
 {
-    /**
-     * @var int
-     */
     private $idTmpContrato;
 
-    /**
-     * @var string|null
-     */
     private $circuito;
 
-    /**
-     * @var string|null
-     */
     private $conta;
 
-    /**
-     * @var string|null
-     */
     private $cnpj;
 
-    /**
-     * @var string|null
-     */
     private $status;
 
-    /**
-     * @var string|null
-     */
     private $designacao;
 
-    /**
-     * @var string|null
-     */
     private $canalVenda;
 
-    /**
-     * @var \DateTime|null
-     */
     private $ativado;
 
-    /**
-     * @var \DateTime|null
-     */
     private $destivado;
 
-    /**
-     * @var string|null
-     */
     private $velocidade;
 
-    /**
-     * @var string|null
-     */
     private $produto;
 
-    /**
-     * @var string|null
-     */
     private $servico;
 
-    /**
-     * @var string|null
-     */
     private $pedido;
 
-    /**
-     * @var string|null
-     */
     private $valorAtivacao;
 
-    /**
-     * @var string|null
-     */
     private $valorSemImposto;
 
-    /**
-     * @var string|null
-     */
     private $valorComImposto;
 
-    /**
-     * @var bool|null
-     */
     private $leitura;
 
-    /**
-     * @var bool|null
-     */
     private $erro;
 
-    /**
-     * @var \App\Entity\Financeiro\TmpContaCriada
-     */
     private $idTmpContaCriada;
 
-
-    /**
-     * Get idTmpContrato.
-     *
-     * @return int
-     */
-    public function getIdTmpContrato()
+    public function getIdTmpContrato(): ?int
     {
         return $this->idTmpContrato;
     }
 
-    /**
-     * Set circuito.
-     *
-     * @param string|null $circuito
-     *
-     * @return TmpContrato
-     */
-    public function setCircuito($circuito = null)
+    public function getCircuito(): ?string
+    {
+        return $this->circuito;
+    }
+
+    public function setCircuito(?string $circuito): self
     {
         $this->circuito = $circuito;
 
         return $this;
     }
 
-    /**
-     * Get circuito.
-     *
-     * @return string|null
-     */
-    public function getCircuito()
+    public function getConta(): ?string
     {
-        return $this->circuito;
+        return $this->conta;
     }
 
-    /**
-     * Set conta.
-     *
-     * @param string|null $conta
-     *
-     * @return TmpContrato
-     */
-    public function setConta($conta = null)
+    public function setConta(?string $conta): self
     {
         $this->conta = $conta;
 
         return $this;
     }
 
-    /**
-     * Get conta.
-     *
-     * @return string|null
-     */
-    public function getConta()
+    public function getCnpj(): ?string
     {
-        return $this->conta;
+        return $this->cnpj;
     }
 
-    /**
-     * Set cnpj.
-     *
-     * @param string|null $cnpj
-     *
-     * @return TmpContrato
-     */
-    public function setCnpj($cnpj = null)
+    public function setCnpj(?string $cnpj): self
     {
         $this->cnpj = $cnpj;
 
         return $this;
     }
 
-    /**
-     * Get cnpj.
-     *
-     * @return string|null
-     */
-    public function getCnpj()
+    public function getStatus(): ?string
     {
-        return $this->cnpj;
+        return $this->status;
     }
 
-    /**
-     * Set status.
-     *
-     * @param string|null $status
-     *
-     * @return TmpContrato
-     */
-    public function setStatus($status = null)
+    public function setStatus(?string $status): self
     {
         $this->status = $status;
 
         return $this;
     }
 
-    /**
-     * Get status.
-     *
-     * @return string|null
-     */
-    public function getStatus()
+    public function getDesignacao(): ?string
     {
-        return $this->status;
+        return $this->designacao;
     }
 
-    /**
-     * Set designacao.
-     *
-     * @param string|null $designacao
-     *
-     * @return TmpContrato
-     */
-    public function setDesignacao($designacao = null)
+    public function setDesignacao(?string $designacao): self
     {
         $this->designacao = $designacao;
 
         return $this;
     }
 
-    /**
-     * Get designacao.
-     *
-     * @return string|null
-     */
-    public function getDesignacao()
+    public function getCanalVenda(): ?string
     {
-        return $this->designacao;
+        return $this->canalVenda;
     }
 
-    /**
-     * Set canalVenda.
-     *
-     * @param string|null $canalVenda
-     *
-     * @return TmpContrato
-     */
-    public function setCanalVenda($canalVenda = null)
+    public function setCanalVenda(?string $canalVenda): self
     {
         $this->canalVenda = $canalVenda;
 
         return $this;
     }
 
-    /**
-     * Get canalVenda.
-     *
-     * @return string|null
-     */
-    public function getCanalVenda()
+    public function getAtivado(): ?\DateTimeInterface
     {
-        return $this->canalVenda;
+        return $this->ativado;
     }
 
-    /**
-     * Set ativado.
-     *
-     * @param \DateTime|null $ativado
-     *
-     * @return TmpContrato
-     */
-    public function setAtivado($ativado = null)
+    public function setAtivado(?\DateTimeInterface $ativado): self
     {
         $this->ativado = $ativado;
 
         return $this;
     }
 
-    /**
-     * Get ativado.
-     *
-     * @return \DateTime|null
-     */
-    public function getAtivado()
+    public function getDestivado(): ?\DateTimeInterface
     {
-        return $this->ativado;
+        return $this->destivado;
     }
 
-    /**
-     * Set destivado.
-     *
-     * @param \DateTime|null $destivado
-     *
-     * @return TmpContrato
-     */
-    public function setDestivado($destivado = null)
+    public function setDestivado(?\DateTimeInterface $destivado): self
     {
         $this->destivado = $destivado;
 
         return $this;
     }
 
-    /**
-     * Get destivado.
-     *
-     * @return \DateTime|null
-     */
-    public function getDestivado()
+    public function getVelocidade(): ?string
     {
-        return $this->destivado;
+        return $this->velocidade;
     }
 
-    /**
-     * Set velocidade.
-     *
-     * @param string|null $velocidade
-     *
-     * @return TmpContrato
-     */
-    public function setVelocidade($velocidade = null)
+    public function setVelocidade(?string $velocidade): self
     {
         $this->velocidade = $velocidade;
 
         return $this;
     }
 
-    /**
-     * Get velocidade.
-     *
-     * @return string|null
-     */
-    public function getVelocidade()
+    public function getProduto(): ?string
     {
-        return $this->velocidade;
+        return $this->produto;
     }
 
-    /**
-     * Set produto.
-     *
-     * @param string|null $produto
-     *
-     * @return TmpContrato
-     */
-    public function setProduto($produto = null)
+    public function setProduto(?string $produto): self
     {
         $this->produto = $produto;
 
         return $this;
     }
 
-    /**
-     * Get produto.
-     *
-     * @return string|null
-     */
-    public function getProduto()
+    public function getServico(): ?string
     {
-        return $this->produto;
+        return $this->servico;
     }
 
-    /**
-     * Set servico.
-     *
-     * @param string|null $servico
-     *
-     * @return TmpContrato
-     */
-    public function setServico($servico = null)
+    public function setServico(?string $servico): self
     {
         $this->servico = $servico;
 
         return $this;
     }
 
-    /**
-     * Get servico.
-     *
-     * @return string|null
-     */
-    public function getServico()
+    public function getPedido(): ?string
     {
-        return $this->servico;
+        return $this->pedido;
     }
 
-    /**
-     * Set pedido.
-     *
-     * @param string|null $pedido
-     *
-     * @return TmpContrato
-     */
-    public function setPedido($pedido = null)
+    public function setPedido(?string $pedido): self
     {
         $this->pedido = $pedido;
 
         return $this;
     }
 
-    /**
-     * Get pedido.
-     *
-     * @return string|null
-     */
-    public function getPedido()
+    public function getValorAtivacao()
     {
-        return $this->pedido;
+        return $this->valorAtivacao;
     }
 
-    /**
-     * Set valorAtivacao.
-     *
-     * @param string|null $valorAtivacao
-     *
-     * @return TmpContrato
-     */
-    public function setValorAtivacao($valorAtivacao = null)
+    public function setValorAtivacao($valorAtivacao): self
     {
         $this->valorAtivacao = $valorAtivacao;
 
         return $this;
     }
 
-    /**
-     * Get valorAtivacao.
-     *
-     * @return string|null
-     */
-    public function getValorAtivacao()
+    public function getValorSemImposto()
     {
-        return $this->valorAtivacao;
+        return $this->valorSemImposto;
     }
 
-    /**
-     * Set valorSemImposto.
-     *
-     * @param string|null $valorSemImposto
-     *
-     * @return TmpContrato
-     */
-    public function setValorSemImposto($valorSemImposto = null)
+    public function setValorSemImposto($valorSemImposto): self
     {
         $this->valorSemImposto = $valorSemImposto;
 
         return $this;
     }
 
-    /**
-     * Get valorSemImposto.
-     *
-     * @return string|null
-     */
-    public function getValorSemImposto()
+    public function getValorComImposto()
     {
-        return $this->valorSemImposto;
+        return $this->valorComImposto;
     }
 
-    /**
-     * Set valorComImposto.
-     *
-     * @param string|null $valorComImposto
-     *
-     * @return TmpContrato
-     */
-    public function setValorComImposto($valorComImposto = null)
+    public function setValorComImposto($valorComImposto): self
     {
         $this->valorComImposto = $valorComImposto;
 
         return $this;
     }
 
-    /**
-     * Get valorComImposto.
-     *
-     * @return string|null
-     */
-    public function getValorComImposto()
+    public function getLeitura(): ?bool
     {
-        return $this->valorComImposto;
+        return $this->leitura;
     }
 
-    /**
-     * Set leitura.
-     *
-     * @param bool|null $leitura
-     *
-     * @return TmpContrato
-     */
-    public function setLeitura($leitura = null)
+    public function setLeitura(?bool $leitura): self
     {
         $this->leitura = $leitura;
 
         return $this;
     }
 
-    /**
-     * Get leitura.
-     *
-     * @return bool|null
-     */
-    public function getLeitura()
+    public function getErro(): ?bool
     {
-        return $this->leitura;
+        return $this->erro;
     }
 
-    /**
-     * Set erro.
-     *
-     * @param bool|null $erro
-     *
-     * @return TmpContrato
-     */
-    public function setErro($erro = null)
+    public function setErro(?bool $erro): self
     {
         $this->erro = $erro;
 
         return $this;
     }
 
-    /**
-     * Get erro.
-     *
-     * @return bool|null
-     */
-    public function getErro()
+    public function getIdTmpContaCriada(): ?TmpContaCriada
     {
-        return $this->erro;
+        return $this->idTmpContaCriada;
     }
 
-    /**
-     * Set idTmpContaCriada.
-     *
-     * @param \App\Entity\Financeiro\TmpContaCriada|null $idTmpContaCriada
-     *
-     * @return TmpContrato
-     */
-    public function setIdTmpContaCriada(\App\Entity\Financeiro\TmpContaCriada $idTmpContaCriada = null)
+    public function setIdTmpContaCriada(?TmpContaCriada $idTmpContaCriada): self
     {
         $this->idTmpContaCriada = $idTmpContaCriada;
 
         return $this;
-    }
-
-    /**
-     * Get idTmpContaCriada.
-     *
-     * @return \App\Entity\Financeiro\TmpContaCriada|null
-     */
-    public function getIdTmpContaCriada()
-    {
-        return $this->idTmpContaCriada;
     }
 }

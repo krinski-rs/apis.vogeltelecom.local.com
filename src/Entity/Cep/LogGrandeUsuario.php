@@ -2,256 +2,124 @@
 
 namespace App\Entity\Cep;
 
-/**
- * LogGrandeUsuario
- */
 class LogGrandeUsuario
 {
-    /**
-     * @var int
-     */
     private $gruNuSequencial;
 
-    /**
-     * @var string
-     */
     private $ufeSg;
 
-    /**
-     * @var string
-     */
     private $gruNo;
 
-    /**
-     * @var string
-     */
     private $cep;
 
-    /**
-     * @var string
-     */
     private $gruEndereco;
 
-    /**
-     * @var string|null
-     */
     private $temp;
 
-    /**
-     * @var \App\Entity\Cep\LogLocalidade
-     */
     private $logLocalidade;
 
-    /**
-     * @var \App\Entity\Cep\LogLogradouro
-     */
     private $logLogradouro;
 
-    /**
-     * @var \App\Entity\Cep\LogBairro
-     */
     private $logBairro;
 
-
-    /**
-     * Get gruNuSequencial.
-     *
-     * @return int
-     */
-    public function getGruNuSequencial()
+    public function getGruNuSequencial(): ?int
     {
         return $this->gruNuSequencial;
     }
 
-    /**
-     * Set ufeSg.
-     *
-     * @param string $ufeSg
-     *
-     * @return LogGrandeUsuario
-     */
-    public function setUfeSg($ufeSg)
+    public function getUfeSg(): ?string
+    {
+        return $this->ufeSg;
+    }
+
+    public function setUfeSg(string $ufeSg): self
     {
         $this->ufeSg = $ufeSg;
 
         return $this;
     }
 
-    /**
-     * Get ufeSg.
-     *
-     * @return string
-     */
-    public function getUfeSg()
+    public function getGruNo(): ?string
     {
-        return $this->ufeSg;
+        return $this->gruNo;
     }
 
-    /**
-     * Set gruNo.
-     *
-     * @param string $gruNo
-     *
-     * @return LogGrandeUsuario
-     */
-    public function setGruNo($gruNo)
+    public function setGruNo(string $gruNo): self
     {
         $this->gruNo = $gruNo;
 
         return $this;
     }
 
-    /**
-     * Get gruNo.
-     *
-     * @return string
-     */
-    public function getGruNo()
+    public function getCep(): ?string
     {
-        return $this->gruNo;
+        return $this->cep;
     }
 
-    /**
-     * Set cep.
-     *
-     * @param string $cep
-     *
-     * @return LogGrandeUsuario
-     */
-    public function setCep($cep)
+    public function setCep(string $cep): self
     {
         $this->cep = $cep;
 
         return $this;
     }
 
-    /**
-     * Get cep.
-     *
-     * @return string
-     */
-    public function getCep()
+    public function getGruEndereco(): ?string
     {
-        return $this->cep;
+        return $this->gruEndereco;
     }
 
-    /**
-     * Set gruEndereco.
-     *
-     * @param string $gruEndereco
-     *
-     * @return LogGrandeUsuario
-     */
-    public function setGruEndereco($gruEndereco)
+    public function setGruEndereco(string $gruEndereco): self
     {
         $this->gruEndereco = $gruEndereco;
 
         return $this;
     }
 
-    /**
-     * Get gruEndereco.
-     *
-     * @return string
-     */
-    public function getGruEndereco()
+    public function getTemp(): ?string
     {
-        return $this->gruEndereco;
+        return $this->temp;
     }
 
-    /**
-     * Set temp.
-     *
-     * @param string|null $temp
-     *
-     * @return LogGrandeUsuario
-     */
-    public function setTemp($temp = null)
+    public function setTemp(?string $temp): self
     {
         $this->temp = $temp;
 
         return $this;
     }
 
-    /**
-     * Get temp.
-     *
-     * @return string|null
-     */
-    public function getTemp()
+    public function getLogLocalidade(): ?LogLocalidade
     {
-        return $this->temp;
+        return $this->logLocalidade;
     }
 
-    /**
-     * Set logLocalidade.
-     *
-     * @param \App\Entity\Cep\LogLocalidade|null $logLocalidade
-     *
-     * @return LogGrandeUsuario
-     */
-    public function setLogLocalidade(\App\Entity\Cep\LogLocalidade $logLocalidade = null)
+    public function setLogLocalidade(?LogLocalidade $logLocalidade): self
     {
         $this->logLocalidade = $logLocalidade;
 
         return $this;
     }
 
-    /**
-     * Get logLocalidade.
-     *
-     * @return \App\Entity\Cep\LogLocalidade|null
-     */
-    public function getLogLocalidade()
+    public function getLogLogradouro(): ?LogLogradouro
     {
-        return $this->logLocalidade;
+        return $this->logLogradouro;
     }
 
-    /**
-     * Set logLogradouro.
-     *
-     * @param \App\Entity\Cep\LogLogradouro|null $logLogradouro
-     *
-     * @return LogGrandeUsuario
-     */
-    public function setLogLogradouro(\App\Entity\Cep\LogLogradouro $logLogradouro = null)
+    public function setLogLogradouro(?LogLogradouro $logLogradouro): self
     {
         $this->logLogradouro = $logLogradouro;
 
         return $this;
     }
 
-    /**
-     * Get logLogradouro.
-     *
-     * @return \App\Entity\Cep\LogLogradouro|null
-     */
-    public function getLogLogradouro()
+    public function getLogBairro(): ?LogBairro
     {
-        return $this->logLogradouro;
+        return $this->logBairro;
     }
 
-    /**
-     * Set logBairro.
-     *
-     * @param \App\Entity\Cep\LogBairro|null $logBairro
-     *
-     * @return LogGrandeUsuario
-     */
-    public function setLogBairro(\App\Entity\Cep\LogBairro $logBairro = null)
+    public function setLogBairro(?LogBairro $logBairro): self
     {
         $this->logBairro = $logBairro;
 
         return $this;
-    }
-
-    /**
-     * Get logBairro.
-     *
-     * @return \App\Entity\Cep\LogBairro|null
-     */
-    public function getLogBairro()
-    {
-        return $this->logBairro;
     }
 }

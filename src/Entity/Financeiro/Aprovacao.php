@@ -2,82 +2,40 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Aprovacao
- */
 class Aprovacao
 {
-    /**
-     * @var int
-     */
     private $aproCodigoid;
 
-    /**
-     * @var string
-     */
     private $aproNome;
 
-    /**
-     * @var int
-     */
     private $aproTipo;
 
-
-    /**
-     * Get aproCodigoid.
-     *
-     * @return int
-     */
-    public function getAproCodigoid()
+    public function getAproCodigoid(): ?int
     {
         return $this->aproCodigoid;
     }
 
-    /**
-     * Set aproNome.
-     *
-     * @param string $aproNome
-     *
-     * @return Aprovacao
-     */
-    public function setAproNome($aproNome)
+    public function getAproNome(): ?string
+    {
+        return $this->aproNome;
+    }
+
+    public function setAproNome(string $aproNome): self
     {
         $this->aproNome = $aproNome;
 
         return $this;
     }
 
-    /**
-     * Get aproNome.
-     *
-     * @return string
-     */
-    public function getAproNome()
+    public function getAproTipo(): ?int
     {
-        return $this->aproNome;
+        return $this->aproTipo;
     }
 
-    /**
-     * Set aproTipo.
-     *
-     * @param int $aproTipo
-     *
-     * @return Aprovacao
-     */
-    public function setAproTipo($aproTipo)
+    public function setAproTipo(int $aproTipo): self
     {
         $this->aproTipo = $aproTipo;
 
         return $this;
-    }
-
-    /**
-     * Get aproTipo.
-     *
-     * @return int
-     */
-    public function getAproTipo()
-    {
-        return $this->aproTipo;
     }
 }

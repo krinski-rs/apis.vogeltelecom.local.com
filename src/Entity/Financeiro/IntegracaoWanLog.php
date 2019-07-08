@@ -2,227 +2,110 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * IntegracaoWanLog
- */
 class IntegracaoWanLog
 {
-    /**
-     * @var int
-     */
     private $id;
 
-    /**
-     * @var int|null
-     */
     private $contratoWanId;
 
-    /**
-     * @var int|null
-     */
     private $customerId;
 
-    /**
-     * @var int|null
-     */
     private $customerIdWan;
 
-    /**
-     * @var bool|null
-     */
     private $status;
 
-    /**
-     * @var \DateTime|null
-     */
-    private $dataHoraCriacao = 'CURRENT_TIMESTAMP';
+    private $dataHoraCriacao;
 
-    /**
-     * @var string|null
-     */
     private $message;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
     private $contratoVogel;
 
-
-    /**
-     * Get id.
-     *
-     * @return int
-     */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * Set contratoWanId.
-     *
-     * @param int|null $contratoWanId
-     *
-     * @return IntegracaoWanLog
-     */
-    public function setContratoWanId($contratoWanId = null)
+    public function getContratoWanId(): ?int
+    {
+        return $this->contratoWanId;
+    }
+
+    public function setContratoWanId(?int $contratoWanId): self
     {
         $this->contratoWanId = $contratoWanId;
 
         return $this;
     }
 
-    /**
-     * Get contratoWanId.
-     *
-     * @return int|null
-     */
-    public function getContratoWanId()
+    public function getCustomerId(): ?int
     {
-        return $this->contratoWanId;
+        return $this->customerId;
     }
 
-    /**
-     * Set customerId.
-     *
-     * @param int|null $customerId
-     *
-     * @return IntegracaoWanLog
-     */
-    public function setCustomerId($customerId = null)
+    public function setCustomerId(?int $customerId): self
     {
         $this->customerId = $customerId;
 
         return $this;
     }
 
-    /**
-     * Get customerId.
-     *
-     * @return int|null
-     */
-    public function getCustomerId()
+    public function getCustomerIdWan(): ?int
     {
-        return $this->customerId;
+        return $this->customerIdWan;
     }
 
-    /**
-     * Set customerIdWan.
-     *
-     * @param int|null $customerIdWan
-     *
-     * @return IntegracaoWanLog
-     */
-    public function setCustomerIdWan($customerIdWan = null)
+    public function setCustomerIdWan(?int $customerIdWan): self
     {
         $this->customerIdWan = $customerIdWan;
 
         return $this;
     }
 
-    /**
-     * Get customerIdWan.
-     *
-     * @return int|null
-     */
-    public function getCustomerIdWan()
+    public function getStatus(): ?bool
     {
-        return $this->customerIdWan;
+        return $this->status;
     }
 
-    /**
-     * Set status.
-     *
-     * @param bool|null $status
-     *
-     * @return IntegracaoWanLog
-     */
-    public function setStatus($status = null)
+    public function setStatus(?bool $status): self
     {
         $this->status = $status;
 
         return $this;
     }
 
-    /**
-     * Get status.
-     *
-     * @return bool|null
-     */
-    public function getStatus()
+    public function getDataHoraCriacao(): ?\DateTimeInterface
     {
-        return $this->status;
+        return $this->dataHoraCriacao;
     }
 
-    /**
-     * Set dataHoraCriacao.
-     *
-     * @param \DateTime|null $dataHoraCriacao
-     *
-     * @return IntegracaoWanLog
-     */
-    public function setDataHoraCriacao($dataHoraCriacao = null)
+    public function setDataHoraCriacao(?\DateTimeInterface $dataHoraCriacao): self
     {
         $this->dataHoraCriacao = $dataHoraCriacao;
 
         return $this;
     }
 
-    /**
-     * Get dataHoraCriacao.
-     *
-     * @return \DateTime|null
-     */
-    public function getDataHoraCriacao()
+    public function getMessage(): ?string
     {
-        return $this->dataHoraCriacao;
+        return $this->message;
     }
 
-    /**
-     * Set message.
-     *
-     * @param string|null $message
-     *
-     * @return IntegracaoWanLog
-     */
-    public function setMessage($message = null)
+    public function setMessage(?string $message): self
     {
         $this->message = $message;
 
         return $this;
     }
 
-    /**
-     * Get message.
-     *
-     * @return string|null
-     */
-    public function getMessage()
+    public function getContratoVogel(): ?Contrato
     {
-        return $this->message;
+        return $this->contratoVogel;
     }
 
-    /**
-     * Set contratoVogel.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contratoVogel
-     *
-     * @return IntegracaoWanLog
-     */
-    public function setContratoVogel(\App\Entity\Financeiro\Contrato $contratoVogel = null)
+    public function setContratoVogel(?Contrato $contratoVogel): self
     {
         $this->contratoVogel = $contratoVogel;
 
         return $this;
-    }
-
-    /**
-     * Get contratoVogel.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContratoVogel()
-    {
-        return $this->contratoVogel;
     }
 }

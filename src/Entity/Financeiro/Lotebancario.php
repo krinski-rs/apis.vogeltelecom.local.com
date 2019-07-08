@@ -2,169 +2,82 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Lotebancario
- */
 class Lotebancario
 {
-    /**
-     * @var int
-     */
     private $lotebancCodigoid;
 
-    /**
-     * @var int
-     */
     private $usuaCodigoid;
 
-    /**
-     * @var \DateTime
-     */
-    private $lotebancDatainc = 'CURRENT_TIMESTAMP';
+    private $lotebancDatainc;
 
-    /**
-     * @var string
-     */
     private $lotebancTexto;
 
-    /**
-     * @var string
-     */
     private $lotebancNome;
 
-    /**
-     * @var \App\Entity\Financeiro\Banco
-     */
     private $bancCodigoid;
 
-
-    /**
-     * Get lotebancCodigoid.
-     *
-     * @return int
-     */
-    public function getLotebancCodigoid()
+    public function getLotebancCodigoid(): ?int
     {
         return $this->lotebancCodigoid;
     }
 
-    /**
-     * Set usuaCodigoid.
-     *
-     * @param int $usuaCodigoid
-     *
-     * @return Lotebancario
-     */
-    public function setUsuaCodigoid($usuaCodigoid)
+    public function getUsuaCodigoid(): ?int
+    {
+        return $this->usuaCodigoid;
+    }
+
+    public function setUsuaCodigoid(int $usuaCodigoid): self
     {
         $this->usuaCodigoid = $usuaCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get usuaCodigoid.
-     *
-     * @return int
-     */
-    public function getUsuaCodigoid()
+    public function getLotebancDatainc(): ?\DateTimeInterface
     {
-        return $this->usuaCodigoid;
+        return $this->lotebancDatainc;
     }
 
-    /**
-     * Set lotebancDatainc.
-     *
-     * @param \DateTime $lotebancDatainc
-     *
-     * @return Lotebancario
-     */
-    public function setLotebancDatainc($lotebancDatainc)
+    public function setLotebancDatainc(\DateTimeInterface $lotebancDatainc): self
     {
         $this->lotebancDatainc = $lotebancDatainc;
 
         return $this;
     }
 
-    /**
-     * Get lotebancDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getLotebancDatainc()
+    public function getLotebancTexto(): ?string
     {
-        return $this->lotebancDatainc;
+        return $this->lotebancTexto;
     }
 
-    /**
-     * Set lotebancTexto.
-     *
-     * @param string $lotebancTexto
-     *
-     * @return Lotebancario
-     */
-    public function setLotebancTexto($lotebancTexto)
+    public function setLotebancTexto(string $lotebancTexto): self
     {
         $this->lotebancTexto = $lotebancTexto;
 
         return $this;
     }
 
-    /**
-     * Get lotebancTexto.
-     *
-     * @return string
-     */
-    public function getLotebancTexto()
+    public function getLotebancNome(): ?string
     {
-        return $this->lotebancTexto;
+        return $this->lotebancNome;
     }
 
-    /**
-     * Set lotebancNome.
-     *
-     * @param string $lotebancNome
-     *
-     * @return Lotebancario
-     */
-    public function setLotebancNome($lotebancNome)
+    public function setLotebancNome(string $lotebancNome): self
     {
         $this->lotebancNome = $lotebancNome;
 
         return $this;
     }
 
-    /**
-     * Get lotebancNome.
-     *
-     * @return string
-     */
-    public function getLotebancNome()
+    public function getBancCodigoid(): ?Banco
     {
-        return $this->lotebancNome;
+        return $this->bancCodigoid;
     }
 
-    /**
-     * Set bancCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Banco|null $bancCodigoid
-     *
-     * @return Lotebancario
-     */
-    public function setBancCodigoid(\App\Entity\Financeiro\Banco $bancCodigoid = null)
+    public function setBancCodigoid(?Banco $bancCodigoid): self
     {
         $this->bancCodigoid = $bancCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get bancCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Banco|null
-     */
-    public function getBancCodigoid()
-    {
-        return $this->bancCodigoid;
     }
 }

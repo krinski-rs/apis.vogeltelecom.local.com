@@ -2,169 +2,82 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Dadosbancarios
- */
 class Dadosbancarios
 {
-    /**
-     * @var int
-     */
     private $dadobancCodigoid;
 
-    /**
-     * @var string
-     */
     private $dadobancAgencia;
 
-    /**
-     * @var string
-     */
     private $dadobancConta;
 
-    /**
-     * @var int
-     */
     private $emprCodigoid;
 
-    /**
-     * @var string|null
-     */
     private $dadobancCodigocedente;
 
-    /**
-     * @var \App\Entity\Financeiro\Banco
-     */
     private $bancCodigoid;
 
-
-    /**
-     * Get dadobancCodigoid.
-     *
-     * @return int
-     */
-    public function getDadobancCodigoid()
+    public function getDadobancCodigoid(): ?int
     {
         return $this->dadobancCodigoid;
     }
 
-    /**
-     * Set dadobancAgencia.
-     *
-     * @param string $dadobancAgencia
-     *
-     * @return Dadosbancarios
-     */
-    public function setDadobancAgencia($dadobancAgencia)
+    public function getDadobancAgencia(): ?string
+    {
+        return $this->dadobancAgencia;
+    }
+
+    public function setDadobancAgencia(string $dadobancAgencia): self
     {
         $this->dadobancAgencia = $dadobancAgencia;
 
         return $this;
     }
 
-    /**
-     * Get dadobancAgencia.
-     *
-     * @return string
-     */
-    public function getDadobancAgencia()
+    public function getDadobancConta(): ?string
     {
-        return $this->dadobancAgencia;
+        return $this->dadobancConta;
     }
 
-    /**
-     * Set dadobancConta.
-     *
-     * @param string $dadobancConta
-     *
-     * @return Dadosbancarios
-     */
-    public function setDadobancConta($dadobancConta)
+    public function setDadobancConta(string $dadobancConta): self
     {
         $this->dadobancConta = $dadobancConta;
 
         return $this;
     }
 
-    /**
-     * Get dadobancConta.
-     *
-     * @return string
-     */
-    public function getDadobancConta()
+    public function getEmprCodigoid(): ?int
     {
-        return $this->dadobancConta;
+        return $this->emprCodigoid;
     }
 
-    /**
-     * Set emprCodigoid.
-     *
-     * @param int $emprCodigoid
-     *
-     * @return Dadosbancarios
-     */
-    public function setEmprCodigoid($emprCodigoid)
+    public function setEmprCodigoid(int $emprCodigoid): self
     {
         $this->emprCodigoid = $emprCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get emprCodigoid.
-     *
-     * @return int
-     */
-    public function getEmprCodigoid()
+    public function getDadobancCodigocedente(): ?string
     {
-        return $this->emprCodigoid;
+        return $this->dadobancCodigocedente;
     }
 
-    /**
-     * Set dadobancCodigocedente.
-     *
-     * @param string|null $dadobancCodigocedente
-     *
-     * @return Dadosbancarios
-     */
-    public function setDadobancCodigocedente($dadobancCodigocedente = null)
+    public function setDadobancCodigocedente(?string $dadobancCodigocedente): self
     {
         $this->dadobancCodigocedente = $dadobancCodigocedente;
 
         return $this;
     }
 
-    /**
-     * Get dadobancCodigocedente.
-     *
-     * @return string|null
-     */
-    public function getDadobancCodigocedente()
+    public function getBancCodigoid(): ?Banco
     {
-        return $this->dadobancCodigocedente;
+        return $this->bancCodigoid;
     }
 
-    /**
-     * Set bancCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Banco|null $bancCodigoid
-     *
-     * @return Dadosbancarios
-     */
-    public function setBancCodigoid(\App\Entity\Financeiro\Banco $bancCodigoid = null)
+    public function setBancCodigoid(?Banco $bancCodigoid): self
     {
         $this->bancCodigoid = $bancCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get bancCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Banco|null
-     */
-    public function getBancCodigoid()
-    {
-        return $this->bancCodigoid;
     }
 }

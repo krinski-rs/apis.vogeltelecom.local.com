@@ -2,169 +2,82 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Igpm
- */
 class Igpm
 {
-    /**
-     * @var int
-     */
     private $igpmCodigoid;
 
-    /**
-     * @var \DateTime
-     */
-    private $igpmDatainc = 'CURRENT_TIMESTAMP';
+    private $igpmDatainc;
 
-    /**
-     * @var string
-     */
-    private $igpmPercentual = '0.00';
+    private $igpmPercentual;
 
-    /**
-     * @var string
-     */
-    private $igpmAcumuladonoano = '0.00';
+    private $igpmAcumuladonoano;
 
-    /**
-     * @var string
-     */
-    private $igpmAcumulado12meses = '0.00';
+    private $igpmAcumulado12meses;
 
-    /**
-     * @var \DateTime
-     */
-    private $igpmPrazo = '0000-00-00 00:00:00';
+    private $igpmPrazo;
 
-
-    /**
-     * Get igpmCodigoid.
-     *
-     * @return int
-     */
-    public function getIgpmCodigoid()
+    public function getIgpmCodigoid(): ?int
     {
         return $this->igpmCodigoid;
     }
 
-    /**
-     * Set igpmDatainc.
-     *
-     * @param \DateTime $igpmDatainc
-     *
-     * @return Igpm
-     */
-    public function setIgpmDatainc($igpmDatainc)
+    public function getIgpmDatainc(): ?\DateTimeInterface
+    {
+        return $this->igpmDatainc;
+    }
+
+    public function setIgpmDatainc(\DateTimeInterface $igpmDatainc): self
     {
         $this->igpmDatainc = $igpmDatainc;
 
         return $this;
     }
 
-    /**
-     * Get igpmDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getIgpmDatainc()
+    public function getIgpmPercentual()
     {
-        return $this->igpmDatainc;
+        return $this->igpmPercentual;
     }
 
-    /**
-     * Set igpmPercentual.
-     *
-     * @param string $igpmPercentual
-     *
-     * @return Igpm
-     */
-    public function setIgpmPercentual($igpmPercentual)
+    public function setIgpmPercentual($igpmPercentual): self
     {
         $this->igpmPercentual = $igpmPercentual;
 
         return $this;
     }
 
-    /**
-     * Get igpmPercentual.
-     *
-     * @return string
-     */
-    public function getIgpmPercentual()
+    public function getIgpmAcumuladonoano()
     {
-        return $this->igpmPercentual;
+        return $this->igpmAcumuladonoano;
     }
 
-    /**
-     * Set igpmAcumuladonoano.
-     *
-     * @param string $igpmAcumuladonoano
-     *
-     * @return Igpm
-     */
-    public function setIgpmAcumuladonoano($igpmAcumuladonoano)
+    public function setIgpmAcumuladonoano($igpmAcumuladonoano): self
     {
         $this->igpmAcumuladonoano = $igpmAcumuladonoano;
 
         return $this;
     }
 
-    /**
-     * Get igpmAcumuladonoano.
-     *
-     * @return string
-     */
-    public function getIgpmAcumuladonoano()
+    public function getIgpmAcumulado12meses()
     {
-        return $this->igpmAcumuladonoano;
+        return $this->igpmAcumulado12meses;
     }
 
-    /**
-     * Set igpmAcumulado12meses.
-     *
-     * @param string $igpmAcumulado12meses
-     *
-     * @return Igpm
-     */
-    public function setIgpmAcumulado12meses($igpmAcumulado12meses)
+    public function setIgpmAcumulado12meses($igpmAcumulado12meses): self
     {
         $this->igpmAcumulado12meses = $igpmAcumulado12meses;
 
         return $this;
     }
 
-    /**
-     * Get igpmAcumulado12meses.
-     *
-     * @return string
-     */
-    public function getIgpmAcumulado12meses()
+    public function getIgpmPrazo(): ?\DateTimeInterface
     {
-        return $this->igpmAcumulado12meses;
+        return $this->igpmPrazo;
     }
 
-    /**
-     * Set igpmPrazo.
-     *
-     * @param \DateTime $igpmPrazo
-     *
-     * @return Igpm
-     */
-    public function setIgpmPrazo($igpmPrazo)
+    public function setIgpmPrazo(\DateTimeInterface $igpmPrazo): self
     {
         $this->igpmPrazo = $igpmPrazo;
 
         return $this;
-    }
-
-    /**
-     * Get igpmPrazo.
-     *
-     * @return \DateTime
-     */
-    public function getIgpmPrazo()
-    {
-        return $this->igpmPrazo;
     }
 }

@@ -2,285 +2,138 @@
 
 namespace App\Entity\Cep;
 
-/**
- * LogUnidOper
- */
 class LogUnidOper
 {
-    /**
-     * @var int
-     */
     private $uopNuSequencial;
 
-    /**
-     * @var string
-     */
     private $ufeSg;
 
-    /**
-     * @var string
-     */
     private $uopNo;
 
-    /**
-     * @var string
-     */
     private $cep;
 
-    /**
-     * @var string
-     */
     private $uopEndereco;
 
-    /**
-     * @var string|null
-     */
     private $uopInCp;
 
-    /**
-     * @var string|null
-     */
     private $temp;
 
-    /**
-     * @var \App\Entity\Cep\LogLocalidade
-     */
     private $locNuSequencial;
 
-    /**
-     * @var \App\Entity\Cep\LogLogradouro
-     */
     private $logNuSequencial;
 
-    /**
-     * @var \App\Entity\Cep\LogBairro
-     */
     private $baiNuSequencial;
 
-
-    /**
-     * Get uopNuSequencial.
-     *
-     * @return int
-     */
-    public function getUopNuSequencial()
+    public function getUopNuSequencial(): ?int
     {
         return $this->uopNuSequencial;
     }
 
-    /**
-     * Set ufeSg.
-     *
-     * @param string $ufeSg
-     *
-     * @return LogUnidOper
-     */
-    public function setUfeSg($ufeSg)
+    public function getUfeSg(): ?string
+    {
+        return $this->ufeSg;
+    }
+
+    public function setUfeSg(string $ufeSg): self
     {
         $this->ufeSg = $ufeSg;
 
         return $this;
     }
 
-    /**
-     * Get ufeSg.
-     *
-     * @return string
-     */
-    public function getUfeSg()
+    public function getUopNo(): ?string
     {
-        return $this->ufeSg;
+        return $this->uopNo;
     }
 
-    /**
-     * Set uopNo.
-     *
-     * @param string $uopNo
-     *
-     * @return LogUnidOper
-     */
-    public function setUopNo($uopNo)
+    public function setUopNo(string $uopNo): self
     {
         $this->uopNo = $uopNo;
 
         return $this;
     }
 
-    /**
-     * Get uopNo.
-     *
-     * @return string
-     */
-    public function getUopNo()
+    public function getCep(): ?string
     {
-        return $this->uopNo;
+        return $this->cep;
     }
 
-    /**
-     * Set cep.
-     *
-     * @param string $cep
-     *
-     * @return LogUnidOper
-     */
-    public function setCep($cep)
+    public function setCep(string $cep): self
     {
         $this->cep = $cep;
 
         return $this;
     }
 
-    /**
-     * Get cep.
-     *
-     * @return string
-     */
-    public function getCep()
+    public function getUopEndereco(): ?string
     {
-        return $this->cep;
+        return $this->uopEndereco;
     }
 
-    /**
-     * Set uopEndereco.
-     *
-     * @param string $uopEndereco
-     *
-     * @return LogUnidOper
-     */
-    public function setUopEndereco($uopEndereco)
+    public function setUopEndereco(string $uopEndereco): self
     {
         $this->uopEndereco = $uopEndereco;
 
         return $this;
     }
 
-    /**
-     * Get uopEndereco.
-     *
-     * @return string
-     */
-    public function getUopEndereco()
+    public function getUopInCp(): ?string
     {
-        return $this->uopEndereco;
+        return $this->uopInCp;
     }
 
-    /**
-     * Set uopInCp.
-     *
-     * @param string|null $uopInCp
-     *
-     * @return LogUnidOper
-     */
-    public function setUopInCp($uopInCp = null)
+    public function setUopInCp(?string $uopInCp): self
     {
         $this->uopInCp = $uopInCp;
 
         return $this;
     }
 
-    /**
-     * Get uopInCp.
-     *
-     * @return string|null
-     */
-    public function getUopInCp()
+    public function getTemp(): ?string
     {
-        return $this->uopInCp;
+        return $this->temp;
     }
 
-    /**
-     * Set temp.
-     *
-     * @param string|null $temp
-     *
-     * @return LogUnidOper
-     */
-    public function setTemp($temp = null)
+    public function setTemp(?string $temp): self
     {
         $this->temp = $temp;
 
         return $this;
     }
 
-    /**
-     * Get temp.
-     *
-     * @return string|null
-     */
-    public function getTemp()
+    public function getLocNuSequencial(): ?LogLocalidade
     {
-        return $this->temp;
+        return $this->locNuSequencial;
     }
 
-    /**
-     * Set locNuSequencial.
-     *
-     * @param \App\Entity\Cep\LogLocalidade|null $locNuSequencial
-     *
-     * @return LogUnidOper
-     */
-    public function setLocNuSequencial(\App\Entity\Cep\LogLocalidade $locNuSequencial = null)
+    public function setLocNuSequencial(?LogLocalidade $locNuSequencial): self
     {
         $this->locNuSequencial = $locNuSequencial;
 
         return $this;
     }
 
-    /**
-     * Get locNuSequencial.
-     *
-     * @return \App\Entity\Cep\LogLocalidade|null
-     */
-    public function getLocNuSequencial()
+    public function getLogNuSequencial(): ?LogLogradouro
     {
-        return $this->locNuSequencial;
+        return $this->logNuSequencial;
     }
 
-    /**
-     * Set logNuSequencial.
-     *
-     * @param \App\Entity\Cep\LogLogradouro|null $logNuSequencial
-     *
-     * @return LogUnidOper
-     */
-    public function setLogNuSequencial(\App\Entity\Cep\LogLogradouro $logNuSequencial = null)
+    public function setLogNuSequencial(?LogLogradouro $logNuSequencial): self
     {
         $this->logNuSequencial = $logNuSequencial;
 
         return $this;
     }
 
-    /**
-     * Get logNuSequencial.
-     *
-     * @return \App\Entity\Cep\LogLogradouro|null
-     */
-    public function getLogNuSequencial()
+    public function getBaiNuSequencial(): ?LogBairro
     {
-        return $this->logNuSequencial;
+        return $this->baiNuSequencial;
     }
 
-    /**
-     * Set baiNuSequencial.
-     *
-     * @param \App\Entity\Cep\LogBairro|null $baiNuSequencial
-     *
-     * @return LogUnidOper
-     */
-    public function setBaiNuSequencial(\App\Entity\Cep\LogBairro $baiNuSequencial = null)
+    public function setBaiNuSequencial(?LogBairro $baiNuSequencial): self
     {
         $this->baiNuSequencial = $baiNuSequencial;
 
         return $this;
-    }
-
-    /**
-     * Get baiNuSequencial.
-     *
-     * @return \App\Entity\Cep\LogBairro|null
-     */
-    public function getBaiNuSequencial()
-    {
-        return $this->baiNuSequencial;
     }
 }

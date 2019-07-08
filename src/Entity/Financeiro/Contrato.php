@@ -2,915 +2,446 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Contrato
- */
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 class Contrato
 {
-    /**
-     * @var int
-     */
     private $contCodigoid;
 
-    /**
-     * @var int|null
-     */
     private $clieCodigoid;
 
-    /**
-     * @var int
-     */
     private $usuaCodigoid;
 
-    /**
-     * @var int
-     */
     private $contNumero;
 
-    /**
-     * @var int
-     */
     private $contLimiteatraso;
 
-    /**
-     * @var bool
-     */
     private $contMenorprazo;
 
-    /**
-     * @var int
-     */
     private $contPrazorescisao;
 
-    /**
-     * @var \DateTime|null
-     */
     private $contDataassinatura;
 
-    /**
-     * @var \DateTime
-     */
-    private $contDatainc = 'CURRENT_TIMESTAMP';
+    private $contDatainc;
 
-    /**
-     * @var string
-     */
     private $contIndicereajuste;
 
-    /**
-     * @var int
-     */
     private $contPrazoreajuste;
 
-    /**
-     * @var string
-     */
-    private $contIndisponibilidade = '0.00';
+    private $contIndisponibilidade;
 
-    /**
-     * @var int|null
-     */
     private $contDependentecodigoid;
 
-    /**
-     * @var int|null
-     */
     private $unidCodigoid;
 
-    /**
-     * @var int|null
-     */
     private $bancCodigoid;
 
-    /**
-     * @var int|null
-     */
     private $enviCodigoid;
 
-    /**
-     * @var \DateTime|null
-     */
     private $contDatacancelamento;
 
-    /**
-     * @var \DateTime|null
-     */
     private $contDatacancelado;
 
-    /**
-     * @var \DateTime|null
-     */
     private $contDatareajustado;
 
-    /**
-     * @var int|null
-     */
     private $contUnidArquivado;
 
-    /**
-     * @var string|null
-     */
     private $contClienteFinal;
 
-    /**
-     * @var bool|null
-     */
     private $integracaoSummit;
 
-    /**
-     * @var string
-     */
     private $contTipo;
 
-    /**
-     * @var int|null
-     */
     private $propcircuitCodigoid;
 
-    /**
-     * @var string|null
-     */
     private $contClassificacao;
 
-    /**
-     * @var string|null
-     */
     private $contValorDelta;
 
-    /**
-     * @var \DateTime|null
-     */
     private $contDataInternalizacao;
 
-    /**
-     * @var string|null
-     */
     private $contInformacoesAdicionais;
 
-    /**
-     * @var bool
-     */
-    private $contSegregarValor = '1';
+    private $contSegregarValor;
 
-    /**
-     * @var int|null
-     */
     private $salesforceId;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
+    private $contratos;
+
+    private $enderecoentregaatributovalor;
+
     private $contSubstituircodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
     private $contProximocodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
     private $contPaicodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Designacao
-     */
     private $desigCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Enderecoentrega
-     */
     private $endeentrCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Modelo
-     */
     private $modeCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Multas
-     */
     private $multCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Sla
-     */
     private $slaCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Status
-     */
     private $statCodigoid;
-    
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $contratos;
-    
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $enderecoentregaatributovalor;
-    
-    /**
-     * Constructor
-     */
+
     public function __construct()
     {
-        $this->contratos = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->enderecoentregaatributovalor = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->contratos = new ArrayCollection();
+        $this->enderecoentregaatributovalor = new ArrayCollection();
     }
-    
-    /**
-     * Get contCodigoid.
-     *
-     * @return int
-     */
-    public function getContCodigoid()
+
+    public function getContCodigoid(): ?int
     {
         return $this->contCodigoid;
     }
 
-    /**
-     * Set clieCodigoid.
-     *
-     * @param int|null $clieCodigoid
-     *
-     * @return Contrato
-     */
-    public function setClieCodigoid($clieCodigoid = null)
+    public function getClieCodigoid(): ?int
+    {
+        return $this->clieCodigoid;
+    }
+
+    public function setClieCodigoid(?int $clieCodigoid): self
     {
         $this->clieCodigoid = $clieCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get clieCodigoid.
-     *
-     * @return int|null
-     */
-    public function getClieCodigoid()
+    public function getUsuaCodigoid(): ?int
     {
-        return $this->clieCodigoid;
+        return $this->usuaCodigoid;
     }
 
-    /**
-     * Set usuaCodigoid.
-     *
-     * @param int $usuaCodigoid
-     *
-     * @return Contrato
-     */
-    public function setUsuaCodigoid($usuaCodigoid)
+    public function setUsuaCodigoid(int $usuaCodigoid): self
     {
         $this->usuaCodigoid = $usuaCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get usuaCodigoid.
-     *
-     * @return int
-     */
-    public function getUsuaCodigoid()
+    public function getContNumero(): ?int
     {
-        return $this->usuaCodigoid;
+        return $this->contNumero;
     }
 
-    /**
-     * Set contNumero.
-     *
-     * @param int $contNumero
-     *
-     * @return Contrato
-     */
-    public function setContNumero($contNumero)
+    public function setContNumero(int $contNumero): self
     {
         $this->contNumero = $contNumero;
 
         return $this;
     }
 
-    /**
-     * Get contNumero.
-     *
-     * @return int
-     */
-    public function getContNumero()
+    public function getContLimiteatraso(): ?int
     {
-        return $this->contNumero;
+        return $this->contLimiteatraso;
     }
 
-    /**
-     * Set contLimiteatraso.
-     *
-     * @param int $contLimiteatraso
-     *
-     * @return Contrato
-     */
-    public function setContLimiteatraso($contLimiteatraso)
+    public function setContLimiteatraso(int $contLimiteatraso): self
     {
         $this->contLimiteatraso = $contLimiteatraso;
 
         return $this;
     }
 
-    /**
-     * Get contLimiteatraso.
-     *
-     * @return int
-     */
-    public function getContLimiteatraso()
+    public function getContMenorprazo(): ?bool
     {
-        return $this->contLimiteatraso;
+        return $this->contMenorprazo;
     }
 
-    /**
-     * Set contMenorprazo.
-     *
-     * @param bool $contMenorprazo
-     *
-     * @return Contrato
-     */
-    public function setContMenorprazo($contMenorprazo)
+    public function setContMenorprazo(bool $contMenorprazo): self
     {
         $this->contMenorprazo = $contMenorprazo;
 
         return $this;
     }
 
-    /**
-     * Get contMenorprazo.
-     *
-     * @return bool
-     */
-    public function getContMenorprazo()
+    public function getContPrazorescisao(): ?int
     {
-        return $this->contMenorprazo;
+        return $this->contPrazorescisao;
     }
 
-    /**
-     * Set contPrazorescisao.
-     *
-     * @param int $contPrazorescisao
-     *
-     * @return Contrato
-     */
-    public function setContPrazorescisao($contPrazorescisao)
+    public function setContPrazorescisao(int $contPrazorescisao): self
     {
         $this->contPrazorescisao = $contPrazorescisao;
 
         return $this;
     }
 
-    /**
-     * Get contPrazorescisao.
-     *
-     * @return int
-     */
-    public function getContPrazorescisao()
+    public function getContDataassinatura(): ?\DateTimeInterface
     {
-        return $this->contPrazorescisao;
+        return $this->contDataassinatura;
     }
 
-    /**
-     * Set contDataassinatura.
-     *
-     * @param \DateTime|null $contDataassinatura
-     *
-     * @return Contrato
-     */
-    public function setContDataassinatura($contDataassinatura = null)
+    public function setContDataassinatura(?\DateTimeInterface $contDataassinatura): self
     {
         $this->contDataassinatura = $contDataassinatura;
 
         return $this;
     }
 
-    /**
-     * Get contDataassinatura.
-     *
-     * @return \DateTime|null
-     */
-    public function getContDataassinatura()
+    public function getContDatainc(): ?\DateTimeInterface
     {
-        return $this->contDataassinatura;
+        return $this->contDatainc;
     }
 
-    /**
-     * Set contDatainc.
-     *
-     * @param \DateTime $contDatainc
-     *
-     * @return Contrato
-     */
-    public function setContDatainc($contDatainc)
+    public function setContDatainc(\DateTimeInterface $contDatainc): self
     {
         $this->contDatainc = $contDatainc;
 
         return $this;
     }
 
-    /**
-     * Get contDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getContDatainc()
+    public function getContIndicereajuste(): ?string
     {
-        return $this->contDatainc;
+        return $this->contIndicereajuste;
     }
 
-    /**
-     * Set contIndicereajuste.
-     *
-     * @param string $contIndicereajuste
-     *
-     * @return Contrato
-     */
-    public function setContIndicereajuste($contIndicereajuste)
+    public function setContIndicereajuste(string $contIndicereajuste): self
     {
         $this->contIndicereajuste = $contIndicereajuste;
 
         return $this;
     }
 
-    /**
-     * Get contIndicereajuste.
-     *
-     * @return string
-     */
-    public function getContIndicereajuste()
+    public function getContPrazoreajuste(): ?int
     {
-        return $this->contIndicereajuste;
+        return $this->contPrazoreajuste;
     }
 
-    /**
-     * Set contPrazoreajuste.
-     *
-     * @param int $contPrazoreajuste
-     *
-     * @return Contrato
-     */
-    public function setContPrazoreajuste($contPrazoreajuste)
+    public function setContPrazoreajuste(int $contPrazoreajuste): self
     {
         $this->contPrazoreajuste = $contPrazoreajuste;
 
         return $this;
     }
 
-    /**
-     * Get contPrazoreajuste.
-     *
-     * @return int
-     */
-    public function getContPrazoreajuste()
+    public function getContIndisponibilidade()
     {
-        return $this->contPrazoreajuste;
+        return $this->contIndisponibilidade;
     }
 
-    /**
-     * Set contIndisponibilidade.
-     *
-     * @param string $contIndisponibilidade
-     *
-     * @return Contrato
-     */
-    public function setContIndisponibilidade($contIndisponibilidade)
+    public function setContIndisponibilidade($contIndisponibilidade): self
     {
         $this->contIndisponibilidade = $contIndisponibilidade;
 
         return $this;
     }
 
-    /**
-     * Get contIndisponibilidade.
-     *
-     * @return string
-     */
-    public function getContIndisponibilidade()
+    public function getContDependentecodigoid(): ?int
     {
-        return $this->contIndisponibilidade;
+        return $this->contDependentecodigoid;
     }
 
-    /**
-     * Set contDependentecodigoid.
-     *
-     * @param int|null $contDependentecodigoid
-     *
-     * @return Contrato
-     */
-    public function setContDependentecodigoid($contDependentecodigoid = null)
+    public function setContDependentecodigoid(?int $contDependentecodigoid): self
     {
         $this->contDependentecodigoid = $contDependentecodigoid;
 
         return $this;
     }
 
-    /**
-     * Get contDependentecodigoid.
-     *
-     * @return int|null
-     */
-    public function getContDependentecodigoid()
+    public function getUnidCodigoid(): ?int
     {
-        return $this->contDependentecodigoid;
+        return $this->unidCodigoid;
     }
 
-    /**
-     * Set unidCodigoid.
-     *
-     * @param int|null $unidCodigoid
-     *
-     * @return Contrato
-     */
-    public function setUnidCodigoid($unidCodigoid = null)
+    public function setUnidCodigoid(?int $unidCodigoid): self
     {
         $this->unidCodigoid = $unidCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get unidCodigoid.
-     *
-     * @return int|null
-     */
-    public function getUnidCodigoid()
+    public function getBancCodigoid(): ?int
     {
-        return $this->unidCodigoid;
+        return $this->bancCodigoid;
     }
 
-    /**
-     * Set bancCodigoid.
-     *
-     * @param int|null $bancCodigoid
-     *
-     * @return Contrato
-     */
-    public function setBancCodigoid($bancCodigoid = null)
+    public function setBancCodigoid(?int $bancCodigoid): self
     {
         $this->bancCodigoid = $bancCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get bancCodigoid.
-     *
-     * @return int|null
-     */
-    public function getBancCodigoid()
+    public function getEnviCodigoid(): ?int
     {
-        return $this->bancCodigoid;
+        return $this->enviCodigoid;
     }
 
-    /**
-     * Set enviCodigoid.
-     *
-     * @param int|null $enviCodigoid
-     *
-     * @return Contrato
-     */
-    public function setEnviCodigoid($enviCodigoid = null)
+    public function setEnviCodigoid(?int $enviCodigoid): self
     {
         $this->enviCodigoid = $enviCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get enviCodigoid.
-     *
-     * @return int|null
-     */
-    public function getEnviCodigoid()
+    public function getContDatacancelamento(): ?\DateTimeInterface
     {
-        return $this->enviCodigoid;
+        return $this->contDatacancelamento;
     }
 
-    /**
-     * Set contDatacancelamento.
-     *
-     * @param \DateTime|null $contDatacancelamento
-     *
-     * @return Contrato
-     */
-    public function setContDatacancelamento($contDatacancelamento = null)
+    public function setContDatacancelamento(?\DateTimeInterface $contDatacancelamento): self
     {
         $this->contDatacancelamento = $contDatacancelamento;
 
         return $this;
     }
 
-    /**
-     * Get contDatacancelamento.
-     *
-     * @return \DateTime|null
-     */
-    public function getContDatacancelamento()
+    public function getContDatacancelado(): ?\DateTimeInterface
     {
-        return $this->contDatacancelamento;
+        return $this->contDatacancelado;
     }
 
-    /**
-     * Set contDatacancelado.
-     *
-     * @param \DateTime|null $contDatacancelado
-     *
-     * @return Contrato
-     */
-    public function setContDatacancelado($contDatacancelado = null)
+    public function setContDatacancelado(?\DateTimeInterface $contDatacancelado): self
     {
         $this->contDatacancelado = $contDatacancelado;
 
         return $this;
     }
 
-    /**
-     * Get contDatacancelado.
-     *
-     * @return \DateTime|null
-     */
-    public function getContDatacancelado()
+    public function getContDatareajustado(): ?\DateTimeInterface
     {
-        return $this->contDatacancelado;
+        return $this->contDatareajustado;
     }
 
-    /**
-     * Set contDatareajustado.
-     *
-     * @param \DateTime|null $contDatareajustado
-     *
-     * @return Contrato
-     */
-    public function setContDatareajustado($contDatareajustado = null)
+    public function setContDatareajustado(?\DateTimeInterface $contDatareajustado): self
     {
         $this->contDatareajustado = $contDatareajustado;
 
         return $this;
     }
 
-    /**
-     * Get contDatareajustado.
-     *
-     * @return \DateTime|null
-     */
-    public function getContDatareajustado()
+    public function getContUnidArquivado(): ?int
     {
-        return $this->contDatareajustado;
+        return $this->contUnidArquivado;
     }
 
-    /**
-     * Set contUnidArquivado.
-     *
-     * @param int|null $contUnidArquivado
-     *
-     * @return Contrato
-     */
-    public function setContUnidArquivado($contUnidArquivado = null)
+    public function setContUnidArquivado(?int $contUnidArquivado): self
     {
         $this->contUnidArquivado = $contUnidArquivado;
 
         return $this;
     }
 
-    /**
-     * Get contUnidArquivado.
-     *
-     * @return int|null
-     */
-    public function getContUnidArquivado()
+    public function getContClienteFinal(): ?string
     {
-        return $this->contUnidArquivado;
+        return $this->contClienteFinal;
     }
 
-    /**
-     * Set contClienteFinal.
-     *
-     * @param string|null $contClienteFinal
-     *
-     * @return Contrato
-     */
-    public function setContClienteFinal($contClienteFinal = null)
+    public function setContClienteFinal(?string $contClienteFinal): self
     {
         $this->contClienteFinal = $contClienteFinal;
 
         return $this;
     }
 
-    /**
-     * Get contClienteFinal.
-     *
-     * @return string|null
-     */
-    public function getContClienteFinal()
+    public function getIntegracaoSummit(): ?bool
     {
-        return $this->contClienteFinal;
+        return $this->integracaoSummit;
     }
 
-    /**
-     * Set integracaoSummit.
-     *
-     * @param bool|null $integracaoSummit
-     *
-     * @return Contrato
-     */
-    public function setIntegracaoSummit($integracaoSummit = null)
+    public function setIntegracaoSummit(?bool $integracaoSummit): self
     {
         $this->integracaoSummit = $integracaoSummit;
 
         return $this;
     }
 
-    /**
-     * Get integracaoSummit.
-     *
-     * @return bool|null
-     */
-    public function getIntegracaoSummit()
+    public function getContTipo(): ?string
     {
-        return $this->integracaoSummit;
+        return $this->contTipo;
     }
 
-    /**
-     * Set contTipo.
-     *
-     * @param string $contTipo
-     *
-     * @return Contrato
-     */
-    public function setContTipo($contTipo)
+    public function setContTipo(string $contTipo): self
     {
         $this->contTipo = $contTipo;
 
         return $this;
     }
 
-    /**
-     * Get contTipo.
-     *
-     * @return string
-     */
-    public function getContTipo()
+    public function getPropcircuitCodigoid(): ?int
     {
-        return $this->contTipo;
+        return $this->propcircuitCodigoid;
     }
 
-    /**
-     * Set propcircuitCodigoid.
-     *
-     * @param int|null $propcircuitCodigoid
-     *
-     * @return Contrato
-     */
-    public function setPropcircuitCodigoid($propcircuitCodigoid = null)
+    public function setPropcircuitCodigoid(?int $propcircuitCodigoid): self
     {
         $this->propcircuitCodigoid = $propcircuitCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get propcircuitCodigoid.
-     *
-     * @return int|null
-     */
-    public function getPropcircuitCodigoid()
+    public function getContClassificacao(): ?string
     {
-        return $this->propcircuitCodigoid;
+        return $this->contClassificacao;
     }
 
-    /**
-     * Set contClassificacao.
-     *
-     * @param string|null $contClassificacao
-     *
-     * @return Contrato
-     */
-    public function setContClassificacao($contClassificacao = null)
+    public function setContClassificacao(?string $contClassificacao): self
     {
         $this->contClassificacao = $contClassificacao;
 
         return $this;
     }
 
-    /**
-     * Get contClassificacao.
-     *
-     * @return string|null
-     */
-    public function getContClassificacao()
+    public function getContValorDelta()
     {
-        return $this->contClassificacao;
+        return $this->contValorDelta;
     }
 
-    /**
-     * Set contValorDelta.
-     *
-     * @param string|null $contValorDelta
-     *
-     * @return Contrato
-     */
-    public function setContValorDelta($contValorDelta = null)
+    public function setContValorDelta($contValorDelta): self
     {
         $this->contValorDelta = $contValorDelta;
 
         return $this;
     }
 
-    /**
-     * Get contValorDelta.
-     *
-     * @return string|null
-     */
-    public function getContValorDelta()
+    public function getContDataInternalizacao(): ?\DateTimeInterface
     {
-        return $this->contValorDelta;
+        return $this->contDataInternalizacao;
     }
 
-    /**
-     * Set contDataInternalizacao.
-     *
-     * @param \DateTime|null $contDataInternalizacao
-     *
-     * @return Contrato
-     */
-    public function setContDataInternalizacao($contDataInternalizacao = null)
+    public function setContDataInternalizacao(?\DateTimeInterface $contDataInternalizacao): self
     {
         $this->contDataInternalizacao = $contDataInternalizacao;
 
         return $this;
     }
 
-    /**
-     * Get contDataInternalizacao.
-     *
-     * @return \DateTime|null
-     */
-    public function getContDataInternalizacao()
+    public function getContInformacoesAdicionais(): ?string
     {
-        return $this->contDataInternalizacao;
+        return $this->contInformacoesAdicionais;
     }
 
-    /**
-     * Set contInformacoesAdicionais.
-     *
-     * @param string|null $contInformacoesAdicionais
-     *
-     * @return Contrato
-     */
-    public function setContInformacoesAdicionais($contInformacoesAdicionais = null)
+    public function setContInformacoesAdicionais(?string $contInformacoesAdicionais): self
     {
         $this->contInformacoesAdicionais = $contInformacoesAdicionais;
 
         return $this;
     }
 
-    /**
-     * Get contInformacoesAdicionais.
-     *
-     * @return string|null
-     */
-    public function getContInformacoesAdicionais()
+    public function getContSegregarValor(): ?bool
     {
-        return $this->contInformacoesAdicionais;
+        return $this->contSegregarValor;
     }
 
-    /**
-     * Set contSegregarValor.
-     *
-     * @param bool $contSegregarValor
-     *
-     * @return Contrato
-     */
-    public function setContSegregarValor($contSegregarValor)
+    public function setContSegregarValor(bool $contSegregarValor): self
     {
         $this->contSegregarValor = $contSegregarValor;
 
         return $this;
     }
 
-    /**
-     * Get contSegregarValor.
-     *
-     * @return bool
-     */
-    public function getContSegregarValor()
+    public function getSalesforceId(): ?string
     {
-        return $this->contSegregarValor;
+        return $this->salesforceId;
     }
 
-    /**
-     * Set salesforceId.
-     *
-     * @param int|null $salesforceId
-     *
-     * @return Contrato
-     */
-    public function setSalesforceId($salesforceId = null)
+    public function setSalesforceId(?string $salesforceId): self
     {
         $this->salesforceId = $salesforceId;
 
@@ -918,295 +449,173 @@ class Contrato
     }
 
     /**
-     * Get salesforceId.
-     *
-     * @return int|null
+     * @return Collection|Contrato[]
      */
-    public function getSalesforceId()
+    public function getContratos(): Collection
     {
-        return $this->salesforceId;
+        return $this->contratos;
+    }
+
+    public function addContrato(Contrato $contrato): self
+    {
+        if (!$this->contratos->contains($contrato)) {
+            $this->contratos[] = $contrato;
+            $contrato->setContPaicodigoid($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContrato(Contrato $contrato): self
+    {
+        if ($this->contratos->contains($contrato)) {
+            $this->contratos->removeElement($contrato);
+            // set the owning side to null (unless already changed)
+            if ($contrato->getContPaicodigoid() === $this) {
+                $contrato->setContPaicodigoid(null);
+            }
+        }
+
+        return $this;
     }
 
     /**
-     * Set contSubstituircodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contSubstituircodigoid
-     *
-     * @return Contrato
+     * @return Collection|Enderecoentregaatributovalor[]
      */
-    public function setContSubstituircodigoid(\App\Entity\Financeiro\Contrato $contSubstituircodigoid = null)
+    public function getEnderecoentregaatributovalor(): Collection
+    {
+        return $this->enderecoentregaatributovalor;
+    }
+
+    public function addEnderecoentregaatributovalor(Enderecoentregaatributovalor $enderecoentregaatributovalor): self
+    {
+        if (!$this->enderecoentregaatributovalor->contains($enderecoentregaatributovalor)) {
+            $this->enderecoentregaatributovalor[] = $enderecoentregaatributovalor;
+            $enderecoentregaatributovalor->setContrato($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEnderecoentregaatributovalor(Enderecoentregaatributovalor $enderecoentregaatributovalor): self
+    {
+        if ($this->enderecoentregaatributovalor->contains($enderecoentregaatributovalor)) {
+            $this->enderecoentregaatributovalor->removeElement($enderecoentregaatributovalor);
+            // set the owning side to null (unless already changed)
+            if ($enderecoentregaatributovalor->getContrato() === $this) {
+                $enderecoentregaatributovalor->setContrato(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getContSubstituircodigoid(): ?self
+    {
+        return $this->contSubstituircodigoid;
+    }
+
+    public function setContSubstituircodigoid(?self $contSubstituircodigoid): self
     {
         $this->contSubstituircodigoid = $contSubstituircodigoid;
 
         return $this;
     }
 
-    /**
-     * Get contSubstituircodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContSubstituircodigoid()
+    public function getContProximocodigoid(): ?self
     {
-        return $this->contSubstituircodigoid;
+        return $this->contProximocodigoid;
     }
 
-    /**
-     * Set contProximocodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contProximocodigoid
-     *
-     * @return Contrato
-     */
-    public function setContProximocodigoid(\App\Entity\Financeiro\Contrato $contProximocodigoid = null)
+    public function setContProximocodigoid(?self $contProximocodigoid): self
     {
         $this->contProximocodigoid = $contProximocodigoid;
 
         return $this;
     }
 
-    /**
-     * Get contProximocodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContProximocodigoid()
+    public function getContPaicodigoid(): ?self
     {
-        return $this->contProximocodigoid;
+        return $this->contPaicodigoid;
     }
 
-    /**
-     * Set contPaicodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contPaicodigoid
-     *
-     * @return Contrato
-     */
-    public function setContPaicodigoid(\App\Entity\Financeiro\Contrato $contPaicodigoid = null)
+    public function setContPaicodigoid(?self $contPaicodigoid): self
     {
         $this->contPaicodigoid = $contPaicodigoid;
 
         return $this;
     }
 
-    /**
-     * Get contPaicodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContPaicodigoid()
+    public function getDesigCodigoid(): ?Designacao
     {
-        return $this->contPaicodigoid;
+        return $this->desigCodigoid;
     }
 
-    /**
-     * Set desigCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Designacao|null $desigCodigoid
-     *
-     * @return Contrato
-     */
-    public function setDesigCodigoid(\App\Entity\Financeiro\Designacao $desigCodigoid = null)
+    public function setDesigCodigoid(?Designacao $desigCodigoid): self
     {
         $this->desigCodigoid = $desigCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get desigCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Designacao|null
-     */
-    public function getDesigCodigoid()
+    public function getEndeentrCodigoid(): ?Enderecoentrega
     {
-        return $this->desigCodigoid;
+        return $this->endeentrCodigoid;
     }
 
-    /**
-     * Set endeentrCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Enderecoentrega|null $endeentrCodigoid
-     *
-     * @return Contrato
-     */
-    public function setEndeentrCodigoid(\App\Entity\Financeiro\Enderecoentrega $endeentrCodigoid = null)
+    public function setEndeentrCodigoid(?Enderecoentrega $endeentrCodigoid): self
     {
         $this->endeentrCodigoid = $endeentrCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get endeentrCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Enderecoentrega|null
-     */
-    public function getEndeentrCodigoid()
+    public function getModeCodigoid(): ?Modelo
     {
-        return $this->endeentrCodigoid;
+        return $this->modeCodigoid;
     }
 
-    /**
-     * Set modeCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Modelo|null $modeCodigoid
-     *
-     * @return Contrato
-     */
-    public function setModeCodigoid(\App\Entity\Financeiro\Modelo $modeCodigoid = null)
+    public function setModeCodigoid(?Modelo $modeCodigoid): self
     {
         $this->modeCodigoid = $modeCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get modeCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Modelo|null
-     */
-    public function getModeCodigoid()
+    public function getMultCodigoid(): ?Multas
     {
-        return $this->modeCodigoid;
+        return $this->multCodigoid;
     }
 
-    /**
-     * Set multCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Multas|null $multCodigoid
-     *
-     * @return Contrato
-     */
-    public function setMultCodigoid(\App\Entity\Financeiro\Multas $multCodigoid = null)
+    public function setMultCodigoid(?Multas $multCodigoid): self
     {
         $this->multCodigoid = $multCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get multCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Multas|null
-     */
-    public function getMultCodigoid()
+    public function getSlaCodigoid(): ?Sla
     {
-        return $this->multCodigoid;
+        return $this->slaCodigoid;
     }
 
-    /**
-     * Set slaCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Sla|null $slaCodigoid
-     *
-     * @return Contrato
-     */
-    public function setSlaCodigoid(\App\Entity\Financeiro\Sla $slaCodigoid = null)
+    public function setSlaCodigoid(?Sla $slaCodigoid): self
     {
         $this->slaCodigoid = $slaCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get slaCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Sla|null
-     */
-    public function getSlaCodigoid()
+    public function getStatCodigoid(): ?Status
     {
-        return $this->slaCodigoid;
+        return $this->statCodigoid;
     }
 
-    /**
-     * Set statCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Status|null $statCodigoid
-     *
-     * @return Contrato
-     */
-    public function setStatCodigoid(\App\Entity\Financeiro\Status $statCodigoid = null)
+    public function setStatCodigoid(?Status $statCodigoid): self
     {
         $this->statCodigoid = $statCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get statCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Status|null
-     */
-    public function getStatCodigoid()
-    {
-        return $this->statCodigoid;
-    }
-    
-    /**
-     * Add contrato
-     *
-     * @param \App\Entity\Financeiro\Contrato $contratoFilho
-     * @return Contrato
-     */
-    public function addContrato(\App\Entity\Financeiro\Contrato $contrato)
-    {
-        $this->contratos[] = $contrato;
-        
-        return $this;
-    }
-    
-    /**
-     * Remove contrato
-     *
-     * @param \App\Entity\Financeiro\Contrato $contratoFilho
-     */
-    public function removeContrato(\App\Entity\Financeiro\Contrato $contrato)
-    {
-        $this->contratos->removeElement($contrato);
-    }
-    
-    /**
-     * Get contratos
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getContratos()
-    {
-        return $this->contratos;
-    }
-    
-    /**
-     * Add enderecoentregaatributovalor
-     *
-     * @param \App\Entity\Financeiro\Enderecoentregaatributovalor $enderecoentregaatributovalor
-     * @return Contrato
-     */
-    public function addEnderecoentregaatributovalor(\App\Entity\Financeiro\Enderecoentregaatributovalor $enderecoentregaatributovalor)
-    {
-        $this->enderecoentregaatributovalor[] = $enderecoentregaatributovalor;
-        
-        return $this;
-    }
-    
-    /**
-     * Remove enderecoentregaatributovalor
-     *
-     * @param \App\Entity\Financeiro\Enderecoentregaatributovalor $enderecoentregaatributovalor
-     */
-    public function removeEnderecoentregaatributovalor(\App\Entity\Financeiro\Enderecoentregaatributovalor $enderecoentregaatributovalor)
-    {
-        $this->enderecoentregaatributovalor->removeElement($enderecoentregaatributovalor);
-    }
-    
-    /**
-     * Get enderecoentregaatributovalor
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getEnderecoentregaatributovalor()
-    {
-        return $this->enderecoentregaatributovalor;
     }
     
     public function getStt()

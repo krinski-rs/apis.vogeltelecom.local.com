@@ -2,430 +2,208 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Periodicidade
- */
 class Periodicidade
 {
-    /**
-     * @var int
-     */
     private $periCodigoid;
 
-    /**
-     * @var int
-     */
     private $periPeriodicidadefatura;
 
-    /**
-     * @var int
-     */
     private $periPeriodicidadenota;
 
-    /**
-     * @var int
-     */
     private $periParcelasfatura;
 
-    /**
-     * @var int
-     */
     private $periParcelasnota;
 
-    /**
-     * @var int|null
-     */
     private $periVencimento;
 
-    /**
-     * @var \DateTime
-     */
-    private $periDatainc = 'CURRENT_TIMESTAMP';
+    private $periDatainc;
 
-    /**
-     * @var bool|null
-     */
     private $periAposassinatura;
 
-    /**
-     * @var int
-     */
-    private $periPospago = '0';
+    private $periPospago;
 
-    /**
-     * @var int
-     */
     private $periNumeroparcelas;
 
-    /**
-     * @var int|null
-     */
     private $periCarenciadias;
 
-    /**
-     * @var int|null
-     */
     private $periCarenciames;
 
-    /**
-     * @var \DateTime|null
-     */
     private $periCarenciadatafixa;
 
-    /**
-     * @var \DateTime|null
-     */
     private $periVencimentodatafixa;
 
-    /**
-     * @var \App\Entity\Financeiro\Contratovalor
-     */
     private $contvaloCodigoid;
 
-
-    /**
-     * Get periCodigoid.
-     *
-     * @return int
-     */
-    public function getPeriCodigoid()
+    public function getPeriCodigoid(): ?int
     {
         return $this->periCodigoid;
     }
 
-    /**
-     * Set periPeriodicidadefatura.
-     *
-     * @param int $periPeriodicidadefatura
-     *
-     * @return Periodicidade
-     */
-    public function setPeriPeriodicidadefatura($periPeriodicidadefatura)
+    public function getPeriPeriodicidadefatura(): ?int
+    {
+        return $this->periPeriodicidadefatura;
+    }
+
+    public function setPeriPeriodicidadefatura(int $periPeriodicidadefatura): self
     {
         $this->periPeriodicidadefatura = $periPeriodicidadefatura;
 
         return $this;
     }
 
-    /**
-     * Get periPeriodicidadefatura.
-     *
-     * @return int
-     */
-    public function getPeriPeriodicidadefatura()
+    public function getPeriPeriodicidadenota(): ?int
     {
-        return $this->periPeriodicidadefatura;
+        return $this->periPeriodicidadenota;
     }
 
-    /**
-     * Set periPeriodicidadenota.
-     *
-     * @param int $periPeriodicidadenota
-     *
-     * @return Periodicidade
-     */
-    public function setPeriPeriodicidadenota($periPeriodicidadenota)
+    public function setPeriPeriodicidadenota(int $periPeriodicidadenota): self
     {
         $this->periPeriodicidadenota = $periPeriodicidadenota;
 
         return $this;
     }
 
-    /**
-     * Get periPeriodicidadenota.
-     *
-     * @return int
-     */
-    public function getPeriPeriodicidadenota()
+    public function getPeriParcelasfatura(): ?int
     {
-        return $this->periPeriodicidadenota;
+        return $this->periParcelasfatura;
     }
 
-    /**
-     * Set periParcelasfatura.
-     *
-     * @param int $periParcelasfatura
-     *
-     * @return Periodicidade
-     */
-    public function setPeriParcelasfatura($periParcelasfatura)
+    public function setPeriParcelasfatura(int $periParcelasfatura): self
     {
         $this->periParcelasfatura = $periParcelasfatura;
 
         return $this;
     }
 
-    /**
-     * Get periParcelasfatura.
-     *
-     * @return int
-     */
-    public function getPeriParcelasfatura()
+    public function getPeriParcelasnota(): ?int
     {
-        return $this->periParcelasfatura;
+        return $this->periParcelasnota;
     }
 
-    /**
-     * Set periParcelasnota.
-     *
-     * @param int $periParcelasnota
-     *
-     * @return Periodicidade
-     */
-    public function setPeriParcelasnota($periParcelasnota)
+    public function setPeriParcelasnota(int $periParcelasnota): self
     {
         $this->periParcelasnota = $periParcelasnota;
 
         return $this;
     }
 
-    /**
-     * Get periParcelasnota.
-     *
-     * @return int
-     */
-    public function getPeriParcelasnota()
+    public function getPeriVencimento(): ?int
     {
-        return $this->periParcelasnota;
+        return $this->periVencimento;
     }
 
-    /**
-     * Set periVencimento.
-     *
-     * @param int|null $periVencimento
-     *
-     * @return Periodicidade
-     */
-    public function setPeriVencimento($periVencimento = null)
+    public function setPeriVencimento(?int $periVencimento): self
     {
         $this->periVencimento = $periVencimento;
 
         return $this;
     }
 
-    /**
-     * Get periVencimento.
-     *
-     * @return int|null
-     */
-    public function getPeriVencimento()
+    public function getPeriDatainc(): ?\DateTimeInterface
     {
-        return $this->periVencimento;
+        return $this->periDatainc;
     }
 
-    /**
-     * Set periDatainc.
-     *
-     * @param \DateTime $periDatainc
-     *
-     * @return Periodicidade
-     */
-    public function setPeriDatainc($periDatainc)
+    public function setPeriDatainc(\DateTimeInterface $periDatainc): self
     {
         $this->periDatainc = $periDatainc;
 
         return $this;
     }
 
-    /**
-     * Get periDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getPeriDatainc()
+    public function getPeriAposassinatura(): ?bool
     {
-        return $this->periDatainc;
+        return $this->periAposassinatura;
     }
 
-    /**
-     * Set periAposassinatura.
-     *
-     * @param bool|null $periAposassinatura
-     *
-     * @return Periodicidade
-     */
-    public function setPeriAposassinatura($periAposassinatura = null)
+    public function setPeriAposassinatura(?bool $periAposassinatura): self
     {
         $this->periAposassinatura = $periAposassinatura;
 
         return $this;
     }
 
-    /**
-     * Get periAposassinatura.
-     *
-     * @return bool|null
-     */
-    public function getPeriAposassinatura()
+    public function getPeriPospago(): ?int
     {
-        return $this->periAposassinatura;
+        return $this->periPospago;
     }
 
-    /**
-     * Set periPospago.
-     *
-     * @param int $periPospago
-     *
-     * @return Periodicidade
-     */
-    public function setPeriPospago($periPospago)
+    public function setPeriPospago(int $periPospago): self
     {
         $this->periPospago = $periPospago;
 
         return $this;
     }
 
-    /**
-     * Get periPospago.
-     *
-     * @return int
-     */
-    public function getPeriPospago()
+    public function getPeriNumeroparcelas(): ?int
     {
-        return $this->periPospago;
+        return $this->periNumeroparcelas;
     }
 
-    /**
-     * Set periNumeroparcelas.
-     *
-     * @param int $periNumeroparcelas
-     *
-     * @return Periodicidade
-     */
-    public function setPeriNumeroparcelas($periNumeroparcelas)
+    public function setPeriNumeroparcelas(int $periNumeroparcelas): self
     {
         $this->periNumeroparcelas = $periNumeroparcelas;
 
         return $this;
     }
 
-    /**
-     * Get periNumeroparcelas.
-     *
-     * @return int
-     */
-    public function getPeriNumeroparcelas()
+    public function getPeriCarenciadias(): ?int
     {
-        return $this->periNumeroparcelas;
+        return $this->periCarenciadias;
     }
 
-    /**
-     * Set periCarenciadias.
-     *
-     * @param int|null $periCarenciadias
-     *
-     * @return Periodicidade
-     */
-    public function setPeriCarenciadias($periCarenciadias = null)
+    public function setPeriCarenciadias(?int $periCarenciadias): self
     {
         $this->periCarenciadias = $periCarenciadias;
 
         return $this;
     }
 
-    /**
-     * Get periCarenciadias.
-     *
-     * @return int|null
-     */
-    public function getPeriCarenciadias()
+    public function getPeriCarenciames(): ?int
     {
-        return $this->periCarenciadias;
+        return $this->periCarenciames;
     }
 
-    /**
-     * Set periCarenciames.
-     *
-     * @param int|null $periCarenciames
-     *
-     * @return Periodicidade
-     */
-    public function setPeriCarenciames($periCarenciames = null)
+    public function setPeriCarenciames(?int $periCarenciames): self
     {
         $this->periCarenciames = $periCarenciames;
 
         return $this;
     }
 
-    /**
-     * Get periCarenciames.
-     *
-     * @return int|null
-     */
-    public function getPeriCarenciames()
+    public function getPeriCarenciadatafixa(): ?\DateTimeInterface
     {
-        return $this->periCarenciames;
+        return $this->periCarenciadatafixa;
     }
 
-    /**
-     * Set periCarenciadatafixa.
-     *
-     * @param \DateTime|null $periCarenciadatafixa
-     *
-     * @return Periodicidade
-     */
-    public function setPeriCarenciadatafixa($periCarenciadatafixa = null)
+    public function setPeriCarenciadatafixa(?\DateTimeInterface $periCarenciadatafixa): self
     {
         $this->periCarenciadatafixa = $periCarenciadatafixa;
 
         return $this;
     }
 
-    /**
-     * Get periCarenciadatafixa.
-     *
-     * @return \DateTime|null
-     */
-    public function getPeriCarenciadatafixa()
+    public function getPeriVencimentodatafixa(): ?\DateTimeInterface
     {
-        return $this->periCarenciadatafixa;
+        return $this->periVencimentodatafixa;
     }
 
-    /**
-     * Set periVencimentodatafixa.
-     *
-     * @param \DateTime|null $periVencimentodatafixa
-     *
-     * @return Periodicidade
-     */
-    public function setPeriVencimentodatafixa($periVencimentodatafixa = null)
+    public function setPeriVencimentodatafixa(?\DateTimeInterface $periVencimentodatafixa): self
     {
         $this->periVencimentodatafixa = $periVencimentodatafixa;
 
         return $this;
     }
 
-    /**
-     * Get periVencimentodatafixa.
-     *
-     * @return \DateTime|null
-     */
-    public function getPeriVencimentodatafixa()
+    public function getContvaloCodigoid(): ?Contratovalor
     {
-        return $this->periVencimentodatafixa;
+        return $this->contvaloCodigoid;
     }
 
-    /**
-     * Set contvaloCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contratovalor|null $contvaloCodigoid
-     *
-     * @return Periodicidade
-     */
-    public function setContvaloCodigoid(\App\Entity\Financeiro\Contratovalor $contvaloCodigoid = null)
+    public function setContvaloCodigoid(?Contratovalor $contvaloCodigoid): self
     {
         $this->contvaloCodigoid = $contvaloCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get contvaloCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contratovalor|null
-     */
-    public function getContvaloCodigoid()
-    {
-        return $this->contvaloCodigoid;
     }
 }

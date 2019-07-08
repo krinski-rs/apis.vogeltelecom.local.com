@@ -2,111 +2,54 @@
 
 namespace App\Entity\Gcdb;
 
-/**
- * AdmCidades
- */
 class AdmCidades
 {
-    /**
-     * @var int
-     */
     private $id;
 
-    /**
-     * @var string|null
-     */
     private $nome;
 
-    /**
-     * @var int|null
-     */
     private $codigoIbge;
 
-    /**
-     * @var \App\Entity\Gcdb\AdmUf
-     */
     private $admUf;
 
-
-    /**
-     * Get id.
-     *
-     * @return int
-     */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * Set nome.
-     *
-     * @param string|null $nome
-     *
-     * @return AdmCidades
-     */
-    public function setNome($nome = null)
+    public function getNome(): ?string
+    {
+        return $this->nome;
+    }
+
+    public function setNome(?string $nome): self
     {
         $this->nome = $nome;
 
         return $this;
     }
 
-    /**
-     * Get nome.
-     *
-     * @return string|null
-     */
-    public function getNome()
+    public function getCodigoIbge(): ?int
     {
-        return $this->nome;
+        return $this->codigoIbge;
     }
 
-    /**
-     * Set codigoIbge.
-     *
-     * @param int|null $codigoIbge
-     *
-     * @return AdmCidades
-     */
-    public function setCodigoIbge($codigoIbge = null)
+    public function setCodigoIbge(?int $codigoIbge): self
     {
         $this->codigoIbge = $codigoIbge;
 
         return $this;
     }
 
-    /**
-     * Get codigoIbge.
-     *
-     * @return int|null
-     */
-    public function getCodigoIbge()
+    public function getAdmUf(): ?AdmUf
     {
-        return $this->codigoIbge;
+        return $this->admUf;
     }
 
-    /**
-     * Set admUf.
-     *
-     * @param \App\Entity\Gcdb\AdmUf|null $admUf
-     *
-     * @return AdmCidades
-     */
-    public function setAdmUf(\App\Entity\Gcdb\AdmUf $admUf = null)
+    public function setAdmUf(?AdmUf $admUf): self
     {
         $this->admUf = $admUf;
 
         return $this;
-    }
-
-    /**
-     * Get admUf.
-     *
-     * @return \App\Entity\Gcdb\AdmUf|null
-     */
-    public function getAdmUf()
-    {
-        return $this->admUf;
     }
 }

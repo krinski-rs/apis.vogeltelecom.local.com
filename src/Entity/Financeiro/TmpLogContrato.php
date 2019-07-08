@@ -2,111 +2,54 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * TmpLogContrato
- */
 class TmpLogContrato
 {
-    /**
-     * @var int
-     */
     private $idLog;
 
-    /**
-     * @var \DateTime
-     */
     private $dataInc;
 
-    /**
-     * @var string
-     */
     private $obs;
 
-    /**
-     * @var \App\Entity\Financeiro\TmpContrato
-     */
     private $idTmpContrato;
 
-
-    /**
-     * Get idLog.
-     *
-     * @return int
-     */
-    public function getIdLog()
+    public function getIdLog(): ?int
     {
         return $this->idLog;
     }
 
-    /**
-     * Set dataInc.
-     *
-     * @param \DateTime $dataInc
-     *
-     * @return TmpLogContrato
-     */
-    public function setDataInc($dataInc)
+    public function getDataInc(): ?\DateTimeInterface
+    {
+        return $this->dataInc;
+    }
+
+    public function setDataInc(\DateTimeInterface $dataInc): self
     {
         $this->dataInc = $dataInc;
 
         return $this;
     }
 
-    /**
-     * Get dataInc.
-     *
-     * @return \DateTime
-     */
-    public function getDataInc()
+    public function getObs(): ?string
     {
-        return $this->dataInc;
+        return $this->obs;
     }
 
-    /**
-     * Set obs.
-     *
-     * @param string $obs
-     *
-     * @return TmpLogContrato
-     */
-    public function setObs($obs)
+    public function setObs(string $obs): self
     {
         $this->obs = $obs;
 
         return $this;
     }
 
-    /**
-     * Get obs.
-     *
-     * @return string
-     */
-    public function getObs()
+    public function getIdTmpContrato(): ?TmpContrato
     {
-        return $this->obs;
+        return $this->idTmpContrato;
     }
 
-    /**
-     * Set idTmpContrato.
-     *
-     * @param \App\Entity\Financeiro\TmpContrato|null $idTmpContrato
-     *
-     * @return TmpLogContrato
-     */
-    public function setIdTmpContrato(\App\Entity\Financeiro\TmpContrato $idTmpContrato = null)
+    public function setIdTmpContrato(?TmpContrato $idTmpContrato): self
     {
         $this->idTmpContrato = $idTmpContrato;
 
         return $this;
-    }
-
-    /**
-     * Get idTmpContrato.
-     *
-     * @return \App\Entity\Financeiro\TmpContrato|null
-     */
-    public function getIdTmpContrato()
-    {
-        return $this->idTmpContrato;
     }
 }

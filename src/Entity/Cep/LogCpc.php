@@ -2,256 +2,124 @@
 
 namespace App\Entity\Cep;
 
-/**
- * LogCpc
- */
 class LogCpc
 {
-    /**
-     * @var int
-     */
     private $cpcNuSequencial;
 
-    /**
-     * @var string
-     */
     private $ufeSg;
 
-    /**
-     * @var string
-     */
     private $cep;
 
-    /**
-     * @var string
-     */
     private $cpcNo;
 
-    /**
-     * @var string
-     */
     private $cpcEndereco;
 
-    /**
-     * @var string|null
-     */
     private $cpcTipo;
 
-    /**
-     * @var string|null
-     */
     private $cpcAbrangencia;
 
-    /**
-     * @var string|null
-     */
     private $temp;
 
-    /**
-     * @var \App\Entity\Cep\LogLocalidade
-     */
     private $locNuSequencial;
 
-
-    /**
-     * Get cpcNuSequencial.
-     *
-     * @return int
-     */
-    public function getCpcNuSequencial()
+    public function getCpcNuSequencial(): ?int
     {
         return $this->cpcNuSequencial;
     }
 
-    /**
-     * Set ufeSg.
-     *
-     * @param string $ufeSg
-     *
-     * @return LogCpc
-     */
-    public function setUfeSg($ufeSg)
+    public function getUfeSg(): ?string
+    {
+        return $this->ufeSg;
+    }
+
+    public function setUfeSg(string $ufeSg): self
     {
         $this->ufeSg = $ufeSg;
 
         return $this;
     }
 
-    /**
-     * Get ufeSg.
-     *
-     * @return string
-     */
-    public function getUfeSg()
+    public function getCep(): ?string
     {
-        return $this->ufeSg;
+        return $this->cep;
     }
 
-    /**
-     * Set cep.
-     *
-     * @param string $cep
-     *
-     * @return LogCpc
-     */
-    public function setCep($cep)
+    public function setCep(string $cep): self
     {
         $this->cep = $cep;
 
         return $this;
     }
 
-    /**
-     * Get cep.
-     *
-     * @return string
-     */
-    public function getCep()
+    public function getCpcNo(): ?string
     {
-        return $this->cep;
+        return $this->cpcNo;
     }
 
-    /**
-     * Set cpcNo.
-     *
-     * @param string $cpcNo
-     *
-     * @return LogCpc
-     */
-    public function setCpcNo($cpcNo)
+    public function setCpcNo(string $cpcNo): self
     {
         $this->cpcNo = $cpcNo;
 
         return $this;
     }
 
-    /**
-     * Get cpcNo.
-     *
-     * @return string
-     */
-    public function getCpcNo()
+    public function getCpcEndereco(): ?string
     {
-        return $this->cpcNo;
+        return $this->cpcEndereco;
     }
 
-    /**
-     * Set cpcEndereco.
-     *
-     * @param string $cpcEndereco
-     *
-     * @return LogCpc
-     */
-    public function setCpcEndereco($cpcEndereco)
+    public function setCpcEndereco(string $cpcEndereco): self
     {
         $this->cpcEndereco = $cpcEndereco;
 
         return $this;
     }
 
-    /**
-     * Get cpcEndereco.
-     *
-     * @return string
-     */
-    public function getCpcEndereco()
+    public function getCpcTipo(): ?string
     {
-        return $this->cpcEndereco;
+        return $this->cpcTipo;
     }
 
-    /**
-     * Set cpcTipo.
-     *
-     * @param string|null $cpcTipo
-     *
-     * @return LogCpc
-     */
-    public function setCpcTipo($cpcTipo = null)
+    public function setCpcTipo(?string $cpcTipo): self
     {
         $this->cpcTipo = $cpcTipo;
 
         return $this;
     }
 
-    /**
-     * Get cpcTipo.
-     *
-     * @return string|null
-     */
-    public function getCpcTipo()
+    public function getCpcAbrangencia(): ?string
     {
-        return $this->cpcTipo;
+        return $this->cpcAbrangencia;
     }
 
-    /**
-     * Set cpcAbrangencia.
-     *
-     * @param string|null $cpcAbrangencia
-     *
-     * @return LogCpc
-     */
-    public function setCpcAbrangencia($cpcAbrangencia = null)
+    public function setCpcAbrangencia(?string $cpcAbrangencia): self
     {
         $this->cpcAbrangencia = $cpcAbrangencia;
 
         return $this;
     }
 
-    /**
-     * Get cpcAbrangencia.
-     *
-     * @return string|null
-     */
-    public function getCpcAbrangencia()
+    public function getTemp(): ?string
     {
-        return $this->cpcAbrangencia;
+        return $this->temp;
     }
 
-    /**
-     * Set temp.
-     *
-     * @param string|null $temp
-     *
-     * @return LogCpc
-     */
-    public function setTemp($temp = null)
+    public function setTemp(?string $temp): self
     {
         $this->temp = $temp;
 
         return $this;
     }
 
-    /**
-     * Get temp.
-     *
-     * @return string|null
-     */
-    public function getTemp()
+    public function getLocNuSequencial(): ?LogLocalidade
     {
-        return $this->temp;
+        return $this->locNuSequencial;
     }
 
-    /**
-     * Set locNuSequencial.
-     *
-     * @param \App\Entity\Cep\LogLocalidade|null $locNuSequencial
-     *
-     * @return LogCpc
-     */
-    public function setLocNuSequencial(\App\Entity\Cep\LogLocalidade $locNuSequencial = null)
+    public function setLocNuSequencial(?LogLocalidade $locNuSequencial): self
     {
         $this->locNuSequencial = $locNuSequencial;
 
         return $this;
-    }
-
-    /**
-     * Get locNuSequencial.
-     *
-     * @return \App\Entity\Cep\LogLocalidade|null
-     */
-    public function getLocNuSequencial()
-    {
-        return $this->locNuSequencial;
     }
 }

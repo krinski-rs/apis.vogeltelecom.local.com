@@ -22,6 +22,13 @@ App\Entity\Financeiro\CircuitoSalesforce:
             options:
                 fixed: false
             column: id_circuito_salesforce
+        idCircuitoProtheus:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: id_circuito_protheus
         dataCriacao:
             type: datetime
             nullable: false
@@ -32,6 +39,13 @@ App\Entity\Financeiro\CircuitoSalesforce:
             type: datetime
             nullable: true
             column: data_integracao
+        dataIntegracaoProtheus:
+            type: string
+            nullable: true
+            length: 50
+            options:
+                fixed: false
+            column: data_integracao_protheus
     manyToOne:
         contCodigoid:
             targetEntity: App\Entity\Financeiro\Contrato
