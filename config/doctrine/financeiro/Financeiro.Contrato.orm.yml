@@ -214,10 +214,10 @@ App\Entity\Financeiro\Contrato:
                 default: '1'
             column: cont_segregar_valor
         salesforceId:
-            type: integer
+            type: text
             nullable: true
             options:
-                unsigned: false
+                fixed: false
             column: salesforce_id
     manyToOne:
         contSubstituircodigoid:

@@ -147,7 +147,7 @@ class Endereco
                 'headers' => ['Authorization' => $this->accessToken],
                 'json' => $arrayEndereco,
             ];
-            $this->objLogger->info("Dados da para criar Endereço", [$params, 'url'=>$url]);
+            $this->objLogger->info("Dados da para update Endereço", [$params, 'url'=>$url]);
             $objGuzzleHttpResponse = $this->objClient->request("PATCH", $url, $params);
             return json_decode($objGuzzleHttpResponse->getBody()->getContents());
         } catch (\GuzzleHttp\Exception\ClientException $e) {
