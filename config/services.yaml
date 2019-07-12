@@ -7,6 +7,7 @@ imports:
     - { resource: services/cep.yaml }
     - { resource: services/geolocation.yaml }
     - { resource: services/salesforce.yaml }
+    - { resource: services/protheus.yaml }
 parameters:
     cors:
         allowed_origin:
@@ -54,6 +55,9 @@ services:
             - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 300 }
             
+############################################################################################                        
+########################################### CEP ############################################
+############################################################################################                        
     cep:
           alias: App\Services\Cep
           public: true
@@ -73,7 +77,13 @@ services:
     App\Services\ViaCep:
           public: false
           arguments: ["@logger"]
+############################################################################################                        
+########################################### CEP ############################################
+############################################################################################                        
 
+############################################################################################                        
+####################################### GEOLOCATION ########################################
+############################################################################################            
     geoloc:
           alias: App\Services\Geolocation
           public: true
@@ -85,14 +95,20 @@ services:
     App\Controller\Geolocation\GeolocationController:
         arguments:
             $objGeolocation: '@geoloc'
+############################################################################################                        
+####################################### GEOLOCATION ########################################
+############################################################################################            
 
+############################################################################################            
+######################################## SALESFORCE ########################################
+############################################################################################
     integracao_salesforce:
           alias: App\Services\IntegracaoSalesforce
           public: true
 
     App\Services\IntegracaoSalesforce:
           public: false
-          arguments: ["@doctrine", "@logger", ""]
+          arguments: ["@doctrine", "@logger", "@integracao_circuito_salesforce"]
           tags:
               - { name: monolog.logger, channel: salesforce }
 
@@ -115,5 +131,35 @@ services:
           arguments: ["@doctrine", "@logger", "@oauth_salesforce", "%salesforce%"]
           tags:
               - { name: monolog.logger, channel: salesforce }
+############################################################################################
+######################################## SALESFORCE ########################################
+############################################################################################
+
+############################################################################################
+######################################### PROTHEUS #########################################
+############################################################################################
+    integracao_protheus:
+          alias: App\Services\IntegracaoProtheus
+          public: true
+
+    App\Services\IntegracaoProtheus:
+          public: false
+          arguments: ["@doctrine", "@logger", "@integracao_circuito_protheus"]
+          tags:
+              - { name: monolog.logger, channel: protheus }
+
+    integracao_circuito_protheus:
+          alias: App\Services\IntegracaoProtheus\Circuito\IntegrarCircuito
+          public: true
+
+    App\Services\IntegracaoProtheus\Circuito\IntegrarCircuito:
+          public: false
+          arguments: ["@doctrine", "@logger", "%protheus%"]
+          tags:
+              - { name: monolog.logger, channel: protheus }
+
+############################################################################################
+######################################### PROTHEUS #########################################
+############################################################################################
 
     

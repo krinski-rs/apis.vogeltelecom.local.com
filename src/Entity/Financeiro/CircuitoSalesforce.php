@@ -71,12 +71,12 @@ class CircuitoSalesforce
         return $this;
     }
 
-    public function getDataIntegracaoProtheus(): ?string
+    public function getDataIntegracaoProtheus(): ?\DateTimeInterface
     {
         return $this->dataIntegracaoProtheus;
     }
 
-    public function setDataIntegracaoProtheus(?string $dataIntegracaoProtheus): self
+    public function setDataIntegracaoProtheus(?\DateTimeInterface $dataIntegracaoProtheus): self
     {
         $this->dataIntegracaoProtheus = $dataIntegracaoProtheus;
 

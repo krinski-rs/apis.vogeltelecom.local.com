@@ -150,39 +150,6 @@ final class Version20190708134433 extends AbstractMigration
     public function down(Schema $schema) : void
     {
         $this->addSql("DROP TRIGGER IF EXISTS `financeiro`.`UPDATE_ATIVACAO_CONTRATO`;");
-        $this->addSql("CREATE DEFINER=`root`@`%` TRIGGER `UPDATE_ATIVACAO_CONTRATO` BEFORE UPDATE ON `contrato`
-            FOR EACH ROW BEGIN
-            	DECLARE clieCodigoid INT(11) DEFAULT 0;
-            	DECLARE ativpagaCodigoid INT(11) DEFAULT 0;
-            	DECLARE contDatainc DATE DEFAULT CURRENT_DATE;
-            	DECLARE grupserviCodigoid INT(11) DEFAULT 0;
-                DECLARE unidCodigoid INT(11) DEFAULT 0;
-            
-            	SELECT DISTINCT serv.grupserv_codigoid INTO grupserviCodigoid FROM contrato AS cont
-            	INNER JOIN contratoservico AS contserv ON (contserv.cont_codigoid = cont.cont_codigoid)
-            	INNER JOIN servicocapacidade AS servcapa ON (servcapa.servcapa_codigoid = contserv.servcapa_codigoid)
-            	INNER JOIN servico AS serv ON (serv.serv_codigoid = servcapa.serv_codigoid)
-            	WHERE cont.cont_codigoid =  NEW.cont_paicodigoid;
-            
-            	SELECT clie_codigoid, DATE_FORMAT(cont_datainc, '%Y-%m-%d'), unid_codigoid INTO clieCodigoid, contDatainc, unidCodigoid FROM contrato WHERE cont_codigoid =  NEW.cont_paicodigoid;
-            
-            	IF NEW.cont_paicodigoid IS NOT NULL AND clieCodigoid > 1000 AND contDatainc = CURRENT_DATE AND grupserviCodigoid = 2   THEN
-            		SELECT ativpag_codigoid INTO ativpagaCodigoid FROM ativacaopagamento WHERE cont_codigoid =  NEW.cont_codigoid LIMIT 1;
-            		IF ativpagaCodigoid =0 THEN
-            			INSERT INTO ativacaopagamento (cont_codigoid, ativpag_cobrado) VALUES (NEW.cont_codigoid, 0);
-            		END IF;
-            	END IF;
-            
-            	IF NEW.stat_codigoid=4 AND OLD.stat_codigoid != 4 THEN
-            		SET NEW.cont_datacancelamento = NOW();
-            	END IF;
-            
-                IF NEW.cont_paicodigoid is null THEN
-                    SET NEW.cont_tipo = 'P';
-                ELSE
-                    SET NEW.cont_tipo = 'F';
-                END IF;
-            END");
         $this->addSql("DROP TRIGGER IF EXISTS `financeiro`.`contrato_AFTER_INSERT`;");
         $this->addSql("DROP TRIGGER IF EXISTS `financeiro`.`enderecoentrega_AFTER_UPDATE`;");
         $this->addSql("DROP TRIGGER IF EXISTS `financeiro`.`enderecoentregaatributovalor_AFTER_UPDATE`;");

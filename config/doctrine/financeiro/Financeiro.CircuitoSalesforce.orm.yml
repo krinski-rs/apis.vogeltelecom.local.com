@@ -40,11 +40,8 @@ App\Entity\Financeiro\CircuitoSalesforce:
             nullable: true
             column: data_integracao
         dataIntegracaoProtheus:
-            type: string
+            type: datetime
             nullable: true
-            length: 50
-            options:
-                fixed: false
             column: data_integracao_protheus
     manyToOne:
         contCodigoid:
