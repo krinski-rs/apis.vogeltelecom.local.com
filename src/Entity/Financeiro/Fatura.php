@@ -2,488 +2,236 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Fatura
- */
 class Fatura
 {
-    /**
-     * @var int
-     */
     private $fatuCodigoid;
 
-    /**
-     * @var int|null
-     */
     private $usuaCodigoid;
 
-    /**
-     * @var \DateTime
-     */
-    private $fatuDatainc = 'CURRENT_TIMESTAMP';
+    private $fatuDatainc;
 
-    /**
-     * @var \DateTime
-     */
-    private $fatuDatavencimento = '0000-00-00 00:00:00';
+    private $fatuDatavencimento;
 
-    /**
-     * @var string
-     */
     private $fatuValor;
 
-    /**
-     * @var int
-     */
     private $fatuNsr;
 
-    /**
-     * @var bool
-     */
     private $fatuEmitido;
 
-    /**
-     * @var \DateTime|null
-     */
     private $fatuDatade;
 
-    /**
-     * @var \DateTime|null
-     */
     private $fatuDataate;
 
-    /**
-     * @var string|null
-     */
     private $fatuExcedente;
 
-    /**
-     * @var string|null
-     */
     private $fatuConsumido;
 
-    /**
-     * @var string|null
-     */
     private $fatuCodigobarra;
 
-    /**
-     * @var string|null
-     */
     private $fatuLinhadigitavel;
 
-    /**
-     * @var string|null
-     */
     private $fatuNossonumero;
 
-    /**
-     * @var string|null
-     */
     private $fatuValorjuros;
 
-    /**
-     * @var string|null
-     */
     private $fatuValormulta;
 
-    /**
-     * @var \App\Entity\Financeiro\Arquivoremessa
-     */
     private $arquremeCodigoid;
 
-
-    /**
-     * Get fatuCodigoid.
-     *
-     * @return int
-     */
-    public function getFatuCodigoid()
+    public function getFatuCodigoid(): ?int
     {
         return $this->fatuCodigoid;
     }
 
-    /**
-     * Set usuaCodigoid.
-     *
-     * @param int|null $usuaCodigoid
-     *
-     * @return Fatura
-     */
-    public function setUsuaCodigoid($usuaCodigoid = null)
+    public function getUsuaCodigoid(): ?int
+    {
+        return $this->usuaCodigoid;
+    }
+
+    public function setUsuaCodigoid(?int $usuaCodigoid): self
     {
         $this->usuaCodigoid = $usuaCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get usuaCodigoid.
-     *
-     * @return int|null
-     */
-    public function getUsuaCodigoid()
+    public function getFatuDatainc(): ?\DateTimeInterface
     {
-        return $this->usuaCodigoid;
+        return $this->fatuDatainc;
     }
 
-    /**
-     * Set fatuDatainc.
-     *
-     * @param \DateTime $fatuDatainc
-     *
-     * @return Fatura
-     */
-    public function setFatuDatainc($fatuDatainc)
+    public function setFatuDatainc(\DateTimeInterface $fatuDatainc): self
     {
         $this->fatuDatainc = $fatuDatainc;
 
         return $this;
     }
 
-    /**
-     * Get fatuDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getFatuDatainc()
+    public function getFatuDatavencimento(): ?\DateTimeInterface
     {
-        return $this->fatuDatainc;
+        return $this->fatuDatavencimento;
     }
 
-    /**
-     * Set fatuDatavencimento.
-     *
-     * @param \DateTime $fatuDatavencimento
-     *
-     * @return Fatura
-     */
-    public function setFatuDatavencimento($fatuDatavencimento)
+    public function setFatuDatavencimento(\DateTimeInterface $fatuDatavencimento): self
     {
         $this->fatuDatavencimento = $fatuDatavencimento;
 
         return $this;
     }
 
-    /**
-     * Get fatuDatavencimento.
-     *
-     * @return \DateTime
-     */
-    public function getFatuDatavencimento()
+    public function getFatuValor()
     {
-        return $this->fatuDatavencimento;
+        return $this->fatuValor;
     }
 
-    /**
-     * Set fatuValor.
-     *
-     * @param string $fatuValor
-     *
-     * @return Fatura
-     */
-    public function setFatuValor($fatuValor)
+    public function setFatuValor($fatuValor): self
     {
         $this->fatuValor = $fatuValor;
 
         return $this;
     }
 
-    /**
-     * Get fatuValor.
-     *
-     * @return string
-     */
-    public function getFatuValor()
+    public function getFatuNsr(): ?int
     {
-        return $this->fatuValor;
+        return $this->fatuNsr;
     }
 
-    /**
-     * Set fatuNsr.
-     *
-     * @param int $fatuNsr
-     *
-     * @return Fatura
-     */
-    public function setFatuNsr($fatuNsr)
+    public function setFatuNsr(int $fatuNsr): self
     {
         $this->fatuNsr = $fatuNsr;
 
         return $this;
     }
 
-    /**
-     * Get fatuNsr.
-     *
-     * @return int
-     */
-    public function getFatuNsr()
+    public function getFatuEmitido(): ?bool
     {
-        return $this->fatuNsr;
+        return $this->fatuEmitido;
     }
 
-    /**
-     * Set fatuEmitido.
-     *
-     * @param bool $fatuEmitido
-     *
-     * @return Fatura
-     */
-    public function setFatuEmitido($fatuEmitido)
+    public function setFatuEmitido(bool $fatuEmitido): self
     {
         $this->fatuEmitido = $fatuEmitido;
 
         return $this;
     }
 
-    /**
-     * Get fatuEmitido.
-     *
-     * @return bool
-     */
-    public function getFatuEmitido()
+    public function getFatuDatade(): ?\DateTimeInterface
     {
-        return $this->fatuEmitido;
+        return $this->fatuDatade;
     }
 
-    /**
-     * Set fatuDatade.
-     *
-     * @param \DateTime|null $fatuDatade
-     *
-     * @return Fatura
-     */
-    public function setFatuDatade($fatuDatade = null)
+    public function setFatuDatade(?\DateTimeInterface $fatuDatade): self
     {
         $this->fatuDatade = $fatuDatade;
 
         return $this;
     }
 
-    /**
-     * Get fatuDatade.
-     *
-     * @return \DateTime|null
-     */
-    public function getFatuDatade()
+    public function getFatuDataate(): ?\DateTimeInterface
     {
-        return $this->fatuDatade;
+        return $this->fatuDataate;
     }
 
-    /**
-     * Set fatuDataate.
-     *
-     * @param \DateTime|null $fatuDataate
-     *
-     * @return Fatura
-     */
-    public function setFatuDataate($fatuDataate = null)
+    public function setFatuDataate(?\DateTimeInterface $fatuDataate): self
     {
         $this->fatuDataate = $fatuDataate;
 
         return $this;
     }
 
-    /**
-     * Get fatuDataate.
-     *
-     * @return \DateTime|null
-     */
-    public function getFatuDataate()
+    public function getFatuExcedente()
     {
-        return $this->fatuDataate;
+        return $this->fatuExcedente;
     }
 
-    /**
-     * Set fatuExcedente.
-     *
-     * @param string|null $fatuExcedente
-     *
-     * @return Fatura
-     */
-    public function setFatuExcedente($fatuExcedente = null)
+    public function setFatuExcedente($fatuExcedente): self
     {
         $this->fatuExcedente = $fatuExcedente;
 
         return $this;
     }
 
-    /**
-     * Get fatuExcedente.
-     *
-     * @return string|null
-     */
-    public function getFatuExcedente()
+    public function getFatuConsumido()
     {
-        return $this->fatuExcedente;
+        return $this->fatuConsumido;
     }
 
-    /**
-     * Set fatuConsumido.
-     *
-     * @param string|null $fatuConsumido
-     *
-     * @return Fatura
-     */
-    public function setFatuConsumido($fatuConsumido = null)
+    public function setFatuConsumido($fatuConsumido): self
     {
         $this->fatuConsumido = $fatuConsumido;
 
         return $this;
     }
 
-    /**
-     * Get fatuConsumido.
-     *
-     * @return string|null
-     */
-    public function getFatuConsumido()
+    public function getFatuCodigobarra(): ?string
     {
-        return $this->fatuConsumido;
+        return $this->fatuCodigobarra;
     }
 
-    /**
-     * Set fatuCodigobarra.
-     *
-     * @param string|null $fatuCodigobarra
-     *
-     * @return Fatura
-     */
-    public function setFatuCodigobarra($fatuCodigobarra = null)
+    public function setFatuCodigobarra(?string $fatuCodigobarra): self
     {
         $this->fatuCodigobarra = $fatuCodigobarra;
 
         return $this;
     }
 
-    /**
-     * Get fatuCodigobarra.
-     *
-     * @return string|null
-     */
-    public function getFatuCodigobarra()
+    public function getFatuLinhadigitavel(): ?string
     {
-        return $this->fatuCodigobarra;
+        return $this->fatuLinhadigitavel;
     }
 
-    /**
-     * Set fatuLinhadigitavel.
-     *
-     * @param string|null $fatuLinhadigitavel
-     *
-     * @return Fatura
-     */
-    public function setFatuLinhadigitavel($fatuLinhadigitavel = null)
+    public function setFatuLinhadigitavel(?string $fatuLinhadigitavel): self
     {
         $this->fatuLinhadigitavel = $fatuLinhadigitavel;
 
         return $this;
     }
 
-    /**
-     * Get fatuLinhadigitavel.
-     *
-     * @return string|null
-     */
-    public function getFatuLinhadigitavel()
+    public function getFatuNossonumero(): ?string
     {
-        return $this->fatuLinhadigitavel;
+        return $this->fatuNossonumero;
     }
 
-    /**
-     * Set fatuNossonumero.
-     *
-     * @param string|null $fatuNossonumero
-     *
-     * @return Fatura
-     */
-    public function setFatuNossonumero($fatuNossonumero = null)
+    public function setFatuNossonumero(?string $fatuNossonumero): self
     {
         $this->fatuNossonumero = $fatuNossonumero;
 
         return $this;
     }
 
-    /**
-     * Get fatuNossonumero.
-     *
-     * @return string|null
-     */
-    public function getFatuNossonumero()
+    public function getFatuValorjuros()
     {
-        return $this->fatuNossonumero;
+        return $this->fatuValorjuros;
     }
 
-    /**
-     * Set fatuValorjuros.
-     *
-     * @param string|null $fatuValorjuros
-     *
-     * @return Fatura
-     */
-    public function setFatuValorjuros($fatuValorjuros = null)
+    public function setFatuValorjuros($fatuValorjuros): self
     {
         $this->fatuValorjuros = $fatuValorjuros;
 
         return $this;
     }
 
-    /**
-     * Get fatuValorjuros.
-     *
-     * @return string|null
-     */
-    public function getFatuValorjuros()
+    public function getFatuValormulta()
     {
-        return $this->fatuValorjuros;
+        return $this->fatuValormulta;
     }
 
-    /**
-     * Set fatuValormulta.
-     *
-     * @param string|null $fatuValormulta
-     *
-     * @return Fatura
-     */
-    public function setFatuValormulta($fatuValormulta = null)
+    public function setFatuValormulta($fatuValormulta): self
     {
         $this->fatuValormulta = $fatuValormulta;
 
         return $this;
     }
 
-    /**
-     * Get fatuValormulta.
-     *
-     * @return string|null
-     */
-    public function getFatuValormulta()
+    public function getArquremeCodigoid(): ?Arquivoremessa
     {
-        return $this->fatuValormulta;
+        return $this->arquremeCodigoid;
     }
 
-    /**
-     * Set arquremeCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Arquivoremessa|null $arquremeCodigoid
-     *
-     * @return Fatura
-     */
-    public function setArquremeCodigoid(\App\Entity\Financeiro\Arquivoremessa $arquremeCodigoid = null)
+    public function setArquremeCodigoid(?Arquivoremessa $arquremeCodigoid): self
     {
         $this->arquremeCodigoid = $arquremeCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get arquremeCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Arquivoremessa|null
-     */
-    public function getArquremeCodigoid()
-    {
-        return $this->arquremeCodigoid;
     }
 }

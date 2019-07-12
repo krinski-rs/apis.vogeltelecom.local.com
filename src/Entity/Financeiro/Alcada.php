@@ -2,82 +2,40 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Alcada
- */
 class Alcada
 {
-    /**
-     * @var int
-     */
     private $alcaCodigoid;
 
-    /**
-     * @var string
-     */
     private $alcaPercentual;
 
-    /**
-     * @var \DateTime
-     */
-    private $alcaDatainc = 'CURRENT_TIMESTAMP';
+    private $alcaDatainc;
 
-
-    /**
-     * Get alcaCodigoid.
-     *
-     * @return int
-     */
-    public function getAlcaCodigoid()
+    public function getAlcaCodigoid(): ?int
     {
         return $this->alcaCodigoid;
     }
 
-    /**
-     * Set alcaPercentual.
-     *
-     * @param string $alcaPercentual
-     *
-     * @return Alcada
-     */
-    public function setAlcaPercentual($alcaPercentual)
+    public function getAlcaPercentual()
+    {
+        return $this->alcaPercentual;
+    }
+
+    public function setAlcaPercentual($alcaPercentual): self
     {
         $this->alcaPercentual = $alcaPercentual;
 
         return $this;
     }
 
-    /**
-     * Get alcaPercentual.
-     *
-     * @return string
-     */
-    public function getAlcaPercentual()
+    public function getAlcaDatainc(): ?\DateTimeInterface
     {
-        return $this->alcaPercentual;
+        return $this->alcaDatainc;
     }
 
-    /**
-     * Set alcaDatainc.
-     *
-     * @param \DateTime $alcaDatainc
-     *
-     * @return Alcada
-     */
-    public function setAlcaDatainc($alcaDatainc)
+    public function setAlcaDatainc(\DateTimeInterface $alcaDatainc): self
     {
         $this->alcaDatainc = $alcaDatainc;
 
         return $this;
-    }
-
-    /**
-     * Get alcaDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getAlcaDatainc()
-    {
-        return $this->alcaDatainc;
     }
 }

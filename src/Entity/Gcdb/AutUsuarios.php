@@ -2,198 +2,96 @@
 
 namespace App\Entity\Gcdb;
 
-/**
- * AutUsuarios
- */
 class AutUsuarios
 {
-    /**
-     * @var int
-     */
     private $id;
 
-    /**
-     * @var string
-     */
-    private $username = '';
+    private $username;
 
-    /**
-     * @var string
-     */
     private $pass;
 
-    /**
-     * @var string
-     */
     private $nome;
 
-    /**
-     * @var int
-     */
-    private $ativo = '1';
+    private $ativo;
 
-    /**
-     * @var bool
-     */
-    private $canal = '0';
+    private $canal;
 
-    /**
-     * @var bool
-     */
-    private $passwordVersion = '1';
+    private $passwordVersion;
 
-
-    /**
-     * Get id.
-     *
-     * @return int
-     */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * Set username.
-     *
-     * @param string $username
-     *
-     * @return AutUsuarios
-     */
-    public function setUsername($username)
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(string $username): self
     {
         $this->username = $username;
 
         return $this;
     }
 
-    /**
-     * Get username.
-     *
-     * @return string
-     */
-    public function getUsername()
+    public function getPass(): ?string
     {
-        return $this->username;
+        return $this->pass;
     }
 
-    /**
-     * Set pass.
-     *
-     * @param string $pass
-     *
-     * @return AutUsuarios
-     */
-    public function setPass($pass)
+    public function setPass(string $pass): self
     {
         $this->pass = $pass;
 
         return $this;
     }
 
-    /**
-     * Get pass.
-     *
-     * @return string
-     */
-    public function getPass()
+    public function getNome(): ?string
     {
-        return $this->pass;
+        return $this->nome;
     }
 
-    /**
-     * Set nome.
-     *
-     * @param string $nome
-     *
-     * @return AutUsuarios
-     */
-    public function setNome($nome)
+    public function setNome(string $nome): self
     {
         $this->nome = $nome;
 
         return $this;
     }
 
-    /**
-     * Get nome.
-     *
-     * @return string
-     */
-    public function getNome()
+    public function getAtivo(): ?int
     {
-        return $this->nome;
+        return $this->ativo;
     }
 
-    /**
-     * Set ativo.
-     *
-     * @param int $ativo
-     *
-     * @return AutUsuarios
-     */
-    public function setAtivo($ativo)
+    public function setAtivo(int $ativo): self
     {
         $this->ativo = $ativo;
 
         return $this;
     }
 
-    /**
-     * Get ativo.
-     *
-     * @return int
-     */
-    public function getAtivo()
+    public function getCanal(): ?bool
     {
-        return $this->ativo;
+        return $this->canal;
     }
 
-    /**
-     * Set canal.
-     *
-     * @param bool $canal
-     *
-     * @return AutUsuarios
-     */
-    public function setCanal($canal)
+    public function setCanal(bool $canal): self
     {
         $this->canal = $canal;
 
         return $this;
     }
 
-    /**
-     * Get canal.
-     *
-     * @return bool
-     */
-    public function getCanal()
+    public function getPasswordVersion(): ?bool
     {
-        return $this->canal;
+        return $this->passwordVersion;
     }
 
-    /**
-     * Set passwordVersion.
-     *
-     * @param bool $passwordVersion
-     *
-     * @return AutUsuarios
-     */
-    public function setPasswordVersion($passwordVersion)
+    public function setPasswordVersion(bool $passwordVersion): self
     {
         $this->passwordVersion = $passwordVersion;
 
         return $this;
-    }
-
-    /**
-     * Get passwordVersion.
-     *
-     * @return bool
-     */
-    public function getPasswordVersion()
-    {
-        return $this->passwordVersion;
     }
 }

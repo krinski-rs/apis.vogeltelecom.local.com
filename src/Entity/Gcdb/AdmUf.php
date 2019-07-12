@@ -2,111 +2,54 @@
 
 namespace App\Entity\Gcdb;
 
-/**
- * AdmUf
- */
 class AdmUf
 {
-    /**
-     * @var int
-     */
     private $id;
 
-    /**
-     * @var string|null
-     */
     private $sigla;
 
-    /**
-     * @var string|null
-     */
     private $nome;
 
-    /**
-     * @var \App\Entity\Gcdb\AdmPais
-     */
     private $admPais;
 
-
-    /**
-     * Get id.
-     *
-     * @return int
-     */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * Set sigla.
-     *
-     * @param string|null $sigla
-     *
-     * @return AdmUf
-     */
-    public function setSigla($sigla = null)
+    public function getSigla(): ?string
+    {
+        return $this->sigla;
+    }
+
+    public function setSigla(?string $sigla): self
     {
         $this->sigla = $sigla;
 
         return $this;
     }
 
-    /**
-     * Get sigla.
-     *
-     * @return string|null
-     */
-    public function getSigla()
+    public function getNome(): ?string
     {
-        return $this->sigla;
+        return $this->nome;
     }
 
-    /**
-     * Set nome.
-     *
-     * @param string|null $nome
-     *
-     * @return AdmUf
-     */
-    public function setNome($nome = null)
+    public function setNome(?string $nome): self
     {
         $this->nome = $nome;
 
         return $this;
     }
 
-    /**
-     * Get nome.
-     *
-     * @return string|null
-     */
-    public function getNome()
+    public function getAdmPais(): ?AdmPais
     {
-        return $this->nome;
+        return $this->admPais;
     }
 
-    /**
-     * Set admPais.
-     *
-     * @param \App\Entity\Gcdb\AdmPais|null $admPais
-     *
-     * @return AdmUf
-     */
-    public function setAdmPais(\App\Entity\Gcdb\AdmPais $admPais = null)
+    public function setAdmPais(?AdmPais $admPais): self
     {
         $this->admPais = $admPais;
 
         return $this;
-    }
-
-    /**
-     * Get admPais.
-     *
-     * @return \App\Entity\Gcdb\AdmPais|null
-     */
-    public function getAdmPais()
-    {
-        return $this->admPais;
     }
 }

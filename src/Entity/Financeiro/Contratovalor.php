@@ -2,372 +2,180 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Contratovalor
- */
 class Contratovalor
 {
-    /**
-     * @var int
-     */
     private $contvaloCodigoid;
 
-    /**
-     * @var \DateTime
-     */
-    private $contvaloDatainic = 'CURRENT_TIMESTAMP';
+    private $contvaloDatainic;
 
-    /**
-     * @var \DateTime|null
-     */
     private $contvaloDatafim;
 
-    /**
-     * @var string
-     */
     private $contvaloValor;
 
-    /**
-     * @var string|null
-     */
     private $contvaloValorsemdesconto;
 
-    /**
-     * @var string|null
-     */
     private $contvaloValorsemimposto;
 
-    /**
-     * @var string|null
-     */
     private $contvaloSva;
 
-    /**
-     * @var string|null
-     */
     private $contvaloScm;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
     private $contCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Contratovalor
-     */
     private $contvaloProximocodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Contratovalor
-     */
     private $contvaloAnteriorcodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Moeda
-     */
     private $moedCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Natureza
-     */
     private $natuCodigoid;
 
-
-    /**
-     * Get contvaloCodigoid.
-     *
-     * @return int
-     */
-    public function getContvaloCodigoid()
+    public function getContvaloCodigoid(): ?int
     {
         return $this->contvaloCodigoid;
     }
 
-    /**
-     * Set contvaloDatainic.
-     *
-     * @param \DateTime $contvaloDatainic
-     *
-     * @return Contratovalor
-     */
-    public function setContvaloDatainic($contvaloDatainic)
+    public function getContvaloDatainic(): ?\DateTimeInterface
+    {
+        return $this->contvaloDatainic;
+    }
+
+    public function setContvaloDatainic(\DateTimeInterface $contvaloDatainic): self
     {
         $this->contvaloDatainic = $contvaloDatainic;
 
         return $this;
     }
 
-    /**
-     * Get contvaloDatainic.
-     *
-     * @return \DateTime
-     */
-    public function getContvaloDatainic()
+    public function getContvaloDatafim(): ?\DateTimeInterface
     {
-        return $this->contvaloDatainic;
+        return $this->contvaloDatafim;
     }
 
-    /**
-     * Set contvaloDatafim.
-     *
-     * @param \DateTime|null $contvaloDatafim
-     *
-     * @return Contratovalor
-     */
-    public function setContvaloDatafim($contvaloDatafim = null)
+    public function setContvaloDatafim(?\DateTimeInterface $contvaloDatafim): self
     {
         $this->contvaloDatafim = $contvaloDatafim;
 
         return $this;
     }
 
-    /**
-     * Get contvaloDatafim.
-     *
-     * @return \DateTime|null
-     */
-    public function getContvaloDatafim()
+    public function getContvaloValor()
     {
-        return $this->contvaloDatafim;
+        return $this->contvaloValor;
     }
 
-    /**
-     * Set contvaloValor.
-     *
-     * @param string $contvaloValor
-     *
-     * @return Contratovalor
-     */
-    public function setContvaloValor($contvaloValor)
+    public function setContvaloValor($contvaloValor): self
     {
         $this->contvaloValor = $contvaloValor;
 
         return $this;
     }
 
-    /**
-     * Get contvaloValor.
-     *
-     * @return string
-     */
-    public function getContvaloValor()
+    public function getContvaloValorsemdesconto()
     {
-        return $this->contvaloValor;
+        return $this->contvaloValorsemdesconto;
     }
 
-    /**
-     * Set contvaloValorsemdesconto.
-     *
-     * @param string|null $contvaloValorsemdesconto
-     *
-     * @return Contratovalor
-     */
-    public function setContvaloValorsemdesconto($contvaloValorsemdesconto = null)
+    public function setContvaloValorsemdesconto($contvaloValorsemdesconto): self
     {
         $this->contvaloValorsemdesconto = $contvaloValorsemdesconto;
 
         return $this;
     }
 
-    /**
-     * Get contvaloValorsemdesconto.
-     *
-     * @return string|null
-     */
-    public function getContvaloValorsemdesconto()
+    public function getContvaloValorsemimposto()
     {
-        return $this->contvaloValorsemdesconto;
+        return $this->contvaloValorsemimposto;
     }
 
-    /**
-     * Set contvaloValorsemimposto.
-     *
-     * @param string|null $contvaloValorsemimposto
-     *
-     * @return Contratovalor
-     */
-    public function setContvaloValorsemimposto($contvaloValorsemimposto = null)
+    public function setContvaloValorsemimposto($contvaloValorsemimposto): self
     {
         $this->contvaloValorsemimposto = $contvaloValorsemimposto;
 
         return $this;
     }
 
-    /**
-     * Get contvaloValorsemimposto.
-     *
-     * @return string|null
-     */
-    public function getContvaloValorsemimposto()
+    public function getContvaloSva()
     {
-        return $this->contvaloValorsemimposto;
+        return $this->contvaloSva;
     }
 
-    /**
-     * Set contvaloSva.
-     *
-     * @param string|null $contvaloSva
-     *
-     * @return Contratovalor
-     */
-    public function setContvaloSva($contvaloSva = null)
+    public function setContvaloSva($contvaloSva): self
     {
         $this->contvaloSva = $contvaloSva;
 
         return $this;
     }
 
-    /**
-     * Get contvaloSva.
-     *
-     * @return string|null
-     */
-    public function getContvaloSva()
+    public function getContvaloScm()
     {
-        return $this->contvaloSva;
+        return $this->contvaloScm;
     }
 
-    /**
-     * Set contvaloScm.
-     *
-     * @param string|null $contvaloScm
-     *
-     * @return Contratovalor
-     */
-    public function setContvaloScm($contvaloScm = null)
+    public function setContvaloScm($contvaloScm): self
     {
         $this->contvaloScm = $contvaloScm;
 
         return $this;
     }
 
-    /**
-     * Get contvaloScm.
-     *
-     * @return string|null
-     */
-    public function getContvaloScm()
+    public function getContCodigoid(): ?Contrato
     {
-        return $this->contvaloScm;
+        return $this->contCodigoid;
     }
 
-    /**
-     * Set contCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contCodigoid
-     *
-     * @return Contratovalor
-     */
-    public function setContCodigoid(\App\Entity\Financeiro\Contrato $contCodigoid = null)
+    public function setContCodigoid(?Contrato $contCodigoid): self
     {
         $this->contCodigoid = $contCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get contCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContCodigoid()
+    public function getContvaloProximocodigoid(): ?self
     {
-        return $this->contCodigoid;
+        return $this->contvaloProximocodigoid;
     }
 
-    /**
-     * Set contvaloProximocodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contratovalor|null $contvaloProximocodigoid
-     *
-     * @return Contratovalor
-     */
-    public function setContvaloProximocodigoid(\App\Entity\Financeiro\Contratovalor $contvaloProximocodigoid = null)
+    public function setContvaloProximocodigoid(?self $contvaloProximocodigoid): self
     {
         $this->contvaloProximocodigoid = $contvaloProximocodigoid;
 
         return $this;
     }
 
-    /**
-     * Get contvaloProximocodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contratovalor|null
-     */
-    public function getContvaloProximocodigoid()
+    public function getContvaloAnteriorcodigoid(): ?self
     {
-        return $this->contvaloProximocodigoid;
+        return $this->contvaloAnteriorcodigoid;
     }
 
-    /**
-     * Set contvaloAnteriorcodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contratovalor|null $contvaloAnteriorcodigoid
-     *
-     * @return Contratovalor
-     */
-    public function setContvaloAnteriorcodigoid(\App\Entity\Financeiro\Contratovalor $contvaloAnteriorcodigoid = null)
+    public function setContvaloAnteriorcodigoid(?self $contvaloAnteriorcodigoid): self
     {
         $this->contvaloAnteriorcodigoid = $contvaloAnteriorcodigoid;
 
         return $this;
     }
 
-    /**
-     * Get contvaloAnteriorcodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contratovalor|null
-     */
-    public function getContvaloAnteriorcodigoid()
+    public function getMoedCodigoid(): ?Moeda
     {
-        return $this->contvaloAnteriorcodigoid;
+        return $this->moedCodigoid;
     }
 
-    /**
-     * Set moedCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Moeda|null $moedCodigoid
-     *
-     * @return Contratovalor
-     */
-    public function setMoedCodigoid(\App\Entity\Financeiro\Moeda $moedCodigoid = null)
+    public function setMoedCodigoid(?Moeda $moedCodigoid): self
     {
         $this->moedCodigoid = $moedCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get moedCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Moeda|null
-     */
-    public function getMoedCodigoid()
+    public function getNatuCodigoid(): ?Natureza
     {
-        return $this->moedCodigoid;
+        return $this->natuCodigoid;
     }
 
-    /**
-     * Set natuCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Natureza|null $natuCodigoid
-     *
-     * @return Contratovalor
-     */
-    public function setNatuCodigoid(\App\Entity\Financeiro\Natureza $natuCodigoid = null)
+    public function setNatuCodigoid(?Natureza $natuCodigoid): self
     {
         $this->natuCodigoid = $natuCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get natuCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Natureza|null
-     */
-    public function getNatuCodigoid()
-    {
-        return $this->natuCodigoid;
     }
 }

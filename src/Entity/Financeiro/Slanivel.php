@@ -2,198 +2,96 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Slanivel
- */
 class Slanivel
 {
-    /**
-     * @var int
-     */
     private $slaniveCodigoid;
 
-    /**
-     * @var int
-     */
     private $slaniveRespostacomercial;
 
-    /**
-     * @var int
-     */
     private $slaniveResolucaocomercial;
 
-    /**
-     * @var int
-     */
     private $slaniveResolucaoextra;
 
-    /**
-     * @var int
-     */
     private $slaniveRespostaextra;
 
-    /**
-     * @var \App\Entity\Financeiro\Nivel
-     */
     private $niveCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Sla
-     */
     private $slaCodigoid;
 
-
-    /**
-     * Get slaniveCodigoid.
-     *
-     * @return int
-     */
-    public function getSlaniveCodigoid()
+    public function getSlaniveCodigoid(): ?int
     {
         return $this->slaniveCodigoid;
     }
 
-    /**
-     * Set slaniveRespostacomercial.
-     *
-     * @param int $slaniveRespostacomercial
-     *
-     * @return Slanivel
-     */
-    public function setSlaniveRespostacomercial($slaniveRespostacomercial)
+    public function getSlaniveRespostacomercial(): ?int
+    {
+        return $this->slaniveRespostacomercial;
+    }
+
+    public function setSlaniveRespostacomercial(int $slaniveRespostacomercial): self
     {
         $this->slaniveRespostacomercial = $slaniveRespostacomercial;
 
         return $this;
     }
 
-    /**
-     * Get slaniveRespostacomercial.
-     *
-     * @return int
-     */
-    public function getSlaniveRespostacomercial()
+    public function getSlaniveResolucaocomercial(): ?int
     {
-        return $this->slaniveRespostacomercial;
+        return $this->slaniveResolucaocomercial;
     }
 
-    /**
-     * Set slaniveResolucaocomercial.
-     *
-     * @param int $slaniveResolucaocomercial
-     *
-     * @return Slanivel
-     */
-    public function setSlaniveResolucaocomercial($slaniveResolucaocomercial)
+    public function setSlaniveResolucaocomercial(int $slaniveResolucaocomercial): self
     {
         $this->slaniveResolucaocomercial = $slaniveResolucaocomercial;
 
         return $this;
     }
 
-    /**
-     * Get slaniveResolucaocomercial.
-     *
-     * @return int
-     */
-    public function getSlaniveResolucaocomercial()
+    public function getSlaniveResolucaoextra(): ?int
     {
-        return $this->slaniveResolucaocomercial;
+        return $this->slaniveResolucaoextra;
     }
 
-    /**
-     * Set slaniveResolucaoextra.
-     *
-     * @param int $slaniveResolucaoextra
-     *
-     * @return Slanivel
-     */
-    public function setSlaniveResolucaoextra($slaniveResolucaoextra)
+    public function setSlaniveResolucaoextra(int $slaniveResolucaoextra): self
     {
         $this->slaniveResolucaoextra = $slaniveResolucaoextra;
 
         return $this;
     }
 
-    /**
-     * Get slaniveResolucaoextra.
-     *
-     * @return int
-     */
-    public function getSlaniveResolucaoextra()
+    public function getSlaniveRespostaextra(): ?int
     {
-        return $this->slaniveResolucaoextra;
+        return $this->slaniveRespostaextra;
     }
 
-    /**
-     * Set slaniveRespostaextra.
-     *
-     * @param int $slaniveRespostaextra
-     *
-     * @return Slanivel
-     */
-    public function setSlaniveRespostaextra($slaniveRespostaextra)
+    public function setSlaniveRespostaextra(int $slaniveRespostaextra): self
     {
         $this->slaniveRespostaextra = $slaniveRespostaextra;
 
         return $this;
     }
 
-    /**
-     * Get slaniveRespostaextra.
-     *
-     * @return int
-     */
-    public function getSlaniveRespostaextra()
+    public function getNiveCodigoid(): ?Nivel
     {
-        return $this->slaniveRespostaextra;
+        return $this->niveCodigoid;
     }
 
-    /**
-     * Set niveCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Nivel|null $niveCodigoid
-     *
-     * @return Slanivel
-     */
-    public function setNiveCodigoid(\App\Entity\Financeiro\Nivel $niveCodigoid = null)
+    public function setNiveCodigoid(?Nivel $niveCodigoid): self
     {
         $this->niveCodigoid = $niveCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get niveCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Nivel|null
-     */
-    public function getNiveCodigoid()
+    public function getSlaCodigoid(): ?Sla
     {
-        return $this->niveCodigoid;
+        return $this->slaCodigoid;
     }
 
-    /**
-     * Set slaCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Sla|null $slaCodigoid
-     *
-     * @return Slanivel
-     */
-    public function setSlaCodigoid(\App\Entity\Financeiro\Sla $slaCodigoid = null)
+    public function setSlaCodigoid(?Sla $slaCodigoid): self
     {
         $this->slaCodigoid = $slaCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get slaCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Sla|null
-     */
-    public function getSlaCodigoid()
-    {
-        return $this->slaCodigoid;
     }
 }

@@ -2,140 +2,68 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Cfop
- */
 class Cfop
 {
-    /**
-     * @var int
-     */
     private $cfopCodigoid;
 
-    /**
-     * @var int|null
-     */
     private $cfopPaicodigoid;
 
-    /**
-     * @var string
-     */
     private $cfopCfop;
 
-    /**
-     * @var string
-     */
     private $cfopDescricao;
 
-    /**
-     * @var string|null
-     */
     private $cfopAplicacao;
 
-
-    /**
-     * Get cfopCodigoid.
-     *
-     * @return int
-     */
-    public function getCfopCodigoid()
+    public function getCfopCodigoid(): ?int
     {
         return $this->cfopCodigoid;
     }
 
-    /**
-     * Set cfopPaicodigoid.
-     *
-     * @param int|null $cfopPaicodigoid
-     *
-     * @return Cfop
-     */
-    public function setCfopPaicodigoid($cfopPaicodigoid = null)
+    public function getCfopPaicodigoid(): ?int
+    {
+        return $this->cfopPaicodigoid;
+    }
+
+    public function setCfopPaicodigoid(?int $cfopPaicodigoid): self
     {
         $this->cfopPaicodigoid = $cfopPaicodigoid;
 
         return $this;
     }
 
-    /**
-     * Get cfopPaicodigoid.
-     *
-     * @return int|null
-     */
-    public function getCfopPaicodigoid()
+    public function getCfopCfop(): ?string
     {
-        return $this->cfopPaicodigoid;
+        return $this->cfopCfop;
     }
 
-    /**
-     * Set cfopCfop.
-     *
-     * @param string $cfopCfop
-     *
-     * @return Cfop
-     */
-    public function setCfopCfop($cfopCfop)
+    public function setCfopCfop(string $cfopCfop): self
     {
         $this->cfopCfop = $cfopCfop;
 
         return $this;
     }
 
-    /**
-     * Get cfopCfop.
-     *
-     * @return string
-     */
-    public function getCfopCfop()
+    public function getCfopDescricao(): ?string
     {
-        return $this->cfopCfop;
+        return $this->cfopDescricao;
     }
 
-    /**
-     * Set cfopDescricao.
-     *
-     * @param string $cfopDescricao
-     *
-     * @return Cfop
-     */
-    public function setCfopDescricao($cfopDescricao)
+    public function setCfopDescricao(string $cfopDescricao): self
     {
         $this->cfopDescricao = $cfopDescricao;
 
         return $this;
     }
 
-    /**
-     * Get cfopDescricao.
-     *
-     * @return string
-     */
-    public function getCfopDescricao()
+    public function getCfopAplicacao(): ?string
     {
-        return $this->cfopDescricao;
+        return $this->cfopAplicacao;
     }
 
-    /**
-     * Set cfopAplicacao.
-     *
-     * @param string|null $cfopAplicacao
-     *
-     * @return Cfop
-     */
-    public function setCfopAplicacao($cfopAplicacao = null)
+    public function setCfopAplicacao(?string $cfopAplicacao): self
     {
         $this->cfopAplicacao = $cfopAplicacao;
 
         return $this;
-    }
-
-    /**
-     * Get cfopAplicacao.
-     *
-     * @return string|null
-     */
-    public function getCfopAplicacao()
-    {
-        return $this->cfopAplicacao;
     }
 }

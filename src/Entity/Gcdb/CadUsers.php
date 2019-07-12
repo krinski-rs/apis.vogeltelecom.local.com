@@ -2,826 +2,405 @@
 
 namespace App\Entity\Gcdb;
 
-/**
- * CadUsers
- */
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 class CadUsers
 {
-    /**
-     * @var int
-     */
     private $id;
 
-    /**
-     * @var int|null
-     */
     private $cnpj;
 
-    /**
-     * @var int|null
-     */
     private $cpf;
 
-    /**
-     * @var string|null
-     */
     private $inscEst;
 
-    /**
-     * @var string|null
-     */
     private $inscMun;
 
-    /**
-     * @var string|null
-     */
     private $senha;
 
-    /**
-     * @var \DateTime|null
-     */
     private $dtAbertura;
 
-    /**
-     * @var string|null
-     */
     private $cep;
 
-    /**
-     * @var string|null
-     */
     private $endereco;
 
-    /**
-     * @var string|null
-     */
     private $numero;
 
-    /**
-     * @var string|null
-     */
     private $bairro;
 
-    /**
-     * @var string|null
-     */
     private $site;
 
-    /**
-     * @var \DateTime|null
-     */
     private $dtCadastro;
 
-    /**
-     * @var string|null
-     */
     private $tipo;
 
-    /**
-     * @var int|null
-     */
     private $qtfoto;
 
-    /**
-     * @var string|null
-     */
     private $latitude;
 
-    /**
-     * @var string|null
-     */
     private $longitude;
 
-    /**
-     * @var int|null
-     */
     private $simples;
 
-    /**
-     * @var string|null
-     */
     private $hashAcesso;
 
-    /**
-     * @var \DateTime|null
-     */
     private $hashDatainc;
 
-    /**
-     * @var string|null
-     */
     private $atividadeRamo;
 
-    /**
-     * @var string|null
-     */
     private $tipoCliente;
 
-    /**
-     * @var int|null
-     */
     private $cadOrigemContato;
 
-    /**
-     * @var bool
-     */
-    private $integrado = '0';
+    private $integrado;
 
-    /**
-     * @var \DateTime|null
-     */
     private $dtIntegrado;
 
-    /**
-     * @var int|null
-     */
-    private $erroIntegracao = '0';
+    private $erroIntegracao;
 
-    /**
-     * @var string|null
-     */
     private $msgErroIntegracao;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
     private $customers2users;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
     private $cadUsersEmail;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
     private $cadUsersNome;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
     private $CadUsersSite;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
     private $CadUsersTelefone;
 
-    /**
-     * @var \App\Entity\Gcdb\AdmLogradouro
-     */
     private $admLogradouro;
 
-    /**
-     * @var \App\Entity\Gcdb\AdmPais
-     */
     private $admPais;
 
-    /**
-     * @var \App\Entity\Gcdb\AdmUf
-     */
     private $admUf;
 
-    /**
-     * @var \App\Entity\Gcdb\AdmCidades
-     */
     private $admCidades;
 
-    /**
-     * @var \App\Entity\Gcdb\CadUsersSegmento
-     */
     private $segmento;
 
-    /**
-     * Constructor
-     */
     public function __construct()
     {
-        $this->customers2users = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->cadUsersEmail = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->cadUsersNome = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->CadUsersSite = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->CadUsersTelefone = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->customers2users = new ArrayCollection();
+        $this->cadUsersEmail = new ArrayCollection();
+        $this->cadUsersNome = new ArrayCollection();
+        $this->CadUsersSite = new ArrayCollection();
+        $this->CadUsersTelefone = new ArrayCollection();
     }
 
-    /**
-     * Get id.
-     *
-     * @return int
-     */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * Set cnpj.
-     *
-     * @param int|null $cnpj
-     *
-     * @return CadUsers
-     */
-    public function setCnpj($cnpj = null)
+    public function getCnpj(): ?int
+    {
+        return $this->cnpj;
+    }
+
+    public function setCnpj(?int $cnpj): self
     {
         $this->cnpj = $cnpj;
 
         return $this;
     }
 
-    /**
-     * Get cnpj.
-     *
-     * @return int|null
-     */
-    public function getCnpj()
+    public function getCpf(): ?int
     {
-        return $this->cnpj;
+        return $this->cpf;
     }
 
-    /**
-     * Set cpf.
-     *
-     * @param int|null $cpf
-     *
-     * @return CadUsers
-     */
-    public function setCpf($cpf = null)
+    public function setCpf(?int $cpf): self
     {
         $this->cpf = $cpf;
 
         return $this;
     }
 
-    /**
-     * Get cpf.
-     *
-     * @return int|null
-     */
-    public function getCpf()
+    public function getInscEst(): ?string
     {
-        return $this->cpf;
+        return $this->inscEst;
     }
 
-    /**
-     * Set inscEst.
-     *
-     * @param string|null $inscEst
-     *
-     * @return CadUsers
-     */
-    public function setInscEst($inscEst = null)
+    public function setInscEst(?string $inscEst): self
     {
         $this->inscEst = $inscEst;
 
         return $this;
     }
 
-    /**
-     * Get inscEst.
-     *
-     * @return string|null
-     */
-    public function getInscEst()
+    public function getInscMun(): ?string
     {
-        return $this->inscEst;
+        return $this->inscMun;
     }
 
-    /**
-     * Set inscMun.
-     *
-     * @param string|null $inscMun
-     *
-     * @return CadUsers
-     */
-    public function setInscMun($inscMun = null)
+    public function setInscMun(?string $inscMun): self
     {
         $this->inscMun = $inscMun;
 
         return $this;
     }
 
-    /**
-     * Get inscMun.
-     *
-     * @return string|null
-     */
-    public function getInscMun()
+    public function getSenha(): ?string
     {
-        return $this->inscMun;
+        return $this->senha;
     }
 
-    /**
-     * Set senha.
-     *
-     * @param string|null $senha
-     *
-     * @return CadUsers
-     */
-    public function setSenha($senha = null)
+    public function setSenha(?string $senha): self
     {
         $this->senha = $senha;
 
         return $this;
     }
 
-    /**
-     * Get senha.
-     *
-     * @return string|null
-     */
-    public function getSenha()
+    public function getDtAbertura(): ?\DateTimeInterface
     {
-        return $this->senha;
+        return $this->dtAbertura;
     }
 
-    /**
-     * Set dtAbertura.
-     *
-     * @param \DateTime|null $dtAbertura
-     *
-     * @return CadUsers
-     */
-    public function setDtAbertura($dtAbertura = null)
+    public function setDtAbertura(?\DateTimeInterface $dtAbertura): self
     {
         $this->dtAbertura = $dtAbertura;
 
         return $this;
     }
 
-    /**
-     * Get dtAbertura.
-     *
-     * @return \DateTime|null
-     */
-    public function getDtAbertura()
+    public function getCep(): ?string
     {
-        return $this->dtAbertura;
+        return $this->cep;
     }
 
-    /**
-     * Set cep.
-     *
-     * @param string|null $cep
-     *
-     * @return CadUsers
-     */
-    public function setCep($cep = null)
+    public function setCep(?string $cep): self
     {
         $this->cep = $cep;
 
         return $this;
     }
 
-    /**
-     * Get cep.
-     *
-     * @return string|null
-     */
-    public function getCep()
+    public function getEndereco(): ?string
     {
-        return $this->cep;
+        return $this->endereco;
     }
 
-    /**
-     * Set endereco.
-     *
-     * @param string|null $endereco
-     *
-     * @return CadUsers
-     */
-    public function setEndereco($endereco = null)
+    public function setEndereco(?string $endereco): self
     {
         $this->endereco = $endereco;
 
         return $this;
     }
 
-    /**
-     * Get endereco.
-     *
-     * @return string|null
-     */
-    public function getEndereco()
+    public function getNumero(): ?string
     {
-        return $this->endereco;
+        return $this->numero;
     }
 
-    /**
-     * Set numero.
-     *
-     * @param string|null $numero
-     *
-     * @return CadUsers
-     */
-    public function setNumero($numero = null)
+    public function setNumero(?string $numero): self
     {
         $this->numero = $numero;
 
         return $this;
     }
 
-    /**
-     * Get numero.
-     *
-     * @return string|null
-     */
-    public function getNumero()
+    public function getBairro(): ?string
     {
-        return $this->numero;
+        return $this->bairro;
     }
 
-    /**
-     * Set bairro.
-     *
-     * @param string|null $bairro
-     *
-     * @return CadUsers
-     */
-    public function setBairro($bairro = null)
+    public function setBairro(?string $bairro): self
     {
         $this->bairro = $bairro;
 
         return $this;
     }
 
-    /**
-     * Get bairro.
-     *
-     * @return string|null
-     */
-    public function getBairro()
+    public function getSite(): ?string
     {
-        return $this->bairro;
+        return $this->site;
     }
 
-    /**
-     * Set site.
-     *
-     * @param string|null $site
-     *
-     * @return CadUsers
-     */
-    public function setSite($site = null)
+    public function setSite(?string $site): self
     {
         $this->site = $site;
 
         return $this;
     }
 
-    /**
-     * Get site.
-     *
-     * @return string|null
-     */
-    public function getSite()
+    public function getDtCadastro(): ?\DateTimeInterface
     {
-        return $this->site;
+        return $this->dtCadastro;
     }
 
-    /**
-     * Set dtCadastro.
-     *
-     * @param \DateTime|null $dtCadastro
-     *
-     * @return CadUsers
-     */
-    public function setDtCadastro($dtCadastro = null)
+    public function setDtCadastro(?\DateTimeInterface $dtCadastro): self
     {
         $this->dtCadastro = $dtCadastro;
 
         return $this;
     }
 
-    /**
-     * Get dtCadastro.
-     *
-     * @return \DateTime|null
-     */
-    public function getDtCadastro()
+    public function getTipo(): ?string
     {
-        return $this->dtCadastro;
+        return $this->tipo;
     }
 
-    /**
-     * Set tipo.
-     *
-     * @param string|null $tipo
-     *
-     * @return CadUsers
-     */
-    public function setTipo($tipo = null)
+    public function setTipo(?string $tipo): self
     {
         $this->tipo = $tipo;
 
         return $this;
     }
 
-    /**
-     * Get tipo.
-     *
-     * @return string|null
-     */
-    public function getTipo()
+    public function getQtfoto(): ?int
     {
-        return $this->tipo;
+        return $this->qtfoto;
     }
 
-    /**
-     * Set qtfoto.
-     *
-     * @param int|null $qtfoto
-     *
-     * @return CadUsers
-     */
-    public function setQtfoto($qtfoto = null)
+    public function setQtfoto(?int $qtfoto): self
     {
         $this->qtfoto = $qtfoto;
 
         return $this;
     }
 
-    /**
-     * Get qtfoto.
-     *
-     * @return int|null
-     */
-    public function getQtfoto()
+    public function getLatitude(): ?string
     {
-        return $this->qtfoto;
+        return $this->latitude;
     }
 
-    /**
-     * Set latitude.
-     *
-     * @param string|null $latitude
-     *
-     * @return CadUsers
-     */
-    public function setLatitude($latitude = null)
+    public function setLatitude(?string $latitude): self
     {
         $this->latitude = $latitude;
 
         return $this;
     }
 
-    /**
-     * Get latitude.
-     *
-     * @return string|null
-     */
-    public function getLatitude()
+    public function getLongitude(): ?string
     {
-        return $this->latitude;
+        return $this->longitude;
     }
 
-    /**
-     * Set longitude.
-     *
-     * @param string|null $longitude
-     *
-     * @return CadUsers
-     */
-    public function setLongitude($longitude = null)
+    public function setLongitude(?string $longitude): self
     {
         $this->longitude = $longitude;
 
         return $this;
     }
 
-    /**
-     * Get longitude.
-     *
-     * @return string|null
-     */
-    public function getLongitude()
+    public function getSimples(): ?int
     {
-        return $this->longitude;
+        return $this->simples;
     }
 
-    /**
-     * Set simples.
-     *
-     * @param int|null $simples
-     *
-     * @return CadUsers
-     */
-    public function setSimples($simples = null)
+    public function setSimples(?int $simples): self
     {
         $this->simples = $simples;
 
         return $this;
     }
 
-    /**
-     * Get simples.
-     *
-     * @return int|null
-     */
-    public function getSimples()
+    public function getHashAcesso(): ?string
     {
-        return $this->simples;
+        return $this->hashAcesso;
     }
 
-    /**
-     * Set hashAcesso.
-     *
-     * @param string|null $hashAcesso
-     *
-     * @return CadUsers
-     */
-    public function setHashAcesso($hashAcesso = null)
+    public function setHashAcesso(?string $hashAcesso): self
     {
         $this->hashAcesso = $hashAcesso;
 
         return $this;
     }
 
-    /**
-     * Get hashAcesso.
-     *
-     * @return string|null
-     */
-    public function getHashAcesso()
+    public function getHashDatainc(): ?\DateTimeInterface
     {
-        return $this->hashAcesso;
+        return $this->hashDatainc;
     }
 
-    /**
-     * Set hashDatainc.
-     *
-     * @param \DateTime|null $hashDatainc
-     *
-     * @return CadUsers
-     */
-    public function setHashDatainc($hashDatainc = null)
+    public function setHashDatainc(?\DateTimeInterface $hashDatainc): self
     {
         $this->hashDatainc = $hashDatainc;
 
         return $this;
     }
 
-    /**
-     * Get hashDatainc.
-     *
-     * @return \DateTime|null
-     */
-    public function getHashDatainc()
+    public function getAtividadeRamo(): ?string
     {
-        return $this->hashDatainc;
+        return $this->atividadeRamo;
     }
 
-    /**
-     * Set atividadeRamo.
-     *
-     * @param string|null $atividadeRamo
-     *
-     * @return CadUsers
-     */
-    public function setAtividadeRamo($atividadeRamo = null)
+    public function setAtividadeRamo(?string $atividadeRamo): self
     {
         $this->atividadeRamo = $atividadeRamo;
 
         return $this;
     }
 
-    /**
-     * Get atividadeRamo.
-     *
-     * @return string|null
-     */
-    public function getAtividadeRamo()
+    public function getTipoCliente(): ?string
     {
-        return $this->atividadeRamo;
+        return $this->tipoCliente;
     }
 
-    /**
-     * Set tipoCliente.
-     *
-     * @param string|null $tipoCliente
-     *
-     * @return CadUsers
-     */
-    public function setTipoCliente($tipoCliente = null)
+    public function setTipoCliente(?string $tipoCliente): self
     {
         $this->tipoCliente = $tipoCliente;
 
         return $this;
     }
 
-    /**
-     * Get tipoCliente.
-     *
-     * @return string|null
-     */
-    public function getTipoCliente()
+    public function getCadOrigemContato(): ?int
     {
-        return $this->tipoCliente;
+        return $this->cadOrigemContato;
     }
 
-    /**
-     * Set cadOrigemContato.
-     *
-     * @param int|null $cadOrigemContato
-     *
-     * @return CadUsers
-     */
-    public function setCadOrigemContato($cadOrigemContato = null)
+    public function setCadOrigemContato(?int $cadOrigemContato): self
     {
         $this->cadOrigemContato = $cadOrigemContato;
 
         return $this;
     }
 
-    /**
-     * Get cadOrigemContato.
-     *
-     * @return int|null
-     */
-    public function getCadOrigemContato()
+    public function getIntegrado(): ?bool
     {
-        return $this->cadOrigemContato;
+        return $this->integrado;
     }
 
-    /**
-     * Set integrado.
-     *
-     * @param bool $integrado
-     *
-     * @return CadUsers
-     */
-    public function setIntegrado($integrado)
+    public function setIntegrado(bool $integrado): self
     {
         $this->integrado = $integrado;
 
         return $this;
     }
 
-    /**
-     * Get integrado.
-     *
-     * @return bool
-     */
-    public function getIntegrado()
+    public function getDtIntegrado(): ?\DateTimeInterface
     {
-        return $this->integrado;
+        return $this->dtIntegrado;
     }
 
-    /**
-     * Set dtIntegrado.
-     *
-     * @param \DateTime|null $dtIntegrado
-     *
-     * @return CadUsers
-     */
-    public function setDtIntegrado($dtIntegrado = null)
+    public function setDtIntegrado(?\DateTimeInterface $dtIntegrado): self
     {
         $this->dtIntegrado = $dtIntegrado;
 
         return $this;
     }
 
-    /**
-     * Get dtIntegrado.
-     *
-     * @return \DateTime|null
-     */
-    public function getDtIntegrado()
+    public function getErroIntegracao(): ?int
     {
-        return $this->dtIntegrado;
+        return $this->erroIntegracao;
     }
 
-    /**
-     * Set erroIntegracao.
-     *
-     * @param int|null $erroIntegracao
-     *
-     * @return CadUsers
-     */
-    public function setErroIntegracao($erroIntegracao = null)
+    public function setErroIntegracao(?int $erroIntegracao): self
     {
         $this->erroIntegracao = $erroIntegracao;
 
         return $this;
     }
 
-    /**
-     * Get erroIntegracao.
-     *
-     * @return int|null
-     */
-    public function getErroIntegracao()
+    public function getMsgErroIntegracao(): ?string
     {
-        return $this->erroIntegracao;
+        return $this->msgErroIntegracao;
     }
 
-    /**
-     * Set msgErroIntegracao.
-     *
-     * @param string|null $msgErroIntegracao
-     *
-     * @return CadUsers
-     */
-    public function setMsgErroIntegracao($msgErroIntegracao = null)
+    public function setMsgErroIntegracao(?string $msgErroIntegracao): self
     {
         $this->msgErroIntegracao = $msgErroIntegracao;
 
@@ -829,312 +408,217 @@ class CadUsers
     }
 
     /**
-     * Get msgErroIntegracao.
-     *
-     * @return string|null
+     * @return Collection|Customers2users[]
      */
-    public function getMsgErroIntegracao()
-    {
-        return $this->msgErroIntegracao;
-    }
-
-    /**
-     * Add customers2user.
-     *
-     * @param \App\Entity\Gcdb\Customers2users $customers2user
-     *
-     * @return CadUsers
-     */
-    public function addCustomers2user(\App\Entity\Gcdb\Customers2users $customers2user)
-    {
-        $this->customers2users[] = $customers2user;
-
-        return $this;
-    }
-
-    /**
-     * Remove customers2user.
-     *
-     * @param \App\Entity\Gcdb\Customers2users $customers2user
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
-     */
-    public function removeCustomers2user(\App\Entity\Gcdb\Customers2users $customers2user)
-    {
-        return $this->customers2users->removeElement($customers2user);
-    }
-
-    /**
-     * Get customers2users.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCustomers2users()
+    public function getCustomers2users(): Collection
     {
         return $this->customers2users;
     }
 
-    /**
-     * Add cadUsersEmail.
-     *
-     * @param \App\Entity\Gcdb\CadUsersEmail $cadUsersEmail
-     *
-     * @return CadUsers
-     */
-    public function addCadUsersEmail(\App\Entity\Gcdb\CadUsersEmail $cadUsersEmail)
+    public function addCustomers2user(Customers2users $customers2user): self
     {
-        $this->cadUsersEmail[] = $cadUsersEmail;
+        if (!$this->customers2users->contains($customers2user)) {
+            $this->customers2users[] = $customers2user;
+            $customers2user->setCadUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCustomers2user(Customers2users $customers2user): self
+    {
+        if ($this->customers2users->contains($customers2user)) {
+            $this->customers2users->removeElement($customers2user);
+            // set the owning side to null (unless already changed)
+            if ($customers2user->getCadUser() === $this) {
+                $customers2user->setCadUser(null);
+            }
+        }
 
         return $this;
     }
 
     /**
-     * Remove cadUsersEmail.
-     *
-     * @param \App\Entity\Gcdb\CadUsersEmail $cadUsersEmail
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     * @return Collection|CadUsersEmail[]
      */
-    public function removeCadUsersEmail(\App\Entity\Gcdb\CadUsersEmail $cadUsersEmail)
-    {
-        return $this->cadUsersEmail->removeElement($cadUsersEmail);
-    }
-
-    /**
-     * Get cadUsersEmail.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCadUsersEmail()
+    public function getCadUsersEmail(): Collection
     {
         return $this->cadUsersEmail;
     }
 
-    /**
-     * Add cadUsersNome.
-     *
-     * @param \App\Entity\Gcdb\CadUsersNome $cadUsersNome
-     *
-     * @return CadUsers
-     */
-    public function addCadUsersNome(\App\Entity\Gcdb\CadUsersNome $cadUsersNome)
+    public function addCadUsersEmail(CadUsersEmail $cadUsersEmail): self
     {
-        $this->cadUsersNome[] = $cadUsersNome;
+        if (!$this->cadUsersEmail->contains($cadUsersEmail)) {
+            $this->cadUsersEmail[] = $cadUsersEmail;
+            $cadUsersEmail->setCadUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCadUsersEmail(CadUsersEmail $cadUsersEmail): self
+    {
+        if ($this->cadUsersEmail->contains($cadUsersEmail)) {
+            $this->cadUsersEmail->removeElement($cadUsersEmail);
+            // set the owning side to null (unless already changed)
+            if ($cadUsersEmail->getCadUser() === $this) {
+                $cadUsersEmail->setCadUser(null);
+            }
+        }
 
         return $this;
     }
 
     /**
-     * Remove cadUsersNome.
-     *
-     * @param \App\Entity\Gcdb\CadUsersNome $cadUsersNome
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     * @return Collection|CadUsersNome[]
      */
-    public function removeCadUsersNome(\App\Entity\Gcdb\CadUsersNome $cadUsersNome)
-    {
-        return $this->cadUsersNome->removeElement($cadUsersNome);
-    }
-
-    /**
-     * Get cadUsersNome.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCadUsersNome()
+    public function getCadUsersNome(): Collection
     {
         return $this->cadUsersNome;
     }
 
-    /**
-     * Add cadUsersSite.
-     *
-     * @param \App\Entity\Gcdb\CadUsersSite $cadUsersSite
-     *
-     * @return CadUsers
-     */
-    public function addCadUsersSite(\App\Entity\Gcdb\CadUsersSite $cadUsersSite)
+    public function addCadUsersNome(CadUsersNome $cadUsersNome): self
     {
-        $this->CadUsersSite[] = $cadUsersSite;
+        if (!$this->cadUsersNome->contains($cadUsersNome)) {
+            $this->cadUsersNome[] = $cadUsersNome;
+            $cadUsersNome->setCadUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCadUsersNome(CadUsersNome $cadUsersNome): self
+    {
+        if ($this->cadUsersNome->contains($cadUsersNome)) {
+            $this->cadUsersNome->removeElement($cadUsersNome);
+            // set the owning side to null (unless already changed)
+            if ($cadUsersNome->getCadUser() === $this) {
+                $cadUsersNome->setCadUser(null);
+            }
+        }
 
         return $this;
     }
 
     /**
-     * Remove cadUsersSite.
-     *
-     * @param \App\Entity\Gcdb\CadUsersSite $cadUsersSite
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     * @return Collection|CadUsersSite[]
      */
-    public function removeCadUsersSite(\App\Entity\Gcdb\CadUsersSite $cadUsersSite)
-    {
-        return $this->CadUsersSite->removeElement($cadUsersSite);
-    }
-
-    /**
-     * Get cadUsersSite.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCadUsersSite()
+    public function getCadUsersSite(): Collection
     {
         return $this->CadUsersSite;
     }
 
-    /**
-     * Add cadUsersTelefone.
-     *
-     * @param \App\Entity\Gcdb\CadUsersTelefone $cadUsersTelefone
-     *
-     * @return CadUsers
-     */
-    public function addCadUsersTelefone(\App\Entity\Gcdb\CadUsersTelefone $cadUsersTelefone)
+    public function addCadUsersSite(CadUsersSite $cadUsersSite): self
     {
-        $this->CadUsersTelefone[] = $cadUsersTelefone;
+        if (!$this->CadUsersSite->contains($cadUsersSite)) {
+            $this->CadUsersSite[] = $cadUsersSite;
+            $cadUsersSite->setCadUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCadUsersSite(CadUsersSite $cadUsersSite): self
+    {
+        if ($this->CadUsersSite->contains($cadUsersSite)) {
+            $this->CadUsersSite->removeElement($cadUsersSite);
+            // set the owning side to null (unless already changed)
+            if ($cadUsersSite->getCadUser() === $this) {
+                $cadUsersSite->setCadUser(null);
+            }
+        }
 
         return $this;
     }
 
     /**
-     * Remove cadUsersTelefone.
-     *
-     * @param \App\Entity\Gcdb\CadUsersTelefone $cadUsersTelefone
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     * @return Collection|CadUsersTelefone[]
      */
-    public function removeCadUsersTelefone(\App\Entity\Gcdb\CadUsersTelefone $cadUsersTelefone)
-    {
-        return $this->CadUsersTelefone->removeElement($cadUsersTelefone);
-    }
-
-    /**
-     * Get cadUsersTelefone.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCadUsersTelefone()
+    public function getCadUsersTelefone(): Collection
     {
         return $this->CadUsersTelefone;
     }
 
-    /**
-     * Set admLogradouro.
-     *
-     * @param \App\Entity\Gcdb\AdmLogradouro|null $admLogradouro
-     *
-     * @return CadUsers
-     */
-    public function setAdmLogradouro(\App\Entity\Gcdb\AdmLogradouro $admLogradouro = null)
+    public function addCadUsersTelefone(CadUsersTelefone $cadUsersTelefone): self
+    {
+        if (!$this->CadUsersTelefone->contains($cadUsersTelefone)) {
+            $this->CadUsersTelefone[] = $cadUsersTelefone;
+            $cadUsersTelefone->setCadUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCadUsersTelefone(CadUsersTelefone $cadUsersTelefone): self
+    {
+        if ($this->CadUsersTelefone->contains($cadUsersTelefone)) {
+            $this->CadUsersTelefone->removeElement($cadUsersTelefone);
+            // set the owning side to null (unless already changed)
+            if ($cadUsersTelefone->getCadUser() === $this) {
+                $cadUsersTelefone->setCadUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getAdmLogradouro(): ?AdmLogradouro
+    {
+        return $this->admLogradouro;
+    }
+
+    public function setAdmLogradouro(?AdmLogradouro $admLogradouro): self
     {
         $this->admLogradouro = $admLogradouro;
 
         return $this;
     }
 
-    /**
-     * Get admLogradouro.
-     *
-     * @return \App\Entity\Gcdb\AdmLogradouro|null
-     */
-    public function getAdmLogradouro()
+    public function getAdmPais(): ?AdmPais
     {
-        return $this->admLogradouro;
+        return $this->admPais;
     }
 
-    /**
-     * Set admPais.
-     *
-     * @param \App\Entity\Gcdb\AdmPais|null $admPais
-     *
-     * @return CadUsers
-     */
-    public function setAdmPais(\App\Entity\Gcdb\AdmPais $admPais = null)
+    public function setAdmPais(?AdmPais $admPais): self
     {
         $this->admPais = $admPais;
 
         return $this;
     }
 
-    /**
-     * Get admPais.
-     *
-     * @return \App\Entity\Gcdb\AdmPais|null
-     */
-    public function getAdmPais()
+    public function getAdmUf(): ?AdmUf
     {
-        return $this->admPais;
+        return $this->admUf;
     }
 
-    /**
-     * Set admUf.
-     *
-     * @param \App\Entity\Gcdb\AdmUf|null $admUf
-     *
-     * @return CadUsers
-     */
-    public function setAdmUf(\App\Entity\Gcdb\AdmUf $admUf = null)
+    public function setAdmUf(?AdmUf $admUf): self
     {
         $this->admUf = $admUf;
 
         return $this;
     }
 
-    /**
-     * Get admUf.
-     *
-     * @return \App\Entity\Gcdb\AdmUf|null
-     */
-    public function getAdmUf()
+    public function getAdmCidades(): ?AdmCidades
     {
-        return $this->admUf;
+        return $this->admCidades;
     }
 
-    /**
-     * Set admCidades.
-     *
-     * @param \App\Entity\Gcdb\AdmCidades|null $admCidades
-     *
-     * @return CadUsers
-     */
-    public function setAdmCidades(\App\Entity\Gcdb\AdmCidades $admCidades = null)
+    public function setAdmCidades(?AdmCidades $admCidades): self
     {
         $this->admCidades = $admCidades;
 
         return $this;
     }
 
-    /**
-     * Get admCidades.
-     *
-     * @return \App\Entity\Gcdb\AdmCidades|null
-     */
-    public function getAdmCidades()
+    public function getSegmento(): ?CadUsersSegmento
     {
-        return $this->admCidades;
+        return $this->segmento;
     }
 
-    /**
-     * Set segmento.
-     *
-     * @param \App\Entity\Gcdb\CadUsersSegmento|null $segmento
-     *
-     * @return CadUsers
-     */
-    public function setSegmento(\App\Entity\Gcdb\CadUsersSegmento $segmento = null)
+    public function setSegmento(?CadUsersSegmento $segmento): self
     {
         $this->segmento = $segmento;
 
         return $this;
-    }
-
-    /**
-     * Get segmento.
-     *
-     * @return \App\Entity\Gcdb\CadUsersSegmento|null
-     */
-    public function getSegmento()
-    {
-        return $this->segmento;
     }
 }

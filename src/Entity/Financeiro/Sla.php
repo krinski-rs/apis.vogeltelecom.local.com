@@ -2,169 +2,82 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Sla
- */
 class Sla
 {
-    /**
-     * @var int
-     */
     private $slaCodigoid;
 
-    /**
-     * @var string
-     */
     private $slaNome;
 
-    /**
-     * @var \DateTime
-     */
-    private $slaDatainc = 'CURRENT_TIMESTAMP';
+    private $slaDatainc;
 
-    /**
-     * @var \DateTime|null
-     */
     private $slaDatafim;
 
-    /**
-     * @var string
-     */
     private $slaDisponibilidade;
 
-    /**
-     * @var \App\Entity\Financeiro\Sla
-     */
     private $slaProximocodigoid;
 
-
-    /**
-     * Get slaCodigoid.
-     *
-     * @return int
-     */
-    public function getSlaCodigoid()
+    public function getSlaCodigoid(): ?int
     {
         return $this->slaCodigoid;
     }
 
-    /**
-     * Set slaNome.
-     *
-     * @param string $slaNome
-     *
-     * @return Sla
-     */
-    public function setSlaNome($slaNome)
+    public function getSlaNome(): ?string
+    {
+        return $this->slaNome;
+    }
+
+    public function setSlaNome(string $slaNome): self
     {
         $this->slaNome = $slaNome;
 
         return $this;
     }
 
-    /**
-     * Get slaNome.
-     *
-     * @return string
-     */
-    public function getSlaNome()
+    public function getSlaDatainc(): ?\DateTimeInterface
     {
-        return $this->slaNome;
+        return $this->slaDatainc;
     }
 
-    /**
-     * Set slaDatainc.
-     *
-     * @param \DateTime $slaDatainc
-     *
-     * @return Sla
-     */
-    public function setSlaDatainc($slaDatainc)
+    public function setSlaDatainc(\DateTimeInterface $slaDatainc): self
     {
         $this->slaDatainc = $slaDatainc;
 
         return $this;
     }
 
-    /**
-     * Get slaDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getSlaDatainc()
+    public function getSlaDatafim(): ?\DateTimeInterface
     {
-        return $this->slaDatainc;
+        return $this->slaDatafim;
     }
 
-    /**
-     * Set slaDatafim.
-     *
-     * @param \DateTime|null $slaDatafim
-     *
-     * @return Sla
-     */
-    public function setSlaDatafim($slaDatafim = null)
+    public function setSlaDatafim(?\DateTimeInterface $slaDatafim): self
     {
         $this->slaDatafim = $slaDatafim;
 
         return $this;
     }
 
-    /**
-     * Get slaDatafim.
-     *
-     * @return \DateTime|null
-     */
-    public function getSlaDatafim()
+    public function getSlaDisponibilidade()
     {
-        return $this->slaDatafim;
+        return $this->slaDisponibilidade;
     }
 
-    /**
-     * Set slaDisponibilidade.
-     *
-     * @param string $slaDisponibilidade
-     *
-     * @return Sla
-     */
-    public function setSlaDisponibilidade($slaDisponibilidade)
+    public function setSlaDisponibilidade($slaDisponibilidade): self
     {
         $this->slaDisponibilidade = $slaDisponibilidade;
 
         return $this;
     }
 
-    /**
-     * Get slaDisponibilidade.
-     *
-     * @return string
-     */
-    public function getSlaDisponibilidade()
+    public function getSlaProximocodigoid(): ?self
     {
-        return $this->slaDisponibilidade;
+        return $this->slaProximocodigoid;
     }
 
-    /**
-     * Set slaProximocodigoid.
-     *
-     * @param \App\Entity\Financeiro\Sla|null $slaProximocodigoid
-     *
-     * @return Sla
-     */
-    public function setSlaProximocodigoid(\App\Entity\Financeiro\Sla $slaProximocodigoid = null)
+    public function setSlaProximocodigoid(?self $slaProximocodigoid): self
     {
         $this->slaProximocodigoid = $slaProximocodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get slaProximocodigoid.
-     *
-     * @return \App\Entity\Financeiro\Sla|null
-     */
-    public function getSlaProximocodigoid()
-    {
-        return $this->slaProximocodigoid;
     }
 }

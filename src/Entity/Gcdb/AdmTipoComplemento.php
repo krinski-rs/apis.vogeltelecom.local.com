@@ -2,82 +2,40 @@
 
 namespace App\Entity\Gcdb;
 
-/**
- * AdmTipoComplemento
- */
 class AdmTipoComplemento
 {
-    /**
-     * @var int
-     */
     private $id;
 
-    /**
-     * @var string|null
-     */
     private $nome;
 
-    /**
-     * @var string|null
-     */
     private $sigla;
 
-
-    /**
-     * Get id.
-     *
-     * @return int
-     */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * Set nome.
-     *
-     * @param string|null $nome
-     *
-     * @return AdmTipoComplemento
-     */
-    public function setNome($nome = null)
+    public function getNome(): ?string
+    {
+        return $this->nome;
+    }
+
+    public function setNome(?string $nome): self
     {
         $this->nome = $nome;
 
         return $this;
     }
 
-    /**
-     * Get nome.
-     *
-     * @return string|null
-     */
-    public function getNome()
+    public function getSigla(): ?string
     {
-        return $this->nome;
+        return $this->sigla;
     }
 
-    /**
-     * Set sigla.
-     *
-     * @param string|null $sigla
-     *
-     * @return AdmTipoComplemento
-     */
-    public function setSigla($sigla = null)
+    public function setSigla(?string $sigla): self
     {
         $this->sigla = $sigla;
 
         return $this;
-    }
-
-    /**
-     * Get sigla.
-     *
-     * @return string|null
-     */
-    public function getSigla()
-    {
-        return $this->sigla;
     }
 }

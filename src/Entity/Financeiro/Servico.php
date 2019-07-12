@@ -2,226 +2,117 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Servico
- */
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 class Servico
 {
-    /**
-     * @var int
-     */
     private $servCodigoid;
 
-    /**
-     * @var string
-     */
     private $servNome;
 
-    /**
-     * @var string
-     */
     private $servDescricao;
 
-    /**
-     * @var \DateTime
-     */
-    private $servDatainc = 'CURRENT_TIMESTAMP';
+    private $servDatainc;
 
-    /**
-     * @var string
-     */
     private $servApelido;
 
-    /**
-     * @var bool
-     */
     private $servDependente;
 
-    /**
-     * @var bool
-     */
-    private $servAtivo = '0';
+    private $servAtivo;
 
-    /**
-     * @var \App\Entity\Financeiro\Gruposervico
-     */
     private $grupservCodigoid;
 
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
     private $servagreCodigoid;
 
-    /**
-     * Constructor
-     */
     public function __construct()
     {
-        $this->servagreCodigoid = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->servagreCodigoid = new ArrayCollection();
     }
 
-    /**
-     * Get servCodigoid.
-     *
-     * @return int
-     */
-    public function getServCodigoid()
+    public function getServCodigoid(): ?int
     {
         return $this->servCodigoid;
     }
 
-    /**
-     * Set servNome.
-     *
-     * @param string $servNome
-     *
-     * @return Servico
-     */
-    public function setServNome($servNome)
+    public function getServNome(): ?string
+    {
+        return $this->servNome;
+    }
+
+    public function setServNome(string $servNome): self
     {
         $this->servNome = $servNome;
 
         return $this;
     }
 
-    /**
-     * Get servNome.
-     *
-     * @return string
-     */
-    public function getServNome()
+    public function getServDescricao(): ?string
     {
-        return $this->servNome;
+        return $this->servDescricao;
     }
 
-    /**
-     * Set servDescricao.
-     *
-     * @param string $servDescricao
-     *
-     * @return Servico
-     */
-    public function setServDescricao($servDescricao)
+    public function setServDescricao(string $servDescricao): self
     {
         $this->servDescricao = $servDescricao;
 
         return $this;
     }
 
-    /**
-     * Get servDescricao.
-     *
-     * @return string
-     */
-    public function getServDescricao()
+    public function getServDatainc(): ?\DateTimeInterface
     {
-        return $this->servDescricao;
+        return $this->servDatainc;
     }
 
-    /**
-     * Set servDatainc.
-     *
-     * @param \DateTime $servDatainc
-     *
-     * @return Servico
-     */
-    public function setServDatainc($servDatainc)
+    public function setServDatainc(\DateTimeInterface $servDatainc): self
     {
         $this->servDatainc = $servDatainc;
 
         return $this;
     }
 
-    /**
-     * Get servDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getServDatainc()
+    public function getServApelido(): ?string
     {
-        return $this->servDatainc;
+        return $this->servApelido;
     }
 
-    /**
-     * Set servApelido.
-     *
-     * @param string $servApelido
-     *
-     * @return Servico
-     */
-    public function setServApelido($servApelido)
+    public function setServApelido(string $servApelido): self
     {
         $this->servApelido = $servApelido;
 
         return $this;
     }
 
-    /**
-     * Get servApelido.
-     *
-     * @return string
-     */
-    public function getServApelido()
+    public function getServDependente(): ?bool
     {
-        return $this->servApelido;
+        return $this->servDependente;
     }
 
-    /**
-     * Set servDependente.
-     *
-     * @param bool $servDependente
-     *
-     * @return Servico
-     */
-    public function setServDependente($servDependente)
+    public function setServDependente(bool $servDependente): self
     {
         $this->servDependente = $servDependente;
 
         return $this;
     }
 
-    /**
-     * Get servDependente.
-     *
-     * @return bool
-     */
-    public function getServDependente()
+    public function getServAtivo(): ?bool
     {
-        return $this->servDependente;
+        return $this->servAtivo;
     }
 
-    /**
-     * Set servAtivo.
-     *
-     * @param bool $servAtivo
-     *
-     * @return Servico
-     */
-    public function setServAtivo($servAtivo)
+    public function setServAtivo(bool $servAtivo): self
     {
         $this->servAtivo = $servAtivo;
 
         return $this;
     }
 
-    /**
-     * Get servAtivo.
-     *
-     * @return bool
-     */
-    public function getServAtivo()
+    public function getGrupservCodigoid(): ?Gruposervico
     {
-        return $this->servAtivo;
+        return $this->grupservCodigoid;
     }
 
-    /**
-     * Set grupservCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Gruposervico|null $grupservCodigoid
-     *
-     * @return Servico
-     */
-    public function setGrupservCodigoid(\App\Entity\Financeiro\Gruposervico $grupservCodigoid = null)
+    public function setGrupservCodigoid(?Gruposervico $grupservCodigoid): self
     {
         $this->grupservCodigoid = $grupservCodigoid;
 
@@ -229,48 +120,28 @@ class Servico
     }
 
     /**
-     * Get grupservCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Gruposervico|null
+     * @return Collection|ServicoAgregado[]
      */
-    public function getGrupservCodigoid()
+    public function getServagreCodigoid(): Collection
     {
-        return $this->grupservCodigoid;
+        return $this->servagreCodigoid;
     }
 
-    /**
-     * Add servagreCodigoid.
-     *
-     * @param \App\Entity\Financeiro\ServicoAgregado $servagreCodigoid
-     *
-     * @return Servico
-     */
-    public function addServagreCodigoid(\App\Entity\Financeiro\ServicoAgregado $servagreCodigoid)
+    public function addServagreCodigoid(ServicoAgregado $servagreCodigoid): self
     {
-        $this->servagreCodigoid[] = $servagreCodigoid;
+        if (!$this->servagreCodigoid->contains($servagreCodigoid)) {
+            $this->servagreCodigoid[] = $servagreCodigoid;
+        }
 
         return $this;
     }
 
-    /**
-     * Remove servagreCodigoid.
-     *
-     * @param \App\Entity\Financeiro\ServicoAgregado $servagreCodigoid
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
-     */
-    public function removeServagreCodigoid(\App\Entity\Financeiro\ServicoAgregado $servagreCodigoid)
+    public function removeServagreCodigoid(ServicoAgregado $servagreCodigoid): self
     {
-        return $this->servagreCodigoid->removeElement($servagreCodigoid);
-    }
+        if ($this->servagreCodigoid->contains($servagreCodigoid)) {
+            $this->servagreCodigoid->removeElement($servagreCodigoid);
+        }
 
-    /**
-     * Get servagreCodigoid.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getServagreCodigoid()
-    {
-        return $this->servagreCodigoid;
+        return $this;
     }
 }

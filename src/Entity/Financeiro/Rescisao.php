@@ -2,111 +2,54 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Rescisao
- */
 class Rescisao
 {
-    /**
-     * @var int
-     */
     private $rescCodigoid;
 
-    /**
-     * @var \DateTime
-     */
-    private $rescDatarecebimento = 'CURRENT_TIMESTAMP';
+    private $rescDatarecebimento;
 
-    /**
-     * @var \DateTime
-     */
-    private $rescDatainc = '0000-00-00 00:00:00';
+    private $rescDatainc;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
     private $contCodigoid;
 
-
-    /**
-     * Get rescCodigoid.
-     *
-     * @return int
-     */
-    public function getRescCodigoid()
+    public function getRescCodigoid(): ?int
     {
         return $this->rescCodigoid;
     }
 
-    /**
-     * Set rescDatarecebimento.
-     *
-     * @param \DateTime $rescDatarecebimento
-     *
-     * @return Rescisao
-     */
-    public function setRescDatarecebimento($rescDatarecebimento)
+    public function getRescDatarecebimento(): ?\DateTimeInterface
+    {
+        return $this->rescDatarecebimento;
+    }
+
+    public function setRescDatarecebimento(\DateTimeInterface $rescDatarecebimento): self
     {
         $this->rescDatarecebimento = $rescDatarecebimento;
 
         return $this;
     }
 
-    /**
-     * Get rescDatarecebimento.
-     *
-     * @return \DateTime
-     */
-    public function getRescDatarecebimento()
+    public function getRescDatainc(): ?\DateTimeInterface
     {
-        return $this->rescDatarecebimento;
+        return $this->rescDatainc;
     }
 
-    /**
-     * Set rescDatainc.
-     *
-     * @param \DateTime $rescDatainc
-     *
-     * @return Rescisao
-     */
-    public function setRescDatainc($rescDatainc)
+    public function setRescDatainc(\DateTimeInterface $rescDatainc): self
     {
         $this->rescDatainc = $rescDatainc;
 
         return $this;
     }
 
-    /**
-     * Get rescDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getRescDatainc()
+    public function getContCodigoid(): ?Contrato
     {
-        return $this->rescDatainc;
+        return $this->contCodigoid;
     }
 
-    /**
-     * Set contCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contCodigoid
-     *
-     * @return Rescisao
-     */
-    public function setContCodigoid(\App\Entity\Financeiro\Contrato $contCodigoid = null)
+    public function setContCodigoid(?Contrato $contCodigoid): self
     {
         $this->contCodigoid = $contCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get contCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContCodigoid()
-    {
-        return $this->contCodigoid;
     }
 }

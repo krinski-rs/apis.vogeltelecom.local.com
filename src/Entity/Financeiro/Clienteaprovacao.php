@@ -2,140 +2,68 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Clienteaprovacao
- */
 class Clienteaprovacao
 {
-    /**
-     * @var int
-     */
     private $clieaproCodigoid;
 
-    /**
-     * @var int
-     */
     private $clieCodigoid;
 
-    /**
-     * @var int
-     */
     private $usuaCodigoid;
 
-    /**
-     * @var int
-     */
     private $clieaproDelin;
 
-    /**
-     * @var \App\Entity\Financeiro\Aprovacao
-     */
     private $aproCodigoid;
 
-
-    /**
-     * Get clieaproCodigoid.
-     *
-     * @return int
-     */
-    public function getClieaproCodigoid()
+    public function getClieaproCodigoid(): ?int
     {
         return $this->clieaproCodigoid;
     }
 
-    /**
-     * Set clieCodigoid.
-     *
-     * @param int $clieCodigoid
-     *
-     * @return Clienteaprovacao
-     */
-    public function setClieCodigoid($clieCodigoid)
+    public function getClieCodigoid(): ?int
+    {
+        return $this->clieCodigoid;
+    }
+
+    public function setClieCodigoid(int $clieCodigoid): self
     {
         $this->clieCodigoid = $clieCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get clieCodigoid.
-     *
-     * @return int
-     */
-    public function getClieCodigoid()
+    public function getUsuaCodigoid(): ?int
     {
-        return $this->clieCodigoid;
+        return $this->usuaCodigoid;
     }
 
-    /**
-     * Set usuaCodigoid.
-     *
-     * @param int $usuaCodigoid
-     *
-     * @return Clienteaprovacao
-     */
-    public function setUsuaCodigoid($usuaCodigoid)
+    public function setUsuaCodigoid(int $usuaCodigoid): self
     {
         $this->usuaCodigoid = $usuaCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get usuaCodigoid.
-     *
-     * @return int
-     */
-    public function getUsuaCodigoid()
+    public function getClieaproDelin(): ?int
     {
-        return $this->usuaCodigoid;
+        return $this->clieaproDelin;
     }
 
-    /**
-     * Set clieaproDelin.
-     *
-     * @param int $clieaproDelin
-     *
-     * @return Clienteaprovacao
-     */
-    public function setClieaproDelin($clieaproDelin)
+    public function setClieaproDelin(int $clieaproDelin): self
     {
         $this->clieaproDelin = $clieaproDelin;
 
         return $this;
     }
 
-    /**
-     * Get clieaproDelin.
-     *
-     * @return int
-     */
-    public function getClieaproDelin()
+    public function getAproCodigoid(): ?Aprovacao
     {
-        return $this->clieaproDelin;
+        return $this->aproCodigoid;
     }
 
-    /**
-     * Set aproCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Aprovacao|null $aproCodigoid
-     *
-     * @return Clienteaprovacao
-     */
-    public function setAproCodigoid(\App\Entity\Financeiro\Aprovacao $aproCodigoid = null)
+    public function setAproCodigoid(?Aprovacao $aproCodigoid): self
     {
         $this->aproCodigoid = $aproCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get aproCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Aprovacao|null
-     */
-    public function getAproCodigoid()
-    {
-        return $this->aproCodigoid;
     }
 }

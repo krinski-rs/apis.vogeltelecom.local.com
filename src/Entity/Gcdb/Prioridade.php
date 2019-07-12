@@ -2,82 +2,40 @@
 
 namespace App\Entity\Gcdb;
 
-/**
- * Prioridade
- */
 class Prioridade
 {
-    /**
-     * @var int
-     */
     private $prioridadeid;
 
-    /**
-     * @var string
-     */
     private $nivel;
 
-    /**
-     * @var \App\Entity\Gcdb\Customers
-     */
     private $customer;
 
-
-    /**
-     * Get prioridadeid.
-     *
-     * @return int
-     */
-    public function getPrioridadeid()
+    public function getPrioridadeid(): ?int
     {
         return $this->prioridadeid;
     }
 
-    /**
-     * Set nivel.
-     *
-     * @param string $nivel
-     *
-     * @return Prioridade
-     */
-    public function setNivel($nivel)
+    public function getNivel(): ?string
+    {
+        return $this->nivel;
+    }
+
+    public function setNivel(string $nivel): self
     {
         $this->nivel = $nivel;
 
         return $this;
     }
 
-    /**
-     * Get nivel.
-     *
-     * @return string
-     */
-    public function getNivel()
+    public function getCustomer(): ?Customers
     {
-        return $this->nivel;
+        return $this->customer;
     }
 
-    /**
-     * Set customer.
-     *
-     * @param \App\Entity\Gcdb\Customers|null $customer
-     *
-     * @return Prioridade
-     */
-    public function setCustomer(\App\Entity\Gcdb\Customers $customer = null)
+    public function setCustomer(?Customers $customer): self
     {
         $this->customer = $customer;
 
         return $this;
-    }
-
-    /**
-     * Get customer.
-     *
-     * @return \App\Entity\Gcdb\Customers|null
-     */
-    public function getCustomer()
-    {
-        return $this->customer;
     }
 }

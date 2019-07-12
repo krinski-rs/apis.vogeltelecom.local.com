@@ -2,53 +2,26 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * ContratoLegado
- */
 class ContratoLegado
 {
-    /**
-     * @var int
-     */
     private $contCodigoid;
 
-    /**
-     * @var string|null
-     */
     private $propostaLegado;
 
-
-    /**
-     * Get contCodigoid.
-     *
-     * @return int
-     */
-    public function getContCodigoid()
+    public function getContCodigoid(): ?int
     {
         return $this->contCodigoid;
     }
 
-    /**
-     * Set propostaLegado.
-     *
-     * @param string|null $propostaLegado
-     *
-     * @return ContratoLegado
-     */
-    public function setPropostaLegado($propostaLegado = null)
+    public function getPropostaLegado(): ?string
+    {
+        return $this->propostaLegado;
+    }
+
+    public function setPropostaLegado(?string $propostaLegado): self
     {
         $this->propostaLegado = $propostaLegado;
 
         return $this;
-    }
-
-    /**
-     * Get propostaLegado.
-     *
-     * @return string|null
-     */
-    public function getPropostaLegado()
-    {
-        return $this->propostaLegado;
     }
 }

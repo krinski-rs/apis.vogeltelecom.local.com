@@ -3,270 +3,138 @@
 namespace App\Entity\Cep;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
-/**
- * LogLocalidade
- */
 class LogLocalidade
 {
-    /**
-     * @var int
-     */
     private $locNuSequencial;
 
-    /**
-     * @var string|null
-     */
     private $locNosub;
 
-    /**
-     * @var string|null
-     */
     private $locNo;
 
-    /**
-     * @var string|null
-     */
     private $cep;
 
-    /**
-     * @var int|null
-     */
-    private $locInSituacao = '0';
+    private $locInSituacao;
 
-    /**
-     * @var string
-     */
     private $locInTipoLocalidade;
 
-    /**
-     * @var int|null
-     */
     private $locNuSequencialSub;
 
-    /**
-     * @var string|null
-     */
     private $temp;
 
-    /**
-     * @var \App\Entity\Cep\LogFaixaUf
-     */
-    private $ufeSg;
-
-    /**
-     * @var int|null
-     */
     private $locCodigoIbge;
 
-    /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     */
     private $logLogradouro;
 
-    /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     */
     private $logBairro;
 
-    /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     */
     private $logGrandeUsuario;
-    
-    public function __construct() {
+
+    private $ufeSg;
+
+    public function __construct()
+    {
         $this->logLogradouro = new ArrayCollection();
         $this->logBairro = new ArrayCollection();
         $this->logGrandeUsuario = new ArrayCollection();
     }
-    
 
-    /**
-     * Get locNuSequencial.
-     *
-     * @return int
-     */
-    public function getLocNuSequencial()
+    public function getLocNuSequencial(): ?int
     {
         return $this->locNuSequencial;
     }
 
-    /**
-     * Set locNosub.
-     *
-     * @param string|null $locNosub
-     *
-     * @return LogLocalidade
-     */
-    public function setLocNosub($locNosub = null)
+    public function getLocNosub(): ?string
+    {
+        return $this->locNosub;
+    }
+
+    public function setLocNosub(?string $locNosub): self
     {
         $this->locNosub = $locNosub;
 
         return $this;
     }
 
-    /**
-     * Get locNosub.
-     *
-     * @return string|null
-     */
-    public function getLocNosub()
+    public function getLocNo(): ?string
     {
-        return $this->locNosub;
+        return $this->locNo;
     }
 
-    /**
-     * Set locNo.
-     *
-     * @param string|null $locNo
-     *
-     * @return LogLocalidade
-     */
-    public function setLocNo($locNo = null)
+    public function setLocNo(?string $locNo): self
     {
         $this->locNo = $locNo;
 
         return $this;
     }
 
-    /**
-     * Get locNo.
-     *
-     * @return string|null
-     */
-    public function getLocNo()
+    public function getCep(): ?string
     {
-        return $this->locNo;
+        return $this->cep;
     }
 
-    /**
-     * Set cep.
-     *
-     * @param string|null $cep
-     *
-     * @return LogLocalidade
-     */
-    public function setCep($cep = null)
+    public function setCep(?string $cep): self
     {
         $this->cep = $cep;
 
         return $this;
     }
 
-    /**
-     * Get cep.
-     *
-     * @return string|null
-     */
-    public function getCep()
+    public function getLocInSituacao(): ?int
     {
-        return $this->cep;
+        return $this->locInSituacao;
     }
 
-    /**
-     * Set locInSituacao.
-     *
-     * @param int|null $locInSituacao
-     *
-     * @return LogLocalidade
-     */
-    public function setLocInSituacao($locInSituacao = null)
+    public function setLocInSituacao(?int $locInSituacao): self
     {
         $this->locInSituacao = $locInSituacao;
 
         return $this;
     }
 
-    /**
-     * Get locInSituacao.
-     *
-     * @return int|null
-     */
-    public function getLocInSituacao()
+    public function getLocInTipoLocalidade(): ?string
     {
-        return $this->locInSituacao;
+        return $this->locInTipoLocalidade;
     }
 
-    /**
-     * Set locInTipoLocalidade.
-     *
-     * @param string $locInTipoLocalidade
-     *
-     * @return LogLocalidade
-     */
-    public function setLocInTipoLocalidade($locInTipoLocalidade)
+    public function setLocInTipoLocalidade(string $locInTipoLocalidade): self
     {
         $this->locInTipoLocalidade = $locInTipoLocalidade;
 
         return $this;
     }
 
-    /**
-     * Get locInTipoLocalidade.
-     *
-     * @return string
-     */
-    public function getLocInTipoLocalidade()
+    public function getLocNuSequencialSub(): ?int
     {
-        return $this->locInTipoLocalidade;
+        return $this->locNuSequencialSub;
     }
 
-    /**
-     * Set locNuSequencialSub.
-     *
-     * @param int|null $locNuSequencialSub
-     *
-     * @return LogLocalidade
-     */
-    public function setLocNuSequencialSub($locNuSequencialSub = null)
+    public function setLocNuSequencialSub(?int $locNuSequencialSub): self
     {
         $this->locNuSequencialSub = $locNuSequencialSub;
 
         return $this;
     }
 
-    /**
-     * Get locNuSequencialSub.
-     *
-     * @return int|null
-     */
-    public function getLocNuSequencialSub()
+    public function getTemp(): ?string
     {
-        return $this->locNuSequencialSub;
+        return $this->temp;
     }
 
-    /**
-     * Set temp.
-     *
-     * @param string|null $temp
-     *
-     * @return LogLocalidade
-     */
-    public function setTemp($temp = null)
+    public function setTemp(?string $temp): self
     {
         $this->temp = $temp;
 
         return $this;
     }
 
-    /**
-     * Get temp.
-     *
-     * @return string|null
-     */
-    public function getTemp()
+    public function getLocCodigoIbge(): ?int
     {
-        return $this->temp;
+        return $this->locCodigoIbge;
     }
 
-    /**
-     * Set locCodigoIbge.
-     *
-     * @param int|null $locCodigoIbge
-     *
-     * @return LogLocalidade
-     */
-    public function setLocCodigoIbge($locCodigoIbge = null)
+    public function setLocCodigoIbge(?int $locCodigoIbge): self
     {
         $this->locCodigoIbge = $locCodigoIbge;
 
@@ -274,150 +142,107 @@ class LogLocalidade
     }
 
     /**
-     * Get locCodigoIbge.
-     *
-     * @return int|null
+     * @return Collection|LogLogradouro[]
      */
-    public function getLocCodigoIbge()
-    {
-        return $this->locCodigoIbge;
-    }
-
-    /**
-     * Set ufeSg.
-     *
-     * @param \App\Entity\Cep\LogFaixaUf|null $ufeSg
-     *
-     * @return LogLocalidade
-     */
-    public function setUfeSg(\App\Entity\Cep\LogFaixaUf $ufeSg = null)
-    {
-        $this->ufeSg = $ufeSg;
-
-        return $this;
-    }
-
-    /**
-     * Get ufeSg.
-     *
-     * @return \App\Entity\Cep\LogFaixaUf|null
-     */
-    public function getUfeSg()
-    {
-        return $this->ufeSg;
-    }
-
-    /**
-     * Add logLogradouro.
-     *
-     * @param \App\Entity\Cep\LogLogradouro|null $logLogradouro
-     *
-     * @return LogLocalidade
-     */
-    public function addLogLogradouro(\App\Entity\Cep\LogLogradouro $logLogradouro = null)
-    {
-        $this->logLogradouro[] = $logLogradouro;
-
-        return $this;
-    }
-
-    /**
-     * Remove logLogradouro.
-     *
-     * @param \App\Entity\Cep\LogLogradouro|null $logLogradouro
-     *
-     * @return LogLocalidade
-     */
-    public function removeLogLogradouro(\App\Entity\Cep\LogLogradouro $logLogradouro = null)
-    {
-        $this->logLogradouro->removeElement($logLogradouro);
-
-        return $this;
-    }
-
-    /**
-     * Get logLogradouro.
-     *
-     * @return \Doctrine\Common\Collections\ArrayCollection
-     */
-    public function getLogLogradouro()
+    public function getLogLogradouro(): Collection
     {
         return $this->logLogradouro;
     }
 
-    /**
-     * Add logBairro.
-     *
-     * @param \App\Entity\Cep\LogBairro|null $logBairro
-     *
-     * @return LogLocalidade
-     */
-    public function addLogBairro(\App\Entity\Cep\LogBairro $logBairro = null)
+    public function addLogLogradouro(LogLogradouro $logLogradouro): self
     {
-        $this->logBairro[] = $logBairro;
+        if (!$this->logLogradouro->contains($logLogradouro)) {
+            $this->logLogradouro[] = $logLogradouro;
+            $logLogradouro->setLogLocalidade($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLogLogradouro(LogLogradouro $logLogradouro): self
+    {
+        if ($this->logLogradouro->contains($logLogradouro)) {
+            $this->logLogradouro->removeElement($logLogradouro);
+            // set the owning side to null (unless already changed)
+            if ($logLogradouro->getLogLocalidade() === $this) {
+                $logLogradouro->setLogLocalidade(null);
+            }
+        }
 
         return $this;
     }
 
     /**
-     * Remove logBairro.
-     *
-     * @param \App\Entity\Cep\LogLogradouro|null $logBairro
-     *
-     * @return LogLocalidade
+     * @return Collection|LogBairro[]
      */
-    public function removeLogBairro(\App\Entity\Cep\LogBairro $logBairro = null)
-    {
-        $this->logBairro->removeElement($logBairro);
-
-        return $this;
-    }
-
-    /**
-     * Get logBairro.
-     *
-     * @return \Doctrine\Common\Collections\ArrayCollection
-     */
-    public function getLogBairro()
+    public function getLogBairro(): Collection
     {
         return $this->logBairro;
     }
 
-    /**
-     * Add logGrandeUsuario.
-     *
-     * @param \App\Entity\Cep\LogGrandeUsuario|null $logGrandeUsuario
-     *
-     * @return LogLocalidade
-     */
-    public function addLogGrandeUsuario(\App\Entity\Cep\LogGrandeUsuario $logGrandeUsuario = null)
+    public function addLogBairro(LogBairro $logBairro): self
     {
-        $this->logGrandeUsuario[] = $logGrandeUsuario;
+        if (!$this->logBairro->contains($logBairro)) {
+            $this->logBairro[] = $logBairro;
+            $logBairro->setLogLocalidade($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLogBairro(LogBairro $logBairro): self
+    {
+        if ($this->logBairro->contains($logBairro)) {
+            $this->logBairro->removeElement($logBairro);
+            // set the owning side to null (unless already changed)
+            if ($logBairro->getLogLocalidade() === $this) {
+                $logBairro->setLogLocalidade(null);
+            }
+        }
 
         return $this;
     }
 
     /**
-     * Remove logGrandeUsuario.
-     *
-     * @param \App\Entity\Cep\LogGrandeUsuario|null $logGrandeUsuario
-     *
-     * @return LogLocalidade
+     * @return Collection|LogGrandeUsuario[]
      */
-    public function removeLogGrandeUsuario(\App\Entity\Cep\LogGrandeUsuario $logGrandeUsuario = null)
-    {
-        $this->logGrandeUsuario->removeElement($logGrandeUsuario);
-
-        return $this;
-    }
-
-    /**
-     * Get logGrandeUsuario.
-     *
-     * @return \Doctrine\Common\Collections\ArrayCollection
-     */
-    public function getLogGrandeUsuario()
+    public function getLogGrandeUsuario(): Collection
     {
         return $this->logGrandeUsuario;
+    }
+
+    public function addLogGrandeUsuario(LogGrandeUsuario $logGrandeUsuario): self
+    {
+        if (!$this->logGrandeUsuario->contains($logGrandeUsuario)) {
+            $this->logGrandeUsuario[] = $logGrandeUsuario;
+            $logGrandeUsuario->setLogLocalidade($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLogGrandeUsuario(LogGrandeUsuario $logGrandeUsuario): self
+    {
+        if ($this->logGrandeUsuario->contains($logGrandeUsuario)) {
+            $this->logGrandeUsuario->removeElement($logGrandeUsuario);
+            // set the owning side to null (unless already changed)
+            if ($logGrandeUsuario->getLogLocalidade() === $this) {
+                $logGrandeUsuario->setLogLocalidade(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getUfeSg(): ?LogFaixaUf
+    {
+        return $this->ufeSg;
+    }
+
+    public function setUfeSg(?LogFaixaUf $ufeSg): self
+    {
+        $this->ufeSg = $ufeSg;
+
+        return $this;
     }
 }

@@ -2,198 +2,96 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Designacao
- */
 class Designacao
 {
-    /**
-     * @var int
-     */
     private $desigCodigoid;
 
-    /**
-     * @var int|null
-     */
     private $endeentrCodigoid;
 
-    /**
-     * @var int|null
-     */
     private $clieCodigoid;
 
-    /**
-     * @var string|null
-     */
     private $desigStt;
 
-    /**
-     * @var int
-     */
-    private $desigNumero = '0';
+    private $desigNumero;
 
-    /**
-     * @var string|null
-     */
     private $desigPedido;
 
-    /**
-     * @var int|null
-     */
     private $desigPonta;
 
-
-    /**
-     * Get desigCodigoid.
-     *
-     * @return int
-     */
-    public function getDesigCodigoid()
+    public function getDesigCodigoid(): ?int
     {
         return $this->desigCodigoid;
     }
 
-    /**
-     * Set endeentrCodigoid.
-     *
-     * @param int|null $endeentrCodigoid
-     *
-     * @return Designacao
-     */
-    public function setEndeentrCodigoid($endeentrCodigoid = null)
+    public function getEndeentrCodigoid(): ?int
+    {
+        return $this->endeentrCodigoid;
+    }
+
+    public function setEndeentrCodigoid(?int $endeentrCodigoid): self
     {
         $this->endeentrCodigoid = $endeentrCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get endeentrCodigoid.
-     *
-     * @return int|null
-     */
-    public function getEndeentrCodigoid()
+    public function getClieCodigoid(): ?int
     {
-        return $this->endeentrCodigoid;
+        return $this->clieCodigoid;
     }
 
-    /**
-     * Set clieCodigoid.
-     *
-     * @param int|null $clieCodigoid
-     *
-     * @return Designacao
-     */
-    public function setClieCodigoid($clieCodigoid = null)
+    public function setClieCodigoid(?int $clieCodigoid): self
     {
         $this->clieCodigoid = $clieCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get clieCodigoid.
-     *
-     * @return int|null
-     */
-    public function getClieCodigoid()
+    public function getDesigStt(): ?string
     {
-        return $this->clieCodigoid;
+        return $this->desigStt;
     }
 
-    /**
-     * Set desigStt.
-     *
-     * @param string|null $desigStt
-     *
-     * @return Designacao
-     */
-    public function setDesigStt($desigStt = null)
+    public function setDesigStt(?string $desigStt): self
     {
         $this->desigStt = $desigStt;
 
         return $this;
     }
 
-    /**
-     * Get desigStt.
-     *
-     * @return string|null
-     */
-    public function getDesigStt()
+    public function getDesigNumero(): ?int
     {
-        return $this->desigStt;
+        return $this->desigNumero;
     }
 
-    /**
-     * Set desigNumero.
-     *
-     * @param int $desigNumero
-     *
-     * @return Designacao
-     */
-    public function setDesigNumero($desigNumero)
+    public function setDesigNumero(int $desigNumero): self
     {
         $this->desigNumero = $desigNumero;
 
         return $this;
     }
 
-    /**
-     * Get desigNumero.
-     *
-     * @return int
-     */
-    public function getDesigNumero()
+    public function getDesigPedido(): ?string
     {
-        return $this->desigNumero;
+        return $this->desigPedido;
     }
 
-    /**
-     * Set desigPedido.
-     *
-     * @param string|null $desigPedido
-     *
-     * @return Designacao
-     */
-    public function setDesigPedido($desigPedido = null)
+    public function setDesigPedido(?string $desigPedido): self
     {
         $this->desigPedido = $desigPedido;
 
         return $this;
     }
 
-    /**
-     * Get desigPedido.
-     *
-     * @return string|null
-     */
-    public function getDesigPedido()
+    public function getDesigPonta(): ?int
     {
-        return $this->desigPedido;
+        return $this->desigPonta;
     }
 
-    /**
-     * Set desigPonta.
-     *
-     * @param int|null $desigPonta
-     *
-     * @return Designacao
-     */
-    public function setDesigPonta($desigPonta = null)
+    public function setDesigPonta(?int $desigPonta): self
     {
         $this->desigPonta = $desigPonta;
 
         return $this;
-    }
-
-    /**
-     * Get desigPonta.
-     *
-     * @return int|null
-     */
-    public function getDesigPonta()
-    {
-        return $this->desigPonta;
     }
 }

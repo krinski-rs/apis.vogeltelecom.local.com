@@ -2,169 +2,82 @@
 
 namespace App\Entity\Gcdb;
 
-/**
- * CadUsersEmail
- */
 class CadUsersEmail
 {
-    /**
-     * @var int
-     */
     private $id;
 
-    /**
-     * @var string|null
-     */
     private $email;
 
-    /**
-     * @var bool|null
-     */
     private $mailing;
 
-    /**
-     * @var bool|null
-     */
     private $principal;
 
-    /**
-     * @var int|null
-     */
     private $idAdmTipoLigacao;
 
-    /**
-     * @var \App\Entity\Gcdb\CadUsers
-     */
     private $cadUser;
 
-
-    /**
-     * Get id.
-     *
-     * @return int
-     */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * Set email.
-     *
-     * @param string|null $email
-     *
-     * @return CadUsersEmail
-     */
-    public function setEmail($email = null)
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): self
     {
         $this->email = $email;
 
         return $this;
     }
 
-    /**
-     * Get email.
-     *
-     * @return string|null
-     */
-    public function getEmail()
+    public function getMailing(): ?bool
     {
-        return $this->email;
+        return $this->mailing;
     }
 
-    /**
-     * Set mailing.
-     *
-     * @param bool|null $mailing
-     *
-     * @return CadUsersEmail
-     */
-    public function setMailing($mailing = null)
+    public function setMailing(?bool $mailing): self
     {
         $this->mailing = $mailing;
 
         return $this;
     }
 
-    /**
-     * Get mailing.
-     *
-     * @return bool|null
-     */
-    public function getMailing()
+    public function getPrincipal(): ?bool
     {
-        return $this->mailing;
+        return $this->principal;
     }
 
-    /**
-     * Set principal.
-     *
-     * @param bool|null $principal
-     *
-     * @return CadUsersEmail
-     */
-    public function setPrincipal($principal = null)
+    public function setPrincipal(?bool $principal): self
     {
         $this->principal = $principal;
 
         return $this;
     }
 
-    /**
-     * Get principal.
-     *
-     * @return bool|null
-     */
-    public function getPrincipal()
+    public function getIdAdmTipoLigacao(): ?int
     {
-        return $this->principal;
+        return $this->idAdmTipoLigacao;
     }
 
-    /**
-     * Set idAdmTipoLigacao.
-     *
-     * @param int|null $idAdmTipoLigacao
-     *
-     * @return CadUsersEmail
-     */
-    public function setIdAdmTipoLigacao($idAdmTipoLigacao = null)
+    public function setIdAdmTipoLigacao(?int $idAdmTipoLigacao): self
     {
         $this->idAdmTipoLigacao = $idAdmTipoLigacao;
 
         return $this;
     }
 
-    /**
-     * Get idAdmTipoLigacao.
-     *
-     * @return int|null
-     */
-    public function getIdAdmTipoLigacao()
+    public function getCadUser(): ?CadUsers
     {
-        return $this->idAdmTipoLigacao;
+        return $this->cadUser;
     }
 
-    /**
-     * Set cadUser.
-     *
-     * @param \App\Entity\Gcdb\CadUsers|null $cadUser
-     *
-     * @return CadUsersEmail
-     */
-    public function setCadUser(\App\Entity\Gcdb\CadUsers $cadUser = null)
+    public function setCadUser(?CadUsers $cadUser): self
     {
         $this->cadUser = $cadUser;
 
         return $this;
-    }
-
-    /**
-     * Get cadUser.
-     *
-     * @return \App\Entity\Gcdb\CadUsers|null
-     */
-    public function getCadUser()
-    {
-        return $this->cadUser;
     }
 }

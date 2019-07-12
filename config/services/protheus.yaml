@@ -1,0 +1,3 @@
+parameters:
+    protheus:
+        wsdl: 'http://nrs3vm.tst.protheus.totvscloud.com.br:45801/ws/VOGWS02.apw?WSDL'

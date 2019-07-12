@@ -2,343 +2,166 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * TmpContaCriada
- */
 class TmpContaCriada
 {
-    /**
-     * @var int
-     */
     private $idTmpContaCriada;
 
-    /**
-     * @var string|null
-     */
     private $ramoAtividade;
 
-    /**
-     * @var string|null
-     */
     private $tipo;
 
-    /**
-     * @var string|null
-     */
     private $estado;
 
-    /**
-     * @var string|null
-     */
     private $cidade;
 
-    /**
-     * @var string|null
-     */
     private $cnpj;
 
-    /**
-     * @var string|null
-     */
     private $porte;
 
-    /**
-     * @var string|null
-     */
     private $tipoPessoa;
 
-    /**
-     * @var int|null
-     */
     private $contaCriada;
 
-    /**
-     * @var string|null
-     */
     private $gc;
 
-    /**
-     * @var string|null
-     */
     private $canalVenda;
 
-    /**
-     * @var int
-     */
     private $cid;
 
-
-    /**
-     * Get idTmpContaCriada.
-     *
-     * @return int
-     */
-    public function getIdTmpContaCriada()
+    public function getIdTmpContaCriada(): ?int
     {
         return $this->idTmpContaCriada;
     }
 
-    /**
-     * Set ramoAtividade.
-     *
-     * @param string|null $ramoAtividade
-     *
-     * @return TmpContaCriada
-     */
-    public function setRamoAtividade($ramoAtividade = null)
+    public function getRamoAtividade(): ?string
+    {
+        return $this->ramoAtividade;
+    }
+
+    public function setRamoAtividade(?string $ramoAtividade): self
     {
         $this->ramoAtividade = $ramoAtividade;
 
         return $this;
     }
 
-    /**
-     * Get ramoAtividade.
-     *
-     * @return string|null
-     */
-    public function getRamoAtividade()
+    public function getTipo(): ?string
     {
-        return $this->ramoAtividade;
+        return $this->tipo;
     }
 
-    /**
-     * Set tipo.
-     *
-     * @param string|null $tipo
-     *
-     * @return TmpContaCriada
-     */
-    public function setTipo($tipo = null)
+    public function setTipo(?string $tipo): self
     {
         $this->tipo = $tipo;
 
         return $this;
     }
 
-    /**
-     * Get tipo.
-     *
-     * @return string|null
-     */
-    public function getTipo()
+    public function getEstado(): ?string
     {
-        return $this->tipo;
+        return $this->estado;
     }
 
-    /**
-     * Set estado.
-     *
-     * @param string|null $estado
-     *
-     * @return TmpContaCriada
-     */
-    public function setEstado($estado = null)
+    public function setEstado(?string $estado): self
     {
         $this->estado = $estado;
 
         return $this;
     }
 
-    /**
-     * Get estado.
-     *
-     * @return string|null
-     */
-    public function getEstado()
+    public function getCidade(): ?string
     {
-        return $this->estado;
+        return $this->cidade;
     }
 
-    /**
-     * Set cidade.
-     *
-     * @param string|null $cidade
-     *
-     * @return TmpContaCriada
-     */
-    public function setCidade($cidade = null)
+    public function setCidade(?string $cidade): self
     {
         $this->cidade = $cidade;
 
         return $this;
     }
 
-    /**
-     * Get cidade.
-     *
-     * @return string|null
-     */
-    public function getCidade()
+    public function getCnpj(): ?string
     {
-        return $this->cidade;
+        return $this->cnpj;
     }
 
-    /**
-     * Set cnpj.
-     *
-     * @param string|null $cnpj
-     *
-     * @return TmpContaCriada
-     */
-    public function setCnpj($cnpj = null)
+    public function setCnpj(?string $cnpj): self
     {
         $this->cnpj = $cnpj;
 
         return $this;
     }
 
-    /**
-     * Get cnpj.
-     *
-     * @return string|null
-     */
-    public function getCnpj()
+    public function getPorte(): ?string
     {
-        return $this->cnpj;
+        return $this->porte;
     }
 
-    /**
-     * Set porte.
-     *
-     * @param string|null $porte
-     *
-     * @return TmpContaCriada
-     */
-    public function setPorte($porte = null)
+    public function setPorte(?string $porte): self
     {
         $this->porte = $porte;
 
         return $this;
     }
 
-    /**
-     * Get porte.
-     *
-     * @return string|null
-     */
-    public function getPorte()
+    public function getTipoPessoa(): ?string
     {
-        return $this->porte;
+        return $this->tipoPessoa;
     }
 
-    /**
-     * Set tipoPessoa.
-     *
-     * @param string|null $tipoPessoa
-     *
-     * @return TmpContaCriada
-     */
-    public function setTipoPessoa($tipoPessoa = null)
+    public function setTipoPessoa(?string $tipoPessoa): self
     {
         $this->tipoPessoa = $tipoPessoa;
 
         return $this;
     }
 
-    /**
-     * Get tipoPessoa.
-     *
-     * @return string|null
-     */
-    public function getTipoPessoa()
+    public function getContaCriada(): ?int
     {
-        return $this->tipoPessoa;
+        return $this->contaCriada;
     }
 
-    /**
-     * Set contaCriada.
-     *
-     * @param int|null $contaCriada
-     *
-     * @return TmpContaCriada
-     */
-    public function setContaCriada($contaCriada = null)
+    public function setContaCriada(?int $contaCriada): self
     {
         $this->contaCriada = $contaCriada;
 
         return $this;
     }
 
-    /**
-     * Get contaCriada.
-     *
-     * @return int|null
-     */
-    public function getContaCriada()
+    public function getGc(): ?string
     {
-        return $this->contaCriada;
+        return $this->gc;
     }
 
-    /**
-     * Set gc.
-     *
-     * @param string|null $gc
-     *
-     * @return TmpContaCriada
-     */
-    public function setGc($gc = null)
+    public function setGc(?string $gc): self
     {
         $this->gc = $gc;
 
         return $this;
     }
 
-    /**
-     * Get gc.
-     *
-     * @return string|null
-     */
-    public function getGc()
+    public function getCanalVenda(): ?string
     {
-        return $this->gc;
+        return $this->canalVenda;
     }
 
-    /**
-     * Set canalVenda.
-     *
-     * @param string|null $canalVenda
-     *
-     * @return TmpContaCriada
-     */
-    public function setCanalVenda($canalVenda = null)
+    public function setCanalVenda(?string $canalVenda): self
     {
         $this->canalVenda = $canalVenda;
 
         return $this;
     }
 
-    /**
-     * Get canalVenda.
-     *
-     * @return string|null
-     */
-    public function getCanalVenda()
+    public function getCid(): ?int
     {
-        return $this->canalVenda;
+        return $this->cid;
     }
 
-    /**
-     * Set cid.
-     *
-     * @param int $cid
-     *
-     * @return TmpContaCriada
-     */
-    public function setCid($cid)
+    public function setCid(int $cid): self
     {
         $this->cid = $cid;
 
         return $this;
-    }
-
-    /**
-     * Get cid.
-     *
-     * @return int
-     */
-    public function getCid()
-    {
-        return $this->cid;
     }
 }

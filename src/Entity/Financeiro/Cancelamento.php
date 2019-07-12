@@ -2,198 +2,96 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Cancelamento
- */
 class Cancelamento
 {
-    /**
-     * @var int
-     */
     private $cancCodigoid;
 
-    /**
-     * @var int
-     */
     private $usrCodigoid;
 
-    /**
-     * @var \DateTime
-     */
-    private $cancDatasolicitacao = 'CURRENT_TIMESTAMP';
+    private $cancDatasolicitacao;
 
-    /**
-     * @var \DateTime|null
-     */
     private $cancDatacancelado;
 
-    /**
-     * @var bool
-     */
-    private $cancCumpriraviso = '1';
+    private $cancCumpriraviso;
 
-    /**
-     * @var \DateTime|null
-     */
     private $cancDatainc;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
     private $contCodigoid;
 
-
-    /**
-     * Get cancCodigoid.
-     *
-     * @return int
-     */
-    public function getCancCodigoid()
+    public function getCancCodigoid(): ?int
     {
         return $this->cancCodigoid;
     }
 
-    /**
-     * Set usrCodigoid.
-     *
-     * @param int $usrCodigoid
-     *
-     * @return Cancelamento
-     */
-    public function setUsrCodigoid($usrCodigoid)
+    public function getUsrCodigoid(): ?int
+    {
+        return $this->usrCodigoid;
+    }
+
+    public function setUsrCodigoid(int $usrCodigoid): self
     {
         $this->usrCodigoid = $usrCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get usrCodigoid.
-     *
-     * @return int
-     */
-    public function getUsrCodigoid()
+    public function getCancDatasolicitacao(): ?\DateTimeInterface
     {
-        return $this->usrCodigoid;
+        return $this->cancDatasolicitacao;
     }
 
-    /**
-     * Set cancDatasolicitacao.
-     *
-     * @param \DateTime $cancDatasolicitacao
-     *
-     * @return Cancelamento
-     */
-    public function setCancDatasolicitacao($cancDatasolicitacao)
+    public function setCancDatasolicitacao(\DateTimeInterface $cancDatasolicitacao): self
     {
         $this->cancDatasolicitacao = $cancDatasolicitacao;
 
         return $this;
     }
 
-    /**
-     * Get cancDatasolicitacao.
-     *
-     * @return \DateTime
-     */
-    public function getCancDatasolicitacao()
+    public function getCancDatacancelado(): ?\DateTimeInterface
     {
-        return $this->cancDatasolicitacao;
+        return $this->cancDatacancelado;
     }
 
-    /**
-     * Set cancDatacancelado.
-     *
-     * @param \DateTime|null $cancDatacancelado
-     *
-     * @return Cancelamento
-     */
-    public function setCancDatacancelado($cancDatacancelado = null)
+    public function setCancDatacancelado(?\DateTimeInterface $cancDatacancelado): self
     {
         $this->cancDatacancelado = $cancDatacancelado;
 
         return $this;
     }
 
-    /**
-     * Get cancDatacancelado.
-     *
-     * @return \DateTime|null
-     */
-    public function getCancDatacancelado()
+    public function getCancCumpriraviso(): ?bool
     {
-        return $this->cancDatacancelado;
+        return $this->cancCumpriraviso;
     }
 
-    /**
-     * Set cancCumpriraviso.
-     *
-     * @param bool $cancCumpriraviso
-     *
-     * @return Cancelamento
-     */
-    public function setCancCumpriraviso($cancCumpriraviso)
+    public function setCancCumpriraviso(bool $cancCumpriraviso): self
     {
         $this->cancCumpriraviso = $cancCumpriraviso;
 
         return $this;
     }
 
-    /**
-     * Get cancCumpriraviso.
-     *
-     * @return bool
-     */
-    public function getCancCumpriraviso()
+    public function getCancDatainc(): ?\DateTimeInterface
     {
-        return $this->cancCumpriraviso;
+        return $this->cancDatainc;
     }
 
-    /**
-     * Set cancDatainc.
-     *
-     * @param \DateTime|null $cancDatainc
-     *
-     * @return Cancelamento
-     */
-    public function setCancDatainc($cancDatainc = null)
+    public function setCancDatainc(?\DateTimeInterface $cancDatainc): self
     {
         $this->cancDatainc = $cancDatainc;
 
         return $this;
     }
 
-    /**
-     * Get cancDatainc.
-     *
-     * @return \DateTime|null
-     */
-    public function getCancDatainc()
+    public function getContCodigoid(): ?Contrato
     {
-        return $this->cancDatainc;
+        return $this->contCodigoid;
     }
 
-    /**
-     * Set contCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contCodigoid
-     *
-     * @return Cancelamento
-     */
-    public function setContCodigoid(\App\Entity\Financeiro\Contrato $contCodigoid = null)
+    public function setContCodigoid(?Contrato $contCodigoid): self
     {
         $this->contCodigoid = $contCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get contCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContCodigoid()
-    {
-        return $this->contCodigoid;
     }
 }

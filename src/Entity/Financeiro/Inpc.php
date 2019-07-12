@@ -2,169 +2,82 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Inpc
- */
 class Inpc
 {
-    /**
-     * @var int
-     */
     private $inpcCodigoid;
 
-    /**
-     * @var \DateTime
-     */
-    private $inpcDatainc = 'CURRENT_TIMESTAMP';
+    private $inpcDatainc;
 
-    /**
-     * @var string
-     */
     private $inpcPercentual;
 
-    /**
-     * @var string
-     */
-    private $inpcAcumuladonoano = '0.00';
+    private $inpcAcumuladonoano;
 
-    /**
-     * @var string
-     */
-    private $inpcAcumulado12meses = '0.00';
+    private $inpcAcumulado12meses;
 
-    /**
-     * @var \DateTime
-     */
-    private $inpcPrazo = '0000-00-00 00:00:00';
+    private $inpcPrazo;
 
-
-    /**
-     * Get inpcCodigoid.
-     *
-     * @return int
-     */
-    public function getInpcCodigoid()
+    public function getInpcCodigoid(): ?int
     {
         return $this->inpcCodigoid;
     }
 
-    /**
-     * Set inpcDatainc.
-     *
-     * @param \DateTime $inpcDatainc
-     *
-     * @return Inpc
-     */
-    public function setInpcDatainc($inpcDatainc)
+    public function getInpcDatainc(): ?\DateTimeInterface
+    {
+        return $this->inpcDatainc;
+    }
+
+    public function setInpcDatainc(\DateTimeInterface $inpcDatainc): self
     {
         $this->inpcDatainc = $inpcDatainc;
 
         return $this;
     }
 
-    /**
-     * Get inpcDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getInpcDatainc()
+    public function getInpcPercentual()
     {
-        return $this->inpcDatainc;
+        return $this->inpcPercentual;
     }
 
-    /**
-     * Set inpcPercentual.
-     *
-     * @param string $inpcPercentual
-     *
-     * @return Inpc
-     */
-    public function setInpcPercentual($inpcPercentual)
+    public function setInpcPercentual($inpcPercentual): self
     {
         $this->inpcPercentual = $inpcPercentual;
 
         return $this;
     }
 
-    /**
-     * Get inpcPercentual.
-     *
-     * @return string
-     */
-    public function getInpcPercentual()
+    public function getInpcAcumuladonoano()
     {
-        return $this->inpcPercentual;
+        return $this->inpcAcumuladonoano;
     }
 
-    /**
-     * Set inpcAcumuladonoano.
-     *
-     * @param string $inpcAcumuladonoano
-     *
-     * @return Inpc
-     */
-    public function setInpcAcumuladonoano($inpcAcumuladonoano)
+    public function setInpcAcumuladonoano($inpcAcumuladonoano): self
     {
         $this->inpcAcumuladonoano = $inpcAcumuladonoano;
 
         return $this;
     }
 
-    /**
-     * Get inpcAcumuladonoano.
-     *
-     * @return string
-     */
-    public function getInpcAcumuladonoano()
+    public function getInpcAcumulado12meses()
     {
-        return $this->inpcAcumuladonoano;
+        return $this->inpcAcumulado12meses;
     }
 
-    /**
-     * Set inpcAcumulado12meses.
-     *
-     * @param string $inpcAcumulado12meses
-     *
-     * @return Inpc
-     */
-    public function setInpcAcumulado12meses($inpcAcumulado12meses)
+    public function setInpcAcumulado12meses($inpcAcumulado12meses): self
     {
         $this->inpcAcumulado12meses = $inpcAcumulado12meses;
 
         return $this;
     }
 
-    /**
-     * Get inpcAcumulado12meses.
-     *
-     * @return string
-     */
-    public function getInpcAcumulado12meses()
+    public function getInpcPrazo(): ?\DateTimeInterface
     {
-        return $this->inpcAcumulado12meses;
+        return $this->inpcPrazo;
     }
 
-    /**
-     * Set inpcPrazo.
-     *
-     * @param \DateTime $inpcPrazo
-     *
-     * @return Inpc
-     */
-    public function setInpcPrazo($inpcPrazo)
+    public function setInpcPrazo(\DateTimeInterface $inpcPrazo): self
     {
         $this->inpcPrazo = $inpcPrazo;
 
         return $this;
-    }
-
-    /**
-     * Get inpcPrazo.
-     *
-     * @return \DateTime
-     */
-    public function getInpcPrazo()
-    {
-        return $this->inpcPrazo;
     }
 }

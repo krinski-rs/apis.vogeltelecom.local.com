@@ -2,169 +2,82 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Ipciepe
- */
 class Ipciepe
 {
-    /**
-     * @var int
-     */
     private $ipciepeCodigoid;
 
-    /**
-     * @var \DateTime
-     */
-    private $ipciepeDatainc = 'CURRENT_TIMESTAMP';
+    private $ipciepeDatainc;
 
-    /**
-     * @var string
-     */
     private $ipciepePercentual;
 
-    /**
-     * @var string
-     */
-    private $ipciepeAcumuladonoano = '0.00';
+    private $ipciepeAcumuladonoano;
 
-    /**
-     * @var string
-     */
-    private $ipciepeAcumulado12meses = '0.00';
+    private $ipciepeAcumulado12meses;
 
-    /**
-     * @var \DateTime
-     */
-    private $ipciepePrazo = '0000-00-00 00:00:00';
+    private $ipciepePrazo;
 
-
-    /**
-     * Get ipciepeCodigoid.
-     *
-     * @return int
-     */
-    public function getIpciepeCodigoid()
+    public function getIpciepeCodigoid(): ?int
     {
         return $this->ipciepeCodigoid;
     }
 
-    /**
-     * Set ipciepeDatainc.
-     *
-     * @param \DateTime $ipciepeDatainc
-     *
-     * @return Ipciepe
-     */
-    public function setIpciepeDatainc($ipciepeDatainc)
+    public function getIpciepeDatainc(): ?\DateTimeInterface
+    {
+        return $this->ipciepeDatainc;
+    }
+
+    public function setIpciepeDatainc(\DateTimeInterface $ipciepeDatainc): self
     {
         $this->ipciepeDatainc = $ipciepeDatainc;
 
         return $this;
     }
 
-    /**
-     * Get ipciepeDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getIpciepeDatainc()
+    public function getIpciepePercentual()
     {
-        return $this->ipciepeDatainc;
+        return $this->ipciepePercentual;
     }
 
-    /**
-     * Set ipciepePercentual.
-     *
-     * @param string $ipciepePercentual
-     *
-     * @return Ipciepe
-     */
-    public function setIpciepePercentual($ipciepePercentual)
+    public function setIpciepePercentual($ipciepePercentual): self
     {
         $this->ipciepePercentual = $ipciepePercentual;
 
         return $this;
     }
 
-    /**
-     * Get ipciepePercentual.
-     *
-     * @return string
-     */
-    public function getIpciepePercentual()
+    public function getIpciepeAcumuladonoano()
     {
-        return $this->ipciepePercentual;
+        return $this->ipciepeAcumuladonoano;
     }
 
-    /**
-     * Set ipciepeAcumuladonoano.
-     *
-     * @param string $ipciepeAcumuladonoano
-     *
-     * @return Ipciepe
-     */
-    public function setIpciepeAcumuladonoano($ipciepeAcumuladonoano)
+    public function setIpciepeAcumuladonoano($ipciepeAcumuladonoano): self
     {
         $this->ipciepeAcumuladonoano = $ipciepeAcumuladonoano;
 
         return $this;
     }
 
-    /**
-     * Get ipciepeAcumuladonoano.
-     *
-     * @return string
-     */
-    public function getIpciepeAcumuladonoano()
+    public function getIpciepeAcumulado12meses()
     {
-        return $this->ipciepeAcumuladonoano;
+        return $this->ipciepeAcumulado12meses;
     }
 
-    /**
-     * Set ipciepeAcumulado12meses.
-     *
-     * @param string $ipciepeAcumulado12meses
-     *
-     * @return Ipciepe
-     */
-    public function setIpciepeAcumulado12meses($ipciepeAcumulado12meses)
+    public function setIpciepeAcumulado12meses($ipciepeAcumulado12meses): self
     {
         $this->ipciepeAcumulado12meses = $ipciepeAcumulado12meses;
 
         return $this;
     }
 
-    /**
-     * Get ipciepeAcumulado12meses.
-     *
-     * @return string
-     */
-    public function getIpciepeAcumulado12meses()
+    public function getIpciepePrazo(): ?\DateTimeInterface
     {
-        return $this->ipciepeAcumulado12meses;
+        return $this->ipciepePrazo;
     }
 
-    /**
-     * Set ipciepePrazo.
-     *
-     * @param \DateTime $ipciepePrazo
-     *
-     * @return Ipciepe
-     */
-    public function setIpciepePrazo($ipciepePrazo)
+    public function setIpciepePrazo(\DateTimeInterface $ipciepePrazo): self
     {
         $this->ipciepePrazo = $ipciepePrazo;
 
         return $this;
-    }
-
-    /**
-     * Get ipciepePrazo.
-     *
-     * @return \DateTime
-     */
-    public function getIpciepePrazo()
-    {
-        return $this->ipciepePrazo;
     }
 }

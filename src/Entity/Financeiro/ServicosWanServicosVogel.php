@@ -2,169 +2,82 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * ServicosWanServicosVogel
- */
 class ServicosWanServicosVogel
 {
-    /**
-     * @var int
-     */
     private $id;
 
-    /**
-     * @var int|null
-     */
     private $servicoWanId;
 
-    /**
-     * @var \DateTime|null
-     */
-    private $dataHoraCriacao = 'CURRENT_TIMESTAMP';
+    private $dataHoraCriacao;
 
-    /**
-     * @var string|null
-     */
     private $tprIdServico;
 
-    /**
-     * @var int|null
-     */
     private $peso;
 
-    /**
-     * @var \App\Entity\Financeiro\Servico
-     */
     private $servicoVogel;
 
-
-    /**
-     * Get id.
-     *
-     * @return int
-     */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * Set servicoWanId.
-     *
-     * @param int|null $servicoWanId
-     *
-     * @return ServicosWanServicosVogel
-     */
-    public function setServicoWanId($servicoWanId = null)
+    public function getServicoWanId(): ?int
+    {
+        return $this->servicoWanId;
+    }
+
+    public function setServicoWanId(?int $servicoWanId): self
     {
         $this->servicoWanId = $servicoWanId;
 
         return $this;
     }
 
-    /**
-     * Get servicoWanId.
-     *
-     * @return int|null
-     */
-    public function getServicoWanId()
+    public function getDataHoraCriacao(): ?\DateTimeInterface
     {
-        return $this->servicoWanId;
+        return $this->dataHoraCriacao;
     }
 
-    /**
-     * Set dataHoraCriacao.
-     *
-     * @param \DateTime|null $dataHoraCriacao
-     *
-     * @return ServicosWanServicosVogel
-     */
-    public function setDataHoraCriacao($dataHoraCriacao = null)
+    public function setDataHoraCriacao(?\DateTimeInterface $dataHoraCriacao): self
     {
         $this->dataHoraCriacao = $dataHoraCriacao;
 
         return $this;
     }
 
-    /**
-     * Get dataHoraCriacao.
-     *
-     * @return \DateTime|null
-     */
-    public function getDataHoraCriacao()
+    public function getTprIdServico(): ?string
     {
-        return $this->dataHoraCriacao;
+        return $this->tprIdServico;
     }
 
-    /**
-     * Set tprIdServico.
-     *
-     * @param string|null $tprIdServico
-     *
-     * @return ServicosWanServicosVogel
-     */
-    public function setTprIdServico($tprIdServico = null)
+    public function setTprIdServico(?string $tprIdServico): self
     {
         $this->tprIdServico = $tprIdServico;
 
         return $this;
     }
 
-    /**
-     * Get tprIdServico.
-     *
-     * @return string|null
-     */
-    public function getTprIdServico()
+    public function getPeso(): ?int
     {
-        return $this->tprIdServico;
+        return $this->peso;
     }
 
-    /**
-     * Set peso.
-     *
-     * @param int|null $peso
-     *
-     * @return ServicosWanServicosVogel
-     */
-    public function setPeso($peso = null)
+    public function setPeso(?int $peso): self
     {
         $this->peso = $peso;
 
         return $this;
     }
 
-    /**
-     * Get peso.
-     *
-     * @return int|null
-     */
-    public function getPeso()
+    public function getServicoVogel(): ?Servico
     {
-        return $this->peso;
+        return $this->servicoVogel;
     }
 
-    /**
-     * Set servicoVogel.
-     *
-     * @param \App\Entity\Financeiro\Servico|null $servicoVogel
-     *
-     * @return ServicosWanServicosVogel
-     */
-    public function setServicoVogel(\App\Entity\Financeiro\Servico $servicoVogel = null)
+    public function setServicoVogel(?Servico $servicoVogel): self
     {
         $this->servicoVogel = $servicoVogel;
 
         return $this;
-    }
-
-    /**
-     * Get servicoVogel.
-     *
-     * @return \App\Entity\Financeiro\Servico|null
-     */
-    public function getServicoVogel()
-    {
-        return $this->servicoVogel;
     }
 }

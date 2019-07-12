@@ -2,82 +2,40 @@
 
 namespace App\Entity\Gcdb;
 
-/**
- * AdmTipoNome
- */
 class AdmTipoNome
 {
-    /**
-     * @var int
-     */
     private $id;
 
-    /**
-     * @var string|null
-     */
     private $nome;
 
-    /**
-     * @var string|null
-     */
     private $tipo;
 
-
-    /**
-     * Get id.
-     *
-     * @return int
-     */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * Set nome.
-     *
-     * @param string|null $nome
-     *
-     * @return AdmTipoNome
-     */
-    public function setNome($nome = null)
+    public function getNome(): ?string
+    {
+        return $this->nome;
+    }
+
+    public function setNome(?string $nome): self
     {
         $this->nome = $nome;
 
         return $this;
     }
 
-    /**
-     * Get nome.
-     *
-     * @return string|null
-     */
-    public function getNome()
+    public function getTipo(): ?string
     {
-        return $this->nome;
+        return $this->tipo;
     }
 
-    /**
-     * Set tipo.
-     *
-     * @param string|null $tipo
-     *
-     * @return AdmTipoNome
-     */
-    public function setTipo($tipo = null)
+    public function setTipo(?string $tipo): self
     {
         $this->tipo = $tipo;
 
         return $this;
-    }
-
-    /**
-     * Get tipo.
-     *
-     * @return string|null
-     */
-    public function getTipo()
-    {
-        return $this->tipo;
     }
 }

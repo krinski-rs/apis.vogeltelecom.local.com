@@ -3,378 +3,190 @@
 namespace App\Entity\Cep;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
-/**
- * LogLogradouro
- */
 class LogLogradouro
 {
-    /**
-     * @var int
-     */
     private $logNuSequencial;
 
-    /**
-     * @var string
-     */
     private $ufeSg;
 
-    /**
-     * @var string
-     */
     private $logNo;
 
-    /**
-     * @var string
-     */
     private $logNome;
 
-    /**
-     * @var int|null
-     */
     private $baiNuSequencialFim;
 
-    /**
-     * @var string
-     */
     private $cep;
 
-    /**
-     * @var string|null
-     */
     private $logComplemento;
 
-    /**
-     * @var string|null
-     */
     private $logTipoLogradouro;
 
-    /**
-     * @var string
-     */
     private $logStatusTipoLog;
 
-    /**
-     * @var string
-     */
     private $logNoSemAcento;
 
-    /**
-     * @var string|null
-     */
     private $indUop;
 
-    /**
-     * @var string|null
-     */
     private $indGru;
 
-    /**
-     * @var string|null
-     */
     private $temp;
 
-    /**
-     * @var \App\Entity\Cep\LogBairro
-     */
+    private $logGrandeUsuario;
+
     private $logBairro;
 
-    /**
-     * @var \App\Entity\Cep\LogLocalidade
-     */
     private $logLocalidade;
 
-    /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
-     */
-    private $logGrandeUsuario;
-    
-    public function __construct() {
+    public function __construct()
+    {
         $this->logGrandeUsuario = new ArrayCollection();
     }
-    
-    /**
-     * Get logNuSequencial.
-     *
-     * @return int
-     */
-    public function getLogNuSequencial()
+
+    public function getLogNuSequencial(): ?int
     {
         return $this->logNuSequencial;
     }
 
-    /**
-     * Set ufeSg.
-     *
-     * @param string $ufeSg
-     *
-     * @return LogLogradouro
-     */
-    public function setUfeSg($ufeSg)
+    public function getUfeSg(): ?string
+    {
+        return $this->ufeSg;
+    }
+
+    public function setUfeSg(string $ufeSg): self
     {
         $this->ufeSg = $ufeSg;
 
         return $this;
     }
 
-    /**
-     * Get ufeSg.
-     *
-     * @return string
-     */
-    public function getUfeSg()
+    public function getLogNo(): ?string
     {
-        return $this->ufeSg;
+        return $this->logNo;
     }
 
-    /**
-     * Set logNo.
-     *
-     * @param string $logNo
-     *
-     * @return LogLogradouro
-     */
-    public function setLogNo($logNo)
+    public function setLogNo(string $logNo): self
     {
         $this->logNo = $logNo;
 
         return $this;
     }
 
-    /**
-     * Get logNo.
-     *
-     * @return string
-     */
-    public function getLogNo()
+    public function getLogNome(): ?string
     {
-        return $this->logNo;
+        return $this->logNome;
     }
 
-    /**
-     * Set logNome.
-     *
-     * @param string $logNome
-     *
-     * @return LogLogradouro
-     */
-    public function setLogNome($logNome)
+    public function setLogNome(string $logNome): self
     {
         $this->logNome = $logNome;
 
         return $this;
     }
 
-    /**
-     * Get logNome.
-     *
-     * @return string
-     */
-    public function getLogNome()
+    public function getBaiNuSequencialFim(): ?int
     {
-        return $this->logNome;
+        return $this->baiNuSequencialFim;
     }
 
-    /**
-     * Set baiNuSequencialFim.
-     *
-     * @param int|null $baiNuSequencialFim
-     *
-     * @return LogLogradouro
-     */
-    public function setBaiNuSequencialFim($baiNuSequencialFim = null)
+    public function setBaiNuSequencialFim(?int $baiNuSequencialFim): self
     {
         $this->baiNuSequencialFim = $baiNuSequencialFim;
 
         return $this;
     }
 
-    /**
-     * Get baiNuSequencialFim.
-     *
-     * @return int|null
-     */
-    public function getBaiNuSequencialFim()
+    public function getCep(): ?string
     {
-        return $this->baiNuSequencialFim;
+        return $this->cep;
     }
 
-    /**
-     * Set cep.
-     *
-     * @param string $cep
-     *
-     * @return LogLogradouro
-     */
-    public function setCep($cep)
+    public function setCep(string $cep): self
     {
         $this->cep = $cep;
 
         return $this;
     }
 
-    /**
-     * Get cep.
-     *
-     * @return string
-     */
-    public function getCep()
+    public function getLogComplemento(): ?string
     {
-        return $this->cep;
+        return $this->logComplemento;
     }
 
-    /**
-     * Set logComplemento.
-     *
-     * @param string|null $logComplemento
-     *
-     * @return LogLogradouro
-     */
-    public function setLogComplemento($logComplemento = null)
+    public function setLogComplemento(?string $logComplemento): self
     {
         $this->logComplemento = $logComplemento;
 
         return $this;
     }
 
-    /**
-     * Get logComplemento.
-     *
-     * @return string|null
-     */
-    public function getLogComplemento()
+    public function getLogTipoLogradouro(): ?string
     {
-        return $this->logComplemento;
+        return $this->logTipoLogradouro;
     }
 
-    /**
-     * Set logTipoLogradouro.
-     *
-     * @param string|null $logTipoLogradouro
-     *
-     * @return LogLogradouro
-     */
-    public function setLogTipoLogradouro($logTipoLogradouro = null)
+    public function setLogTipoLogradouro(?string $logTipoLogradouro): self
     {
         $this->logTipoLogradouro = $logTipoLogradouro;
 
         return $this;
     }
 
-    /**
-     * Get logTipoLogradouro.
-     *
-     * @return string|null
-     */
-    public function getLogTipoLogradouro()
+    public function getLogStatusTipoLog(): ?string
     {
-        return $this->logTipoLogradouro;
+        return $this->logStatusTipoLog;
     }
 
-    /**
-     * Set logStatusTipoLog.
-     *
-     * @param string $logStatusTipoLog
-     *
-     * @return LogLogradouro
-     */
-    public function setLogStatusTipoLog($logStatusTipoLog)
+    public function setLogStatusTipoLog(string $logStatusTipoLog): self
     {
         $this->logStatusTipoLog = $logStatusTipoLog;
 
         return $this;
     }
 
-    /**
-     * Get logStatusTipoLog.
-     *
-     * @return string
-     */
-    public function getLogStatusTipoLog()
+    public function getLogNoSemAcento(): ?string
     {
-        return $this->logStatusTipoLog;
+        return $this->logNoSemAcento;
     }
 
-    /**
-     * Set logNoSemAcento.
-     *
-     * @param string $logNoSemAcento
-     *
-     * @return LogLogradouro
-     */
-    public function setLogNoSemAcento($logNoSemAcento)
+    public function setLogNoSemAcento(string $logNoSemAcento): self
     {
         $this->logNoSemAcento = $logNoSemAcento;
 
         return $this;
     }
 
-    /**
-     * Get logNoSemAcento.
-     *
-     * @return string
-     */
-    public function getLogNoSemAcento()
+    public function getIndUop(): ?string
     {
-        return $this->logNoSemAcento;
+        return $this->indUop;
     }
 
-    /**
-     * Set indUop.
-     *
-     * @param string|null $indUop
-     *
-     * @return LogLogradouro
-     */
-    public function setIndUop($indUop = null)
+    public function setIndUop(?string $indUop): self
     {
         $this->indUop = $indUop;
 
         return $this;
     }
 
-    /**
-     * Get indUop.
-     *
-     * @return string|null
-     */
-    public function getIndUop()
+    public function getIndGru(): ?string
     {
-        return $this->indUop;
+        return $this->indGru;
     }
 
-    /**
-     * Set indGru.
-     *
-     * @param string|null $indGru
-     *
-     * @return LogLogradouro
-     */
-    public function setIndGru($indGru = null)
+    public function setIndGru(?string $indGru): self
     {
         $this->indGru = $indGru;
 
         return $this;
     }
 
-    /**
-     * Get indGru.
-     *
-     * @return string|null
-     */
-    public function getIndGru()
+    public function getTemp(): ?string
     {
-        return $this->indGru;
+        return $this->temp;
     }
 
-    /**
-     * Set temp.
-     *
-     * @param string|null $temp
-     *
-     * @return LogLogradouro
-     */
-    public function setTemp($temp = null)
+    public function setTemp(?string $temp): self
     {
         $this->temp = $temp;
 
@@ -382,98 +194,57 @@ class LogLogradouro
     }
 
     /**
-     * Get temp.
-     *
-     * @return string|null
+     * @return Collection|LogGrandeUsuario[]
      */
-    public function getTemp()
+    public function getLogGrandeUsuario(): Collection
     {
-        return $this->temp;
+        return $this->logGrandeUsuario;
     }
 
-    /**
-     * Set logBairro.
-     *
-     * @param \App\Entity\Cep\LogBairro|null $logBairro
-     *
-     * @return LogLogradouro
-     */
-    public function setLogBairro(\App\Entity\Cep\LogBairro $logBairro = null)
+    public function addLogGrandeUsuario(LogGrandeUsuario $logGrandeUsuario): self
+    {
+        if (!$this->logGrandeUsuario->contains($logGrandeUsuario)) {
+            $this->logGrandeUsuario[] = $logGrandeUsuario;
+            $logGrandeUsuario->setLogLogradouro($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLogGrandeUsuario(LogGrandeUsuario $logGrandeUsuario): self
+    {
+        if ($this->logGrandeUsuario->contains($logGrandeUsuario)) {
+            $this->logGrandeUsuario->removeElement($logGrandeUsuario);
+            // set the owning side to null (unless already changed)
+            if ($logGrandeUsuario->getLogLogradouro() === $this) {
+                $logGrandeUsuario->setLogLogradouro(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getLogBairro(): ?LogBairro
+    {
+        return $this->logBairro;
+    }
+
+    public function setLogBairro(?LogBairro $logBairro): self
     {
         $this->logBairro = $logBairro;
 
         return $this;
     }
 
-    /**
-     * Get logBairro.
-     *
-     * @return \App\Entity\Cep\LogBairro|null
-     */
-    public function getLogBairro()
+    public function getLogLocalidade(): ?LogLocalidade
     {
-        return $this->logBairro;
+        return $this->logLocalidade;
     }
 
-    /**
-     * Set logLocalidade.
-     *
-     * @param \App\Entity\Cep\LogLocalidade|null $logLocalidade
-     *
-     * @return LogLogradouro
-     */
-    public function setLogLocalidade(\App\Entity\Cep\LogLocalidade $logLocalidade = null)
+    public function setLogLocalidade(?LogLocalidade $logLocalidade): self
     {
         $this->logLocalidade = $logLocalidade;
 
         return $this;
-    }
-
-    /**
-     * Get logLocalidade.
-     *
-     * @return \App\Entity\Cep\LogLocalidade|null
-     */
-    public function getLogLocalidade()
-    {
-        return $this->logLocalidade;
-    }
-    
-    /**
-     * Add logGrandeUsuario.
-     *
-     * @param \App\Entity\Cep\LogGrandeUsuario|null $logGrandeUsuario
-     *
-     * @return LogLogradouro
-     */
-    public function addLogGrandeUsuario(\App\Entity\Cep\LogGrandeUsuario $logGrandeUsuario = null)
-    {
-        $this->logGrandeUsuario[] = $logGrandeUsuario;
-        
-        return $this;
-    }
-    
-    /**
-     * Remove logGrandeUsuario.
-     *
-     * @param \App\Entity\Cep\LogGrandeUsuario|null $logGrandeUsuario
-     *
-     * @return LogLogradouro
-     */
-    public function removeLogGrandeUsuario(\App\Entity\Cep\LogGrandeUsuario $logGrandeUsuario = null)
-    {
-        $this->logGrandeUsuario->removeElement($logGrandeUsuario);
-        
-        return $this;
-    }
-    
-    /**
-     * Get logGrandeUsuario.
-     *
-     * @return \Doctrine\Common\Collections\ArrayCollection
-     */
-    public function getLogGrandeUsuario()
-    {
-        return $this->logGrandeUsuario;
     }
 }

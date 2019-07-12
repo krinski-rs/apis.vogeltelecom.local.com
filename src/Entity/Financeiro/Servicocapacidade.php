@@ -2,198 +2,96 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Servicocapacidade
- */
 class Servicocapacidade
 {
-    /**
-     * @var int
-     */
     private $servcapaCodigoid;
 
-    /**
-     * @var \DateTime
-     */
-    private $servicapaDatainc = 'CURRENT_TIMESTAMP';
+    private $servicapaDatainc;
 
-    /**
-     * @var bool
-     */
     private $servcapaVisibilidade;
 
-    /**
-     * @var \App\Entity\Financeiro\Capacidade
-     */
     private $capaCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Medida
-     */
     private $mediCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Scriptmedicao
-     */
     private $scrimediCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Servico
-     */
     private $servCodigoid;
 
-
-    /**
-     * Get servcapaCodigoid.
-     *
-     * @return int
-     */
-    public function getServcapaCodigoid()
+    public function getServcapaCodigoid(): ?int
     {
         return $this->servcapaCodigoid;
     }
 
-    /**
-     * Set servicapaDatainc.
-     *
-     * @param \DateTime $servicapaDatainc
-     *
-     * @return Servicocapacidade
-     */
-    public function setServicapaDatainc($servicapaDatainc)
+    public function getServicapaDatainc(): ?\DateTimeInterface
+    {
+        return $this->servicapaDatainc;
+    }
+
+    public function setServicapaDatainc(\DateTimeInterface $servicapaDatainc): self
     {
         $this->servicapaDatainc = $servicapaDatainc;
 
         return $this;
     }
 
-    /**
-     * Get servicapaDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getServicapaDatainc()
+    public function getServcapaVisibilidade(): ?bool
     {
-        return $this->servicapaDatainc;
+        return $this->servcapaVisibilidade;
     }
 
-    /**
-     * Set servcapaVisibilidade.
-     *
-     * @param bool $servcapaVisibilidade
-     *
-     * @return Servicocapacidade
-     */
-    public function setServcapaVisibilidade($servcapaVisibilidade)
+    public function setServcapaVisibilidade(bool $servcapaVisibilidade): self
     {
         $this->servcapaVisibilidade = $servcapaVisibilidade;
 
         return $this;
     }
 
-    /**
-     * Get servcapaVisibilidade.
-     *
-     * @return bool
-     */
-    public function getServcapaVisibilidade()
+    public function getCapaCodigoid(): ?Capacidade
     {
-        return $this->servcapaVisibilidade;
+        return $this->capaCodigoid;
     }
 
-    /**
-     * Set capaCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Capacidade|null $capaCodigoid
-     *
-     * @return Servicocapacidade
-     */
-    public function setCapaCodigoid(\App\Entity\Financeiro\Capacidade $capaCodigoid = null)
+    public function setCapaCodigoid(?Capacidade $capaCodigoid): self
     {
         $this->capaCodigoid = $capaCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get capaCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Capacidade|null
-     */
-    public function getCapaCodigoid()
+    public function getMediCodigoid(): ?Medida
     {
-        return $this->capaCodigoid;
+        return $this->mediCodigoid;
     }
 
-    /**
-     * Set mediCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Medida|null $mediCodigoid
-     *
-     * @return Servicocapacidade
-     */
-    public function setMediCodigoid(\App\Entity\Financeiro\Medida $mediCodigoid = null)
+    public function setMediCodigoid(?Medida $mediCodigoid): self
     {
         $this->mediCodigoid = $mediCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get mediCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Medida|null
-     */
-    public function getMediCodigoid()
+    public function getScrimediCodigoid(): ?Scriptmedicao
     {
-        return $this->mediCodigoid;
+        return $this->scrimediCodigoid;
     }
 
-    /**
-     * Set scrimediCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Scriptmedicao|null $scrimediCodigoid
-     *
-     * @return Servicocapacidade
-     */
-    public function setScrimediCodigoid(\App\Entity\Financeiro\Scriptmedicao $scrimediCodigoid = null)
+    public function setScrimediCodigoid(?Scriptmedicao $scrimediCodigoid): self
     {
         $this->scrimediCodigoid = $scrimediCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get scrimediCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Scriptmedicao|null
-     */
-    public function getScrimediCodigoid()
+    public function getServCodigoid(): ?Servico
     {
-        return $this->scrimediCodigoid;
+        return $this->servCodigoid;
     }
 
-    /**
-     * Set servCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Servico|null $servCodigoid
-     *
-     * @return Servicocapacidade
-     */
-    public function setServCodigoid(\App\Entity\Financeiro\Servico $servCodigoid = null)
+    public function setServCodigoid(?Servico $servCodigoid): self
     {
         $this->servCodigoid = $servCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get servCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Servico|null
-     */
-    public function getServCodigoid()
-    {
-        return $this->servCodigoid;
     }
 }

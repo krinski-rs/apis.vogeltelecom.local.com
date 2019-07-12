@@ -2,23 +2,11 @@
 
 namespace App\Entity\Cep;
 
-/**
- * LogTipoLogr
- */
 class LogTipoLogr
 {
-    /**
-     * @var string
-     */
     private $tipologradouro;
 
-
-    /**
-     * Get tipologradouro.
-     *
-     * @return string
-     */
-    public function getTipologradouro()
+    public function getTipologradouro(): ?string
     {
         return $this->tipologradouro;
     }

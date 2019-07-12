@@ -2,140 +2,96 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * CircuitoSalesforce
- */
 class CircuitoSalesforce
 {
-    /**
-     * @var int
-     */
     private $id;
 
-    /**
-     * @var string|null
-     */
     private $idCircuitoSalesforce;
 
-    /**
-     * @var \DateTime
-     */
-    private $dataCriacao = 'CURRENT_TIMESTAMP';
+    private $idCircuitoProtheus;
 
-    /**
-     * @var \DateTime|null
-     */
+    private $dataCriacao;
+
     private $dataIntegracao;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
+    private $dataIntegracaoProtheus;
+
     private $contCodigoid;
 
-
-    /**
-     * Get id.
-     *
-     * @return int
-     */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * Set idCircuitoSalesforce.
-     *
-     * @param string|null $idCircuitoSalesforce
-     *
-     * @return CircuitoSalesforce
-     */
-    public function setIdCircuitoSalesforce($idCircuitoSalesforce = null)
+    public function getIdCircuitoSalesforce(): ?string
+    {
+        return $this->idCircuitoSalesforce;
+    }
+
+    public function setIdCircuitoSalesforce(?string $idCircuitoSalesforce): self
     {
         $this->idCircuitoSalesforce = $idCircuitoSalesforce;
 
         return $this;
     }
 
-    /**
-     * Get idCircuitoSalesforce.
-     *
-     * @return string|null
-     */
-    public function getIdCircuitoSalesforce()
+    public function getIdCircuitoProtheus(): ?string
     {
-        return $this->idCircuitoSalesforce;
+        return $this->idCircuitoProtheus;
     }
 
-    /**
-     * Set dataCriacao.
-     *
-     * @param \DateTime $dataCriacao
-     *
-     * @return CircuitoSalesforce
-     */
-    public function setDataCriacao($dataCriacao)
+    public function setIdCircuitoProtheus(?string $idCircuitoProtheus): self
+    {
+        $this->idCircuitoProtheus = $idCircuitoProtheus;
+
+        return $this;
+    }
+
+    public function getDataCriacao(): ?\DateTimeInterface
+    {
+        return $this->dataCriacao;
+    }
+
+    public function setDataCriacao(\DateTimeInterface $dataCriacao): self
     {
         $this->dataCriacao = $dataCriacao;
 
         return $this;
     }
 
-    /**
-     * Get dataCriacao.
-     *
-     * @return \DateTime
-     */
-    public function getDataCriacao()
+    public function getDataIntegracao(): ?\DateTimeInterface
     {
-        return $this->dataCriacao;
+        return $this->dataIntegracao;
     }
 
-    /**
-     * Set dataIntegracao.
-     *
-     * @param \DateTime|null $dataIntegracao
-     *
-     * @return CircuitoSalesforce
-     */
-    public function setDataIntegracao($dataIntegracao = null)
+    public function setDataIntegracao(?\DateTimeInterface $dataIntegracao): self
     {
         $this->dataIntegracao = $dataIntegracao;
 
         return $this;
     }
 
-    /**
-     * Get dataIntegracao.
-     *
-     * @return \DateTime|null
-     */
-    public function getDataIntegracao()
+    public function getDataIntegracaoProtheus(): ?\DateTimeInterface
     {
-        return $this->dataIntegracao;
+        return $this->dataIntegracaoProtheus;
     }
 
-    /**
-     * Set contCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contCodigoid
-     *
-     * @return CircuitoSalesforce
-     */
-    public function setContCodigoid(\App\Entity\Financeiro\Contrato $contCodigoid = null)
+    public function setDataIntegracaoProtheus(?\DateTimeInterface $dataIntegracaoProtheus): self
     {
-        $this->contCodigoid = $contCodigoid;
+        $this->dataIntegracaoProtheus = $dataIntegracaoProtheus;
 
         return $this;
     }
 
-    /**
-     * Get contCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContCodigoid()
+    public function getContCodigoid(): ?Contrato
     {
         return $this->contCodigoid;
+    }
+
+    public function setContCodigoid(?Contrato $contCodigoid): self
+    {
+        $this->contCodigoid = $contCodigoid;
+
+        return $this;
     }
 }

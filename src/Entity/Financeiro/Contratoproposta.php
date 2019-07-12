@@ -2,82 +2,40 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Contratoproposta
- */
 class Contratoproposta
 {
-    /**
-     * @var int
-     */
     private $id;
 
-    /**
-     * @var int
-     */
     private $idproposal;
 
-    /**
-     * @var int
-     */
     private $idcontrato;
 
-
-    /**
-     * Get id.
-     *
-     * @return int
-     */
-    public function getId()
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * Set idproposal.
-     *
-     * @param int $idproposal
-     *
-     * @return Contratoproposta
-     */
-    public function setIdproposal($idproposal)
+    public function getIdproposal(): ?int
+    {
+        return $this->idproposal;
+    }
+
+    public function setIdproposal(int $idproposal): self
     {
         $this->idproposal = $idproposal;
 
         return $this;
     }
 
-    /**
-     * Get idproposal.
-     *
-     * @return int
-     */
-    public function getIdproposal()
+    public function getIdcontrato(): ?int
     {
-        return $this->idproposal;
+        return $this->idcontrato;
     }
 
-    /**
-     * Set idcontrato.
-     *
-     * @param int $idcontrato
-     *
-     * @return Contratoproposta
-     */
-    public function setIdcontrato($idcontrato)
+    public function setIdcontrato(int $idcontrato): self
     {
         $this->idcontrato = $idcontrato;
 
         return $this;
-    }
-
-    /**
-     * Get idcontrato.
-     *
-     * @return int
-     */
-    public function getIdcontrato()
-    {
-        return $this->idcontrato;
     }
 }

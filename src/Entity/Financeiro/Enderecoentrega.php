@@ -2,459 +2,222 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Enderecoentrega
- */
 class Enderecoentrega
 {
-    /**
-     * @var int
-     */
     private $endeentrCodigoid;
 
-    /**
-     * @var int|null
-     */
     private $contCodigoid;
 
-    /**
-     * @var bool
-     */
     private $endeentrConcentrador;
 
-    /**
-     * @var int
-     */
     private $endeentrPais;
 
-    /**
-     * @var int
-     */
     private $endeentrEstado;
 
-    /**
-     * @var int
-     */
     private $endeentrCidade;
 
-    /**
-     * @var string
-     */
     private $endeentrBairro;
 
-    /**
-     * @var string
-     */
     private $endeentrLogradouro;
 
-    /**
-     * @var string
-     */
     private $endeentrCep;
 
-    /**
-     * @var int
-     */
     private $endeentrNumero;
 
-    /**
-     * @var string|null
-     */
     private $endeentrComplemento;
 
-    /**
-     * @var string|null
-     */
     private $endeentrPonta;
 
-    /**
-     * @var string|null
-     */
     private $endeentrLatitude;
 
-    /**
-     * @var string|null
-     */
     private $endeentrLongitude;
 
-    /**
-     * @var string|null
-     */
     private $endeentrDesignadorOld;
 
-    /**
-     * @var int|null
-     */
     private $admLogradouro;
 
-
-    /**
-     * Get endeentrCodigoid.
-     *
-     * @return int
-     */
-    public function getEndeentrCodigoid()
+    public function getEndeentrCodigoid(): ?int
     {
         return $this->endeentrCodigoid;
     }
 
-    /**
-     * Set contCodigoid.
-     *
-     * @param int|null $contCodigoid
-     *
-     * @return Enderecoentrega
-     */
-    public function setContCodigoid($contCodigoid = null)
+    public function getContCodigoid(): ?int
+    {
+        return $this->contCodigoid;
+    }
+
+    public function setContCodigoid(?int $contCodigoid): self
     {
         $this->contCodigoid = $contCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get contCodigoid.
-     *
-     * @return int|null
-     */
-    public function getContCodigoid()
+    public function getEndeentrConcentrador(): ?bool
     {
-        return $this->contCodigoid;
+        return $this->endeentrConcentrador;
     }
 
-    /**
-     * Set endeentrConcentrador.
-     *
-     * @param bool $endeentrConcentrador
-     *
-     * @return Enderecoentrega
-     */
-    public function setEndeentrConcentrador($endeentrConcentrador)
+    public function setEndeentrConcentrador(bool $endeentrConcentrador): self
     {
         $this->endeentrConcentrador = $endeentrConcentrador;
 
         return $this;
     }
 
-    /**
-     * Get endeentrConcentrador.
-     *
-     * @return bool
-     */
-    public function getEndeentrConcentrador()
+    public function getEndeentrPais(): ?int
     {
-        return $this->endeentrConcentrador;
+        return $this->endeentrPais;
     }
 
-    /**
-     * Set endeentrPais.
-     *
-     * @param int $endeentrPais
-     *
-     * @return Enderecoentrega
-     */
-    public function setEndeentrPais($endeentrPais)
+    public function setEndeentrPais(int $endeentrPais): self
     {
         $this->endeentrPais = $endeentrPais;
 
         return $this;
     }
 
-    /**
-     * Get endeentrPais.
-     *
-     * @return int
-     */
-    public function getEndeentrPais()
+    public function getEndeentrEstado(): ?int
     {
-        return $this->endeentrPais;
+        return $this->endeentrEstado;
     }
 
-    /**
-     * Set endeentrEstado.
-     *
-     * @param int $endeentrEstado
-     *
-     * @return Enderecoentrega
-     */
-    public function setEndeentrEstado($endeentrEstado)
+    public function setEndeentrEstado(int $endeentrEstado): self
     {
         $this->endeentrEstado = $endeentrEstado;
 
         return $this;
     }
 
-    /**
-     * Get endeentrEstado.
-     *
-     * @return int
-     */
-    public function getEndeentrEstado()
+    public function getEndeentrCidade(): ?int
     {
-        return $this->endeentrEstado;
+        return $this->endeentrCidade;
     }
 
-    /**
-     * Set endeentrCidade.
-     *
-     * @param int $endeentrCidade
-     *
-     * @return Enderecoentrega
-     */
-    public function setEndeentrCidade($endeentrCidade)
+    public function setEndeentrCidade(int $endeentrCidade): self
     {
         $this->endeentrCidade = $endeentrCidade;
 
         return $this;
     }
 
-    /**
-     * Get endeentrCidade.
-     *
-     * @return int
-     */
-    public function getEndeentrCidade()
+    public function getEndeentrBairro(): ?string
     {
-        return $this->endeentrCidade;
+        return $this->endeentrBairro;
     }
 
-    /**
-     * Set endeentrBairro.
-     *
-     * @param string $endeentrBairro
-     *
-     * @return Enderecoentrega
-     */
-    public function setEndeentrBairro($endeentrBairro)
+    public function setEndeentrBairro(string $endeentrBairro): self
     {
         $this->endeentrBairro = $endeentrBairro;
 
         return $this;
     }
 
-    /**
-     * Get endeentrBairro.
-     *
-     * @return string
-     */
-    public function getEndeentrBairro()
+    public function getEndeentrLogradouro(): ?string
     {
-        return $this->endeentrBairro;
+        return $this->endeentrLogradouro;
     }
 
-    /**
-     * Set endeentrLogradouro.
-     *
-     * @param string $endeentrLogradouro
-     *
-     * @return Enderecoentrega
-     */
-    public function setEndeentrLogradouro($endeentrLogradouro)
+    public function setEndeentrLogradouro(string $endeentrLogradouro): self
     {
         $this->endeentrLogradouro = $endeentrLogradouro;
 
         return $this;
     }
 
-    /**
-     * Get endeentrLogradouro.
-     *
-     * @return string
-     */
-    public function getEndeentrLogradouro()
+    public function getEndeentrCep(): ?string
     {
-        return $this->endeentrLogradouro;
+        return $this->endeentrCep;
     }
 
-    /**
-     * Set endeentrCep.
-     *
-     * @param string $endeentrCep
-     *
-     * @return Enderecoentrega
-     */
-    public function setEndeentrCep($endeentrCep)
+    public function setEndeentrCep(string $endeentrCep): self
     {
         $this->endeentrCep = $endeentrCep;
 
         return $this;
     }
 
-    /**
-     * Get endeentrCep.
-     *
-     * @return string
-     */
-    public function getEndeentrCep()
+    public function getEndeentrNumero(): ?int
     {
-        return $this->endeentrCep;
+        return $this->endeentrNumero;
     }
 
-    /**
-     * Set endeentrNumero.
-     *
-     * @param int $endeentrNumero
-     *
-     * @return Enderecoentrega
-     */
-    public function setEndeentrNumero($endeentrNumero)
+    public function setEndeentrNumero(int $endeentrNumero): self
     {
         $this->endeentrNumero = $endeentrNumero;
 
         return $this;
     }
 
-    /**
-     * Get endeentrNumero.
-     *
-     * @return int
-     */
-    public function getEndeentrNumero()
+    public function getEndeentrComplemento(): ?string
     {
-        return $this->endeentrNumero;
+        return $this->endeentrComplemento;
     }
 
-    /**
-     * Set endeentrComplemento.
-     *
-     * @param string|null $endeentrComplemento
-     *
-     * @return Enderecoentrega
-     */
-    public function setEndeentrComplemento($endeentrComplemento = null)
+    public function setEndeentrComplemento(?string $endeentrComplemento): self
     {
         $this->endeentrComplemento = $endeentrComplemento;
 
         return $this;
     }
 
-    /**
-     * Get endeentrComplemento.
-     *
-     * @return string|null
-     */
-    public function getEndeentrComplemento()
+    public function getEndeentrPonta(): ?string
     {
-        return $this->endeentrComplemento;
+        return $this->endeentrPonta;
     }
 
-    /**
-     * Set endeentrPonta.
-     *
-     * @param string|null $endeentrPonta
-     *
-     * @return Enderecoentrega
-     */
-    public function setEndeentrPonta($endeentrPonta = null)
+    public function setEndeentrPonta(?string $endeentrPonta): self
     {
         $this->endeentrPonta = $endeentrPonta;
 
         return $this;
     }
 
-    /**
-     * Get endeentrPonta.
-     *
-     * @return string|null
-     */
-    public function getEndeentrPonta()
+    public function getEndeentrLatitude(): ?string
     {
-        return $this->endeentrPonta;
+        return $this->endeentrLatitude;
     }
 
-    /**
-     * Set endeentrLatitude.
-     *
-     * @param string|null $endeentrLatitude
-     *
-     * @return Enderecoentrega
-     */
-    public function setEndeentrLatitude($endeentrLatitude = null)
+    public function setEndeentrLatitude(?string $endeentrLatitude): self
     {
         $this->endeentrLatitude = $endeentrLatitude;
 
         return $this;
     }
 
-    /**
-     * Get endeentrLatitude.
-     *
-     * @return string|null
-     */
-    public function getEndeentrLatitude()
+    public function getEndeentrLongitude(): ?string
     {
-        return $this->endeentrLatitude;
+        return $this->endeentrLongitude;
     }
 
-    /**
-     * Set endeentrLongitude.
-     *
-     * @param string|null $endeentrLongitude
-     *
-     * @return Enderecoentrega
-     */
-    public function setEndeentrLongitude($endeentrLongitude = null)
+    public function setEndeentrLongitude(?string $endeentrLongitude): self
     {
         $this->endeentrLongitude = $endeentrLongitude;
 
         return $this;
     }
 
-    /**
-     * Get endeentrLongitude.
-     *
-     * @return string|null
-     */
-    public function getEndeentrLongitude()
+    public function getEndeentrDesignadorOld(): ?string
     {
-        return $this->endeentrLongitude;
+        return $this->endeentrDesignadorOld;
     }
 
-    /**
-     * Set endeentrDesignadorOld.
-     *
-     * @param string|null $endeentrDesignadorOld
-     *
-     * @return Enderecoentrega
-     */
-    public function setEndeentrDesignadorOld($endeentrDesignadorOld = null)
+    public function setEndeentrDesignadorOld(?string $endeentrDesignadorOld): self
     {
         $this->endeentrDesignadorOld = $endeentrDesignadorOld;
 
         return $this;
     }
 
-    /**
-     * Get endeentrDesignadorOld.
-     *
-     * @return string|null
-     */
-    public function getEndeentrDesignadorOld()
+    public function getAdmLogradouro(): ?int
     {
-        return $this->endeentrDesignadorOld;
+        return $this->admLogradouro;
     }
 
-    /**
-     * Set admLogradouro.
-     *
-     * @param int|null $admLogradouro
-     *
-     * @return Enderecoentrega
-     */
-    public function setAdmLogradouro($admLogradouro = null)
+    public function setAdmLogradouro(?int $admLogradouro): self
     {
         $this->admLogradouro = $admLogradouro;
 
         return $this;
-    }
-
-    /**
-     * Get admLogradouro.
-     *
-     * @return int|null
-     */
-    public function getAdmLogradouro()
-    {
-        return $this->admLogradouro;
     }
 }

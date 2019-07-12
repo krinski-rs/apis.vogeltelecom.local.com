@@ -2,111 +2,54 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Documentopesquisa
- */
 class Documentopesquisa
 {
-    /**
-     * @var int
-     */
     private $docupesqCodigoid;
 
-    /**
-     * @var string
-     */
     private $docupesqDado;
 
-    /**
-     * @var \App\Entity\Financeiro\Documento
-     */
     private $docuCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Pesquisa
-     */
     private $pesqCodigoid;
 
-
-    /**
-     * Get docupesqCodigoid.
-     *
-     * @return int
-     */
-    public function getDocupesqCodigoid()
+    public function getDocupesqCodigoid(): ?int
     {
         return $this->docupesqCodigoid;
     }
 
-    /**
-     * Set docupesqDado.
-     *
-     * @param string $docupesqDado
-     *
-     * @return Documentopesquisa
-     */
-    public function setDocupesqDado($docupesqDado)
+    public function getDocupesqDado(): ?string
+    {
+        return $this->docupesqDado;
+    }
+
+    public function setDocupesqDado(string $docupesqDado): self
     {
         $this->docupesqDado = $docupesqDado;
 
         return $this;
     }
 
-    /**
-     * Get docupesqDado.
-     *
-     * @return string
-     */
-    public function getDocupesqDado()
+    public function getDocuCodigoid(): ?Documento
     {
-        return $this->docupesqDado;
+        return $this->docuCodigoid;
     }
 
-    /**
-     * Set docuCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Documento|null $docuCodigoid
-     *
-     * @return Documentopesquisa
-     */
-    public function setDocuCodigoid(\App\Entity\Financeiro\Documento $docuCodigoid = null)
+    public function setDocuCodigoid(?Documento $docuCodigoid): self
     {
         $this->docuCodigoid = $docuCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get docuCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Documento|null
-     */
-    public function getDocuCodigoid()
+    public function getPesqCodigoid(): ?Pesquisa
     {
-        return $this->docuCodigoid;
+        return $this->pesqCodigoid;
     }
 
-    /**
-     * Set pesqCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Pesquisa|null $pesqCodigoid
-     *
-     * @return Documentopesquisa
-     */
-    public function setPesqCodigoid(\App\Entity\Financeiro\Pesquisa $pesqCodigoid = null)
+    public function setPesqCodigoid(?Pesquisa $pesqCodigoid): self
     {
         $this->pesqCodigoid = $pesqCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get pesqCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Pesquisa|null
-     */
-    public function getPesqCodigoid()
-    {
-        return $this->pesqCodigoid;
     }
 }

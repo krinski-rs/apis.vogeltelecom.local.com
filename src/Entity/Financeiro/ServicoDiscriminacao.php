@@ -2,111 +2,54 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * ServicoDiscriminacao
- */
 class ServicoDiscriminacao
 {
-    /**
-     * @var int
-     */
     private $servdiscCodigoid;
 
-    /**
-     * @var string
-     */
     private $servdiscValorpadrao;
 
-    /**
-     * @var \App\Entity\Financeiro\Servico
-     */
     private $servCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Discriminacao
-     */
     private $idDiscriminacao;
 
-
-    /**
-     * Get servdiscCodigoid.
-     *
-     * @return int
-     */
-    public function getServdiscCodigoid()
+    public function getServdiscCodigoid(): ?int
     {
         return $this->servdiscCodigoid;
     }
 
-    /**
-     * Set servdiscValorpadrao.
-     *
-     * @param string $servdiscValorpadrao
-     *
-     * @return ServicoDiscriminacao
-     */
-    public function setServdiscValorpadrao($servdiscValorpadrao)
+    public function getServdiscValorpadrao()
+    {
+        return $this->servdiscValorpadrao;
+    }
+
+    public function setServdiscValorpadrao($servdiscValorpadrao): self
     {
         $this->servdiscValorpadrao = $servdiscValorpadrao;
 
         return $this;
     }
 
-    /**
-     * Get servdiscValorpadrao.
-     *
-     * @return string
-     */
-    public function getServdiscValorpadrao()
+    public function getServCodigoid(): ?Servico
     {
-        return $this->servdiscValorpadrao;
+        return $this->servCodigoid;
     }
 
-    /**
-     * Set servCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Servico|null $servCodigoid
-     *
-     * @return ServicoDiscriminacao
-     */
-    public function setServCodigoid(\App\Entity\Financeiro\Servico $servCodigoid = null)
+    public function setServCodigoid(?Servico $servCodigoid): self
     {
         $this->servCodigoid = $servCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get servCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Servico|null
-     */
-    public function getServCodigoid()
+    public function getIdDiscriminacao(): ?Discriminacao
     {
-        return $this->servCodigoid;
+        return $this->idDiscriminacao;
     }
 
-    /**
-     * Set idDiscriminacao.
-     *
-     * @param \App\Entity\Financeiro\Discriminacao|null $idDiscriminacao
-     *
-     * @return ServicoDiscriminacao
-     */
-    public function setIdDiscriminacao(\App\Entity\Financeiro\Discriminacao $idDiscriminacao = null)
+    public function setIdDiscriminacao(?Discriminacao $idDiscriminacao): self
     {
         $this->idDiscriminacao = $idDiscriminacao;
 
         return $this;
-    }
-
-    /**
-     * Get idDiscriminacao.
-     *
-     * @return \App\Entity\Financeiro\Discriminacao|null
-     */
-    public function getIdDiscriminacao()
-    {
-        return $this->idDiscriminacao;
     }
 }

@@ -2,227 +2,110 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Recebimento
- */
 class Recebimento
 {
-    /**
-     * @var int
-     */
     private $receCodigoid;
 
-    /**
-     * @var \DateTime
-     */
-    private $receDatainc = 'CURRENT_TIMESTAMP';
+    private $receDatainc;
 
-    /**
-     * @var string
-     */
     private $receValor;
 
-    /**
-     * @var string
-     */
     private $receValormulta;
 
-    /**
-     * @var string
-     */
     private $receValorjuros;
 
-    /**
-     * @var \DateTime
-     */
-    private $receDatarecebido = '0000-00-00 00:00:00';
+    private $receDatarecebido;
 
-    /**
-     * @var \App\Entity\Financeiro\Fatura
-     */
     private $fatuCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Lotebancario
-     */
     private $lotebancCodigoid;
 
-
-    /**
-     * Get receCodigoid.
-     *
-     * @return int
-     */
-    public function getReceCodigoid()
+    public function getReceCodigoid(): ?int
     {
         return $this->receCodigoid;
     }
 
-    /**
-     * Set receDatainc.
-     *
-     * @param \DateTime $receDatainc
-     *
-     * @return Recebimento
-     */
-    public function setReceDatainc($receDatainc)
+    public function getReceDatainc(): ?\DateTimeInterface
+    {
+        return $this->receDatainc;
+    }
+
+    public function setReceDatainc(\DateTimeInterface $receDatainc): self
     {
         $this->receDatainc = $receDatainc;
 
         return $this;
     }
 
-    /**
-     * Get receDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getReceDatainc()
+    public function getReceValor()
     {
-        return $this->receDatainc;
+        return $this->receValor;
     }
 
-    /**
-     * Set receValor.
-     *
-     * @param string $receValor
-     *
-     * @return Recebimento
-     */
-    public function setReceValor($receValor)
+    public function setReceValor($receValor): self
     {
         $this->receValor = $receValor;
 
         return $this;
     }
 
-    /**
-     * Get receValor.
-     *
-     * @return string
-     */
-    public function getReceValor()
+    public function getReceValormulta()
     {
-        return $this->receValor;
+        return $this->receValormulta;
     }
 
-    /**
-     * Set receValormulta.
-     *
-     * @param string $receValormulta
-     *
-     * @return Recebimento
-     */
-    public function setReceValormulta($receValormulta)
+    public function setReceValormulta($receValormulta): self
     {
         $this->receValormulta = $receValormulta;
 
         return $this;
     }
 
-    /**
-     * Get receValormulta.
-     *
-     * @return string
-     */
-    public function getReceValormulta()
+    public function getReceValorjuros()
     {
-        return $this->receValormulta;
+        return $this->receValorjuros;
     }
 
-    /**
-     * Set receValorjuros.
-     *
-     * @param string $receValorjuros
-     *
-     * @return Recebimento
-     */
-    public function setReceValorjuros($receValorjuros)
+    public function setReceValorjuros($receValorjuros): self
     {
         $this->receValorjuros = $receValorjuros;
 
         return $this;
     }
 
-    /**
-     * Get receValorjuros.
-     *
-     * @return string
-     */
-    public function getReceValorjuros()
+    public function getReceDatarecebido(): ?\DateTimeInterface
     {
-        return $this->receValorjuros;
+        return $this->receDatarecebido;
     }
 
-    /**
-     * Set receDatarecebido.
-     *
-     * @param \DateTime $receDatarecebido
-     *
-     * @return Recebimento
-     */
-    public function setReceDatarecebido($receDatarecebido)
+    public function setReceDatarecebido(\DateTimeInterface $receDatarecebido): self
     {
         $this->receDatarecebido = $receDatarecebido;
 
         return $this;
     }
 
-    /**
-     * Get receDatarecebido.
-     *
-     * @return \DateTime
-     */
-    public function getReceDatarecebido()
+    public function getFatuCodigoid(): ?Fatura
     {
-        return $this->receDatarecebido;
+        return $this->fatuCodigoid;
     }
 
-    /**
-     * Set fatuCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Fatura|null $fatuCodigoid
-     *
-     * @return Recebimento
-     */
-    public function setFatuCodigoid(\App\Entity\Financeiro\Fatura $fatuCodigoid = null)
+    public function setFatuCodigoid(?Fatura $fatuCodigoid): self
     {
         $this->fatuCodigoid = $fatuCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get fatuCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Fatura|null
-     */
-    public function getFatuCodigoid()
+    public function getLotebancCodigoid(): ?Lotebancario
     {
-        return $this->fatuCodigoid;
+        return $this->lotebancCodigoid;
     }
 
-    /**
-     * Set lotebancCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Lotebancario|null $lotebancCodigoid
-     *
-     * @return Recebimento
-     */
-    public function setLotebancCodigoid(\App\Entity\Financeiro\Lotebancario $lotebancCodigoid = null)
+    public function setLotebancCodigoid(?Lotebancario $lotebancCodigoid): self
     {
         $this->lotebancCodigoid = $lotebancCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get lotebancCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Lotebancario|null
-     */
-    public function getLotebancCodigoid()
-    {
-        return $this->lotebancCodigoid;
     }
 }

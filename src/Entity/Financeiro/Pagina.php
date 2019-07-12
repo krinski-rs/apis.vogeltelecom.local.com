@@ -2,227 +2,110 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Pagina
- */
 class Pagina
 {
-    /**
-     * @var int
-     */
     private $pagiCodigoid;
 
-    /**
-     * @var int
-     */
     private $pagiPagina;
 
-    /**
-     * @var string
-     */
     private $pagiNome;
 
-    /**
-     * @var string
-     */
     private $pagiExtensao;
 
-    /**
-     * @var \DateTime
-     */
-    private $pagiDatainc = 'CURRENT_TIMESTAMP';
+    private $pagiDatainc;
 
-    /**
-     * @var string|null
-     */
     private $pagiTexto;
 
-    /**
-     * @var \App\Entity\Financeiro\Documento
-     */
     private $docuCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Pagina
-     */
     private $pagiProxima;
 
-
-    /**
-     * Get pagiCodigoid.
-     *
-     * @return int
-     */
-    public function getPagiCodigoid()
+    public function getPagiCodigoid(): ?int
     {
         return $this->pagiCodigoid;
     }
 
-    /**
-     * Set pagiPagina.
-     *
-     * @param int $pagiPagina
-     *
-     * @return Pagina
-     */
-    public function setPagiPagina($pagiPagina)
+    public function getPagiPagina(): ?int
+    {
+        return $this->pagiPagina;
+    }
+
+    public function setPagiPagina(int $pagiPagina): self
     {
         $this->pagiPagina = $pagiPagina;
 
         return $this;
     }
 
-    /**
-     * Get pagiPagina.
-     *
-     * @return int
-     */
-    public function getPagiPagina()
+    public function getPagiNome(): ?string
     {
-        return $this->pagiPagina;
+        return $this->pagiNome;
     }
 
-    /**
-     * Set pagiNome.
-     *
-     * @param string $pagiNome
-     *
-     * @return Pagina
-     */
-    public function setPagiNome($pagiNome)
+    public function setPagiNome(string $pagiNome): self
     {
         $this->pagiNome = $pagiNome;
 
         return $this;
     }
 
-    /**
-     * Get pagiNome.
-     *
-     * @return string
-     */
-    public function getPagiNome()
+    public function getPagiExtensao(): ?string
     {
-        return $this->pagiNome;
+        return $this->pagiExtensao;
     }
 
-    /**
-     * Set pagiExtensao.
-     *
-     * @param string $pagiExtensao
-     *
-     * @return Pagina
-     */
-    public function setPagiExtensao($pagiExtensao)
+    public function setPagiExtensao(string $pagiExtensao): self
     {
         $this->pagiExtensao = $pagiExtensao;
 
         return $this;
     }
 
-    /**
-     * Get pagiExtensao.
-     *
-     * @return string
-     */
-    public function getPagiExtensao()
+    public function getPagiDatainc(): ?\DateTimeInterface
     {
-        return $this->pagiExtensao;
+        return $this->pagiDatainc;
     }
 
-    /**
-     * Set pagiDatainc.
-     *
-     * @param \DateTime $pagiDatainc
-     *
-     * @return Pagina
-     */
-    public function setPagiDatainc($pagiDatainc)
+    public function setPagiDatainc(\DateTimeInterface $pagiDatainc): self
     {
         $this->pagiDatainc = $pagiDatainc;
 
         return $this;
     }
 
-    /**
-     * Get pagiDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getPagiDatainc()
+    public function getPagiTexto(): ?string
     {
-        return $this->pagiDatainc;
+        return $this->pagiTexto;
     }
 
-    /**
-     * Set pagiTexto.
-     *
-     * @param string|null $pagiTexto
-     *
-     * @return Pagina
-     */
-    public function setPagiTexto($pagiTexto = null)
+    public function setPagiTexto(?string $pagiTexto): self
     {
         $this->pagiTexto = $pagiTexto;
 
         return $this;
     }
 
-    /**
-     * Get pagiTexto.
-     *
-     * @return string|null
-     */
-    public function getPagiTexto()
+    public function getDocuCodigoid(): ?Documento
     {
-        return $this->pagiTexto;
+        return $this->docuCodigoid;
     }
 
-    /**
-     * Set docuCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Documento|null $docuCodigoid
-     *
-     * @return Pagina
-     */
-    public function setDocuCodigoid(\App\Entity\Financeiro\Documento $docuCodigoid = null)
+    public function setDocuCodigoid(?Documento $docuCodigoid): self
     {
         $this->docuCodigoid = $docuCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get docuCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Documento|null
-     */
-    public function getDocuCodigoid()
+    public function getPagiProxima(): ?self
     {
-        return $this->docuCodigoid;
+        return $this->pagiProxima;
     }
 
-    /**
-     * Set pagiProxima.
-     *
-     * @param \App\Entity\Financeiro\Pagina|null $pagiProxima
-     *
-     * @return Pagina
-     */
-    public function setPagiProxima(\App\Entity\Financeiro\Pagina $pagiProxima = null)
+    public function setPagiProxima(?self $pagiProxima): self
     {
         $this->pagiProxima = $pagiProxima;
 
         return $this;
-    }
-
-    /**
-     * Get pagiProxima.
-     *
-     * @return \App\Entity\Financeiro\Pagina|null
-     */
-    public function getPagiProxima()
-    {
-        return $this->pagiProxima;
     }
 }

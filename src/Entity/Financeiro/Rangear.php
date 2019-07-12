@@ -2,169 +2,82 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Rangear
- */
 class Rangear
 {
-    /**
-     * @var int
-     */
     private $rangarCodigoid;
 
-    /**
-     * @var \DateTime
-     */
-    private $rangarDatainc = 'CURRENT_TIMESTAMP';
+    private $rangarDatainc;
 
-    /**
-     * @var string
-     */
     private $rangarInicio;
 
-    /**
-     * @var string
-     */
     private $rangarFim;
 
-    /**
-     * @var bool
-     */
     private $rangarAtivo;
 
-    /**
-     * @var string
-     */
     private $rangearSerie;
 
-
-    /**
-     * Get rangarCodigoid.
-     *
-     * @return int
-     */
-    public function getRangarCodigoid()
+    public function getRangarCodigoid(): ?int
     {
         return $this->rangarCodigoid;
     }
 
-    /**
-     * Set rangarDatainc.
-     *
-     * @param \DateTime $rangarDatainc
-     *
-     * @return Rangear
-     */
-    public function setRangarDatainc($rangarDatainc)
+    public function getRangarDatainc(): ?\DateTimeInterface
+    {
+        return $this->rangarDatainc;
+    }
+
+    public function setRangarDatainc(\DateTimeInterface $rangarDatainc): self
     {
         $this->rangarDatainc = $rangarDatainc;
 
         return $this;
     }
 
-    /**
-     * Get rangarDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getRangarDatainc()
+    public function getRangarInicio(): ?string
     {
-        return $this->rangarDatainc;
+        return $this->rangarInicio;
     }
 
-    /**
-     * Set rangarInicio.
-     *
-     * @param string $rangarInicio
-     *
-     * @return Rangear
-     */
-    public function setRangarInicio($rangarInicio)
+    public function setRangarInicio(string $rangarInicio): self
     {
         $this->rangarInicio = $rangarInicio;
 
         return $this;
     }
 
-    /**
-     * Get rangarInicio.
-     *
-     * @return string
-     */
-    public function getRangarInicio()
+    public function getRangarFim(): ?string
     {
-        return $this->rangarInicio;
+        return $this->rangarFim;
     }
 
-    /**
-     * Set rangarFim.
-     *
-     * @param string $rangarFim
-     *
-     * @return Rangear
-     */
-    public function setRangarFim($rangarFim)
+    public function setRangarFim(string $rangarFim): self
     {
         $this->rangarFim = $rangarFim;
 
         return $this;
     }
 
-    /**
-     * Get rangarFim.
-     *
-     * @return string
-     */
-    public function getRangarFim()
+    public function getRangarAtivo(): ?bool
     {
-        return $this->rangarFim;
+        return $this->rangarAtivo;
     }
 
-    /**
-     * Set rangarAtivo.
-     *
-     * @param bool $rangarAtivo
-     *
-     * @return Rangear
-     */
-    public function setRangarAtivo($rangarAtivo)
+    public function setRangarAtivo(bool $rangarAtivo): self
     {
         $this->rangarAtivo = $rangarAtivo;
 
         return $this;
     }
 
-    /**
-     * Get rangarAtivo.
-     *
-     * @return bool
-     */
-    public function getRangarAtivo()
+    public function getRangearSerie(): ?string
     {
-        return $this->rangarAtivo;
+        return $this->rangearSerie;
     }
 
-    /**
-     * Set rangearSerie.
-     *
-     * @param string $rangearSerie
-     *
-     * @return Rangear
-     */
-    public function setRangearSerie($rangearSerie)
+    public function setRangearSerie(string $rangearSerie): self
     {
         $this->rangearSerie = $rangearSerie;
 
         return $this;
-    }
-
-    /**
-     * Get rangearSerie.
-     *
-     * @return string
-     */
-    public function getRangearSerie()
-    {
-        return $this->rangearSerie;
     }
 }

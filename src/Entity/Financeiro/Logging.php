@@ -2,256 +2,124 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Logging
- */
 class Logging
 {
-    /**
-     * @var int
-     */
     private $loggCodigoid;
 
-    /**
-     * @var int|null
-     */
     private $usuaCodigoid;
 
-    /**
-     * @var \DateTime
-     */
-    private $loggDatainc = 'CURRENT_TIMESTAMP';
+    private $loggDatainc;
 
-    /**
-     * @var string
-     */
     private $loggIp;
 
-    /**
-     * @var string|null
-     */
     private $loggOldendata;
 
-    /**
-     * @var string|null
-     */
     private $loggDatabase;
 
-    /**
-     * @var string|null
-     */
     private $loggTable;
 
-    /**
-     * @var int|null
-     */
     private $loggTableid;
 
-    /**
-     * @var \App\Entity\Financeiro\Tipologging
-     */
     private $tipologgCodigoid;
 
-
-    /**
-     * Get loggCodigoid.
-     *
-     * @return int
-     */
-    public function getLoggCodigoid()
+    public function getLoggCodigoid(): ?int
     {
         return $this->loggCodigoid;
     }
 
-    /**
-     * Set usuaCodigoid.
-     *
-     * @param int|null $usuaCodigoid
-     *
-     * @return Logging
-     */
-    public function setUsuaCodigoid($usuaCodigoid = null)
+    public function getUsuaCodigoid(): ?int
+    {
+        return $this->usuaCodigoid;
+    }
+
+    public function setUsuaCodigoid(?int $usuaCodigoid): self
     {
         $this->usuaCodigoid = $usuaCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get usuaCodigoid.
-     *
-     * @return int|null
-     */
-    public function getUsuaCodigoid()
+    public function getLoggDatainc(): ?\DateTimeInterface
     {
-        return $this->usuaCodigoid;
+        return $this->loggDatainc;
     }
 
-    /**
-     * Set loggDatainc.
-     *
-     * @param \DateTime $loggDatainc
-     *
-     * @return Logging
-     */
-    public function setLoggDatainc($loggDatainc)
+    public function setLoggDatainc(\DateTimeInterface $loggDatainc): self
     {
         $this->loggDatainc = $loggDatainc;
 
         return $this;
     }
 
-    /**
-     * Get loggDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getLoggDatainc()
+    public function getLoggIp(): ?string
     {
-        return $this->loggDatainc;
+        return $this->loggIp;
     }
 
-    /**
-     * Set loggIp.
-     *
-     * @param string $loggIp
-     *
-     * @return Logging
-     */
-    public function setLoggIp($loggIp)
+    public function setLoggIp(string $loggIp): self
     {
         $this->loggIp = $loggIp;
 
         return $this;
     }
 
-    /**
-     * Get loggIp.
-     *
-     * @return string
-     */
-    public function getLoggIp()
+    public function getLoggOldendata(): ?string
     {
-        return $this->loggIp;
+        return $this->loggOldendata;
     }
 
-    /**
-     * Set loggOldendata.
-     *
-     * @param string|null $loggOldendata
-     *
-     * @return Logging
-     */
-    public function setLoggOldendata($loggOldendata = null)
+    public function setLoggOldendata(?string $loggOldendata): self
     {
         $this->loggOldendata = $loggOldendata;
 
         return $this;
     }
 
-    /**
-     * Get loggOldendata.
-     *
-     * @return string|null
-     */
-    public function getLoggOldendata()
+    public function getLoggDatabase(): ?string
     {
-        return $this->loggOldendata;
+        return $this->loggDatabase;
     }
 
-    /**
-     * Set loggDatabase.
-     *
-     * @param string|null $loggDatabase
-     *
-     * @return Logging
-     */
-    public function setLoggDatabase($loggDatabase = null)
+    public function setLoggDatabase(?string $loggDatabase): self
     {
         $this->loggDatabase = $loggDatabase;
 
         return $this;
     }
 
-    /**
-     * Get loggDatabase.
-     *
-     * @return string|null
-     */
-    public function getLoggDatabase()
+    public function getLoggTable(): ?string
     {
-        return $this->loggDatabase;
+        return $this->loggTable;
     }
 
-    /**
-     * Set loggTable.
-     *
-     * @param string|null $loggTable
-     *
-     * @return Logging
-     */
-    public function setLoggTable($loggTable = null)
+    public function setLoggTable(?string $loggTable): self
     {
         $this->loggTable = $loggTable;
 
         return $this;
     }
 
-    /**
-     * Get loggTable.
-     *
-     * @return string|null
-     */
-    public function getLoggTable()
+    public function getLoggTableid(): ?int
     {
-        return $this->loggTable;
+        return $this->loggTableid;
     }
 
-    /**
-     * Set loggTableid.
-     *
-     * @param int|null $loggTableid
-     *
-     * @return Logging
-     */
-    public function setLoggTableid($loggTableid = null)
+    public function setLoggTableid(?int $loggTableid): self
     {
         $this->loggTableid = $loggTableid;
 
         return $this;
     }
 
-    /**
-     * Get loggTableid.
-     *
-     * @return int|null
-     */
-    public function getLoggTableid()
+    public function getTipologgCodigoid(): ?Tipologging
     {
-        return $this->loggTableid;
+        return $this->tipologgCodigoid;
     }
 
-    /**
-     * Set tipologgCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Tipologging|null $tipologgCodigoid
-     *
-     * @return Logging
-     */
-    public function setTipologgCodigoid(\App\Entity\Financeiro\Tipologging $tipologgCodigoid = null)
+    public function setTipologgCodigoid(?Tipologging $tipologgCodigoid): self
     {
         $this->tipologgCodigoid = $tipologgCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get tipologgCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Tipologging|null
-     */
-    public function getTipologgCodigoid()
-    {
-        return $this->tipologgCodigoid;
     }
 }

@@ -2,169 +2,82 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Notificacaovencimento
- */
 class Notificacaovencimento
 {
-    /**
-     * @var int
-     */
     private $notvencCodigoid;
 
-    /**
-     * @var \DateTime
-     */
-    private $notvencDatainc = 'CURRENT_TIMESTAMP';
+    private $notvencDatainc;
 
-    /**
-     * @var int
-     */
     private $notvencUsuacodigoid;
 
-    /**
-     * @var \DateTime|null
-     */
     private $notvencDataconfirmacao;
 
-    /**
-     * @var string|null
-     */
     private $notvencDescricaoconfirmacao;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
     private $contCodigoid;
 
-
-    /**
-     * Get notvencCodigoid.
-     *
-     * @return int
-     */
-    public function getNotvencCodigoid()
+    public function getNotvencCodigoid(): ?int
     {
         return $this->notvencCodigoid;
     }
 
-    /**
-     * Set notvencDatainc.
-     *
-     * @param \DateTime $notvencDatainc
-     *
-     * @return Notificacaovencimento
-     */
-    public function setNotvencDatainc($notvencDatainc)
+    public function getNotvencDatainc(): ?\DateTimeInterface
+    {
+        return $this->notvencDatainc;
+    }
+
+    public function setNotvencDatainc(\DateTimeInterface $notvencDatainc): self
     {
         $this->notvencDatainc = $notvencDatainc;
 
         return $this;
     }
 
-    /**
-     * Get notvencDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getNotvencDatainc()
+    public function getNotvencUsuacodigoid(): ?int
     {
-        return $this->notvencDatainc;
+        return $this->notvencUsuacodigoid;
     }
 
-    /**
-     * Set notvencUsuacodigoid.
-     *
-     * @param int $notvencUsuacodigoid
-     *
-     * @return Notificacaovencimento
-     */
-    public function setNotvencUsuacodigoid($notvencUsuacodigoid)
+    public function setNotvencUsuacodigoid(int $notvencUsuacodigoid): self
     {
         $this->notvencUsuacodigoid = $notvencUsuacodigoid;
 
         return $this;
     }
 
-    /**
-     * Get notvencUsuacodigoid.
-     *
-     * @return int
-     */
-    public function getNotvencUsuacodigoid()
+    public function getNotvencDataconfirmacao(): ?\DateTimeInterface
     {
-        return $this->notvencUsuacodigoid;
+        return $this->notvencDataconfirmacao;
     }
 
-    /**
-     * Set notvencDataconfirmacao.
-     *
-     * @param \DateTime|null $notvencDataconfirmacao
-     *
-     * @return Notificacaovencimento
-     */
-    public function setNotvencDataconfirmacao($notvencDataconfirmacao = null)
+    public function setNotvencDataconfirmacao(?\DateTimeInterface $notvencDataconfirmacao): self
     {
         $this->notvencDataconfirmacao = $notvencDataconfirmacao;
 
         return $this;
     }
 
-    /**
-     * Get notvencDataconfirmacao.
-     *
-     * @return \DateTime|null
-     */
-    public function getNotvencDataconfirmacao()
+    public function getNotvencDescricaoconfirmacao(): ?string
     {
-        return $this->notvencDataconfirmacao;
+        return $this->notvencDescricaoconfirmacao;
     }
 
-    /**
-     * Set notvencDescricaoconfirmacao.
-     *
-     * @param string|null $notvencDescricaoconfirmacao
-     *
-     * @return Notificacaovencimento
-     */
-    public function setNotvencDescricaoconfirmacao($notvencDescricaoconfirmacao = null)
+    public function setNotvencDescricaoconfirmacao(?string $notvencDescricaoconfirmacao): self
     {
         $this->notvencDescricaoconfirmacao = $notvencDescricaoconfirmacao;
 
         return $this;
     }
 
-    /**
-     * Get notvencDescricaoconfirmacao.
-     *
-     * @return string|null
-     */
-    public function getNotvencDescricaoconfirmacao()
+    public function getContCodigoid(): ?Contrato
     {
-        return $this->notvencDescricaoconfirmacao;
+        return $this->contCodigoid;
     }
 
-    /**
-     * Set contCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contCodigoid
-     *
-     * @return Notificacaovencimento
-     */
-    public function setContCodigoid(\App\Entity\Financeiro\Contrato $contCodigoid = null)
+    public function setContCodigoid(?Contrato $contCodigoid): self
     {
         $this->contCodigoid = $contCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get contCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContCodigoid()
-    {
-        return $this->contCodigoid;
     }
 }

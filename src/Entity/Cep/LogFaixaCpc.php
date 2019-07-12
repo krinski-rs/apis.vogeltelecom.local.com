@@ -2,96 +2,40 @@
 
 namespace App\Entity\Cep;
 
-/**
- * LogFaixaCpc
- */
 class LogFaixaCpc
 {
-    /**
-     * @var int
-     */
-    private $cpcNuInicial = '0';
+    private $cpcNuInicial;
 
-    /**
-     * @var int
-     */
-    private $cpcNuFinal = '0';
+    private $cpcNuFinal;
 
-    /**
-     * @var \App\Entity\Cep\LogCpc
-     */
     private $cpcNuSequencial;
 
-
-    /**
-     * Set cpcNuInicial.
-     *
-     * @param int $cpcNuInicial
-     *
-     * @return LogFaixaCpc
-     */
-    public function setCpcNuInicial($cpcNuInicial)
-    {
-        $this->cpcNuInicial = $cpcNuInicial;
-
-        return $this;
-    }
-
-    /**
-     * Get cpcNuInicial.
-     *
-     * @return int
-     */
-    public function getCpcNuInicial()
+    public function getCpcNuInicial(): ?int
     {
         return $this->cpcNuInicial;
     }
 
-    /**
-     * Set cpcNuFinal.
-     *
-     * @param int $cpcNuFinal
-     *
-     * @return LogFaixaCpc
-     */
-    public function setCpcNuFinal($cpcNuFinal)
+    public function getCpcNuFinal(): ?int
+    {
+        return $this->cpcNuFinal;
+    }
+
+    public function setCpcNuFinal(int $cpcNuFinal): self
     {
         $this->cpcNuFinal = $cpcNuFinal;
 
         return $this;
     }
 
-    /**
-     * Get cpcNuFinal.
-     *
-     * @return int
-     */
-    public function getCpcNuFinal()
+    public function getCpcNuSequencial(): ?LogCpc
     {
-        return $this->cpcNuFinal;
+        return $this->cpcNuSequencial;
     }
 
-    /**
-     * Set cpcNuSequencial.
-     *
-     * @param \App\Entity\Cep\LogCpc $cpcNuSequencial
-     *
-     * @return LogFaixaCpc
-     */
-    public function setCpcNuSequencial(\App\Entity\Cep\LogCpc $cpcNuSequencial)
+    public function setCpcNuSequencial(?LogCpc $cpcNuSequencial): self
     {
         $this->cpcNuSequencial = $cpcNuSequencial;
 
         return $this;
-    }
-
-    /**
-     * Get cpcNuSequencial.
-     *
-     * @return \App\Entity\Cep\LogCpc
-     */
-    public function getCpcNuSequencial()
-    {
-        return $this->cpcNuSequencial;
     }
 }

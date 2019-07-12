@@ -2,169 +2,82 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Ist
- */
 class Ist
 {
-    /**
-     * @var int
-     */
     private $istCodigoid;
 
-    /**
-     * @var \DateTime
-     */
-    private $istDatainc = 'CURRENT_TIMESTAMP';
+    private $istDatainc;
 
-    /**
-     * @var string
-     */
     private $istPercentual;
 
-    /**
-     * @var string
-     */
-    private $istAcumuladonoano = '0.00';
+    private $istAcumuladonoano;
 
-    /**
-     * @var string
-     */
-    private $istAcumulado12meses = '0.00';
+    private $istAcumulado12meses;
 
-    /**
-     * @var \DateTime
-     */
-    private $istPrazo = '0000-00-00 00:00:00';
+    private $istPrazo;
 
-
-    /**
-     * Get istCodigoid.
-     *
-     * @return int
-     */
-    public function getIstCodigoid()
+    public function getIstCodigoid(): ?int
     {
         return $this->istCodigoid;
     }
 
-    /**
-     * Set istDatainc.
-     *
-     * @param \DateTime $istDatainc
-     *
-     * @return Ist
-     */
-    public function setIstDatainc($istDatainc)
+    public function getIstDatainc(): ?\DateTimeInterface
+    {
+        return $this->istDatainc;
+    }
+
+    public function setIstDatainc(\DateTimeInterface $istDatainc): self
     {
         $this->istDatainc = $istDatainc;
 
         return $this;
     }
 
-    /**
-     * Get istDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getIstDatainc()
+    public function getIstPercentual()
     {
-        return $this->istDatainc;
+        return $this->istPercentual;
     }
 
-    /**
-     * Set istPercentual.
-     *
-     * @param string $istPercentual
-     *
-     * @return Ist
-     */
-    public function setIstPercentual($istPercentual)
+    public function setIstPercentual($istPercentual): self
     {
         $this->istPercentual = $istPercentual;
 
         return $this;
     }
 
-    /**
-     * Get istPercentual.
-     *
-     * @return string
-     */
-    public function getIstPercentual()
+    public function getIstAcumuladonoano()
     {
-        return $this->istPercentual;
+        return $this->istAcumuladonoano;
     }
 
-    /**
-     * Set istAcumuladonoano.
-     *
-     * @param string $istAcumuladonoano
-     *
-     * @return Ist
-     */
-    public function setIstAcumuladonoano($istAcumuladonoano)
+    public function setIstAcumuladonoano($istAcumuladonoano): self
     {
         $this->istAcumuladonoano = $istAcumuladonoano;
 
         return $this;
     }
 
-    /**
-     * Get istAcumuladonoano.
-     *
-     * @return string
-     */
-    public function getIstAcumuladonoano()
+    public function getIstAcumulado12meses()
     {
-        return $this->istAcumuladonoano;
+        return $this->istAcumulado12meses;
     }
 
-    /**
-     * Set istAcumulado12meses.
-     *
-     * @param string $istAcumulado12meses
-     *
-     * @return Ist
-     */
-    public function setIstAcumulado12meses($istAcumulado12meses)
+    public function setIstAcumulado12meses($istAcumulado12meses): self
     {
         $this->istAcumulado12meses = $istAcumulado12meses;
 
         return $this;
     }
 
-    /**
-     * Get istAcumulado12meses.
-     *
-     * @return string
-     */
-    public function getIstAcumulado12meses()
+    public function getIstPrazo(): ?\DateTimeInterface
     {
-        return $this->istAcumulado12meses;
+        return $this->istPrazo;
     }
 
-    /**
-     * Set istPrazo.
-     *
-     * @param \DateTime $istPrazo
-     *
-     * @return Ist
-     */
-    public function setIstPrazo($istPrazo)
+    public function setIstPrazo(\DateTimeInterface $istPrazo): self
     {
         $this->istPrazo = $istPrazo;
 
         return $this;
-    }
-
-    /**
-     * Get istPrazo.
-     *
-     * @return \DateTime
-     */
-    public function getIstPrazo()
-    {
-        return $this->istPrazo;
     }
 }

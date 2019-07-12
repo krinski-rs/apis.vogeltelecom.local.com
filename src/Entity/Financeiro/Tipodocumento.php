@@ -2,53 +2,26 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Tipodocumento
- */
 class Tipodocumento
 {
-    /**
-     * @var int
-     */
     private $tipodocuCodigoid;
 
-    /**
-     * @var string
-     */
     private $tipodocuNome;
 
-
-    /**
-     * Get tipodocuCodigoid.
-     *
-     * @return int
-     */
-    public function getTipodocuCodigoid()
+    public function getTipodocuCodigoid(): ?int
     {
         return $this->tipodocuCodigoid;
     }
 
-    /**
-     * Set tipodocuNome.
-     *
-     * @param string $tipodocuNome
-     *
-     * @return Tipodocumento
-     */
-    public function setTipodocuNome($tipodocuNome)
+    public function getTipodocuNome(): ?string
+    {
+        return $this->tipodocuNome;
+    }
+
+    public function setTipodocuNome(string $tipodocuNome): self
     {
         $this->tipodocuNome = $tipodocuNome;
 
         return $this;
-    }
-
-    /**
-     * Get tipodocuNome.
-     *
-     * @return string
-     */
-    public function getTipodocuNome()
-    {
-        return $this->tipodocuNome;
     }
 }

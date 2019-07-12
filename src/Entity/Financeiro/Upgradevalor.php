@@ -2,227 +2,110 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Upgradevalor
- */
 class Upgradevalor
 {
-    /**
-     * @var int
-     */
     private $upgrvaloCodigoid;
 
-    /**
-     * @var string
-     */
     private $upgrvaloValor;
 
-    /**
-     * @var string|null
-     */
     private $upgrValorsemdesconto;
 
-    /**
-     * @var string|null
-     */
     private $upgrValorsemimposto;
 
-    /**
-     * @var \App\Entity\Financeiro\Moeda
-     */
     private $moedCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Natureza
-     */
     private $natuCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Periodicidade
-     */
     private $periCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Upgrade
-     */
     private $upgrCodigoid;
 
-
-    /**
-     * Get upgrvaloCodigoid.
-     *
-     * @return int
-     */
-    public function getUpgrvaloCodigoid()
+    public function getUpgrvaloCodigoid(): ?int
     {
         return $this->upgrvaloCodigoid;
     }
 
-    /**
-     * Set upgrvaloValor.
-     *
-     * @param string $upgrvaloValor
-     *
-     * @return Upgradevalor
-     */
-    public function setUpgrvaloValor($upgrvaloValor)
+    public function getUpgrvaloValor()
+    {
+        return $this->upgrvaloValor;
+    }
+
+    public function setUpgrvaloValor($upgrvaloValor): self
     {
         $this->upgrvaloValor = $upgrvaloValor;
 
         return $this;
     }
 
-    /**
-     * Get upgrvaloValor.
-     *
-     * @return string
-     */
-    public function getUpgrvaloValor()
+    public function getUpgrValorsemdesconto()
     {
-        return $this->upgrvaloValor;
+        return $this->upgrValorsemdesconto;
     }
 
-    /**
-     * Set upgrValorsemdesconto.
-     *
-     * @param string|null $upgrValorsemdesconto
-     *
-     * @return Upgradevalor
-     */
-    public function setUpgrValorsemdesconto($upgrValorsemdesconto = null)
+    public function setUpgrValorsemdesconto($upgrValorsemdesconto): self
     {
         $this->upgrValorsemdesconto = $upgrValorsemdesconto;
 
         return $this;
     }
 
-    /**
-     * Get upgrValorsemdesconto.
-     *
-     * @return string|null
-     */
-    public function getUpgrValorsemdesconto()
+    public function getUpgrValorsemimposto()
     {
-        return $this->upgrValorsemdesconto;
+        return $this->upgrValorsemimposto;
     }
 
-    /**
-     * Set upgrValorsemimposto.
-     *
-     * @param string|null $upgrValorsemimposto
-     *
-     * @return Upgradevalor
-     */
-    public function setUpgrValorsemimposto($upgrValorsemimposto = null)
+    public function setUpgrValorsemimposto($upgrValorsemimposto): self
     {
         $this->upgrValorsemimposto = $upgrValorsemimposto;
 
         return $this;
     }
 
-    /**
-     * Get upgrValorsemimposto.
-     *
-     * @return string|null
-     */
-    public function getUpgrValorsemimposto()
+    public function getMoedCodigoid(): ?Moeda
     {
-        return $this->upgrValorsemimposto;
+        return $this->moedCodigoid;
     }
 
-    /**
-     * Set moedCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Moeda|null $moedCodigoid
-     *
-     * @return Upgradevalor
-     */
-    public function setMoedCodigoid(\App\Entity\Financeiro\Moeda $moedCodigoid = null)
+    public function setMoedCodigoid(?Moeda $moedCodigoid): self
     {
         $this->moedCodigoid = $moedCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get moedCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Moeda|null
-     */
-    public function getMoedCodigoid()
+    public function getNatuCodigoid(): ?Natureza
     {
-        return $this->moedCodigoid;
+        return $this->natuCodigoid;
     }
 
-    /**
-     * Set natuCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Natureza|null $natuCodigoid
-     *
-     * @return Upgradevalor
-     */
-    public function setNatuCodigoid(\App\Entity\Financeiro\Natureza $natuCodigoid = null)
+    public function setNatuCodigoid(?Natureza $natuCodigoid): self
     {
         $this->natuCodigoid = $natuCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get natuCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Natureza|null
-     */
-    public function getNatuCodigoid()
+    public function getPeriCodigoid(): ?Periodicidade
     {
-        return $this->natuCodigoid;
+        return $this->periCodigoid;
     }
 
-    /**
-     * Set periCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Periodicidade|null $periCodigoid
-     *
-     * @return Upgradevalor
-     */
-    public function setPeriCodigoid(\App\Entity\Financeiro\Periodicidade $periCodigoid = null)
+    public function setPeriCodigoid(?Periodicidade $periCodigoid): self
     {
         $this->periCodigoid = $periCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get periCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Periodicidade|null
-     */
-    public function getPeriCodigoid()
+    public function getUpgrCodigoid(): ?Upgrade
     {
-        return $this->periCodigoid;
+        return $this->upgrCodigoid;
     }
 
-    /**
-     * Set upgrCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Upgrade|null $upgrCodigoid
-     *
-     * @return Upgradevalor
-     */
-    public function setUpgrCodigoid(\App\Entity\Financeiro\Upgrade $upgrCodigoid = null)
+    public function setUpgrCodigoid(?Upgrade $upgrCodigoid): self
     {
         $this->upgrCodigoid = $upgrCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get upgrCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Upgrade|null
-     */
-    public function getUpgrCodigoid()
-    {
-        return $this->upgrCodigoid;
     }
 }

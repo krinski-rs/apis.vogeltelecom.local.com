@@ -2,198 +2,98 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * InformacaoAdicionalCircuito
- */
+use App\Entity\Gcdb\AutUsuarios;
+
 class InformacaoAdicionalCircuito
 {
-    /**
-     * @var int
-     */
     private $infoadiccircCodigoid;
 
-    /**
-     * @var \DateTime
-     */
-    private $infoadiccircDatainc = 'CURRENT_TIMESTAMP';
+    private $infoadiccircDatainc;
 
-    /**
-     * @var string
-     */
     private $infoadiccircDescricao;
 
-    /**
-     * @var string
-     */
     private $infoadiccircTipo;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
     private $contCodigoid;
 
-    /**
-     * @var \App\Entity\Gcdb\AutUsuarios
-     */
     private $usuaCodigoid;
 
-    /**
-     * @var \App\Entity\Gcdb\AutUsuarios
-     */
     private $usuaCodigoidRemovido;
 
-
-    /**
-     * Get infoadiccircCodigoid.
-     *
-     * @return int
-     */
-    public function getInfoadiccircCodigoid()
+    public function getInfoadiccircCodigoid(): ?int
     {
         return $this->infoadiccircCodigoid;
     }
 
-    /**
-     * Set infoadiccircDatainc.
-     *
-     * @param \DateTime $infoadiccircDatainc
-     *
-     * @return InformacaoAdicionalCircuito
-     */
-    public function setInfoadiccircDatainc($infoadiccircDatainc)
+    public function getInfoadiccircDatainc(): ?\DateTimeInterface
+    {
+        return $this->infoadiccircDatainc;
+    }
+
+    public function setInfoadiccircDatainc(\DateTimeInterface $infoadiccircDatainc): self
     {
         $this->infoadiccircDatainc = $infoadiccircDatainc;
 
         return $this;
     }
 
-    /**
-     * Get infoadiccircDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getInfoadiccircDatainc()
+    public function getInfoadiccircDescricao(): ?string
     {
-        return $this->infoadiccircDatainc;
+        return $this->infoadiccircDescricao;
     }
 
-    /**
-     * Set infoadiccircDescricao.
-     *
-     * @param string $infoadiccircDescricao
-     *
-     * @return InformacaoAdicionalCircuito
-     */
-    public function setInfoadiccircDescricao($infoadiccircDescricao)
+    public function setInfoadiccircDescricao(string $infoadiccircDescricao): self
     {
         $this->infoadiccircDescricao = $infoadiccircDescricao;
 
         return $this;
     }
 
-    /**
-     * Get infoadiccircDescricao.
-     *
-     * @return string
-     */
-    public function getInfoadiccircDescricao()
+    public function getInfoadiccircTipo(): ?string
     {
-        return $this->infoadiccircDescricao;
+        return $this->infoadiccircTipo;
     }
 
-    /**
-     * Set infoadiccircTipo.
-     *
-     * @param string $infoadiccircTipo
-     *
-     * @return InformacaoAdicionalCircuito
-     */
-    public function setInfoadiccircTipo($infoadiccircTipo)
+    public function setInfoadiccircTipo(string $infoadiccircTipo): self
     {
         $this->infoadiccircTipo = $infoadiccircTipo;
 
         return $this;
     }
 
-    /**
-     * Get infoadiccircTipo.
-     *
-     * @return string
-     */
-    public function getInfoadiccircTipo()
+    public function getContCodigoid(): ?Contrato
     {
-        return $this->infoadiccircTipo;
+        return $this->contCodigoid;
     }
 
-    /**
-     * Set contCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contCodigoid
-     *
-     * @return InformacaoAdicionalCircuito
-     */
-    public function setContCodigoid(\App\Entity\Financeiro\Contrato $contCodigoid = null)
+    public function setContCodigoid(?Contrato $contCodigoid): self
     {
         $this->contCodigoid = $contCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get contCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContCodigoid()
+    public function getUsuaCodigoid(): ?AutUsuarios
     {
-        return $this->contCodigoid;
+        return $this->usuaCodigoid;
     }
 
-    /**
-     * Set usuaCodigoid.
-     *
-     * @param \App\Entity\Gcdb\AutUsuarios|null $usuaCodigoid
-     *
-     * @return InformacaoAdicionalCircuito
-     */
-    public function setUsuaCodigoid(\App\Entity\Gcdb\AutUsuarios $usuaCodigoid = null)
+    public function setUsuaCodigoid(?AutUsuarios $usuaCodigoid): self
     {
         $this->usuaCodigoid = $usuaCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get usuaCodigoid.
-     *
-     * @return \App\Entity\Gcdb\AutUsuarios|null
-     */
-    public function getUsuaCodigoid()
+    public function getUsuaCodigoidRemovido(): ?AutUsuarios
     {
-        return $this->usuaCodigoid;
+        return $this->usuaCodigoidRemovido;
     }
 
-    /**
-     * Set usuaCodigoidRemovido.
-     *
-     * @param \App\Entity\Gcdb\AutUsuarios|null $usuaCodigoidRemovido
-     *
-     * @return InformacaoAdicionalCircuito
-     */
-    public function setUsuaCodigoidRemovido(\App\Entity\Gcdb\AutUsuarios $usuaCodigoidRemovido = null)
+    public function setUsuaCodigoidRemovido(?AutUsuarios $usuaCodigoidRemovido): self
     {
         $this->usuaCodigoidRemovido = $usuaCodigoidRemovido;
 
         return $this;
-    }
-
-    /**
-     * Get usuaCodigoidRemovido.
-     *
-     * @return \App\Entity\Gcdb\AutUsuarios|null
-     */
-    public function getUsuaCodigoidRemovido()
-    {
-        return $this->usuaCodigoidRemovido;
     }
 }

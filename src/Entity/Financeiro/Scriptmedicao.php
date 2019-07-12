@@ -2,140 +2,68 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Scriptmedicao
- */
 class Scriptmedicao
 {
-    /**
-     * @var int
-     */
     private $scrimediCodigoid;
 
-    /**
-     * @var string
-     */
     private $scrimediNome;
 
-    /**
-     * @var string
-     */
     private $scrimediDescricao;
 
-    /**
-     * @var string
-     */
     private $scrimediPath;
 
-    /**
-     * @var string
-     */
     private $scrimediTiporetorno;
 
-
-    /**
-     * Get scrimediCodigoid.
-     *
-     * @return int
-     */
-    public function getScrimediCodigoid()
+    public function getScrimediCodigoid(): ?int
     {
         return $this->scrimediCodigoid;
     }
 
-    /**
-     * Set scrimediNome.
-     *
-     * @param string $scrimediNome
-     *
-     * @return Scriptmedicao
-     */
-    public function setScrimediNome($scrimediNome)
+    public function getScrimediNome(): ?string
+    {
+        return $this->scrimediNome;
+    }
+
+    public function setScrimediNome(string $scrimediNome): self
     {
         $this->scrimediNome = $scrimediNome;
 
         return $this;
     }
 
-    /**
-     * Get scrimediNome.
-     *
-     * @return string
-     */
-    public function getScrimediNome()
+    public function getScrimediDescricao(): ?string
     {
-        return $this->scrimediNome;
+        return $this->scrimediDescricao;
     }
 
-    /**
-     * Set scrimediDescricao.
-     *
-     * @param string $scrimediDescricao
-     *
-     * @return Scriptmedicao
-     */
-    public function setScrimediDescricao($scrimediDescricao)
+    public function setScrimediDescricao(string $scrimediDescricao): self
     {
         $this->scrimediDescricao = $scrimediDescricao;
 
         return $this;
     }
 
-    /**
-     * Get scrimediDescricao.
-     *
-     * @return string
-     */
-    public function getScrimediDescricao()
+    public function getScrimediPath(): ?string
     {
-        return $this->scrimediDescricao;
+        return $this->scrimediPath;
     }
 
-    /**
-     * Set scrimediPath.
-     *
-     * @param string $scrimediPath
-     *
-     * @return Scriptmedicao
-     */
-    public function setScrimediPath($scrimediPath)
+    public function setScrimediPath(string $scrimediPath): self
     {
         $this->scrimediPath = $scrimediPath;
 
         return $this;
     }
 
-    /**
-     * Get scrimediPath.
-     *
-     * @return string
-     */
-    public function getScrimediPath()
+    public function getScrimediTiporetorno(): ?string
     {
-        return $this->scrimediPath;
+        return $this->scrimediTiporetorno;
     }
 
-    /**
-     * Set scrimediTiporetorno.
-     *
-     * @param string $scrimediTiporetorno
-     *
-     * @return Scriptmedicao
-     */
-    public function setScrimediTiporetorno($scrimediTiporetorno)
+    public function setScrimediTiporetorno(string $scrimediTiporetorno): self
     {
         $this->scrimediTiporetorno = $scrimediTiporetorno;
 
         return $this;
-    }
-
-    /**
-     * Get scrimediTiporetorno.
-     *
-     * @return string
-     */
-    public function getScrimediTiporetorno()
-    {
-        return $this->scrimediTiporetorno;
     }
 }

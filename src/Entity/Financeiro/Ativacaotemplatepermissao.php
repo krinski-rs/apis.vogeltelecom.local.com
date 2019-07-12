@@ -2,111 +2,54 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Ativacaotemplatepermissao
- */
 class Ativacaotemplatepermissao
 {
-    /**
-     * @var int
-     */
     private $ativtemppermiCodigoid;
 
-    /**
-     * @var int|null
-     */
-    private $ativtemppermiOrdem = '0';
+    private $ativtemppermiOrdem;
 
-    /**
-     * @var \App\Entity\Financeiro\Ativacaotemplate
-     */
     private $ativtempCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Atributo
-     */
     private $atriCodigoid;
 
-
-    /**
-     * Get ativtemppermiCodigoid.
-     *
-     * @return int
-     */
-    public function getAtivtemppermiCodigoid()
+    public function getAtivtemppermiCodigoid(): ?int
     {
         return $this->ativtemppermiCodigoid;
     }
 
-    /**
-     * Set ativtemppermiOrdem.
-     *
-     * @param int|null $ativtemppermiOrdem
-     *
-     * @return Ativacaotemplatepermissao
-     */
-    public function setAtivtemppermiOrdem($ativtemppermiOrdem = null)
+    public function getAtivtemppermiOrdem(): ?int
+    {
+        return $this->ativtemppermiOrdem;
+    }
+
+    public function setAtivtemppermiOrdem(?int $ativtemppermiOrdem): self
     {
         $this->ativtemppermiOrdem = $ativtemppermiOrdem;
 
         return $this;
     }
 
-    /**
-     * Get ativtemppermiOrdem.
-     *
-     * @return int|null
-     */
-    public function getAtivtemppermiOrdem()
+    public function getAtivtempCodigoid(): ?Ativacaotemplate
     {
-        return $this->ativtemppermiOrdem;
+        return $this->ativtempCodigoid;
     }
 
-    /**
-     * Set ativtempCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Ativacaotemplate|null $ativtempCodigoid
-     *
-     * @return Ativacaotemplatepermissao
-     */
-    public function setAtivtempCodigoid(\App\Entity\Financeiro\Ativacaotemplate $ativtempCodigoid = null)
+    public function setAtivtempCodigoid(?Ativacaotemplate $ativtempCodigoid): self
     {
         $this->ativtempCodigoid = $ativtempCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get ativtempCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Ativacaotemplate|null
-     */
-    public function getAtivtempCodigoid()
+    public function getAtriCodigoid(): ?Atributo
     {
-        return $this->ativtempCodigoid;
+        return $this->atriCodigoid;
     }
 
-    /**
-     * Set atriCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Atributo|null $atriCodigoid
-     *
-     * @return Ativacaotemplatepermissao
-     */
-    public function setAtriCodigoid(\App\Entity\Financeiro\Atributo $atriCodigoid = null)
+    public function setAtriCodigoid(?Atributo $atriCodigoid): self
     {
         $this->atriCodigoid = $atriCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get atriCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Atributo|null
-     */
-    public function getAtriCodigoid()
-    {
-        return $this->atriCodigoid;
     }
 }

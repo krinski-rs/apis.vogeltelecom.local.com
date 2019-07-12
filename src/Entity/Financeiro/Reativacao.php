@@ -2,140 +2,68 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Reativacao
- */
 class Reativacao
 {
-    /**
-     * @var int
-     */
     private $reatCodigoid;
 
-    /**
-     * @var int|null
-     */
     private $usuaCodigoid;
 
-    /**
-     * @var \DateTime
-     */
-    private $reatDatainc = 'CURRENT_TIMESTAMP';
+    private $reatDatainc;
 
-    /**
-     * @var \DateTime|null
-     */
     private $reatDatareativado;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
     private $contCodigoid;
 
-
-    /**
-     * Get reatCodigoid.
-     *
-     * @return int
-     */
-    public function getReatCodigoid()
+    public function getReatCodigoid(): ?int
     {
         return $this->reatCodigoid;
     }
 
-    /**
-     * Set usuaCodigoid.
-     *
-     * @param int|null $usuaCodigoid
-     *
-     * @return Reativacao
-     */
-    public function setUsuaCodigoid($usuaCodigoid = null)
+    public function getUsuaCodigoid(): ?int
+    {
+        return $this->usuaCodigoid;
+    }
+
+    public function setUsuaCodigoid(?int $usuaCodigoid): self
     {
         $this->usuaCodigoid = $usuaCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get usuaCodigoid.
-     *
-     * @return int|null
-     */
-    public function getUsuaCodigoid()
+    public function getReatDatainc(): ?\DateTimeInterface
     {
-        return $this->usuaCodigoid;
+        return $this->reatDatainc;
     }
 
-    /**
-     * Set reatDatainc.
-     *
-     * @param \DateTime $reatDatainc
-     *
-     * @return Reativacao
-     */
-    public function setReatDatainc($reatDatainc)
+    public function setReatDatainc(\DateTimeInterface $reatDatainc): self
     {
         $this->reatDatainc = $reatDatainc;
 
         return $this;
     }
 
-    /**
-     * Get reatDatainc.
-     *
-     * @return \DateTime
-     */
-    public function getReatDatainc()
+    public function getReatDatareativado(): ?\DateTimeInterface
     {
-        return $this->reatDatainc;
+        return $this->reatDatareativado;
     }
 
-    /**
-     * Set reatDatareativado.
-     *
-     * @param \DateTime|null $reatDatareativado
-     *
-     * @return Reativacao
-     */
-    public function setReatDatareativado($reatDatareativado = null)
+    public function setReatDatareativado(?\DateTimeInterface $reatDatareativado): self
     {
         $this->reatDatareativado = $reatDatareativado;
 
         return $this;
     }
 
-    /**
-     * Get reatDatareativado.
-     *
-     * @return \DateTime|null
-     */
-    public function getReatDatareativado()
+    public function getContCodigoid(): ?Contrato
     {
-        return $this->reatDatareativado;
+        return $this->contCodigoid;
     }
 
-    /**
-     * Set contCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contCodigoid
-     *
-     * @return Reativacao
-     */
-    public function setContCodigoid(\App\Entity\Financeiro\Contrato $contCodigoid = null)
+    public function setContCodigoid(?Contrato $contCodigoid): self
     {
         $this->contCodigoid = $contCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get contCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContCodigoid()
-    {
-        return $this->contCodigoid;
     }
 }

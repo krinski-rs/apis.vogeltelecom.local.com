@@ -2,111 +2,54 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * TmpAtributo
- */
 class TmpAtributo
 {
-    /**
-     * @var int
-     */
     private $idTmpAtributo;
 
-    /**
-     * @var string|null
-     */
     private $colunaCsv;
 
-    /**
-     * @var string|null
-     */
     private $valor;
 
-    /**
-     * @var \App\Entity\Financeiro\TmpPonta
-     */
     private $idTmpPonta;
 
-
-    /**
-     * Get idTmpAtributo.
-     *
-     * @return int
-     */
-    public function getIdTmpAtributo()
+    public function getIdTmpAtributo(): ?int
     {
         return $this->idTmpAtributo;
     }
 
-    /**
-     * Set colunaCsv.
-     *
-     * @param string|null $colunaCsv
-     *
-     * @return TmpAtributo
-     */
-    public function setColunaCsv($colunaCsv = null)
+    public function getColunaCsv(): ?string
+    {
+        return $this->colunaCsv;
+    }
+
+    public function setColunaCsv(?string $colunaCsv): self
     {
         $this->colunaCsv = $colunaCsv;
 
         return $this;
     }
 
-    /**
-     * Get colunaCsv.
-     *
-     * @return string|null
-     */
-    public function getColunaCsv()
+    public function getValor(): ?string
     {
-        return $this->colunaCsv;
+        return $this->valor;
     }
 
-    /**
-     * Set valor.
-     *
-     * @param string|null $valor
-     *
-     * @return TmpAtributo
-     */
-    public function setValor($valor = null)
+    public function setValor(?string $valor): self
     {
         $this->valor = $valor;
 
         return $this;
     }
 
-    /**
-     * Get valor.
-     *
-     * @return string|null
-     */
-    public function getValor()
+    public function getIdTmpPonta(): ?TmpPonta
     {
-        return $this->valor;
+        return $this->idTmpPonta;
     }
 
-    /**
-     * Set idTmpPonta.
-     *
-     * @param \App\Entity\Financeiro\TmpPonta|null $idTmpPonta
-     *
-     * @return TmpAtributo
-     */
-    public function setIdTmpPonta(\App\Entity\Financeiro\TmpPonta $idTmpPonta = null)
+    public function setIdTmpPonta(?TmpPonta $idTmpPonta): self
     {
         $this->idTmpPonta = $idTmpPonta;
 
         return $this;
-    }
-
-    /**
-     * Get idTmpPonta.
-     *
-     * @return \App\Entity\Financeiro\TmpPonta|null
-     */
-    public function getIdTmpPonta()
-    {
-        return $this->idTmpPonta;
     }
 }

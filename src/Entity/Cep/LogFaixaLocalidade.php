@@ -2,270 +2,131 @@
 
 namespace App\Entity\Cep;
 
-/**
- * LogFaixaLocalidade
- */
 class LogFaixaLocalidade
 {
-    /**
-     * @var string
-     */
     private $locRad1Ini;
 
-    /**
-     * @var string
-     */
     private $locSuf1Ini;
 
-    /**
-     * @var string
-     */
     private $locRad1Fim;
 
-    /**
-     * @var string
-     */
     private $locSuf1Fim;
 
-    /**
-     * @var string|null
-     */
     private $locRad2Ini;
 
-    /**
-     * @var string|null
-     */
     private $locSuf2Ini;
 
-    /**
-     * @var string|null
-     */
     private $locRad2Fim;
 
-    /**
-     * @var string|null
-     */
     private $locSuf2Fim;
 
-    /**
-     * @var \App\Entity\Cep\LogLocalidade
-     */
     private $locNuSequencial;
 
+    public function getLocRad1Ini(): ?string
+    {
+        return $this->locRad1Ini;
+    }
 
-    /**
-     * Set locRad1Ini.
-     *
-     * @param string $locRad1Ini
-     *
-     * @return LogFaixaLocalidade
-     */
-    public function setLocRad1Ini($locRad1Ini)
+    public function setLocRad1Ini(string $locRad1Ini): self
     {
         $this->locRad1Ini = $locRad1Ini;
 
         return $this;
     }
 
-    /**
-     * Get locRad1Ini.
-     *
-     * @return string
-     */
-    public function getLocRad1Ini()
+    public function getLocSuf1Ini(): ?string
     {
-        return $this->locRad1Ini;
+        return $this->locSuf1Ini;
     }
 
-    /**
-     * Set locSuf1Ini.
-     *
-     * @param string $locSuf1Ini
-     *
-     * @return LogFaixaLocalidade
-     */
-    public function setLocSuf1Ini($locSuf1Ini)
+    public function setLocSuf1Ini(string $locSuf1Ini): self
     {
         $this->locSuf1Ini = $locSuf1Ini;
 
         return $this;
     }
 
-    /**
-     * Get locSuf1Ini.
-     *
-     * @return string
-     */
-    public function getLocSuf1Ini()
+    public function getLocRad1Fim(): ?string
     {
-        return $this->locSuf1Ini;
+        return $this->locRad1Fim;
     }
 
-    /**
-     * Set locRad1Fim.
-     *
-     * @param string $locRad1Fim
-     *
-     * @return LogFaixaLocalidade
-     */
-    public function setLocRad1Fim($locRad1Fim)
+    public function setLocRad1Fim(string $locRad1Fim): self
     {
         $this->locRad1Fim = $locRad1Fim;
 
         return $this;
     }
 
-    /**
-     * Get locRad1Fim.
-     *
-     * @return string
-     */
-    public function getLocRad1Fim()
+    public function getLocSuf1Fim(): ?string
     {
-        return $this->locRad1Fim;
+        return $this->locSuf1Fim;
     }
 
-    /**
-     * Set locSuf1Fim.
-     *
-     * @param string $locSuf1Fim
-     *
-     * @return LogFaixaLocalidade
-     */
-    public function setLocSuf1Fim($locSuf1Fim)
+    public function setLocSuf1Fim(string $locSuf1Fim): self
     {
         $this->locSuf1Fim = $locSuf1Fim;
 
         return $this;
     }
 
-    /**
-     * Get locSuf1Fim.
-     *
-     * @return string
-     */
-    public function getLocSuf1Fim()
+    public function getLocRad2Ini(): ?string
     {
-        return $this->locSuf1Fim;
+        return $this->locRad2Ini;
     }
 
-    /**
-     * Set locRad2Ini.
-     *
-     * @param string|null $locRad2Ini
-     *
-     * @return LogFaixaLocalidade
-     */
-    public function setLocRad2Ini($locRad2Ini = null)
+    public function setLocRad2Ini(?string $locRad2Ini): self
     {
         $this->locRad2Ini = $locRad2Ini;
 
         return $this;
     }
 
-    /**
-     * Get locRad2Ini.
-     *
-     * @return string|null
-     */
-    public function getLocRad2Ini()
+    public function getLocSuf2Ini(): ?string
     {
-        return $this->locRad2Ini;
+        return $this->locSuf2Ini;
     }
 
-    /**
-     * Set locSuf2Ini.
-     *
-     * @param string|null $locSuf2Ini
-     *
-     * @return LogFaixaLocalidade
-     */
-    public function setLocSuf2Ini($locSuf2Ini = null)
+    public function setLocSuf2Ini(?string $locSuf2Ini): self
     {
         $this->locSuf2Ini = $locSuf2Ini;
 
         return $this;
     }
 
-    /**
-     * Get locSuf2Ini.
-     *
-     * @return string|null
-     */
-    public function getLocSuf2Ini()
+    public function getLocRad2Fim(): ?string
     {
-        return $this->locSuf2Ini;
+        return $this->locRad2Fim;
     }
 
-    /**
-     * Set locRad2Fim.
-     *
-     * @param string|null $locRad2Fim
-     *
-     * @return LogFaixaLocalidade
-     */
-    public function setLocRad2Fim($locRad2Fim = null)
+    public function setLocRad2Fim(?string $locRad2Fim): self
     {
         $this->locRad2Fim = $locRad2Fim;
 
         return $this;
     }
 
-    /**
-     * Get locRad2Fim.
-     *
-     * @return string|null
-     */
-    public function getLocRad2Fim()
+    public function getLocSuf2Fim(): ?string
     {
-        return $this->locRad2Fim;
+        return $this->locSuf2Fim;
     }
 
-    /**
-     * Set locSuf2Fim.
-     *
-     * @param string|null $locSuf2Fim
-     *
-     * @return LogFaixaLocalidade
-     */
-    public function setLocSuf2Fim($locSuf2Fim = null)
+    public function setLocSuf2Fim(?string $locSuf2Fim): self
     {
         $this->locSuf2Fim = $locSuf2Fim;
 
         return $this;
     }
 
-    /**
-     * Get locSuf2Fim.
-     *
-     * @return string|null
-     */
-    public function getLocSuf2Fim()
+    public function getLocNuSequencial(): ?LogLocalidade
     {
-        return $this->locSuf2Fim;
+        return $this->locNuSequencial;
     }
 
-    /**
-     * Set locNuSequencial.
-     *
-     * @param \App\Entity\Cep\LogLocalidade $locNuSequencial
-     *
-     * @return LogFaixaLocalidade
-     */
-    public function setLocNuSequencial(\App\Entity\Cep\LogLocalidade $locNuSequencial)
+    public function setLocNuSequencial(?LogLocalidade $locNuSequencial): self
     {
         $this->locNuSequencial = $locNuSequencial;
 
         return $this;
-    }
-
-    /**
-     * Get locNuSequencial.
-     *
-     * @return \App\Entity\Cep\LogLocalidade
-     */
-    public function getLocNuSequencial()
-    {
-        return $this->locNuSequencial;
     }
 }

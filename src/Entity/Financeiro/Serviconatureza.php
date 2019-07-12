@@ -2,198 +2,96 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Serviconatureza
- */
 class Serviconatureza
 {
-    /**
-     * @var int
-     */
     private $servnatuCodigoid;
 
-    /**
-     * @var string
-     */
     private $servnatuPercentual;
 
-    /**
-     * @var string
-     */
     private $servnatuBaseicms;
 
-    /**
-     * @var bool
-     */
     private $servnatuCedente;
 
-    /**
-     * @var \App\Entity\Financeiro\Dadosbancarios
-     */
     private $dadobancCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Natureza
-     */
     private $natuCodigoid;
 
-    /**
-     * @var \App\Entity\Financeiro\Servico
-     */
     private $servCodigoid;
 
-
-    /**
-     * Get servnatuCodigoid.
-     *
-     * @return int
-     */
-    public function getServnatuCodigoid()
+    public function getServnatuCodigoid(): ?int
     {
         return $this->servnatuCodigoid;
     }
 
-    /**
-     * Set servnatuPercentual.
-     *
-     * @param string $servnatuPercentual
-     *
-     * @return Serviconatureza
-     */
-    public function setServnatuPercentual($servnatuPercentual)
+    public function getServnatuPercentual()
+    {
+        return $this->servnatuPercentual;
+    }
+
+    public function setServnatuPercentual($servnatuPercentual): self
     {
         $this->servnatuPercentual = $servnatuPercentual;
 
         return $this;
     }
 
-    /**
-     * Get servnatuPercentual.
-     *
-     * @return string
-     */
-    public function getServnatuPercentual()
+    public function getServnatuBaseicms()
     {
-        return $this->servnatuPercentual;
+        return $this->servnatuBaseicms;
     }
 
-    /**
-     * Set servnatuBaseicms.
-     *
-     * @param string $servnatuBaseicms
-     *
-     * @return Serviconatureza
-     */
-    public function setServnatuBaseicms($servnatuBaseicms)
+    public function setServnatuBaseicms($servnatuBaseicms): self
     {
         $this->servnatuBaseicms = $servnatuBaseicms;
 
         return $this;
     }
 
-    /**
-     * Get servnatuBaseicms.
-     *
-     * @return string
-     */
-    public function getServnatuBaseicms()
+    public function getServnatuCedente(): ?bool
     {
-        return $this->servnatuBaseicms;
+        return $this->servnatuCedente;
     }
 
-    /**
-     * Set servnatuCedente.
-     *
-     * @param bool $servnatuCedente
-     *
-     * @return Serviconatureza
-     */
-    public function setServnatuCedente($servnatuCedente)
+    public function setServnatuCedente(bool $servnatuCedente): self
     {
         $this->servnatuCedente = $servnatuCedente;
 
         return $this;
     }
 
-    /**
-     * Get servnatuCedente.
-     *
-     * @return bool
-     */
-    public function getServnatuCedente()
+    public function getDadobancCodigoid(): ?Dadosbancarios
     {
-        return $this->servnatuCedente;
+        return $this->dadobancCodigoid;
     }
 
-    /**
-     * Set dadobancCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Dadosbancarios|null $dadobancCodigoid
-     *
-     * @return Serviconatureza
-     */
-    public function setDadobancCodigoid(\App\Entity\Financeiro\Dadosbancarios $dadobancCodigoid = null)
+    public function setDadobancCodigoid(?Dadosbancarios $dadobancCodigoid): self
     {
         $this->dadobancCodigoid = $dadobancCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get dadobancCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Dadosbancarios|null
-     */
-    public function getDadobancCodigoid()
+    public function getNatuCodigoid(): ?Natureza
     {
-        return $this->dadobancCodigoid;
+        return $this->natuCodigoid;
     }
 
-    /**
-     * Set natuCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Natureza|null $natuCodigoid
-     *
-     * @return Serviconatureza
-     */
-    public function setNatuCodigoid(\App\Entity\Financeiro\Natureza $natuCodigoid = null)
+    public function setNatuCodigoid(?Natureza $natuCodigoid): self
     {
         $this->natuCodigoid = $natuCodigoid;
 
         return $this;
     }
 
-    /**
-     * Get natuCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Natureza|null
-     */
-    public function getNatuCodigoid()
+    public function getServCodigoid(): ?Servico
     {
-        return $this->natuCodigoid;
+        return $this->servCodigoid;
     }
 
-    /**
-     * Set servCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Servico|null $servCodigoid
-     *
-     * @return Serviconatureza
-     */
-    public function setServCodigoid(\App\Entity\Financeiro\Servico $servCodigoid = null)
+    public function setServCodigoid(?Servico $servCodigoid): self
     {
         $this->servCodigoid = $servCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get servCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Servico|null
-     */
-    public function getServCodigoid()
-    {
-        return $this->servCodigoid;
     }
 }

@@ -2,1039 +2,502 @@
 
 namespace App\Entity\Financeiro;
 
-/**
- * Impostoscontrato
- */
 class Impostoscontrato
 {
-    /**
-     * @var int
-     */
     private $impocontCodigoid;
 
-    /**
-     * @var bool
-     */
     private $impocontPisReter;
 
-    /**
-     * @var bool
-     */
     private $impocontPisDestacar;
 
-    /**
-     * @var string
-     */
     private $impocontPisValor;
 
-    /**
-     * @var string|null
-     */
     private $impocontPisReducao;
 
-    /**
-     * @var bool
-     */
     private $impocontCofinsReter;
 
-    /**
-     * @var bool
-     */
     private $impocontCofinsDestacar;
 
-    /**
-     * @var string
-     */
     private $impocontCofinsValor;
 
-    /**
-     * @var string|null
-     */
     private $impocontCofinsReducao;
 
-    /**
-     * @var bool
-     */
     private $impocontIrReter;
 
-    /**
-     * @var bool
-     */
     private $impocontIrDestacar;
 
-    /**
-     * @var string
-     */
     private $impocontIrValor;
 
-    /**
-     * @var string|null
-     */
     private $impocontIrReducao;
 
-    /**
-     * @var bool
-     */
     private $impocontIsllReter;
 
-    /**
-     * @var bool
-     */
     private $impocontIsllDestacar;
 
-    /**
-     * @var string
-     */
     private $impocontIsllValor;
 
-    /**
-     * @var string|null
-     */
     private $impocontIsllReducao;
 
-    /**
-     * @var bool
-     */
     private $impocontIssqnReter;
 
-    /**
-     * @var bool
-     */
     private $impocontIssqnDestacar;
 
-    /**
-     * @var string
-     */
     private $impocontIssqnValor;
 
-    /**
-     * @var string|null
-     */
     private $impocontIssqnReducao;
 
-    /**
-     * @var bool
-     */
     private $impocontIcmsReter;
 
-    /**
-     * @var bool
-     */
     private $impocontIcmsDestacar;
 
-    /**
-     * @var string
-     */
     private $impocontIcmsValor;
 
-    /**
-     * @var string|null
-     */
     private $impocontIcmsReducao;
 
-    /**
-     * @var string|null
-     */
     private $ativPisValor;
 
-    /**
-     * @var bool|null
-     */
     private $ativPisReter;
 
-    /**
-     * @var string|null
-     */
     private $ativCofinsValor;
 
-    /**
-     * @var bool|null
-     */
     private $ativCofinsReter;
 
-    /**
-     * @var string|null
-     */
     private $ativIrValor;
 
-    /**
-     * @var bool|null
-     */
     private $ativIrReter;
 
-    /**
-     * @var string|null
-     */
     private $ativCsllValor;
 
-    /**
-     * @var bool|null
-     */
     private $ativCsllReter;
 
-    /**
-     * @var string|null
-     */
     private $ativIssqnValor;
 
-    /**
-     * @var bool|null
-     */
     private $ativIssqnReter;
 
-    /**
-     * @var \App\Entity\Financeiro\Contrato
-     */
     private $contCodigoid;
 
-
-    /**
-     * Get impocontCodigoid.
-     *
-     * @return int
-     */
-    public function getImpocontCodigoid()
+    public function getImpocontCodigoid(): ?int
     {
         return $this->impocontCodigoid;
     }
 
-    /**
-     * Set impocontPisReter.
-     *
-     * @param bool $impocontPisReter
-     *
-     * @return Impostoscontrato
-     */
-    public function setImpocontPisReter($impocontPisReter)
+    public function getImpocontPisReter(): ?bool
+    {
+        return $this->impocontPisReter;
+    }
+
+    public function setImpocontPisReter(bool $impocontPisReter): self
     {
         $this->impocontPisReter = $impocontPisReter;
 
         return $this;
     }
 
-    /**
-     * Get impocontPisReter.
-     *
-     * @return bool
-     */
-    public function getImpocontPisReter()
+    public function getImpocontPisDestacar(): ?bool
     {
-        return $this->impocontPisReter;
+        return $this->impocontPisDestacar;
     }
 
-    /**
-     * Set impocontPisDestacar.
-     *
-     * @param bool $impocontPisDestacar
-     *
-     * @return Impostoscontrato
-     */
-    public function setImpocontPisDestacar($impocontPisDestacar)
+    public function setImpocontPisDestacar(bool $impocontPisDestacar): self
     {
         $this->impocontPisDestacar = $impocontPisDestacar;
 
         return $this;
     }
 
-    /**
-     * Get impocontPisDestacar.
-     *
-     * @return bool
-     */
-    public function getImpocontPisDestacar()
+    public function getImpocontPisValor()
     {
-        return $this->impocontPisDestacar;
+        return $this->impocontPisValor;
     }
 
-    /**
-     * Set impocontPisValor.
-     *
-     * @param string $impocontPisValor
-     *
-     * @return Impostoscontrato
-     */
-    public function setImpocontPisValor($impocontPisValor)
+    public function setImpocontPisValor($impocontPisValor): self
     {
         $this->impocontPisValor = $impocontPisValor;
 
         return $this;
     }
 
-    /**
-     * Get impocontPisValor.
-     *
-     * @return string
-     */
-    public function getImpocontPisValor()
+    public function getImpocontPisReducao()
     {
-        return $this->impocontPisValor;
+        return $this->impocontPisReducao;
     }
 
-    /**
-     * Set impocontPisReducao.
-     *
-     * @param string|null $impocontPisReducao
-     *
-     * @return Impostoscontrato
-     */
-    public function setImpocontPisReducao($impocontPisReducao = null)
+    public function setImpocontPisReducao($impocontPisReducao): self
     {
         $this->impocontPisReducao = $impocontPisReducao;
 
         return $this;
     }
 
-    /**
-     * Get impocontPisReducao.
-     *
-     * @return string|null
-     */
-    public function getImpocontPisReducao()
+    public function getImpocontCofinsReter(): ?bool
     {
-        return $this->impocontPisReducao;
+        return $this->impocontCofinsReter;
     }
 
-    /**
-     * Set impocontCofinsReter.
-     *
-     * @param bool $impocontCofinsReter
-     *
-     * @return Impostoscontrato
-     */
-    public function setImpocontCofinsReter($impocontCofinsReter)
+    public function setImpocontCofinsReter(bool $impocontCofinsReter): self
     {
         $this->impocontCofinsReter = $impocontCofinsReter;
 
         return $this;
     }
 
-    /**
-     * Get impocontCofinsReter.
-     *
-     * @return bool
-     */
-    public function getImpocontCofinsReter()
+    public function getImpocontCofinsDestacar(): ?bool
     {
-        return $this->impocontCofinsReter;
+        return $this->impocontCofinsDestacar;
     }
 
-    /**
-     * Set impocontCofinsDestacar.
-     *
-     * @param bool $impocontCofinsDestacar
-     *
-     * @return Impostoscontrato
-     */
-    public function setImpocontCofinsDestacar($impocontCofinsDestacar)
+    public function setImpocontCofinsDestacar(bool $impocontCofinsDestacar): self
     {
         $this->impocontCofinsDestacar = $impocontCofinsDestacar;
 
         return $this;
     }
 
-    /**
-     * Get impocontCofinsDestacar.
-     *
-     * @return bool
-     */
-    public function getImpocontCofinsDestacar()
+    public function getImpocontCofinsValor()
     {
-        return $this->impocontCofinsDestacar;
+        return $this->impocontCofinsValor;
     }
 
-    /**
-     * Set impocontCofinsValor.
-     *
-     * @param string $impocontCofinsValor
-     *
-     * @return Impostoscontrato
-     */
-    public function setImpocontCofinsValor($impocontCofinsValor)
+    public function setImpocontCofinsValor($impocontCofinsValor): self
     {
         $this->impocontCofinsValor = $impocontCofinsValor;
 
         return $this;
     }
 
-    /**
-     * Get impocontCofinsValor.
-     *
-     * @return string
-     */
-    public function getImpocontCofinsValor()
+    public function getImpocontCofinsReducao()
     {
-        return $this->impocontCofinsValor;
+        return $this->impocontCofinsReducao;
     }
 
-    /**
-     * Set impocontCofinsReducao.
-     *
-     * @param string|null $impocontCofinsReducao
-     *
-     * @return Impostoscontrato
-     */
-    public function setImpocontCofinsReducao($impocontCofinsReducao = null)
+    public function setImpocontCofinsReducao($impocontCofinsReducao): self
     {
         $this->impocontCofinsReducao = $impocontCofinsReducao;
 
         return $this;
     }
 
-    /**
-     * Get impocontCofinsReducao.
-     *
-     * @return string|null
-     */
-    public function getImpocontCofinsReducao()
+    public function getImpocontIrReter(): ?bool
     {
-        return $this->impocontCofinsReducao;
+        return $this->impocontIrReter;
     }
 
-    /**
-     * Set impocontIrReter.
-     *
-     * @param bool $impocontIrReter
-     *
-     * @return Impostoscontrato
-     */
-    public function setImpocontIrReter($impocontIrReter)
+    public function setImpocontIrReter(bool $impocontIrReter): self
     {
         $this->impocontIrReter = $impocontIrReter;
 
         return $this;
     }
 
-    /**
-     * Get impocontIrReter.
-     *
-     * @return bool
-     */
-    public function getImpocontIrReter()
+    public function getImpocontIrDestacar(): ?bool
     {
-        return $this->impocontIrReter;
+        return $this->impocontIrDestacar;
     }
 
-    /**
-     * Set impocontIrDestacar.
-     *
-     * @param bool $impocontIrDestacar
-     *
-     * @return Impostoscontrato
-     */
-    public function setImpocontIrDestacar($impocontIrDestacar)
+    public function setImpocontIrDestacar(bool $impocontIrDestacar): self
     {
         $this->impocontIrDestacar = $impocontIrDestacar;
 
         return $this;
     }
 
-    /**
-     * Get impocontIrDestacar.
-     *
-     * @return bool
-     */
-    public function getImpocontIrDestacar()
+    public function getImpocontIrValor()
     {
-        return $this->impocontIrDestacar;
+        return $this->impocontIrValor;
     }
 
-    /**
-     * Set impocontIrValor.
-     *
-     * @param string $impocontIrValor
-     *
-     * @return Impostoscontrato
-     */
-    public function setImpocontIrValor($impocontIrValor)
+    public function setImpocontIrValor($impocontIrValor): self
     {
         $this->impocontIrValor = $impocontIrValor;
 
         return $this;
     }
 
-    /**
-     * Get impocontIrValor.
-     *
-     * @return string
-     */
-    public function getImpocontIrValor()
+    public function getImpocontIrReducao()
     {
-        return $this->impocontIrValor;
+        return $this->impocontIrReducao;
     }
 
-    /**
-     * Set impocontIrReducao.
-     *
-     * @param string|null $impocontIrReducao
-     *
-     * @return Impostoscontrato
-     */
-    public function setImpocontIrReducao($impocontIrReducao = null)
+    public function setImpocontIrReducao($impocontIrReducao): self
     {
         $this->impocontIrReducao = $impocontIrReducao;
 
         return $this;
     }
 
-    /**
-     * Get impocontIrReducao.
-     *
-     * @return string|null
-     */
-    public function getImpocontIrReducao()
+    public function getImpocontIsllReter(): ?bool
     {
-        return $this->impocontIrReducao;
+        return $this->impocontIsllReter;
     }
 
-    /**
-     * Set impocontIsllReter.
-     *
-     * @param bool $impocontIsllReter
-     *
-     * @return Impostoscontrato
-     */
-    public function setImpocontIsllReter($impocontIsllReter)
+    public function setImpocontIsllReter(bool $impocontIsllReter): self
     {
         $this->impocontIsllReter = $impocontIsllReter;
 
         return $this;
     }
 
-    /**
-     * Get impocontIsllReter.
-     *
-     * @return bool
-     */
-    public function getImpocontIsllReter()
+    public function getImpocontIsllDestacar(): ?bool
     {
-        return $this->impocontIsllReter;
+        return $this->impocontIsllDestacar;
     }
 
-    /**
-     * Set impocontIsllDestacar.
-     *
-     * @param bool $impocontIsllDestacar
-     *
-     * @return Impostoscontrato
-     */
-    public function setImpocontIsllDestacar($impocontIsllDestacar)
+    public function setImpocontIsllDestacar(bool $impocontIsllDestacar): self
     {
         $this->impocontIsllDestacar = $impocontIsllDestacar;
 
         return $this;
     }
 
-    /**
-     * Get impocontIsllDestacar.
-     *
-     * @return bool
-     */
-    public function getImpocontIsllDestacar()
+    public function getImpocontIsllValor()
     {
-        return $this->impocontIsllDestacar;
+        return $this->impocontIsllValor;
     }
 
-    /**
-     * Set impocontIsllValor.
-     *
-     * @param string $impocontIsllValor
-     *
-     * @return Impostoscontrato
-     */
-    public function setImpocontIsllValor($impocontIsllValor)
+    public function setImpocontIsllValor($impocontIsllValor): self
     {
         $this->impocontIsllValor = $impocontIsllValor;
 
         return $this;
     }
 
-    /**
-     * Get impocontIsllValor.
-     *
-     * @return string
-     */
-    public function getImpocontIsllValor()
+    public function getImpocontIsllReducao()
     {
-        return $this->impocontIsllValor;
+        return $this->impocontIsllReducao;
     }
 
-    /**
-     * Set impocontIsllReducao.
-     *
-     * @param string|null $impocontIsllReducao
-     *
-     * @return Impostoscontrato
-     */
-    public function setImpocontIsllReducao($impocontIsllReducao = null)
+    public function setImpocontIsllReducao($impocontIsllReducao): self
     {
         $this->impocontIsllReducao = $impocontIsllReducao;
 
         return $this;
     }
 
-    /**
-     * Get impocontIsllReducao.
-     *
-     * @return string|null
-     */
-    public function getImpocontIsllReducao()
+    public function getImpocontIssqnReter(): ?bool
     {
-        return $this->impocontIsllReducao;
+        return $this->impocontIssqnReter;
     }
 
-    /**
-     * Set impocontIssqnReter.
-     *
-     * @param bool $impocontIssqnReter
-     *
-     * @return Impostoscontrato
-     */
-    public function setImpocontIssqnReter($impocontIssqnReter)
+    public function setImpocontIssqnReter(bool $impocontIssqnReter): self
     {
         $this->impocontIssqnReter = $impocontIssqnReter;
 
         return $this;
     }
 
-    /**
-     * Get impocontIssqnReter.
-     *
-     * @return bool
-     */
-    public function getImpocontIssqnReter()
+    public function getImpocontIssqnDestacar(): ?bool
     {
-        return $this->impocontIssqnReter;
+        return $this->impocontIssqnDestacar;
     }
 
-    /**
-     * Set impocontIssqnDestacar.
-     *
-     * @param bool $impocontIssqnDestacar
-     *
-     * @return Impostoscontrato
-     */
-    public function setImpocontIssqnDestacar($impocontIssqnDestacar)
+    public function setImpocontIssqnDestacar(bool $impocontIssqnDestacar): self
     {
         $this->impocontIssqnDestacar = $impocontIssqnDestacar;
 
         return $this;
     }
 
-    /**
-     * Get impocontIssqnDestacar.
-     *
-     * @return bool
-     */
-    public function getImpocontIssqnDestacar()
+    public function getImpocontIssqnValor()
     {
-        return $this->impocontIssqnDestacar;
+        return $this->impocontIssqnValor;
     }
 
-    /**
-     * Set impocontIssqnValor.
-     *
-     * @param string $impocontIssqnValor
-     *
-     * @return Impostoscontrato
-     */
-    public function setImpocontIssqnValor($impocontIssqnValor)
+    public function setImpocontIssqnValor($impocontIssqnValor): self
     {
         $this->impocontIssqnValor = $impocontIssqnValor;
 
         return $this;
     }
 
-    /**
-     * Get impocontIssqnValor.
-     *
-     * @return string
-     */
-    public function getImpocontIssqnValor()
+    public function getImpocontIssqnReducao()
     {
-        return $this->impocontIssqnValor;
+        return $this->impocontIssqnReducao;
     }
 
-    /**
-     * Set impocontIssqnReducao.
-     *
-     * @param string|null $impocontIssqnReducao
-     *
-     * @return Impostoscontrato
-     */
-    public function setImpocontIssqnReducao($impocontIssqnReducao = null)
+    public function setImpocontIssqnReducao($impocontIssqnReducao): self
     {
         $this->impocontIssqnReducao = $impocontIssqnReducao;
 
         return $this;
     }
 
-    /**
-     * Get impocontIssqnReducao.
-     *
-     * @return string|null
-     */
-    public function getImpocontIssqnReducao()
+    public function getImpocontIcmsReter(): ?bool
     {
-        return $this->impocontIssqnReducao;
+        return $this->impocontIcmsReter;
     }
 
-    /**
-     * Set impocontIcmsReter.
-     *
-     * @param bool $impocontIcmsReter
-     *
-     * @return Impostoscontrato
-     */
-    public function setImpocontIcmsReter($impocontIcmsReter)
+    public function setImpocontIcmsReter(bool $impocontIcmsReter): self
     {
         $this->impocontIcmsReter = $impocontIcmsReter;
 
         return $this;
     }
 
-    /**
-     * Get impocontIcmsReter.
-     *
-     * @return bool
-     */
-    public function getImpocontIcmsReter()
+    public function getImpocontIcmsDestacar(): ?bool
     {
-        return $this->impocontIcmsReter;
+        return $this->impocontIcmsDestacar;
     }
 
-    /**
-     * Set impocontIcmsDestacar.
-     *
-     * @param bool $impocontIcmsDestacar
-     *
-     * @return Impostoscontrato
-     */
-    public function setImpocontIcmsDestacar($impocontIcmsDestacar)
+    public function setImpocontIcmsDestacar(bool $impocontIcmsDestacar): self
     {
         $this->impocontIcmsDestacar = $impocontIcmsDestacar;
 
         return $this;
     }
 
-    /**
-     * Get impocontIcmsDestacar.
-     *
-     * @return bool
-     */
-    public function getImpocontIcmsDestacar()
+    public function getImpocontIcmsValor()
     {
-        return $this->impocontIcmsDestacar;
+        return $this->impocontIcmsValor;
     }
 
-    /**
-     * Set impocontIcmsValor.
-     *
-     * @param string $impocontIcmsValor
-     *
-     * @return Impostoscontrato
-     */
-    public function setImpocontIcmsValor($impocontIcmsValor)
+    public function setImpocontIcmsValor($impocontIcmsValor): self
     {
         $this->impocontIcmsValor = $impocontIcmsValor;
 
         return $this;
     }
 
-    /**
-     * Get impocontIcmsValor.
-     *
-     * @return string
-     */
-    public function getImpocontIcmsValor()
+    public function getImpocontIcmsReducao()
     {
-        return $this->impocontIcmsValor;
+        return $this->impocontIcmsReducao;
     }
 
-    /**
-     * Set impocontIcmsReducao.
-     *
-     * @param string|null $impocontIcmsReducao
-     *
-     * @return Impostoscontrato
-     */
-    public function setImpocontIcmsReducao($impocontIcmsReducao = null)
+    public function setImpocontIcmsReducao($impocontIcmsReducao): self
     {
         $this->impocontIcmsReducao = $impocontIcmsReducao;
 
         return $this;
     }
 
-    /**
-     * Get impocontIcmsReducao.
-     *
-     * @return string|null
-     */
-    public function getImpocontIcmsReducao()
+    public function getAtivPisValor()
     {
-        return $this->impocontIcmsReducao;
+        return $this->ativPisValor;
     }
 
-    /**
-     * Set ativPisValor.
-     *
-     * @param string|null $ativPisValor
-     *
-     * @return Impostoscontrato
-     */
-    public function setAtivPisValor($ativPisValor = null)
+    public function setAtivPisValor($ativPisValor): self
     {
         $this->ativPisValor = $ativPisValor;
 
         return $this;
     }
 
-    /**
-     * Get ativPisValor.
-     *
-     * @return string|null
-     */
-    public function getAtivPisValor()
+    public function getAtivPisReter(): ?bool
     {
-        return $this->ativPisValor;
+        return $this->ativPisReter;
     }
 
-    /**
-     * Set ativPisReter.
-     *
-     * @param bool|null $ativPisReter
-     *
-     * @return Impostoscontrato
-     */
-    public function setAtivPisReter($ativPisReter = null)
+    public function setAtivPisReter(?bool $ativPisReter): self
     {
         $this->ativPisReter = $ativPisReter;
 
         return $this;
     }
 
-    /**
-     * Get ativPisReter.
-     *
-     * @return bool|null
-     */
-    public function getAtivPisReter()
+    public function getAtivCofinsValor()
     {
-        return $this->ativPisReter;
+        return $this->ativCofinsValor;
     }
 
-    /**
-     * Set ativCofinsValor.
-     *
-     * @param string|null $ativCofinsValor
-     *
-     * @return Impostoscontrato
-     */
-    public function setAtivCofinsValor($ativCofinsValor = null)
+    public function setAtivCofinsValor($ativCofinsValor): self
     {
         $this->ativCofinsValor = $ativCofinsValor;
 
         return $this;
     }
 
-    /**
-     * Get ativCofinsValor.
-     *
-     * @return string|null
-     */
-    public function getAtivCofinsValor()
+    public function getAtivCofinsReter(): ?bool
     {
-        return $this->ativCofinsValor;
+        return $this->ativCofinsReter;
     }
 
-    /**
-     * Set ativCofinsReter.
-     *
-     * @param bool|null $ativCofinsReter
-     *
-     * @return Impostoscontrato
-     */
-    public function setAtivCofinsReter($ativCofinsReter = null)
+    public function setAtivCofinsReter(?bool $ativCofinsReter): self
     {
         $this->ativCofinsReter = $ativCofinsReter;
 
         return $this;
     }
 
-    /**
-     * Get ativCofinsReter.
-     *
-     * @return bool|null
-     */
-    public function getAtivCofinsReter()
+    public function getAtivIrValor()
     {
-        return $this->ativCofinsReter;
+        return $this->ativIrValor;
     }
 
-    /**
-     * Set ativIrValor.
-     *
-     * @param string|null $ativIrValor
-     *
-     * @return Impostoscontrato
-     */
-    public function setAtivIrValor($ativIrValor = null)
+    public function setAtivIrValor($ativIrValor): self
     {
         $this->ativIrValor = $ativIrValor;
 
         return $this;
     }
 
-    /**
-     * Get ativIrValor.
-     *
-     * @return string|null
-     */
-    public function getAtivIrValor()
+    public function getAtivIrReter(): ?bool
     {
-        return $this->ativIrValor;
+        return $this->ativIrReter;
     }
 
-    /**
-     * Set ativIrReter.
-     *
-     * @param bool|null $ativIrReter
-     *
-     * @return Impostoscontrato
-     */
-    public function setAtivIrReter($ativIrReter = null)
+    public function setAtivIrReter(?bool $ativIrReter): self
     {
         $this->ativIrReter = $ativIrReter;
 
         return $this;
     }
 
-    /**
-     * Get ativIrReter.
-     *
-     * @return bool|null
-     */
-    public function getAtivIrReter()
+    public function getAtivCsllValor()
     {
-        return $this->ativIrReter;
+        return $this->ativCsllValor;
     }
 
-    /**
-     * Set ativCsllValor.
-     *
-     * @param string|null $ativCsllValor
-     *
-     * @return Impostoscontrato
-     */
-    public function setAtivCsllValor($ativCsllValor = null)
+    public function setAtivCsllValor($ativCsllValor): self
     {
         $this->ativCsllValor = $ativCsllValor;
 
         return $this;
     }
 
-    /**
-     * Get ativCsllValor.
-     *
-     * @return string|null
-     */
-    public function getAtivCsllValor()
+    public function getAtivCsllReter(): ?bool
     {
-        return $this->ativCsllValor;
+        return $this->ativCsllReter;
     }
 
-    /**
-     * Set ativCsllReter.
-     *
-     * @param bool|null $ativCsllReter
-     *
-     * @return Impostoscontrato
-     */
-    public function setAtivCsllReter($ativCsllReter = null)
+    public function setAtivCsllReter(?bool $ativCsllReter): self
     {
         $this->ativCsllReter = $ativCsllReter;
 
         return $this;
     }
 
-    /**
-     * Get ativCsllReter.
-     *
-     * @return bool|null
-     */
-    public function getAtivCsllReter()
+    public function getAtivIssqnValor()
     {
-        return $this->ativCsllReter;
+        return $this->ativIssqnValor;
     }
 
-    /**
-     * Set ativIssqnValor.
-     *
-     * @param string|null $ativIssqnValor
-     *
-     * @return Impostoscontrato
-     */
-    public function setAtivIssqnValor($ativIssqnValor = null)
+    public function setAtivIssqnValor($ativIssqnValor): self
     {
         $this->ativIssqnValor = $ativIssqnValor;
 
         return $this;
     }
 
-    /**
-     * Get ativIssqnValor.
-     *
-     * @return string|null
-     */
-    public function getAtivIssqnValor()
+    public function getAtivIssqnReter(): ?bool
     {
-        return $this->ativIssqnValor;
+        return $this->ativIssqnReter;
     }
 
-    /**
-     * Set ativIssqnReter.
-     *
-     * @param bool|null $ativIssqnReter
-     *
-     * @return Impostoscontrato
-     */
-    public function setAtivIssqnReter($ativIssqnReter = null)
+    public function setAtivIssqnReter(?bool $ativIssqnReter): self
     {
         $this->ativIssqnReter = $ativIssqnReter;
 
         return $this;
     }
 
-    /**
-     * Get ativIssqnReter.
-     *
-     * @return bool|null
-     */
-    public function getAtivIssqnReter()
+    public function getContCodigoid(): ?Contrato
     {
-        return $this->ativIssqnReter;
+        return $this->contCodigoid;
     }
 
-    /**
-     * Set contCodigoid.
-     *
-     * @param \App\Entity\Financeiro\Contrato|null $contCodigoid
-     *
-     * @return Impostoscontrato
-     */
-    public function setContCodigoid(\App\Entity\Financeiro\Contrato $contCodigoid = null)
+    public function setContCodigoid(?Contrato $contCodigoid): self
     {
         $this->contCodigoid = $contCodigoid;
 
         return $this;
-    }
-
-    /**
-     * Get contCodigoid.
-     *
-     * @return \App\Entity\Financeiro\Contrato|null
-     */
-    public function getContCodigoid()
-    {
-        return $this->contCodigoid;
     }
 }

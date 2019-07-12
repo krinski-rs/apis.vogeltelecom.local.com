@@ -29,9 +29,8 @@ final class Version20190529173902 extends AbstractMigration
   PRIMARY KEY (id),
   CONSTRAINT fk_circuito_salesforce_cont_codigoid FOREIGN KEY (cont_codigoid) REFERENCES contrato (cont_codigoid) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1');
-        $this->addSql('ALTER TABLE financeiro.contrato 
-ADD COLUMN salesforce_id VARCHAR(50) NULL AFTER cont_segregar_valor;
-');
+        $this->addSql('ALTER TABLE financeiro.contrato  ADD COLUMN salesforce_id VARCHAR(50) NULL AFTER cont_segregar_valor;');
+        $this->addSql('ALTER TABLE financeiro.contrato  ADD COLUMN protheus_id VARCHAR(50) NULL AFTER salesforce_id;');
     }
 
     public function down(Schema $schema) : void
@@ -39,5 +38,6 @@ ADD COLUMN salesforce_id VARCHAR(50) NULL AFTER cont_segregar_valor;
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('DROP TABLE circuito_salesforce;');
         $this->addSql('ALTER TABLE financeiro.contrato DROP COLUMN salesforce_id');
+        $this->addSql('ALTER TABLE financeiro.contrato DROP COLUMN protheus_id');
     }
 }
