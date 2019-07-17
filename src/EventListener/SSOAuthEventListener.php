@@ -80,9 +80,18 @@ class SSOAuthEventListener
         }
         $objRequest = $objGetResponseEvent->getRequest();
         $method  = $objRequest->getRealMethod();
+        $allowed_origin = array_search($objRequest->headers->get('origin'), $this->corsParameters['allowed_origin']);
+        $allowed_origin = (!$allowed_origin ? array_search($objRequest->getClientIp(), $this->corsParameters['allowed_origin']) : $allowed_origin);
+
+        if(!$allowed_origin){
+            $objResponse = new Response();
+            $objResponse->headers->set('status', 403);
+            $objGetResponseEvent->setResponse($objResponse);
+            return $objGetResponseEvent;
+        }
+        
         if ('OPTIONS' === strtoupper($method)) {
             $objResponse = new Response();
-            $allowed_origin = array_search($objRequest->headers->get('origin'), $this->corsParameters['allowed_origin']);
             $objResponse->headers->set('Access-Control-Allow-Origin', trim($this->corsParameters['allowed_origin'][$allowed_origin]));
             $objResponse->headers->set('Access-Control-Allow-Credentials', 'true');
             $objResponse->headers->set('Access-Control-Allow-Methods', 'POST,GET,PUT,DELETE,PATCH,OPTIONS');
@@ -105,25 +114,8 @@ class SSOAuthEventListener
                 }
             }
         }
-        
-//         if(!$this->objSSoClient->me()){
-//             throw new \Exception('Erro de login.');
-//         }
-        
     }
-    
-//     private function setRedirectToLoginResponse(GetResponseEvent $objGetResponseEvent)
-//     {
-//         $request = Request::createFromGlobals();
-//         if ($request->isXmlHttpRequest() ) {
-//             $data = array("msg" => "Você precisa estar logado para realizar esta ação");
-//             $response = new JsonResponse($data, 403);
-//         } else {
-//             $response = new RedirectResponse('/login', 302);
-//         }
-//         $objGetResponseEvent->setResponse($response);
-//         $objGetResponseEvent->stopPropagation();
-//     }
+
     /**
      * Método que trata o response do framwork
      * 
@@ -137,13 +129,17 @@ class SSOAuthEventListener
         /*
          * Execute o CORS aqui para garantir que o domínio esteja no sistema
          */
-       
-        //if (in_array($request->headers->get('origin'), $this->cors)) {
         if (HttpKernelInterface::MASTER_REQUEST !== $objFilterResponseEvent->getRequestType()) {
             return;
         }
         
         $allowed_origin = array_search($objRequest->headers->get('origin'), $this->corsParameters['allowed_origin']);
+        $allowed_origin = (!$allowed_origin ? array_search($objRequest->getClientIp(), $this->corsParameters['allowed_origin']) : $allowed_origin);
+        if(!$allowed_origin){
+            $objResponse = $objFilterResponseEvent->getResponse();
+            return $objResponse->headers->set('status', 403);
+        }
+        
         $objResponse = $objFilterResponseEvent->getResponse();
         $objResponse->headers->set('Access-Control-Allow-Origin', trim($this->corsParameters['allowed_origin'][$allowed_origin]));
         $objResponse->headers->set('Access-Control-Allow-Credentials', 'true');
