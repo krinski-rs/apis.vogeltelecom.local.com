@@ -279,46 +279,6 @@ class IntegrarCircuito
                             
                             if($objPop instanceof Pop){                                
                                 $objEnderecoPontaB = $this->objEndereco->getByName(trim("POP - ".$objPop->getNome()));
-                                /*
-                                $objPoprelacaolocalizacao = $objPop->getPoprelacaolocalizacao()->filter(
-                                    function(Poprelacaolocalizacao $objPoprelacaolocalizacao){
-                                        return is_null($objPoprelacaolocalizacao->getDataFim());
-                                    }
-                                )->first();
-                                
-                                
-                                $objPoplocalizacao = $objPoprelacaolocalizacao->getPoplocalizacao();
-                                if($objPoplocalizacao instanceof Poplocalizacao){
-                                    $objAdmUf = $this->objAdmUfRepository->findOneBy(['nome'=>$objPoplocalizacao->getUf()]);
-                                    if($objAdmUf instanceof AdmUf){
-                                        $objAdmCidades = $this->objAdmCidadesRepository->findOneBy(['nome'=>$objPoplocalizacao->getCidade(), 'admUf'=>$objAdmUf]);
-                                        if($objAdmCidades instanceof AdmCidades){
-                                            if($objAdmCidades->getCodigoIbge()){
-                                                $objCidadePontaB = $this->objCidade->getByCodigoIbge($objAdmCidades->getCodigoIbge());
-                                                $arrayEnderecoPontaB = [
-                                                    'Bairro__c' => trim($objPoplocalizacao->getBairro()),
-                                                    'CEP__c' => $this->somenteNumeros($objPoplocalizacao->getCep()),
-                                                    'Cidade__c' => $objCidadePontaB->Id,
-                                                    'Complemento__c' => $objPoplocalizacao->getComplemento(),
-                                                    'Conta__c' => $objAccountSalesforce->Id,
-                                                    'Name' => 'POP '.$objPop->getNome(),
-                                                    'Designador__c' => $objContrato->getStt(),
-                                                    'Estado__c' => $objCidade->getAdmUf()->getSigla(),
-                                                    'EstruturaFisica__c' => 'Predio',
-                                                    'Logradouro__c' => trim(iconv('UTF-8', 'ASCII//TRANSLIT', $this->strReplaceLOgradouro($objPoplocalizacao->getEndereco()))),
-                                                    'Numero__c' => $objPoplocalizacao->getNumero(),
-                                                    'TipoEndereco__c' => 'Instalação',
-                                                    'TipoLogradouro__c' => 160,
-                                                    $objAdmCidades->getCodigoIbge()
-                                                ];
-                                                print_r($arrayEnderecoPontaB);
-                                            }
-                                        }
-                                    }
-                                }
-                                */
-                                
-                                
                             }
                         }
                     }
@@ -515,7 +475,76 @@ class IntegrarCircuito
 //             print_r($arrayEndereco);
             
             $objEndereco = $this->objEndereco->update($arrayEndereco, $idEndereco);
+            $objEnderecoPontaB = NULL;
+            if($objEnderecoentrega->getCircuitos()->count()){
+                $objCircuitoGcdb = $objEnderecoentrega->getCircuitos()->first();
+                
+                if($objCircuitoGcdb instanceof CircuitoGcdb){
+                    
+                    if($objCircuitoGcdb->getCircuitoPop()->count()){
+                        $objCircuitoPop = $objCircuitoGcdb->getCircuitoPop()->filter(
+                            function(CircuitoPop $objCircuitoPop){
+                                return $objCircuitoPop->getAtivo();
+                            }
+                            )->first();
+                            $objEnderecoPontaB = NULL;
+                            if($objCircuitoPop instanceof CircuitoPop){
+                                $objPop = $objCircuitoPop->getPop();
+                                
+                                if($objPop instanceof Pop){
+                                    $objEnderecoPontaB = $this->objEndereco->getByName(trim("POP - ".$objPop->getNome()));
+                                }
+                            }
+                    }
+                }
+            }
             
+            $velocidade = NULL;
+            $objContratoservico = $objContrato->getContratoservico()->first();
+            $objProdutoSalesforce = NULL;
+            if($objContratoservico instanceof Contratoservico){
+                $produto = $objContratoservico->getServcapaCodigoid()->getServCodigoid()->getServNome();
+                $objProdutoSalesforce = $this->objProduto->getByName($produto);
+                $medida = $objContratoservico->getServcapaCodigoid()->getMediCodigoid()->getMediNome();
+                $velocidade = $objContratoservico->getServcapaCodigoid()->getCapaCodigoid()->getCapaCapacidade();
+                switch($medida){
+                    case 'Megabit':
+                        $medida = "Mbps";
+                        break;
+                    case 'Kilobit':
+                        $medida = "Kbps";
+                        break;
+                    case 'bit':
+                        $velocidade = ($velocidade/1024);
+                        $medida = "Kbps";
+                        break;
+                    case 'Gigabit':
+                        $medida = "Gbps";
+                        break;
+                    case 'Megabyte':
+                        $medida = "Mbps";
+                        break;
+                    case 'Gigabyte':
+                        $medida = "Gbpps";
+                        break;
+                    case 'byte':
+                        $velocidade = ($velocidade/1024);
+                        $medida = "Kbps";
+                        break;
+                    default:
+                        $velocidade = "";
+                        $medida = "";
+                        break;
+                }
+            }
+            
+            $status = NULL;
+            if(array_key_exists($objContrato->getStatCodigoid()->getStatCodigoid(), Circuit::$arrayEmAtivacao)){
+                $status = Circuit::$arrayEmAtivacao[$objContrato->getStatCodigoid()->getStatCodigoid()];
+            }else{
+                $status = $objContrato->getStatCodigoid()->getStatNome();
+            }
+
             $arrayCircuit = (array)$this->objCircuit->getByCircuito($objContrato->getContCodigoid());
             $arrayCircuit['Name'] = trim($objContrato->getStt());
             $arrayCircuit['CNPJ__c'] = $objAccountSalesforce->CNPJ__c;
@@ -523,7 +552,11 @@ class IntegrarCircuito
             $arrayCircuit['CircuitoId__c'] = $objContrato->getContCodigoid();
             $arrayCircuit['Endereco__c'] = $idEndereco;
             $arrayCircuit['NomeCliente__c'] = $objAccountSalesforce->Name;
-            $arrayCircuit['PontaB__c'] = $idEndereco;
+            $arrayCircuit['PontaB__c'] = $objEnderecoPontaB->Id;
+            $arrayCircuit['Status__c'] = $status;
+            $arrayCircuit['Velocidade__c'] = $velocidade;
+            $arrayCircuit['Un_Medida_Velocidade__c'] = $medida;
+            
             $idCircuit = $arrayCircuit['Id'];
             unset($arrayCircuit['Id'], $arrayCircuit['LastModifiedDate'], $arrayCircuit['LastReferencedDate'], $arrayCircuit['EnderecoPontaA__c']);
             unset($arrayCircuit['CreatedById'], $arrayCircuit['Identificador__c'], $arrayCircuit['IsDeleted'], $arrayCircuit['EnderecoCompleto__c']);
