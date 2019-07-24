@@ -28,7 +28,7 @@ App\Entity\Financeiro\Contratoservico:
                 comment: 'cont_circuito - meios de entrega e designação de ckt clm (circuito carrier last mile)'
             column: contserv_circuito
     manyToOne:
-        contCodigoid:
+        contrato:
             targetEntity: App\Entity\Financeiro\Contrato
             cascade: {  }
             fetch: LAZY

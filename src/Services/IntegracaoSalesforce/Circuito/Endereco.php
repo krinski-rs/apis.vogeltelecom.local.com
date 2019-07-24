@@ -79,7 +79,26 @@ class Endereco
             throw $e;
         }
     }
-    
+     
+    public function getByName(string $name)
+    {
+        try {
+            $url = "{$this->params['base']}{$this->params['endereco']['url']}/Name/".$name;
+            $params = [
+                'headers' => ['Authorization' => $this->accessToken]
+            ];
+            
+            $this->objLogger->error("Busca de Endereço por nome", [$params, 'url'=>$url]);
+            
+            $objGuzzleHttpResponse = $this->objClient->request("GET", $url, $params);
+            return json_decode($objGuzzleHttpResponse->getBody()->getContents());
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            throw new \Exception($e->getResponse()->getBody()->getContents(), $e->getCode());
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+   
     public function getByDesignador(string $designador)
     {
         try {

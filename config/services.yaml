@@ -13,6 +13,7 @@ parameters:
         allowed_origin:
             - sso.local.com:3000
             - http://luma.local.com:3000
+            - apis.vogeltelecom.local.com
         allowed_headers:
             - AccessToken
             - Content-Type

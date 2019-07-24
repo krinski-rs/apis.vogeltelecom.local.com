@@ -1,6 +1,6 @@
 App\Entity\Gcdb\Prioridade:
     type: entity
-    table: Prioridade
+    table: gcdb.Prioridade
     indexes:
         CustomerID:
             columns:

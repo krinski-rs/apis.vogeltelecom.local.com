@@ -168,6 +168,11 @@ App\Entity\Gcdb\Customers:
                     referencedColumnName: id
             orphanRemoval: false
     oneToMany:
+        contratos:
+            targetEntity: App\Entity\Financeiro\Contrato
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: customers
         customers2users:
             targetEntity: App\Entity\Gcdb\Customers2users
             cascade: {  }

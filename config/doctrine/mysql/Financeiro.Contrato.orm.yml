@@ -52,12 +52,6 @@ App\Entity\Financeiro\Contrato:
             generator:
                 strategy: IDENTITY
     fields:
-        clieCodigoid:
-            type: integer
-            nullable: true
-            options:
-                unsigned: false
-            column: clie_codigoid
         usuaCodigoid:
             type: integer
             nullable: false
@@ -310,14 +304,29 @@ App\Entity\Financeiro\Contrato:
                 stat_codigoid:
                     referencedColumnName: stat_codigoid
             orphanRemoval: false
+        customers:
+            targetEntity: App\Entity\Gcdb\Customers
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                clie_codigoid:
+                    referencedColumnName: CustomerID
+            orphanRemoval: false
     oneToMany:
         contratos:
             targetEntity: App\Entity\Financeiro\Contrato
             cascade: {  }
             fetch: LAZY
-            mappedBy: contPaicodigoid
+            mappedBy: contrato
         enderecoentregaatributovalor:
             targetEntity: App\Entity\Financeiro\Enderecoentregaatributovalor
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: contrato
+        contratoservico:
+            targetEntity: App\Entity\Financeiro\Contratoservico
             cascade: {  }
             fetch: LAZY
             mappedBy: contrato
