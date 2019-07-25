@@ -287,6 +287,8 @@ class Account
             
             $fone = $this->formataFone($objCadUsersTelefone->getDdi().$objCadUsersTelefone->getDdd(). $objCadUsersTelefone->getTelefone());
             $nivel = trim($objCustomers->getPrioridades()->first()->getNivel());
+            print_r("x-$nivel-x");
+            print_r(self::$arrayPrioridade);
             $arrayAccount = [
                 'BairroCobranca__c' => $bairro,
                 'BairroComercial__c' => $bairro,
@@ -295,7 +297,7 @@ class Account
                 'CEPComercial__c' => $objCadUser->getCep(),
                 'CidadeCobranca__c' => $objCidadeSalesforce->Id,
                 'CidadeComercial__c' => $objCidadeSalesforce->Id,
-                'ClassificacaoCliente__c' => $this->arrayPrioridade[$nivel],
+                'ClassificacaoCliente__c' => self::$arrayPrioridade[$nivel],
                 'Name' => trim($nome),
                 'CNPJ__c' => $cnpj,
                 'ComplementoCobranca__c' => '',
@@ -335,7 +337,6 @@ class Account
                 'ShippingPostalCode' => $objCadUser->getCep(),
                 'BillingGeocodeAccuracy' => '',
                 'ShippingGeocodeAccuracy' => '',
-                'ClassificacaoCliente__c' => Circuit::$arrayEmAtivacao[$objCustomers->getPrioridades()->first()->getNivel()]
             ];
             return $this->create($arrayAccount);
         } catch (\Exception $e) {
