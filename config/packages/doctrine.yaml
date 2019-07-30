@@ -32,24 +32,14 @@ doctrine:
                 password: '%env(resolve:DB_PASSWORD)%'
                 charset:  '%env(resolve:DB_CHARSET)%'
                 schema_filter: '%env(resolve:DB_CEP_SCHEMA)%'
-            financeiro:
-                driver:   '%env(resolve:DB_FINANC_DRIVER)%'
-                host:     '%env(resolve:DB_FINANC_HOST)%'
-                port:     '%env(resolve:DB_FINANC_PORT)%'
-                dbname:   '%env(resolve:DB_FINANC_DBNAME)%'
-                user:     '%env(resolve:DB_FINANC_USER)%'
-                password: '%env(resolve:DB_FINANC_PASSWORD)%'
-                charset:  '%env(resolve:DB_FINANC_CHARSET)%'
-                mapping_types:
-                    enum: string
-            gcdb:
-                driver:   '%env(resolve:DB_GCDB_DRIVER)%'
-                host:     '%env(resolve:DB_GCDB_HOST)%'
-                port:     '%env(resolve:DB_GCDB_PORT)%'
-                dbname:   '%env(resolve:DB_GCDB_DBNAME)%'
-                user:     '%env(resolve:DB_GCDB_USER)%'
-                password: '%env(resolve:DB_GCDB_PASSWORD)%'
-                charset:  '%env(resolve:DB_GCDB_CHARSET)%'
+            mysql:
+                driver:   '%env(resolve:DB_MYSQL_DRIVER)%'
+                host:     '%env(resolve:DB_MYSQL_HOST)%'
+                port:     '%env(resolve:DB_MYSQL_PORT)%'
+                dbname:   '%env(resolve:DB_MYSQL_DBNAME)%'
+                user:     '%env(resolve:DB_MYSQL_USER)%'
+                password: '%env(resolve:DB_MYSQL_PASSWORD)%'
+                charset:  '%env(resolve:DB_MYSQL_CHARSET)%'
                 mapping_types:
                     enum: string
     orm:
@@ -64,7 +54,7 @@ doctrine:
                         type: yml
                         dir: '%kernel.project_dir%/config/doctrine/cep'
                         prefix: 'App\Entity'
-                        alias: App\Entity
+                        alias: AppEntity
             cep:
                 connection: cep
                 mappings:
@@ -73,22 +63,15 @@ doctrine:
                         type: yml
                         dir: '%kernel.project_dir%/config/doctrine/cep'
                         prefix: 'App\Entity'
-                        alias: App\Entity
-            financeiro:
-                connection: financeiro
+                        alias: AppEntity
+            mysql:
+                connection: mysql
                 mappings:
-                    Financeiro:
+                    Mysql:
                         is_bundle: false
                         type: yml
-                        dir: '%kernel.project_dir%/config/doctrine/financeiro'
+                        dir: '%kernel.project_dir%/config/doctrine/mysql'
                         prefix: 'App\Entity'
-                        alias: App\Entity
-            gcdb:
-                connection: gcdb
-                mappings:
-                    Gcdb:
-                        is_bundle: false
-                        type: yml
-                        dir: '%kernel.project_dir%/config/doctrine/gcdb'
-                        prefix: 'App\Entity'
-                        alias: App\Entity
+                        alias: AppEntity
+
+                        

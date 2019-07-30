@@ -1,0 +1,72 @@
+App\Entity\Gcdb\CircuitoPop:
+    type: entity
+    table: gcdb.circuito_pop
+    indexes:
+        fk_endeentratrivalo_codigoid:
+            columns:
+                - endeentratrivalo_codigoid
+        fk_circuito_pop_circuito1_idx:
+            columns:
+                - circ_codigoid
+        fk_id_pop_idx1:
+            columns:
+                - id_pop
+    id:
+        idCircuitoPop:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_circuito_pop
+            generator:
+                strategy: IDENTITY
+    fields:
+        idPop:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_pop
+        registrante:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        dataInc:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: data_inc
+        endeentratrivaloCodigoid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: endeentratrivalo_codigoid
+        ativo:
+            type: boolean
+            nullable: true
+    manyToOne:
+        circuito:
+            targetEntity: App\Entity\Gcdb\Circuito
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                circ_codigoid:
+                    referencedColumnName: circ_codigoid
+            orphanRemoval: false
+        pop:
+            targetEntity: App\Entity\Luma\Pop
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_pop:
+                    referencedColumnName: id_pop
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

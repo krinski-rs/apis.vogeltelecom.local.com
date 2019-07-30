@@ -2,6 +2,14 @@
 
 namespace App\Entity\Financeiro;
 
+use App\Entity\Gcdb\AdmCidades;
+use App\Entity\Gcdb\AdmLogradouro;
+use App\Entity\Gcdb\AdmPais;
+use App\Entity\Gcdb\AdmUf;
+use App\Entity\Gcdb\Circuito;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 class Enderecoentrega
 {
     private $endeentrCodigoid;
@@ -9,12 +17,6 @@ class Enderecoentrega
     private $contCodigoid;
 
     private $endeentrConcentrador;
-
-    private $endeentrPais;
-
-    private $endeentrEstado;
-
-    private $endeentrCidade;
 
     private $endeentrBairro;
 
@@ -34,7 +36,20 @@ class Enderecoentrega
 
     private $endeentrDesignadorOld;
 
+    private $circuitos;
+
+    private $admCidades;
+
+    private $admPais;
+
+    private $admUf;
+
     private $admLogradouro;
+
+    public function __construct()
+    {
+        $this->circuitos = new ArrayCollection();
+    }
 
     public function getEndeentrCodigoid(): ?int
     {
@@ -61,42 +76,6 @@ class Enderecoentrega
     public function setEndeentrConcentrador(bool $endeentrConcentrador): self
     {
         $this->endeentrConcentrador = $endeentrConcentrador;
-
-        return $this;
-    }
-
-    public function getEndeentrPais(): ?int
-    {
-        return $this->endeentrPais;
-    }
-
-    public function setEndeentrPais(int $endeentrPais): self
-    {
-        $this->endeentrPais = $endeentrPais;
-
-        return $this;
-    }
-
-    public function getEndeentrEstado(): ?int
-    {
-        return $this->endeentrEstado;
-    }
-
-    public function setEndeentrEstado(int $endeentrEstado): self
-    {
-        $this->endeentrEstado = $endeentrEstado;
-
-        return $this;
-    }
-
-    public function getEndeentrCidade(): ?int
-    {
-        return $this->endeentrCidade;
-    }
-
-    public function setEndeentrCidade(int $endeentrCidade): self
-    {
-        $this->endeentrCidade = $endeentrCidade;
 
         return $this;
     }
@@ -209,12 +188,79 @@ class Enderecoentrega
         return $this;
     }
 
-    public function getAdmLogradouro(): ?int
+    /**
+     * @return Collection|Circuito[]
+     */
+    public function getCircuitos(): Collection
+    {
+        return $this->circuitos;
+    }
+
+    public function addCircuito(Circuito $circuito): self
+    {
+        if (!$this->circuitos->contains($circuito)) {
+            $this->circuitos[] = $circuito;
+            $circuito->setEnderecoentrega($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCircuito(Circuito $circuito): self
+    {
+        if ($this->circuitos->contains($circuito)) {
+            $this->circuitos->removeElement($circuito);
+            // set the owning side to null (unless already changed)
+            if ($circuito->getEnderecoentrega() === $this) {
+                $circuito->setEnderecoentrega(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getAdmCidades(): ?AdmCidades
+    {
+        return $this->admCidades;
+    }
+
+    public function setAdmCidades(?AdmCidades $admCidades): self
+    {
+        $this->admCidades = $admCidades;
+
+        return $this;
+    }
+
+    public function getAdmPais(): ?AdmPais
+    {
+        return $this->admPais;
+    }
+
+    public function setAdmPais(?AdmPais $admPais): self
+    {
+        $this->admPais = $admPais;
+
+        return $this;
+    }
+
+    public function getAdmUf(): ?AdmUf
+    {
+        return $this->admUf;
+    }
+
+    public function setAdmUf(?AdmUf $admUf): self
+    {
+        $this->admUf = $admUf;
+
+        return $this;
+    }
+
+    public function getAdmLogradouro(): ?AdmLogradouro
     {
         return $this->admLogradouro;
     }
 
-    public function setAdmLogradouro(?int $admLogradouro): self
+    public function setAdmLogradouro(?AdmLogradouro $admLogradouro): self
     {
         $this->admLogradouro = $admLogradouro;
 

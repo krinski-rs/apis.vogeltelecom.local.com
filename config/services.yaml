@@ -13,6 +13,7 @@ parameters:
         allowed_origin:
             - sso.local.com:3000
             - http://luma.local.com:3000
+            - apis.vogeltelecom.local.com
         allowed_headers:
             - AccessToken
             - Content-Type
@@ -52,8 +53,8 @@ services:
         public: false
         arguments: ['%cors%', "@logger"]
         tags:
-            - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
-            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 300 }
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 2 }
+            - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse, priority: 9999999 }
             
 ############################################################################################                        
 ########################################### CEP ############################################

@@ -2,6 +2,7 @@
 
 namespace App\Entity\Gcdb;
 
+use App\Entity\Financeiro\Contrato;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
@@ -51,6 +52,8 @@ class Customers
 
     private $delin;
 
+    private $contratos;
+
     private $customers2users;
 
     private $prioridades;
@@ -59,6 +62,7 @@ class Customers
 
     public function __construct()
     {
+        $this->contratos = new ArrayCollection();
         $this->customers2users = new ArrayCollection();
         $this->prioridades = new ArrayCollection();
     }
@@ -316,6 +320,37 @@ class Customers
     public function setDelin(?bool $delin): self
     {
         $this->delin = $delin;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Contrato[]
+     */
+    public function getContratos(): Collection
+    {
+        return $this->contratos;
+    }
+
+    public function addContrato(Contrato $contrato): self
+    {
+        if (!$this->contratos->contains($contrato)) {
+            $this->contratos[] = $contrato;
+            $contrato->setCustomers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContrato(Contrato $contrato): self
+    {
+        if ($this->contratos->contains($contrato)) {
+            $this->contratos->removeElement($contrato);
+            // set the owning side to null (unless already changed)
+            if ($contrato->getCustomers() === $this) {
+                $contrato->setCustomers(null);
+            }
+        }
 
         return $this;
     }

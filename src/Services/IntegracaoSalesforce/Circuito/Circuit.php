@@ -17,6 +17,9 @@ use \Monolog\Logger;
  */
 class Circuit
 {
+    
+    public static $arrayEmAtivacao = [1=>'Em Ativação',12=>'Em Ativação'];
+    
     /**
      * Variável que irá guardar a referência do GuzzleHttp\Client.
      *

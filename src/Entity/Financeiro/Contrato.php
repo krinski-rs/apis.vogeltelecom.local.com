@@ -2,14 +2,13 @@
 
 namespace App\Entity\Financeiro;
 
+use App\Entity\Gcdb\Customers;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 class Contrato
 {
     private $contCodigoid;
-
-    private $clieCodigoid;
 
     private $usuaCodigoid;
 
@@ -71,6 +70,8 @@ class Contrato
 
     private $enderecoentregaatributovalor;
 
+    private $contratoservico;
+
     private $contSubstituircodigoid;
 
     private $contProximocodigoid;
@@ -89,27 +90,18 @@ class Contrato
 
     private $statCodigoid;
 
+    private $customers;
+
     public function __construct()
     {
         $this->contratos = new ArrayCollection();
         $this->enderecoentregaatributovalor = new ArrayCollection();
+        $this->contratoservico = new ArrayCollection();
     }
 
     public function getContCodigoid(): ?int
     {
         return $this->contCodigoid;
-    }
-
-    public function getClieCodigoid(): ?int
-    {
-        return $this->clieCodigoid;
-    }
-
-    public function setClieCodigoid(?int $clieCodigoid): self
-    {
-        $this->clieCodigoid = $clieCodigoid;
-
-        return $this;
     }
 
     public function getUsuaCodigoid(): ?int
@@ -460,7 +452,7 @@ class Contrato
     {
         if (!$this->contratos->contains($contrato)) {
             $this->contratos[] = $contrato;
-            $contrato->setContPaicodigoid($this);
+            $contrato->setContrato($this);
         }
 
         return $this;
@@ -471,8 +463,8 @@ class Contrato
         if ($this->contratos->contains($contrato)) {
             $this->contratos->removeElement($contrato);
             // set the owning side to null (unless already changed)
-            if ($contrato->getContPaicodigoid() === $this) {
-                $contrato->setContPaicodigoid(null);
+            if ($contrato->getContrato() === $this) {
+                $contrato->setContrato(null);
             }
         }
 
@@ -504,6 +496,37 @@ class Contrato
             // set the owning side to null (unless already changed)
             if ($enderecoentregaatributovalor->getContrato() === $this) {
                 $enderecoentregaatributovalor->setContrato(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Contratoservico[]
+     */
+    public function getContratoservico(): Collection
+    {
+        return $this->contratoservico;
+    }
+
+    public function addContratoservico(Contratoservico $contratoservico): self
+    {
+        if (!$this->contratoservico->contains($contratoservico)) {
+            $this->contratoservico[] = $contratoservico;
+            $contratoservico->setContrato($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContratoservico(Contratoservico $contratoservico): self
+    {
+        if ($this->contratoservico->contains($contratoservico)) {
+            $this->contratoservico->removeElement($contratoservico);
+            // set the owning side to null (unless already changed)
+            if ($contratoservico->getContrato() === $this) {
+                $contratoservico->setContrato(null);
             }
         }
 
@@ -617,8 +640,20 @@ class Contrato
 
         return $this;
     }
+
+    public function getCustomers(): ?Customers
+    {
+        return $this->customers;
+    }
+
+    public function setCustomers(?Customers $customers): self
+    {
+        $this->customers = $customers;
+
+        return $this;
+    }
     
-    public function getStt()
+    public function getStt(): string
     {
         if(!($this->contPaicodigoid instanceof Contrato)){
             $filho = $this->getContratos()->first();

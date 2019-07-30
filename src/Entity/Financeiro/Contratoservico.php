@@ -8,7 +8,7 @@ class Contratoservico
 
     private $contservCircuito;
 
-    private $contCodigoid;
+    private $contrato;
 
     private $servcapaCodigoid;
 
@@ -29,14 +29,14 @@ class Contratoservico
         return $this;
     }
 
-    public function getContCodigoid(): ?Contrato
+    public function getContrato(): ?Contrato
     {
-        return $this->contCodigoid;
+        return $this->contrato;
     }
 
-    public function setContCodigoid(?Contrato $contCodigoid): self
+    public function setContrato(?Contrato $contrato): self
     {
-        $this->contCodigoid = $contCodigoid;
+        $this->contrato = $contrato;
 
         return $this;
     }

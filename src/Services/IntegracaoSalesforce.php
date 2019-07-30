@@ -55,7 +55,7 @@ class IntegracaoSalesforce
      */
     public function __construct(Registry $objRegistry, Logger $objLogger, IntegrarCircuito $objIntegrarCircuito)
     {
-        $this->objEntityManager     = $objRegistry->getManager('financeiro');
+        $this->objEntityManager     = $objRegistry->getManager('mysql');
         $this->objLogger            = $objLogger;
         $this->objIntegrarCircuito  = $objIntegrarCircuito;
     }
@@ -74,7 +74,7 @@ class IntegracaoSalesforce
         try {
             $this->objLogger->info("Início da integração do circuito {$contCodigoid}");
             $objCircuitoSalesforceRepository = $this->objEntityManager->getRepository("App\Entity\Financeiro\CircuitoSalesforce");
-            $arrayCircuitoSalesforce = $objCircuitoSalesforceRepository->findBy(['contCodigoid'=>$contCodigoid, 'dataIntegracao'=>NULL]);
+            $arrayCircuitoSalesforce = $objCircuitoSalesforceRepository->findBy(['contCodigoid'=>$contCodigoid, 'dataIntegracao'=>NULL], ['id'=>'DESC']);
             if(!count($arrayCircuitoSalesforce)){
                 $this->objLogger->warning("Circuito '{$contCodigoid}' não encontrado");
                 throw new \Exception("Circuito '{$contCodigoid}' não encontrado.");

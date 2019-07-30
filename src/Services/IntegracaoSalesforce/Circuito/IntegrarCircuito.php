@@ -18,6 +18,13 @@ use Doctrine\Bundle\DoctrineBundle\Registry;
 use App\Services\IntegracaoSalesforce\OAuthSalesforce;
 use App\Services\IntegracaoSalesforce\Cliente\Account;
 use App\Entity\Financeiro\Enderecoentregaatributovalor;
+use App\Entity\Gcdb\Circuito as CircuitoGcdb;
+use App\Entity\Gcdb\CircuitoPop;
+use App\Entity\Luma\Pop;
+use App\Entity\Financeiro\Contratoservico;
+use App\Entity\Luma\Poplocalizacao;
+use App\Entity\Gcdb\AdmUf;
+use App\Entity\Luma\Poprelacaolocalizacao;
 
 /**
  * Class IntegrarCircuito
@@ -37,12 +44,20 @@ class IntegrarCircuito
     private $objEntityManager = NULL;
     
     /**
-     * Variável que irá guardar a referência do manager do ORM.
+     * Repository para a busca de cidades no database GCDB.
      *
      * @access  private
-     * @var     \Doctrine\ORM\EntityManager
+     * @var     \Doctrine\ORM\EntityRepository
      */
-    private $objEntityManagerGcdb = NULL;
+    private $objAdmCidadesRepository = NULL;
+    
+    /**
+     * Repository para a busca de estados no database GCDB.
+     *
+     * @access  private
+     * @var     \Doctrine\ORM\EntityRepository
+     */
+    private $objAdmUfRepository = NULL;
     
     /**
      * Variável que irá guardar a referência do serviço de log.
@@ -101,6 +116,14 @@ class IntegrarCircuito
     private $objAtributo  = NULL;
     
     /**
+     * Variável que irá guardar a referência do serviço de Produto.
+     *
+     * @access  private
+     * @var     Produto
+     */
+    private $objProduto  = NULL;
+    
+    /**
      * Variável que irá guardar os parametros de configuração.
      *
      * @access  private
@@ -119,11 +142,12 @@ class IntegrarCircuito
      */
     public function __construct(Registry $objRegistry, Logger $objLogger, OAuthSalesforce $objOAuthSalesforce, array $params)
     {
-        $this->objEntityManager     = $objRegistry->getManager('financeiro');
-        $this->objEntityManagerGcdb = $objRegistry->getManager('gcdb');
-        $this->objLogger            = $objLogger;
-        $this->objOAuthSalesforce   = $objOAuthSalesforce;
-        $this->params               =  $params;
+        $this->objEntityManager         = $objRegistry->getManager('mysql');
+        $this->objAdmCidadesRepository  = $this->objEntityManager->getRepository('AppEntity:Gcdb\AdmCidades');
+        $this->objAdmUfRepository       = $this->objEntityManager->getRepository('AppEntity:Gcdb\AdmUf');
+        $this->objLogger                = $objLogger;
+        $this->objOAuthSalesforce       = $objOAuthSalesforce;
+        $this->params                   =  $params;
         
         $this->objOAuthSalesforce->login();
         
@@ -134,6 +158,7 @@ class IntegrarCircuito
         $this->objEndereco = new Endereco($this->objLogger, $this->params, $token);
         $this->objCidade = new Cidade($this->objLogger, $this->params, $token);
         $this->objAtributo = new Atributo($this->objLogger, $this->params, $token);
+        $this->objProduto = new Produto($this->objLogger, $this->params, $token);
     }
     
     /**
@@ -170,29 +195,26 @@ class IntegrarCircuito
         try {
             $objContrato = $objCircuitoSalesforce->getContCodigoid();
             $objEnderecoentrega = $objContrato->getEndeentrCodigoid();
-            $objAdmCidadesRepository = $this->objEntityManagerGcdb->getRepository('App\Entity\Gcdb\AdmCidades');
-            $objAdmLogradouroRepository = $this->objEntityManagerGcdb->getRepository('App\Entity\Gcdb\AdmLogradouro');
-            $objCustomersRepository = $this->objEntityManagerGcdb->getRepository('App\Entity\Gcdb\Customers');
-            $objCustomers = $objCustomersRepository->find((integer)$objContrato->getContPaicodigoid()->getClieCodigoid());
+            $objCustomers = $objContrato->getContPaicodigoid()->getCustomers();
             if(!($objCustomers instanceof Customers)){
-                $this->objLogger->error("Circuito {$objContrato->getContCodigoid()} Cliente não localizado", ['cliente'=>$objContrato->getContPaicodigoid()->getClieCodigoid()]);
+                $this->objLogger->error("Circuito {$objContrato->getContCodigoid()} Cliente não localizado", ['cliente'=>$objContrato->getContPaicodigoid()->getCustomers()->getCustomerid()]);
                 throw new \Exception('Cliente não localizado');
             }
             
             $objCustomers2users = $objCustomers->getCustomers2users()->first();
             if(!($objCustomers2users instanceof Customers2users)){
-                $this->objLogger->error("Circuito {$objContrato->getContCodigoid()} Customers2users não localizado", ['cliente'=>$objContrato->getContPaicodigoid()->getClieCodigoid()]);
+                $this->objLogger->error("Circuito {$objContrato->getContCodigoid()} Customers2users não localizado", ['cliente'=>$objContrato->getContPaicodigoid()->getCustomers()->getCustomerid()]);
                 throw new \Exception('Customers2users não localizado');
             }
             
             $objCadUser = $objCustomers2users->getCadUser();
             if(!($objCadUser instanceof CadUsers)){
-                $this->objLogger->error("Circuito {$objContrato->getContCodigoid()} CadUsers não localizado", ['cliente'=>$objContrato->getContPaicodigoid()->getClieCodigoid()]);
+                $this->objLogger->error("Circuito {$objContrato->getContCodigoid()} CadUsers não localizado", ['cliente'=>$objContrato->getContPaicodigoid()->getCustomers()->getCustomerid()]);
                 throw new \Exception('CadUsers não localizado');
             }
             
             if($objCadUser->getTipo() == 'J'){
-                $objAccountSalesforce = $this->objAccount->getByCnpj($objCadUser->getCnpj());
+                $objAccountSalesforce = $this->objAccount->getByCnpj(str_pad($objCadUser->getCnpj(), 14, '0', STR_PAD_LEFT));
             }else{
                 /*
                  * ********************************************* * 
@@ -206,15 +228,15 @@ class IntegrarCircuito
             }
             
             if(!$objAccountSalesforce || !is_object($objAccountSalesforce) || !property_exists($objAccountSalesforce, 'Id')){
-                $this->objLogger->info("Circuito {$objContrato->getContCodigoid()} criando Account", ['cliente'=>$objContrato->getContPaicodigoid()->getClieCodigoid()]);
+                $this->objLogger->info("Circuito {$objContrato->getContCodigoid()} criando Account", ['cliente'=>$objContrato->getContPaicodigoid()->getCustomers()->getCustomerid()]);
                 $retorno = $this->objAccount->createFromCustomer($objCustomers);
                 $objAccountSalesforce = $this->objAccount->getById($retorno->id);
                 $this->objLogger->info("Circuito {$objContrato->getContCodigoid()} Account criada com sucesso", ['account'=>$objAccountSalesforce]);
             }
             
-            $objCidade = $objAdmCidadesRepository->find((integer)$objEnderecoentrega->getEndeentrCidade());
+            $objCidade = $objEnderecoentrega->getAdmCidades();
             if(!($objCidade instanceof AdmCidades)){
-                $this->objLogger->error("Circuito {$objContrato->getContCodigoid()} Cidade não localizada", ['cliente'=>$objContrato->getContPaicodigoid()->getClieCodigoid()]);
+                $this->objLogger->error("Circuito {$objContrato->getContCodigoid()} Cidade não localizada", ['cliente'=>$objContrato->getContPaicodigoid()->getCustomers()->getCustomerid()]);
                 throw new \Exception('Cidade não localizada');
             }
             
@@ -223,7 +245,7 @@ class IntegrarCircuito
             $logradouro = explode('-::-', $objEnderecoentrega->getEndeentrLogradouro());
             
             $arrayEndereco = [];
-            $tipoLogradouro = $objAdmLogradouroRepository->find((integer)$objEnderecoentrega->getAdmLogradouro());
+            $tipoLogradouro = $objEnderecoentrega->getAdmLogradouro();
             $arrayEndereco = [
                 'Bairro__c' => trim($objEnderecoentrega->getEndeentrBairro()),
                 'CEP__c' => $this->somenteNumeros($objEnderecoentrega->getEndeentrCep()),
@@ -240,7 +262,74 @@ class IntegrarCircuito
                 'TipoLogradouro__c' => ($tipoLogradouro ? $tipoLogradouro->getId() : '160'),
             ];
             $objEndereco = $this->objEndereco->create($arrayEndereco);
-
+            if($objEnderecoentrega->getCircuitos()->count()){
+                $objCircuitoGcdb = $objEnderecoentrega->getCircuitos()->first();
+                
+                if($objCircuitoGcdb instanceof CircuitoGcdb){
+                    
+                    if($objCircuitoGcdb->getCircuitoPop()->count()){
+                        $objCircuitoPop = $objCircuitoGcdb->getCircuitoPop()->filter(
+                            function(CircuitoPop $objCircuitoPop){
+                                return $objCircuitoPop->getAtivo();
+                            }
+                        )->first();
+                        $objEnderecoPontaB = NULL;
+                        if($objCircuitoPop instanceof CircuitoPop){
+                            $objPop = $objCircuitoPop->getPop();
+                            
+                            if($objPop instanceof Pop){                                
+                                $objEnderecoPontaB = $this->objEndereco->getByName(trim("POP - ".$objPop->getNome()));
+                            }
+                        }
+                    }
+                }
+            }
+            $velocidade = NULL;
+            $objContratoservico = $objContrato->getContratoservico()->first();
+            $objProdutoSalesforce = NULL;
+            if($objContratoservico instanceof Contratoservico){
+                $produto = $objContratoservico->getServcapaCodigoid()->getServCodigoid()->getServNome();
+                $objProdutoSalesforce = $this->objProduto->getByName($produto);
+                $medida = $objContratoservico->getServcapaCodigoid()->getMediCodigoid()->getMediNome();
+                $velocidade = $objContratoservico->getServcapaCodigoid()->getCapaCodigoid()->getCapaCapacidade();
+                switch($medida){
+                    case 'Megabit':
+                        $medida = "Mbps";
+                        break;
+                    case 'Kilobit':
+                        $medida = "Kbps";
+                        break;
+                    case 'bit':
+                        $velocidade = ($velocidade/1024);
+                        $medida = "Kbps";
+                        break;
+                    case 'Gigabit':
+                        $medida = "Gbps";
+                        break;
+                    case 'Megabyte':
+                        $medida = "Mbps";
+                        break;
+                    case 'Gigabyte':
+                        $medida = "Gbpps";
+                        break;
+                    case 'byte':
+                        $velocidade = ($velocidade/1024);
+                        $medida = "Kbps";
+                        break;
+                    default:
+                        $velocidade = "";
+                        $medida = "";
+                        break;
+                }
+            }
+            
+            $status = NULL;
+            if(array_key_exists($objContrato->getStatCodigoid()->getStatCodigoid(), Circuit::$arrayEmAtivacao)){
+                $status = Circuit::$arrayEmAtivacao[$objContrato->getStatCodigoid()->getStatCodigoid()];
+            }else{
+                $status = $objContrato->getStatCodigoid()->getStatNome();
+            }
+                        
             $arrayCircuit = [
                 'Name' => trim($objContrato->getStt()),
                 'CNPJ__c' => $objAccountSalesforce->CNPJ__c,
@@ -249,10 +338,14 @@ class IntegrarCircuito
                 'CircuitoId__c' => $objContrato->getContCodigoid(),
                 'Endereco__c' => $objEndereco->id,
                 'NomeCliente__c' => $objAccountSalesforce->Name,
-                'PontaB__c' => $objEndereco->id
+                'PontaB__c' => $objEnderecoPontaB->Id,
+                'ProdutoContratado__c' => $objProdutoSalesforce->Id,
+                'Status__c' => $status,
+                'Velocidade__c' => $velocidade,
+                'Un_Medida_Velocidade__c' => $medida
             ];
+
             $objCircuito = $this->objCircuit->create($arrayCircuit);
-            
             $arrayEnderecoentregaatributovalor = $objContrato->getEnderecoentregaatributovalor();
             if($arrayEnderecoentregaatributovalor->count()){
                 $arrayEnderecoentregaatributovalor->first();
@@ -313,24 +406,21 @@ class IntegrarCircuito
         try {
             $objContrato = $objCircuitoSalesforce->getContCodigoid();
             $objEnderecoentrega = $objContrato->getEndeentrCodigoid();
-            $objAdmCidadesRepository = $this->objEntityManagerGcdb->getRepository('App\Entity\Gcdb\AdmCidades');
-            $objAdmLogradouroRepository = $this->objEntityManagerGcdb->getRepository('App\Entity\Gcdb\AdmLogradouro');
-            $objCustomersRepository = $this->objEntityManagerGcdb->getRepository('App\Entity\Gcdb\Customers');
-            $objCustomers = $objCustomersRepository->find((integer)$objContrato->getContPaicodigoid()->getClieCodigoid());
+            $objCustomers = $objContrato->getContPaicodigoid()->getCustomers();
             if(!($objCustomers instanceof Customers)){
-                $this->objLogger->error("Circuito {$objContrato->getContCodigoid()} Cliente não localizado", ['cliente'=>$objContrato->getContPaicodigoid()->getClieCodigoid()]);
+                $this->objLogger->error("Circuito {$objContrato->getContCodigoid()} Cliente não localizado", ['cliente'=>$objContrato->getContPaicodigoid()->getCustomers()->getCustomerid()]);
                 throw new \Exception('Cliente não localizado');
             }
             
             $objCustomers2users = $objCustomers->getCustomers2users()->first();
             if(!($objCustomers2users instanceof Customers2users)){
-                $this->objLogger->error("Circuito {$objContrato->getContCodigoid()} Customers2users não localizado", ['cliente'=>$objContrato->getContPaicodigoid()->getClieCodigoid()]);
+                $this->objLogger->error("Circuito {$objContrato->getContCodigoid()} Customers2users não localizado", ['cliente'=>$objContrato->getContPaicodigoid()->getCustomers()->getCustomerid()]);
                 throw new \Exception('Customers2users não localizado');
             }
             
             $objCadUser = $objCustomers2users->getCadUser();
             if(!($objCadUser instanceof CadUsers)){
-                $this->objLogger->error("Circuito {$objContrato->getContCodigoid()} CadUsers não localizado", ['cliente'=>$objContrato->getContPaicodigoid()->getClieCodigoid()]);
+                $this->objLogger->error("Circuito {$objContrato->getContCodigoid()} CadUsers não localizado", ['cliente'=>$objContrato->getContPaicodigoid()->getCustomers()->getCustomerid()]);
                 throw new \Exception('CadUsers não localizado');
             }
             
@@ -349,13 +439,13 @@ class IntegrarCircuito
             }
             
             if(!$objAccountSalesforce || !is_object($objAccountSalesforce) || !property_exists($objAccountSalesforce, 'Id')){
-                $this->objLogger->info("Circuito {$objContrato->getContCodigoid()} Account NÃO LOCALIZADO", ['cliente'=>$objContrato->getContPaicodigoid()->getClieCodigoid()]);
+                $this->objLogger->info("Circuito {$objContrato->getContCodigoid()} Account NÃO LOCALIZADO", ['cliente'=>$objContrato->getContPaicodigoid()->getCustomers()->getCustomerid()]);
                 throw new \Exception('Account NÃO LOCALIZADO');
             }
             
-            $objCidade = $objAdmCidadesRepository->find((integer)$objEnderecoentrega->getEndeentrCidade());
+            $objCidade = $objEnderecoentrega->getAdmCidades();
             if(!($objCidade instanceof AdmCidades)){
-                $this->objLogger->error("Circuito {$objContrato->getContCodigoid()} Cidade não localizada", ['cliente'=>$objContrato->getContPaicodigoid()->getClieCodigoid()]);
+                $this->objLogger->error("Circuito {$objContrato->getContCodigoid()} Cidade não localizada", ['cliente'=>$objContrato->getContPaicodigoid()->getCustomers()->getCustomerid()]);
                 throw new \Exception('Cidade não localizada');
             }
             
@@ -363,7 +453,7 @@ class IntegrarCircuito
             $id = explode('/', $this->objOAuthSalesforce->getContents()->id);
             $logradouro = explode('-::-', $objEnderecoentrega->getEndeentrLogradouro());
             $arrayEndereco = (array)$this->objEndereco->getByDesignador($objContrato->getStt());
-            $tipoLogradouro = $objAdmLogradouroRepository->find((integer)$objEnderecoentrega->getAdmLogradouro());
+            $tipoLogradouro = $objEnderecoentrega->getAdmLogradouro();
             $arrayEndereco['Bairro__c'] = trim($objEnderecoentrega->getEndeentrBairro());
             $arrayEndereco['CEP__c'] = $this->somenteNumeros($objEnderecoentrega->getEndeentrCep());
             $arrayEndereco['Cidade__c'] = $objCidadeSalesforce->Id;
@@ -385,7 +475,76 @@ class IntegrarCircuito
 //             print_r($arrayEndereco);
             
             $objEndereco = $this->objEndereco->update($arrayEndereco, $idEndereco);
+            $objEnderecoPontaB = NULL;
+            if($objEnderecoentrega->getCircuitos()->count()){
+                $objCircuitoGcdb = $objEnderecoentrega->getCircuitos()->first();
+                
+                if($objCircuitoGcdb instanceof CircuitoGcdb){
+                    
+                    if($objCircuitoGcdb->getCircuitoPop()->count()){
+                        $objCircuitoPop = $objCircuitoGcdb->getCircuitoPop()->filter(
+                            function(CircuitoPop $objCircuitoPop){
+                                return $objCircuitoPop->getAtivo();
+                            }
+                            )->first();
+                            $objEnderecoPontaB = NULL;
+                            if($objCircuitoPop instanceof CircuitoPop){
+                                $objPop = $objCircuitoPop->getPop();
+                                
+                                if($objPop instanceof Pop){
+                                    $objEnderecoPontaB = $this->objEndereco->getByName(trim("POP - ".$objPop->getNome()));
+                                }
+                            }
+                    }
+                }
+            }
             
+            $velocidade = NULL;
+            $objContratoservico = $objContrato->getContratoservico()->first();
+            $objProdutoSalesforce = NULL;
+            if($objContratoservico instanceof Contratoservico){
+                $produto = $objContratoservico->getServcapaCodigoid()->getServCodigoid()->getServNome();
+                $objProdutoSalesforce = $this->objProduto->getByName($produto);
+                $medida = $objContratoservico->getServcapaCodigoid()->getMediCodigoid()->getMediNome();
+                $velocidade = $objContratoservico->getServcapaCodigoid()->getCapaCodigoid()->getCapaCapacidade();
+                switch($medida){
+                    case 'Megabit':
+                        $medida = "Mbps";
+                        break;
+                    case 'Kilobit':
+                        $medida = "Kbps";
+                        break;
+                    case 'bit':
+                        $velocidade = ($velocidade/1024);
+                        $medida = "Kbps";
+                        break;
+                    case 'Gigabit':
+                        $medida = "Gbps";
+                        break;
+                    case 'Megabyte':
+                        $medida = "Mbps";
+                        break;
+                    case 'Gigabyte':
+                        $medida = "Gbpps";
+                        break;
+                    case 'byte':
+                        $velocidade = ($velocidade/1024);
+                        $medida = "Kbps";
+                        break;
+                    default:
+                        $velocidade = "";
+                        $medida = "";
+                        break;
+                }
+            }
+            
+            $status = NULL;
+            if(array_key_exists($objContrato->getStatCodigoid()->getStatCodigoid(), Circuit::$arrayEmAtivacao)){
+                $status = Circuit::$arrayEmAtivacao[$objContrato->getStatCodigoid()->getStatCodigoid()];
+            }else{
+                $status = $objContrato->getStatCodigoid()->getStatNome();
+            }
+
             $arrayCircuit = (array)$this->objCircuit->getByCircuito($objContrato->getContCodigoid());
             $arrayCircuit['Name'] = trim($objContrato->getStt());
             $arrayCircuit['CNPJ__c'] = $objAccountSalesforce->CNPJ__c;
@@ -393,7 +552,11 @@ class IntegrarCircuito
             $arrayCircuit['CircuitoId__c'] = $objContrato->getContCodigoid();
             $arrayCircuit['Endereco__c'] = $idEndereco;
             $arrayCircuit['NomeCliente__c'] = $objAccountSalesforce->Name;
-            $arrayCircuit['PontaB__c'] = $idEndereco;
+            $arrayCircuit['PontaB__c'] = $objEnderecoPontaB->Id;
+            $arrayCircuit['Status__c'] = $status;
+            $arrayCircuit['Velocidade__c'] = $velocidade;
+            $arrayCircuit['Un_Medida_Velocidade__c'] = $medida;
+            
             $idCircuit = $arrayCircuit['Id'];
             unset($arrayCircuit['Id'], $arrayCircuit['LastModifiedDate'], $arrayCircuit['LastReferencedDate'], $arrayCircuit['EnderecoPontaA__c']);
             unset($arrayCircuit['CreatedById'], $arrayCircuit['Identificador__c'], $arrayCircuit['IsDeleted'], $arrayCircuit['EnderecoCompleto__c']);

@@ -40,24 +40,6 @@ App\Entity\Financeiro\Enderecoentrega:
             type: boolean
             nullable: false
             column: endeentr_concentrador
-        endeentrPais:
-            type: integer
-            nullable: false
-            options:
-                unsigned: false
-            column: endeentr_pais
-        endeentrEstado:
-            type: integer
-            nullable: false
-            options:
-                unsigned: false
-            column: endeentr_estado
-        endeentrCidade:
-            type: integer
-            nullable: false
-            options:
-                unsigned: false
-            column: endeentr_cidade
         endeentrBairro:
             type: string
             nullable: false
@@ -120,10 +102,51 @@ App\Entity\Financeiro\Enderecoentrega:
             options:
                 fixed: false
             column: endeentr_designador_old
+    oneToMany:
+        circuitos:
+            targetEntity: App\Entity\Gcdb\Circuito
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: enderecoentrega
+    manyToOne:
+        admCidades:
+            targetEntity: App\Entity\Gcdb\AdmCidades
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                endeentr_cidade:
+                    referencedColumnName: id
+            orphanRemoval: false
+        admPais:
+            targetEntity: App\Entity\Gcdb\AdmPais
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                endeentr_pais:
+                    referencedColumnName: id
+            orphanRemoval: false
+        admUf:
+            targetEntity: App\Entity\Gcdb\AdmUf
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                endeentr_estado:
+                    referencedColumnName: id
+            orphanRemoval: false
         admLogradouro:
-            type: integer
-            nullable: true
-            options:
-                unsigned: false
-            column: adm_logradouro
+            targetEntity: App\Entity\Gcdb\AdmLogradouro
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                adm_logradouro:
+                    referencedColumnName: id
+            orphanRemoval: false
     lifecycleCallbacks: {  }

@@ -13,6 +13,7 @@ use App\Entity\Gcdb\Customers2users;
 use App\Entity\Gcdb\CadUsersNome;
 use App\Entity\Gcdb\CadUsersTelefone;
 use App\Services\IntegracaoSalesforce\Circuito\Cidade;
+use App\Services\IntegracaoSalesforce\Circuito\Circuit;
 
 /**
  * Class Account
@@ -79,17 +80,17 @@ class Account
         'Operadora' => 'Operadoras'
     ];
     
-    private $arrayPrioridade = [
-        'Vogel 1000' => 'Premium',
+    private static $arrayPrioridade = [
+        'Carrier1' => 'Vip',
+        'Vogel 1000' => 'Vip',
         'VIP1' => 'Vip',
-        'VIP2' => 'Top',
-        'VIP3' => 'Premium',
+        'VIP2' => 'Vip',
+        'VIP3' => 'Vip',
         'Vip' => 'Vip',
         'Top' => 'Top',
         'Premium' => 'Premium',
-        'Ouro' => 'Vip',
-        'ISP1' => 'Top',
-        'Carrier1' => 'Premium'
+        'Ouro' => 'Ouro',
+        'ISP1' => 'Vip',
     ];
     
     /**
@@ -217,7 +218,7 @@ class Account
             $nome = "";
             $nomeFantasia = "";
             if($objCadUser->getTipo() == 'J'){
-                $cnpj = $this->somenteNumeros($objCadUser->getCnpj());
+                $cnpj = str_pad($this->somenteNumeros($objCadUser->getCnpj()), 14, '0', STR_PAD_LEFT);
                 $arrayCadUsersNome = $objCadUser->getCadUsersNome()->filter(
                     function(CadUsersNome $objCadUsersNome){
                         return ($objCadUsersNome->getAdmTipoNome()->getId() == 5);//Razão Social
@@ -243,7 +244,7 @@ class Account
                 }
                 $nome = trim($arrayCadUsersNome->first()->getNome());
             }else{
-                $cnpj = $this->somenteNumeros($objCadUser->getCpf());
+                $cnpj = str_pad($this->somenteNumeros($objCadUser->getCpf()), 11, '0', STR_PAD_LEFT);
                 $arrayCadUsersNome = $objCadUser->getCadUsersNome()->filter(
                     function(CadUsersNome $objCadUsersNome){
                         return (in_array($objCadUsersNome->getAdmTipoNome()->getId(), [1, 2, 3]));//Nome pessoa física
@@ -286,6 +287,8 @@ class Account
             
             $fone = $this->formataFone($objCadUsersTelefone->getDdi().$objCadUsersTelefone->getDdd(). $objCadUsersTelefone->getTelefone());
             $nivel = trim($objCustomers->getPrioridades()->first()->getNivel());
+            print_r("x-$nivel-x");
+            print_r(self::$arrayPrioridade);
             $arrayAccount = [
                 'BairroCobranca__c' => $bairro,
                 'BairroComercial__c' => $bairro,
@@ -294,7 +297,7 @@ class Account
                 'CEPComercial__c' => $objCadUser->getCep(),
                 'CidadeCobranca__c' => $objCidadeSalesforce->Id,
                 'CidadeComercial__c' => $objCidadeSalesforce->Id,
-                'ClassificacaoCliente__c' => $this->arrayPrioridade[$nivel],
+                'ClassificacaoCliente__c' => self::$arrayPrioridade[$nivel],
                 'Name' => trim($nome),
                 'CNPJ__c' => $cnpj,
                 'ComplementoCobranca__c' => '',
@@ -333,7 +336,7 @@ class Account
                 'ShippingLongitude' => $objCadUser->getLongitude(),
                 'ShippingPostalCode' => $objCadUser->getCep(),
                 'BillingGeocodeAccuracy' => '',
-                'ShippingGeocodeAccuracy' => ''
+                'ShippingGeocodeAccuracy' => '',
             ];
             return $this->create($arrayAccount);
         } catch (\Exception $e) {
