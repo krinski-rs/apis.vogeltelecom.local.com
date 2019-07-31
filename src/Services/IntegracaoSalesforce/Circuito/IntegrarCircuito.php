@@ -338,7 +338,7 @@ class IntegrarCircuito
                 'CircuitoId__c' => $objContrato->getContCodigoid(),
                 'Endereco__c' => $objEndereco->id,
                 'NomeCliente__c' => $objAccountSalesforce->Name,
-                'PontaB__c' => $objEnderecoPontaB->Id,
+                'PontaB__c' => ($objEnderecoPontaB ? $objEnderecoPontaB->Id : $objEnderecoPontaB),
                 'ProdutoContratado__c' => $objProdutoSalesforce->Id,
                 'Status__c' => $status,
                 'Velocidade__c' => $velocidade,
