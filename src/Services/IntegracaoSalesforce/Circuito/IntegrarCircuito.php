@@ -262,6 +262,7 @@ class IntegrarCircuito
                 'TipoLogradouro__c' => ($tipoLogradouro ? $tipoLogradouro->getId() : '160'),
             ];
             $objEndereco = $this->objEndereco->create($arrayEndereco);
+            $objEnderecoPontaB = NULL;
             if($objEnderecoentrega->getCircuitos()->count()){
                 $objCircuitoGcdb = $objEnderecoentrega->getCircuitos()->first();
                 
@@ -273,7 +274,6 @@ class IntegrarCircuito
                                 return $objCircuitoPop->getAtivo();
                             }
                         )->first();
-                        $objEnderecoPontaB = NULL;
                         if($objCircuitoPop instanceof CircuitoPop){
                             $objPop = $objCircuitoPop->getPop();
                             
