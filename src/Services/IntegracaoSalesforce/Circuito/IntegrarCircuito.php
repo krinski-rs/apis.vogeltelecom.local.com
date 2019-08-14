@@ -425,7 +425,7 @@ class IntegrarCircuito
             }
             
             if($objCadUser->getTipo() == 'J'){
-                $objAccountSalesforce = $this->objAccount->getByCnpj($objCadUser->getCnpj());
+                $objAccountSalesforce = $this->objAccount->getByCnpj(str_pad($objCadUser->getCnpj(), 14, '0', STR_PAD_LEFT));
             }else{
                 /*
                  * ********************************************* *
