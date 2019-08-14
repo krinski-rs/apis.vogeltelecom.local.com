@@ -246,14 +246,19 @@ class IntegrarCircuito
             
             $arrayEndereco = [];
             $tipoLogradouro = $objEnderecoentrega->getAdmLogradouro();
+            $stt = $objContrato->getStt();
+            if($objContrato->getDesigCodigoid()->getDesigStt()){
+                $stt = "{$objContrato->getStt()}-{$objContrato->getDesigCodigoid()->getDesigPonta()}";
+            }
+            
             $arrayEndereco = [
                 'Bairro__c' => trim($objEnderecoentrega->getEndeentrBairro()),
                 'CEP__c' => $this->somenteNumeros($objEnderecoentrega->getEndeentrCep()),
                 'Cidade__c' => $objCidadeSalesforce->Id,
                 'Complemento__c' => '',
                 'Conta__c' => $objAccountSalesforce->Id,
-                'Name' => $objContrato->getStt(),
-                'Designador__c' => $objContrato->getStt(),
+                'Name' => $stt,
+                'Designador__c' => $stt,
                 'Estado__c' => $objCidade->getAdmUf()->getSigla(),
                 'EstruturaFisica__c' => 'Predio',
                 'Logradouro__c' => ((count($logradouro) > 1) ? trim(iconv('UTF-8', 'ASCII//TRANSLIT', $this->strReplaceLOgradouro($logradouro[1]))) : iconv('UTF-8', 'ASCII//TRANSLIT', $this->strReplaceLOgradouro($logradouro[0]))),
@@ -452,15 +457,21 @@ class IntegrarCircuito
             $objCidadeSalesforce = $this->objCidade->getByCodigoIbge($objCidade->getCodigoIbge());
             $id = explode('/', $this->objOAuthSalesforce->getContents()->id);
             $logradouro = explode('-::-', $objEnderecoentrega->getEndeentrLogradouro());
-            $arrayEndereco = (array)$this->objEndereco->getByDesignador($objContrato->getStt());
+            
+            $stt = $objContrato->getStt();
+            if($objContrato->getDesigCodigoid()->getDesigStt()){
+                $stt = "{$objContrato->getStt()}-{$objContrato->getDesigCodigoid()->getDesigPonta()}";
+            }
+            
+            $arrayEndereco = (array)$this->objEndereco->getByDesignador($stt);
             $tipoLogradouro = $objEnderecoentrega->getAdmLogradouro();
             $arrayEndereco['Bairro__c'] = trim($objEnderecoentrega->getEndeentrBairro());
             $arrayEndereco['CEP__c'] = $this->somenteNumeros($objEnderecoentrega->getEndeentrCep());
             $arrayEndereco['Cidade__c'] = $objCidadeSalesforce->Id;
             $arrayEndereco['Complemento__c'] = '';
             $arrayEndereco['Conta__c'] = $objAccountSalesforce->Id;
-            $arrayEndereco['Name'] = $objContrato->getStt();
-            $arrayEndereco['Designador__c'] = $objContrato->getStt();
+            $arrayEndereco['Name'] = $stt;
+            $arrayEndereco['Designador__c'] = $stt;
             $arrayEndereco['Estado__c'] = $objCidade->getAdmUf()->getSigla();
             $arrayEndereco['EstruturaFisica__c'] = 'Predio';
             $arrayEndereco['Logradouro__c'] = ((count($logradouro) > 1) ? trim(iconv('UTF-8', 'ASCII//TRANSLIT', $this->strReplaceLOgradouro($logradouro[1]))) : iconv('UTF-8', 'ASCII//TRANSLIT', $this->strReplaceLOgradouro($logradouro[0])));
