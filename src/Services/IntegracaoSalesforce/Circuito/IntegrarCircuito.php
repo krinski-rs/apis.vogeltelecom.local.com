@@ -552,7 +552,7 @@ class IntegrarCircuito
             $arrayCircuit['CircuitoId__c'] = $objContrato->getContCodigoid();
             $arrayCircuit['Endereco__c'] = $idEndereco;
             $arrayCircuit['NomeCliente__c'] = $objAccountSalesforce->Name;
-            $arrayCircuit['PontaB__c'] = $objEnderecoPontaB->Id;
+            $arrayCircuit['PontaB__c'] = ($objEnderecoPontaB ? $objEnderecoPontaB->Id : $objEnderecoPontaB);
             $arrayCircuit['Status__c'] = $status;
             $arrayCircuit['Velocidade__c'] = $velocidade;
             $arrayCircuit['Un_Medida_Velocidade__c'] = $medida;
