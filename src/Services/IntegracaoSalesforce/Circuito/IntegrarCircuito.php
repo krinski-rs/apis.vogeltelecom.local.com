@@ -562,6 +562,8 @@ class IntegrarCircuito
             unset($arrayCircuit['CreatedById'], $arrayCircuit['Identificador__c'], $arrayCircuit['IsDeleted'], $arrayCircuit['EnderecoCompleto__c']);
             unset($arrayCircuit['Acessar__c'], $arrayCircuit['LastViewedDate'], $arrayCircuit['EnderecoPontaB__c'], $arrayCircuit['SystemModstamp']);
             unset($arrayCircuit['CreatedDate'], $arrayCircuit['LastActivityDate'], $arrayCircuit['LastModifiedById'], $arrayCircuit['Conta__c']);
+            unset($arrayCircuit['cidade_pb__c'], $arrayCircuit['cidade_pa__c'], $arrayCircuit['Regional_Atendimento__c'], $arrayCircuit['estado_pa__c']);
+            unset($arrayCircuit['Editar_Circuitos__c'], $arrayCircuit['estado_pb__c'], $arrayCircuit['Peso_do_Circuito__c'], $arrayCircuit['Velocidade_Mbps__c']);
             $objCircuito = $this->objCircuit->update($arrayCircuit, $idCircuit);
             
             $arrayEnderecoentregaatributovalor = $objContrato->getEnderecoentregaatributovalor();
