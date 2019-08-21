@@ -1,0 +1,176 @@
+App\Entity\Cobranca\Invoice:
+    type: entity
+    table: invoice
+    indexes:
+        index_invoice_custumer:
+            columns:
+                - custumer
+        index_invoice_id_status_invoice:
+            columns:
+                - id_status_invoice
+        invoice_id_invoice_idx:
+            columns:
+                - id_invoice
+        index_invoice_id_type_invoice:
+            columns:
+                - id_type_invoice
+        index_invoice_banc_codigoid:
+            columns:
+                - banc_codigoid
+    id:
+        idInvoice:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_invoice
+            generator:
+                strategy: SEQUENCE
+    fields:
+        custumer:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+        contract:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        dateRecord:
+            type: datetime
+            nullable: false
+            column: date_record
+        dateFirst:
+            type: date
+            nullable: true
+            column: date_first
+        dateLast:
+            type: date
+            nullable: true
+            column: date_last
+        dateValit:
+            type: date
+            nullable: false
+            column: date_valit
+        value:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+        designador:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        description:
+            type: string
+            nullable: false
+            length: 400
+            options:
+                fixed: false
+        valueLiquid:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: value_liquid
+        billed:
+            type: boolean
+            nullable: true
+            options:
+                default: false
+        idUser:
+            type: bigint
+            nullable: true
+            options:
+                unsigned: false
+            column: id_user
+        cancelDescription:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: cancel_description
+        genBillet:
+            type: smallint
+            nullable: false
+            options:
+                unsigned: false
+                default: '1'
+            column: gen_billet
+        newInvoice:
+            type: smallint
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+            column: new_invoice
+    manyToOne:
+        statusInvoice:
+            targetEntity: App\Entity\Cobranca\StatusInvoice
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_status_invoice:
+                    referencedColumnName: id_status_invoice
+            orphanRemoval: false
+        invoiceType:
+            targetEntity: App\Entity\Cobranca\InvoiceType
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_type_invoice:
+                    referencedColumnName: id_type_invoice
+            orphanRemoval: false
+        banco:
+            targetEntity: App\Entity\Cobranca\Banco
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                banc_codigoid:
+                    referencedColumnName: banc_codigoid
+            orphanRemoval: false
+    manyToMany:
+        cc:
+            targetEntity: App\Entity\Cobranca\Cc
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: invoice
+            joinTable:
+                name: invoice_cc
+                joinColumns:
+                    -
+                        name: id_invoice
+                        referencedColumnName: id_invoice
+                inverseJoinColumns:
+                    -
+                        name: cc_codigoid
+                        referencedColumnName: cc_codigoid
+            orderBy: null
+    oneToMany:
+        deliveryInvoice:
+            targetEntity: App\Entity\Cobranca\DeliveryInvoice
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: invoice
+        invoiceInformationLog:
+            targetEntity: App\Entity\Cobranca\InvoiceInformationLog
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: invoice
+        invoiceItem:
+            targetEntity: App\Entity\Cobranca\InvoiceItem
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: invoice
+    lifecycleCallbacks: {  }

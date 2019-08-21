@@ -1,0 +1,138 @@
+App\Entity\Cobranca\CobrancaHistorico:
+    type: entity
+    table: cobranca_historico
+    indexes:
+        index_cobranca_stattus_id:
+            columns:
+                - cobranca_historico_status_id
+        index_cobranca_historico_status_id:
+            columns:
+                - cobranca_historico_status_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        customer:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        dateRecord:
+            type: datetime
+            nullable: false
+            column: date_record
+        userId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: user_id
+        valorVencido:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: valor_vencido
+        contatoGcdbCadUserId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: contato_gcdb_cad_user_id
+        dataRevisao:
+            type: datetime
+            nullable: true
+            column: data_revisao
+        dataConclusao:
+            type: datetime
+            nullable: true
+            column: data_conclusao
+        motivoPendencia:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: motivo_pendencia
+        diasAtraso:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: dias_atraso
+        descricao:
+            type: text
+            nullable: false
+            length: null
+            options:
+                fixed: false
+        contatoNome:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: contato_nome
+        contatoTelefone:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: contato_telefone
+        contatoEmail:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: contato_email
+        status:
+            type: string
+            nullable: true
+            length: null
+            options:
+                fixed: true
+        segmento:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+        registrante:
+            type: string
+            nullable: true
+            length: null
+            options:
+                fixed: false
+        cobrancaHistoricoStatusId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '0'
+            column: cobranca_historico_status_id
+        registranteEdicao:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: registrante_edicao
+        dataUltimaEdicao:
+            type: datetime
+            nullable: true
+            column: data_ultima_edicao
+        registranteEdicaoNome:
+            type: string
+            nullable: true
+            length: 90
+            options:
+                fixed: false
+            column: registrante_edicao_nome
+    lifecycleCallbacks: {  }

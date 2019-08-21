@@ -1,0 +1,44 @@
+App\Entity\Cobranca\InvoiceTypeServico:
+    type: entity
+    table: invoice_type_servico
+    indexes:
+        IDX_96AE334D9B850DC3:
+            columns:
+                - id_type_invoice
+    id:
+        id:
+            type: string
+            nullable: false
+            length: 2044
+            options:
+                fixed: false
+                default: '15'
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        servCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: serv_codigoid
+        productType:
+            type: string
+            nullable: true
+            length: 2
+            options:
+                fixed: false
+            column: product_type
+    manyToOne:
+        invoiceType:
+            targetEntity: InvoiceType
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_type_invoice:
+                    referencedColumnName: id_type_invoice
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

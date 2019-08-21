@@ -1,0 +1,24 @@
+App\Entity\Cobranca\CobrancaAcao:
+    type: entity
+    table: cobranca_acao
+    indexes:
+        index_cobranca_acao_id:
+            columns:
+                - id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        acao:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

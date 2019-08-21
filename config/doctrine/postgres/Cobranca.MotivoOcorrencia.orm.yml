@@ -1,0 +1,35 @@
+App\Entity\Cobranca\MotivoOcorrencia:
+    type: entity
+    table: motivo_ocorrencia
+    indexes:
+        motivo_ocorrencia_moti_codigoid_idx:
+            columns:
+                - moti_codigoid
+        motivo_ocorrencia_cod_motivo_idx:
+            columns:
+                - cod_motivo
+    id:
+        codMotivo:
+            type: string
+            nullable: false
+            length: 4
+            options:
+                fixed: true
+            id: true
+            column: cod_motivo
+            generator:
+                strategy: SEQUENCE
+    fields:
+        motivo:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        motiCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: moti_codigoid
+    lifecycleCallbacks: {  }

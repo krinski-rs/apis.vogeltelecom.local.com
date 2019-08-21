@@ -1,0 +1,46 @@
+App\Entity\Cobranca\Confissao:
+    type: entity
+    table: confissao
+    indexes:
+        index_confissao_confissaoid:
+            columns:
+                - confissao_id
+    id:
+        confissaoId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: confissao_id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        customer:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        userId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: user_id
+        dataInc:
+            type: datetime
+            nullable: true
+            column: data_inc
+        valueSumOld:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: value_sum_old
+        valueSumNew:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: value_sum_new
+    lifecycleCallbacks: {  }

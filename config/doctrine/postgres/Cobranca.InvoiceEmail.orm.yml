@@ -1,0 +1,55 @@
+App\Entity\Cobranca\InvoiceEmail:
+    type: entity
+    table: invoice_email
+    indexes:
+        invoice_email_id_invoice:
+            columns:
+                - id_invoice
+        index_email_invoiceid:
+            columns:
+                - email_invoiceid
+    id:
+        emailInvoiceid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: email_invoiceid
+            generator:
+                strategy: SEQUENCE
+    fields:
+        userId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: user_id
+        dataInc:
+            type: date
+            nullable: true
+            column: data_inc
+        emailLumaId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: email_luma_id
+        cadUserEmailId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: cad_user_email_id
+    manyToOne:
+        invoice:
+            targetEntity: App\Entity\Cobranca\Invoice
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_invoice:
+                    referencedColumnName: id_invoice
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

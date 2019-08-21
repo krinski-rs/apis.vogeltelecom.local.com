@@ -1,0 +1,125 @@
+App\Entity\Cobranca\LoteRetorno:
+    type: entity
+    table: lote_retorno
+    indexes:
+        lote_retorno_lore_codigoid_idx:
+            columns:
+                - lore_codigoid
+        index_lote_retorno_cod_ocorrencia:
+            columns:
+                - cod_ocorrencia
+        index_lote_retorno_:
+            columns:
+                - lobo_codigoid
+        IDX_CD2EFD14A900E256:
+            columns:
+                - arqu_codigoid
+    id:
+        loreCodigoid:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: lore_codigoid
+            generator:
+                strategy: SEQUENCE
+    fields:
+        tipoCarteira:
+            type: string
+            nullable: false
+            length: 1
+            options:
+                fixed: true
+            column: tipo_carteira
+        valorPago:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: valor_pago
+        dataCreditoCc:
+            type: date
+            nullable: true
+            column: data_credito_cc
+        formaPagamento:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: true
+            column: forma_pagamento
+        canalPagamento:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: true
+            column: canal_pagamento
+        motivosOcorrencia:
+            type: string
+            nullable: true
+            length: 12
+            options:
+                fixed: false
+            column: motivos_ocorrencia
+        dataInc:
+            type: date
+            nullable: false
+            options:
+                default: now()
+            column: data_inc
+        dataOcorrencia:
+            type: date
+            nullable: true
+            column: data_ocorrencia
+        valorDespesas:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: valor_despesas
+        valorJuros:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: valor_juros
+        valorOutrasDespesas:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: valor_outras_despesas
+    manyToOne:
+        loteArquivo:
+            targetEntity: App\Entity\Cobranca\LoteArquivo
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                arqu_codigoid:
+                    referencedColumnName: arqu_codigoid
+            orphanRemoval: false
+        loteOcorrencia:
+            targetEntity: App\Entity\Cobranca\LoteOcorrencia
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cod_ocorrencia:
+                    referencedColumnName: cod_ocorrencia
+            orphanRemoval: false
+        loteBoleto:
+            targetEntity: App\Entity\Cobranca\LoteBoleto
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                lobo_codigoid:
+                    referencedColumnName: lobo_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

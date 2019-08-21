@@ -1,0 +1,106 @@
+App\Entity\Cobranca\LoteBoleto:
+    type: entity
+    table: lote_boleto
+    indexes:
+        lote_boleto_bole_codigoid_idx:
+            columns:
+                - bole_codigoid
+        lote_boleto_lote_codigoid_idx:
+            columns:
+                - lote_codigoid
+        index_lote_boleto_lobo_codigoid:
+            columns:
+                - lobo_codigoid
+    uniqueConstraints:
+        lote_boleto_lote_codigoid_key:
+            columns:
+                - lote_codigoid
+                - bole_codigoid
+    id:
+        loboCodigoid:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: lobo_codigoid
+            generator:
+                strategy: SEQUENCE
+    fields:
+        tipoCarteira:
+            type: string
+            nullable: false
+            length: 1
+            options:
+                fixed: true
+            column: tipo_carteira
+        codOcorrencia:
+            type: string
+            nullable: false
+            length: 2
+            options:
+                fixed: true
+            column: cod_ocorrencia
+        tipoDocumento:
+            type: string
+            nullable: false
+            length: 2
+            options:
+                fixed: true
+            column: tipo_documento
+        codAceite:
+            type: string
+            nullable: false
+            length: 1
+            options:
+                fixed: true
+            column: cod_aceite
+        primeiraInstrucao:
+            type: string
+            nullable: true
+            length: 2
+            options:
+                fixed: true
+            column: primeira_instrucao
+        segundaInstrucao:
+            type: string
+            nullable: true
+            length: 2
+            options:
+                fixed: true
+            column: segunda_instrucao
+        codMora:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: true
+            column: cod_mora
+        valordiaTaxamesJuro:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: valordia_taxames_juro
+    manyToOne:
+        boleto:
+            targetEntity: App\Entity\Cobranca\Boleto
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                bole_codigoid:
+                    referencedColumnName: bole_codigoid
+            orphanRemoval: false
+        lote:
+            targetEntity: App\Entity\Cobranca\Lote
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                lote_codigoid:
+                    referencedColumnName: lote_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

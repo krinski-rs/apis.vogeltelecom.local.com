@@ -32,6 +32,16 @@ doctrine:
                 password: '%env(resolve:DB_PASSWORD)%'
                 charset:  '%env(resolve:DB_CHARSET)%'
                 schema_filter: '%env(resolve:DB_CEP_SCHEMA)%'
+            cobranca:
+                driver:   '%env(resolve:DB_DRIVER)%'
+                host:     '%env(resolve:DB_HOST)%'
+                port:     '%env(resolve:DB_PORT)%'
+                dbname:   '%env(resolve:DB_COBRANCA)%'
+                user:     '%env(resolve:DB_USER)%'
+                password: '%env(resolve:DB_PASSWORD)%'
+                charset:  '%env(resolve:DB_CHARSET)%'
+                mapping_types:
+                    _int4: integer
             mysql:
                 driver:   '%env(resolve:DB_MYSQL_DRIVER)%'
                 host:     '%env(resolve:DB_MYSQL_HOST)%'
@@ -62,6 +72,15 @@ doctrine:
                         is_bundle: false
                         type: yml
                         dir: '%kernel.project_dir%/config/doctrine/cep'
+                        prefix: 'App\Entity'
+                        alias: AppEntity
+            cobranca:
+                connection: cobranca
+                mappings:
+                    Cep:
+                        is_bundle: false
+                        type: yml
+                        dir: '%kernel.project_dir%/config/doctrine/postgres'
                         prefix: 'App\Entity'
                         alias: AppEntity
             mysql:

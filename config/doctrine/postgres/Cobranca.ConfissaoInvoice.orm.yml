@@ -1,0 +1,49 @@
+App\Entity\Cobranca\ConfissaoInvoice:
+    type: entity
+    table: confissao_invoice
+    indexes:
+        IDX_4EB31A8C6E77D47:
+            columns:
+                - confissao_id
+        IDX_4EB31A84EF8BE34:
+            columns:
+                - id_invoice
+    id:
+        confissaoInvoiceId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: confissao_invoice_id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        tipo:
+            type: string
+            nullable: true
+            length: null
+            options:
+                fixed: true
+    manyToOne:
+        confissao:
+            targetEntity: App\Entity\Cobranca\Confissao
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                confissao_id:
+                    referencedColumnName: confissao_id
+            orphanRemoval: false
+        invoice:
+            targetEntity: App\Entity\Cobranca\Invoice
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_invoice:
+                    referencedColumnName: id_invoice
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

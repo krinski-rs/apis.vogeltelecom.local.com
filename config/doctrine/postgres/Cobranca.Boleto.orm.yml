@@ -1,0 +1,106 @@
+App\Entity\Cobranca\Boleto:
+    type: entity
+    table: boleto
+    indexes:
+        index_bole_codigoid:
+            columns:
+                - bole_codigoid
+        fki_status_boleto:
+            columns:
+                - id_boleto_status
+        fki_pagador:
+            columns:
+                - id_boleto_pagador
+    id:
+        boleCodigoid:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: bole_codigoid
+            generator:
+                strategy: SEQUENCE
+    fields:
+        dateVencimento:
+            type: date
+            nullable: false
+            column: date_vencimento
+        documentoNumero:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: documento_numero
+        codigo:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        idBoletoPagador:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+            column: id_boleto_pagador
+        idBoletoStatus:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+            column: id_boleto_status
+        descricao:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        dateRecord:
+            type: datetime
+            nullable: false
+            column: date_record
+        valorDocumento:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: valor_documento
+        nossoNumero:
+            type: string
+            nullable: true
+            length: 10
+            options:
+                fixed: false
+            column: nosso_numero
+        valordiaTaxamesJuro:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            column: valordia_taxames_juro
+        carteira:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+    manyToMany:
+        cc:
+            targetEntity: App\Entity\Cobranca\Cc
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: boleto
+            joinTable:
+                name: boleto_cc
+                joinColumns:
+                    -
+                        name: bole_codigoid
+                        referencedColumnName: bole_codigoid
+                inverseJoinColumns:
+                    -
+                        name: cc_codigoid
+                        referencedColumnName: cc_codigoid
+            orderBy: null
+    lifecycleCallbacks: {  }

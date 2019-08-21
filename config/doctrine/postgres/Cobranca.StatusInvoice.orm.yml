@@ -1,0 +1,25 @@
+App\Entity\Cobranca\StatusInvoice:
+    type: entity
+    table: status_invoice
+    indexes:
+        index_status_invoice_id_status_invoice:
+            columns:
+                - id_status_invoice
+    id:
+        idStatusInvoice:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_status_invoice
+            generator:
+                strategy: SEQUENCE
+    fields:
+        description:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

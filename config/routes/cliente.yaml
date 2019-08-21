@@ -1,0 +1,39 @@
+cliente_get:
+    path: /{idCliente}
+    controller: 'App\Controller\Cliente\ClienteController::getCliente'
+    methods: [GET]
+    requirements:
+        idCliente: '\d+'
+    defaults:
+        _format: json
+cliente_list:
+    path: /
+    controller: 'App\Controller\Cliente\ClienteController::getClientes'
+    methods: [GET]
+    defaults:
+        _format: json
+cliente_pedido:
+    path: /{idCliente}/pedido/{idPedido}
+    controller: 'App\Controller\Cliente\ClienteController::getClientePedido'
+    methods: [GET]
+    requirements:
+        idCliente: '\d+'
+        idPedido: '\d+'
+    defaults:
+        _format: json
+cliente_pedido_pdf:
+    path: /{idCliente}/pedido/{idPedido}/pdf
+    controller: 'App\Controller\Cliente\ClienteController::getClientePedidoPdf'
+    methods: [GET]
+    requirements:
+        idCliente: '\d+'
+        idPedido: '\d+'
+cliente_pedidos:
+    path: /{idCliente}/pedido
+    controller: 'App\Controller\Cliente\ClienteController::getClientePedidos'
+    methods: [GET]
+    requirements:
+        idCliente: '\d+'
+    defaults:
+        _format: json
+        

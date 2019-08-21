@@ -7,3 +7,9 @@ cep:
 geolocation:
     prefix: /geo
     resource: './routes/geo.yaml'
+pedido:
+    prefix: /pedido
+    resource: './routes/pedido.yaml'
+cliente:
+    prefix: /cliente
+    resource: './routes/cliente.yaml'

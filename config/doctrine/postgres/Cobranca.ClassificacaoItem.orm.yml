@@ -1,0 +1,34 @@
+App\Entity\Cobranca\ClassificacaoItem:
+    type: entity
+    table: classificacao_item
+    id:
+        clasitemCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: clasitem_codigoid
+            generator:
+                strategy: SEQUENCE
+    fields:
+        clasitemNome:
+            type: string
+            nullable: false
+            length: 40
+            options:
+                fixed: false
+            column: clasitem_nome
+        clasitemAtivo:
+            type: boolean
+            nullable: false
+            options:
+                default: true
+            column: clasitem_ativo
+        clasitemDatainc:
+            type: datetime
+            nullable: false
+            options:
+                default: now()
+            column: clasitem_datainc
+    lifecycleCallbacks: {  }

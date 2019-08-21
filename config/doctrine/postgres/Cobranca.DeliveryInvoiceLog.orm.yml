@@ -1,0 +1,36 @@
+App\Entity\Cobranca\DeliveryInvoiceLog:
+    type: entity
+    table: delivery_invoice_log
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        createdAt:
+            type: datetime
+            nullable: false
+            column: created_at
+        field:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        message:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        idDeliveryInvoice:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_delivery_invoice
+    lifecycleCallbacks: {  }

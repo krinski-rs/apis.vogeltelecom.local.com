@@ -1,0 +1,32 @@
+App\Entity\Cobranca\CobrancaHistoricoAcao:
+    type: entity
+    table: cobranca_historico_acao
+    indexes:
+        index_cobranca_historico_acao_id:
+            columns:
+                - cobranca_acao_id
+        index_cobranca_acao_historico_id:
+            columns:
+                - cobranca_historico_id
+    id:
+        cobrancaAcaoId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: cobranca_acao_id
+        cobrancaHistorico:
+            associationKey: true
+    oneToOne:
+        cobrancaHistorico:
+            targetEntity: App\Entity\Cobranca\CobrancaHistorico
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cobranca_historico_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

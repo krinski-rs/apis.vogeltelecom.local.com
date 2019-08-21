@@ -34,14 +34,6 @@ class IntegrarCircuito
     private $objEntityManager = NULL;
     
     /**
-     * Variável que irá guardar a referência do manager do ORM.
-     *
-     * @access  private
-     * @var     \Doctrine\ORM\EntityManager
-     */
-    private $objEntityManagerGcdb = NULL;
-    
-    /**
      * Variável que irá guardar a referência do serviço de log.
      *
      * @access  private
@@ -67,8 +59,7 @@ class IntegrarCircuito
      */
     public function __construct(Registry $objRegistry, Logger $objLogger, array $params)
     {
-        $this->objEntityManager     = $objRegistry->getManager('financeiro');
-        $this->objEntityManagerGcdb = $objRegistry->getManager('gcdb');
+        $this->objEntityManager     = $objRegistry->getManager('mysql');
         $this->objLogger            = $objLogger;
         $this->params               =  $params;
     }
@@ -107,9 +98,9 @@ class IntegrarCircuito
         try {
             $objContrato = $objCircuitoSalesforce->getContCodigoid();
             $objEnderecoentrega = $objContrato->getEndeentrCodigoid();
-            $objAdmCidadesRepository = $this->objEntityManagerGcdb->getRepository('App\Entity\Gcdb\AdmCidades');
-            $objAdmLogradouroRepository = $this->objEntityManagerGcdb->getRepository('App\Entity\Gcdb\AdmLogradouro');
-            $objCustomersRepository = $this->objEntityManagerGcdb->getRepository('App\Entity\Gcdb\Customers');
+            $objAdmCidadesRepository = $this->objEntityManager->getRepository('App\Entity\Gcdb\AdmCidades');
+            $objAdmLogradouroRepository = $this->objEntityManager->getRepository('App\Entity\Gcdb\AdmLogradouro');
+            $objCustomersRepository = $this->objEntityManager->getRepository('App\Entity\Gcdb\Customers');
             $objCustomers = $objCustomersRepository->find((integer)$objContrato->getContPaicodigoid()->getClieCodigoid());
             if(!($objCustomers instanceof Customers)){
                 $this->objLogger->error("Circuito {$objContrato->getContCodigoid()} Cliente não localizado", ['cliente'=>$objContrato->getContPaicodigoid()->getClieCodigoid()]);
