@@ -108,6 +108,13 @@ App\Entity\Cobranca\Invoice:
                 unsigned: false
                 default: '0'
             column: new_invoice
+        idSalesforce:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+            column: id_salesforce
     manyToOne:
         statusInvoice:
             targetEntity: App\Entity\Cobranca\StatusInvoice

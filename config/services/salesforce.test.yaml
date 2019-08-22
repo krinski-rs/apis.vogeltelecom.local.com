@@ -24,7 +24,5 @@ parameters:
             url: /services/data/v39.0/sobjects/CircuitoAtributo__c
         produto:
             url: /services/data/v39.0/sobjects/Product2
-        pedido:
-            url: /services/data/v39.0/sobjects/PedidoFaturamento__c
 #https://login.salesforce.com/services/oauth2/callbac
 #https://vogeltelecom--dev2.my.salesforce.com/services/oauth2/callbac

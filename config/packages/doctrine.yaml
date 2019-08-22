@@ -52,6 +52,14 @@ doctrine:
                 charset:  '%env(resolve:DB_MYSQL_CHARSET)%'
                 mapping_types:
                     enum: string
+            sqlserver_protheus:
+                driver:   'pdo_sqlsrv'
+                host:     '187.94.58.102'
+                port:     '52731'
+                dbname:   'SQLSERVER'
+                user:     'usr_NRS3VM_READ'
+                password: 'GdZIxcJRlor3gGD'
+                charset:  '%env(resolve:DB_MYSQL_CHARSET)%'
     orm:
         default_entity_manager: default
         auto_generate_proxy_classes: true
@@ -90,6 +98,15 @@ doctrine:
                         is_bundle: false
                         type: yml
                         dir: '%kernel.project_dir%/config/doctrine/mysql'
+                        prefix: 'App\Entity'
+                        alias: AppEntity
+            sqlserver_protheus:
+                connection: sqlserver_protheus
+                mappings:
+                    Mysql:
+                        is_bundle: false
+                        type: yml
+                        dir: '%kernel.project_dir%/config/doctrine/sqlserver'
                         prefix: 'App\Entity'
                         alias: AppEntity
 

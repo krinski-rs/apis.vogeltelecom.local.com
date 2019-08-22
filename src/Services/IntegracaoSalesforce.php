@@ -10,6 +10,7 @@ namespace App\Services;
 use Doctrine\Bundle\DoctrineBundle\Registry;
 use Monolog\Logger;
 use App\Services\IntegracaoSalesforce\Circuito\IntegrarCircuito;
+use App\Services\IntegracaoSalesforce\Pedido\IntegrarPedido;
 use App\Services\IntegracaoSalesforce\OAuthSalesforce;
 
 /**
@@ -27,6 +28,13 @@ class IntegracaoSalesforce
      * @var     \Doctrine\ORM\EntityManager
      */
     private $objEntityManager   = NULL;
+    /**
+     * Variável que irá guardar a referência do manager do ORM.
+     *
+     * @access  private
+     * @var     \Doctrine\ORM\EntityManager
+     */
+    private $objEntityManagerCobranca   = NULL;
     
     /**
      * Variável que irá guardar a referência do serviço de log.
@@ -44,6 +52,14 @@ class IntegracaoSalesforce
      */
     private $objIntegrarCircuito  = NULL;
     
+    /**
+     * Obejeto que irá guardar do serviço de integração de pedido.
+     *
+     * @access  private
+     * @var     IntegrarPedido
+     */
+    private $objIntegrarPedido  = NULL;
+    
     
     /**
      * Retorna a instância do objeto.
@@ -53,11 +69,13 @@ class IntegracaoSalesforce
      * @param   \Monolog\Logger   $objLogger
      * @param   OAuthSalesforce   $objOAuthSalesforce
      */
-    public function __construct(Registry $objRegistry, Logger $objLogger, IntegrarCircuito $objIntegrarCircuito)
+    public function __construct(Registry $objRegistry, Logger $objLogger, IntegrarCircuito $objIntegrarCircuito, IntegrarPedido $objIntegrarPedido)
     {
-        $this->objEntityManager     = $objRegistry->getManager('mysql');
-        $this->objLogger            = $objLogger;
-        $this->objIntegrarCircuito  = $objIntegrarCircuito;
+        $this->objEntityManager         = $objRegistry->getManager('mysql');
+        $this->objEntityManagerCobranca = $objRegistry->getManager('cobranca');
+        $this->objLogger                = $objLogger;
+        $this->objIntegrarCircuito      = $objIntegrarCircuito;
+        $this->objIntegrarPedido        = $objIntegrarPedido;
     }
     
     /**
@@ -73,7 +91,7 @@ class IntegracaoSalesforce
     {
         try {
             $this->objLogger->info("Início da integração do circuito {$contCodigoid}");
-            $objCircuitoSalesforceRepository = $this->objEntityManager->getRepository("App\Entity\Financeiro\CircuitoSalesforce");
+            $objCircuitoSalesforceRepository = $this->objEntityManager->getRepository("AppEntity:Financeiro\CircuitoSalesforce");
             $arrayCircuitoSalesforce = $objCircuitoSalesforceRepository->findBy(['contCodigoid'=>$contCodigoid, 'dataIntegracao'=>NULL], ['id'=>'DESC']);
             if(!count($arrayCircuitoSalesforce)){
                 $this->objLogger->warning("Circuito '{$contCodigoid}' não encontrado");
@@ -104,7 +122,7 @@ class IntegracaoSalesforce
     public function circuitos(int $limit)
     {
         try {
-            $objCircuitoSalesforceRepository = $this->objEntityManager->getRepository("App\Entity\Financeiro\CircuitoSalesforce");
+            $objCircuitoSalesforceRepository = $this->objEntityManager->getRepository("AppEntity:Financeiro\CircuitoSalesforce");
             $arrayCircuitoSalesforce = $objCircuitoSalesforceRepository->findBy(['dataIntegracao'=>NULL], ['id'=>'ASC'], $limit);
             if(!count($arrayCircuitoSalesforce)){
                 throw new \Exception("Nenhum circuito à ser integrado.");
@@ -114,6 +132,69 @@ class IntegracaoSalesforce
             while ($objCircuitoSalesforce = current($arrayCircuitoSalesforce)){
                 $this->objIntegrarCircuito->integrar($objCircuitoSalesforce);
                 next($arrayCircuitoSalesforce);
+            }
+            
+        } catch (\RuntimeException $e){
+            throw $e;
+        } catch (\Exception $e){
+            throw $e;
+        }
+    }
+    
+    /**
+     * Realiza a criação/atualização de um pedido pendente de integração.
+     *
+     * @access  public
+     * @param   int $pedido
+     * @return  array
+     * @throws  \RuntimeException
+     * @throws  \Exception
+     */
+    public function pedido(int $pedido)
+    {
+        try {
+            $this->objLogger->info("Início da integração do circuito {$contCodigoid}");
+//             $objCircuitoSalesforceRepository = $this->objEntityManager->getRepository("App\Entity\Financeiro\CircuitoSalesforce");
+//             $arrayCircuitoSalesforce = $objCircuitoSalesforceRepository->findBy(['contCodigoid'=>$contCodigoid, 'dataIntegracao'=>NULL], ['id'=>'DESC']);
+//             if(!count($arrayCircuitoSalesforce)){
+//                 $this->objLogger->warning("Circuito '{$contCodigoid}' não encontrado");
+//                 throw new \Exception("Circuito '{$contCodigoid}' não encontrado.");
+//             }
+            
+//             reset($arrayCircuitoSalesforce);
+//             while ($objCircuitoSalesforce = current($arrayCircuitoSalesforce)){
+//                 $this->objIntegrarCircuito->integrar($objCircuitoSalesforce);
+//                 next($arrayCircuitoSalesforce);
+//             }
+            
+        } catch (\RuntimeException $e){
+            throw $e;
+        } catch (\Exception $e){
+            throw $e;
+        }
+    }
+    
+    /**
+     * Realiza a criação/atualização dos pedidos pendentes de integração.
+     *
+     * @access  public
+     * @return  array
+     * @throws  \RuntimeException
+     * @throws  \Exception
+     */
+    public function pedidos(int $limit)
+    {
+        try {
+            $objInvoiceSalesforceRepository = $this->objEntityManagerCobranca->getRepository("AppEntity:Cobranca\InvoiceSalesforce");
+            $arrayInvoiceSalesforce = $objInvoiceSalesforceRepository->findBy(['dataIntegracao'=>NULL], ['id'=>'ASC'], $limit);
+            if(!count($arrayInvoiceSalesforce)){
+                throw new \Exception("Nenhum pedido à ser integrado.");
+            }
+            
+            reset($arrayInvoiceSalesforce);
+            while ($objInvoiceSalesforce = current($arrayInvoiceSalesforce)){
+                $this->objIntegrarPedido->integrar($objInvoiceSalesforce);
+                next($arrayInvoiceSalesforce);
             }
             
         } catch (\RuntimeException $e){

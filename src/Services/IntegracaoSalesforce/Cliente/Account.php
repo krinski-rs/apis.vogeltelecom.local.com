@@ -13,7 +13,6 @@ use App\Entity\Gcdb\Customers2users;
 use App\Entity\Gcdb\CadUsersNome;
 use App\Entity\Gcdb\CadUsersTelefone;
 use App\Services\IntegracaoSalesforce\Circuito\Cidade;
-use App\Services\IntegracaoSalesforce\Circuito\Circuit;
 
 /**
  * Class Account

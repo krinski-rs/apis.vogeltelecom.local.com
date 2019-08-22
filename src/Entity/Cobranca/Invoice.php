@@ -39,6 +39,8 @@ class Invoice
 
     private $newInvoice;
 
+    private $idSalesforce;
+
     private $deliveryInvoice;
 
     private $invoiceInformationLog;
@@ -242,6 +244,18 @@ class Invoice
     public function setNewInvoice(int $newInvoice): self
     {
         $this->newInvoice = $newInvoice;
+
+        return $this;
+    }
+
+    public function getIdSalesforce(): ?string
+    {
+        return $this->idSalesforce;
+    }
+
+    public function setIdSalesforce(?string $idSalesforce): self
+    {
+        $this->idSalesforce = $idSalesforce;
 
         return $this;
     }

@@ -1,5 +1,5 @@
 <?php
-namespace App\Command\IntegracaoSalesforce\Circuito;
+namespace App\Command\IntegracaoSalesforce\Pedido;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Command\LockableTrait;
@@ -12,7 +12,7 @@ class IntegracaoCommand extends Command
 {
     use LockableTrait;
     
-    protected static $defaultName = 'salesforce:integracao:circuito';
+    protected static $defaultName = 'salesforce:integracao:pedido';
     
     protected function execute(InputInterface $objInputInterface, OutputInterface $objOutputInterface)
     {
@@ -21,7 +21,7 @@ class IntegracaoCommand extends Command
             return 0;
         }
         try {
-            $objOutputInterface->writeln("<info>Início da integração de circuitos às ".date("Y-m-d H:i:s")."</info>");
+            $objOutputInterface->writeln("<info>Início da integração de pedidos às ".date("Y-m-d H:i:s")."</info>");
 
             $objIntegracaoSalesforce = $this->getApplication()->getKernel()->getContainer()->get('integracao_salesforce');
             if(!($objIntegracaoSalesforce instanceof IntegracaoSalesforce)){
@@ -29,19 +29,19 @@ class IntegracaoCommand extends Command
                 return 0;
             }
             
-            $contCodigoid = $objInputInterface->getOption('circ');
-            if($contCodigoid){
-                if(!is_numeric($contCodigoid) || ((integer)$contCodigoid <= 0)){
-                    $objOutputInterface->writeln("\n<error>O parâmetro [--circ|-c] deve ser um número inteiro maior que zero.</error>\n");
+            $pedido = $objInputInterface->getOption('pedido');
+            if($pedido){
+                if(!is_numeric($pedido) || ((integer)$pedido <= 0)){
+                    $objOutputInterface->writeln("\n<error>O parâmetro [--pedido|-p] deve ser um número inteiro maior que zero.</error>\n");
                     return 0;
                 }
-                $objOutputInterface->writeln("<info>Integrar circuito '{$contCodigoid}'</info>");
-                $objIntegracaoSalesforce->circuito($contCodigoid);
-                $objOutputInterface->writeln("<info>Circuito '{$contCodigoid}' integrado</info>");
+                $objOutputInterface->writeln("<info>Integrar pedido '{$pedido}'</info>");
+                $objIntegracaoSalesforce->pedido($pedido);
+                $objOutputInterface->writeln("<info>Pedido '{$pedido}' integrado</info>");
             }else{
-                $objOutputInterface->writeln("<info>Integrar circuitos'</info>");
-                $objIntegracaoSalesforce->circuitos($objInputInterface->getOption('limit'));
-                $objOutputInterface->writeln("<info>Circuitos integrados</info>");
+                $objOutputInterface->writeln("<info>Integrar pedidos</info>");
+                $objIntegracaoSalesforce->pedidos($objInputInterface->getOption('limit'));
+                $objOutputInterface->writeln("<info>Pedidos integrados</info>");
             }
             
             $this->release();
@@ -54,15 +54,16 @@ class IntegracaoCommand extends Command
             $objOutputInterface->writeln("<error>Message:{$e->getMessage()}</error>\n");
             $this->release();
         }
-        $objOutputInterface->writeln("<info>Fim da integração de circuitos às ".date("Y-m-d H:i:s")."</info>");
+        $objOutputInterface->writeln("<info>Fim da integração de pedidos às ".date("Y-m-d H:i:s")."</info>");
     }
+    
     protected function configure()
     {
-        $this->setName('salesforce:integracao:circuito')
-            ->setDescription('Comando para integração dos circuitos com o Salesforce.')
-            ->addOption('circ', 'c', InputOption::VALUE_OPTIONAL, 'Id do circuito ex.: --circ=123456', NULL)
+        $this->setName('salesforce:integracao:pedido')
+            ->setDescription('Comando para integração dos pedidos com o Salesforce.')
+            ->addOption('pedido', 'p', InputOption::VALUE_OPTIONAL, 'Id do pedido ex.: --pedido=123456', NULL)
             ->addOption('limit', 'l', InputOption::VALUE_OPTIONAL, 'Limite de registros por execução ex.: --limit=10', 50)
-            ->setHelp("Este comando permite que você realize as integrações \nde circuitos do Sistech com o Salesforce.")
+            ->setHelp("Este comando permite que você realize as integrações \nde pedido do Sistech com o Salesforce.")
         ;
     }
 }

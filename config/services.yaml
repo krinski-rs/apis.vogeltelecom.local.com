@@ -109,7 +109,7 @@ services:
 
     App\Services\IntegracaoSalesforce:
           public: false
-          arguments: ["@doctrine", "@logger", "@integracao_circuito_salesforce"]
+          arguments: ["@doctrine", "@logger", "@integracao_circuito_salesforce", "@integracao_pedido_salesforce"]
           tags:
               - { name: monolog.logger, channel: salesforce }
 
@@ -128,6 +128,16 @@ services:
           public: true
 
     App\Services\IntegracaoSalesforce\Circuito\IntegrarCircuito:
+          public: false
+          arguments: ["@doctrine", "@logger", "@oauth_salesforce", "%salesforce%"]
+          tags:
+              - { name: monolog.logger, channel: salesforce }
+
+    integracao_pedido_salesforce:
+          alias: App\Services\IntegracaoSalesforce\Pedido\IntegrarPedido
+          public: true
+
+    App\Services\IntegracaoSalesforce\Pedido\IntegrarPedido:
           public: false
           arguments: ["@doctrine", "@logger", "@oauth_salesforce", "%salesforce%"]
           tags:

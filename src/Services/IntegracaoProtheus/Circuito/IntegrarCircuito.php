@@ -14,7 +14,6 @@ use App\Entity\Gcdb\Customers;
 use App\Entity\Gcdb\Customers2users;
 use App\Entity\Gcdb\CadUsers;
 use Doctrine\Bundle\DoctrineBundle\Registry;
-use App\Entity\Financeiro\Enderecoentregaatributovalor;
 
 /**
  * Class IntegrarCircuito
