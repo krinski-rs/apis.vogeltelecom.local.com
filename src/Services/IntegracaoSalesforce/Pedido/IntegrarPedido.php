@@ -181,24 +181,25 @@ class IntegrarPedido
             $objConnection = $this->objEntityManagerProtheus->getConnection();
             $statement = "";
             if($objConnection instanceof Connection){
-                $statement = "SELECT
-	E1_NUM AS							'Número do título',
-	RTRIM(E1_P_REF) AS						'Pedido Vogel',
-	E1_NUMBOR AS							'Número do borderô',
-	E1_PORTADO AS							'Portador(banco)',
-	E1_PREFIXO AS							'Prefixo',
-	Convert(varchar(10),cast(E1_BAIXA as date),103) AS		'Data da baixa(Protheus)',
-	Convert(varchar(10),cast(E1_VENCORI as date),103) AS		'Data de vencimento da origem(Protheus)',
-	Convert(varchar(10),cast(E1_VENCTO as date),103) AS 		'Data de vencimento(Protheus)',
-	E1_DESCONT AS							'Desconto'
-FROM  SE1V50 AS E1
-WHERE E1_P_REF <> ''";
-//                 $objConnection->prepare($statement);
-//                 $objConnection->
-                $a = $objConnection->executeQuery($statement);
+//                 $objConnection->connect();
+//                 $statement = "SELECT
+// 	E1_NUM AS							'Número do título',
+// 	RTRIM(E1_P_REF) AS						'Pedido Vogel',
+// 	E1_NUMBOR AS							'Número do borderô',
+// 	E1_PORTADO AS							'Portador(banco)',
+// 	E1_PREFIXO AS							'Prefixo',
+// 	Convert(varchar(10),cast(E1_BAIXA as date),103) AS		'Data da baixa(Protheus)',
+// 	Convert(varchar(10),cast(E1_VENCORI as date),103) AS		'Data de vencimento da origem(Protheus)',
+// 	Convert(varchar(10),cast(E1_VENCTO as date),103) AS 		'Data de vencimento(Protheus)',
+// 	E1_DESCONT AS							'Desconto'
+// FROM  SE1V50 AS E1
+// WHERE E1_P_REF <> '' LIMIT 1;";
+// //                 $objConnection->prepare($statement);
+// //                 $objConnection->
+//                 $a = $objConnection->executeQuery($statement);
             }
             echo "<pre>";
-            \Doctrine\Common\Util\Debug::dump($conection, 2);
+            \Doctrine\Common\Util\Debug::dump($objConnection, 2);
             \Doctrine\Common\Util\Debug::dump($statement, 2);
            echo "lajdfahkldjas";
             exit();
