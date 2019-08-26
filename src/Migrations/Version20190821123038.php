@@ -33,6 +33,10 @@ final class Version20190821123038 extends AbstractMigration
         if(!$objTableInvoice->hasColumn("id_salesforce")){
             $objTableInvoice->addColumn('id_salesforce', 'string', ['notnull' => false]);
         }
+        
+        if(!$objTableInvoice->hasColumn("status_salesforce")){
+            $objTableInvoice->addColumn('status_salesforce', 'boolean', ['default' => false]);
+        }
     }
 
     public function down(Schema $objSchema) : void
@@ -44,6 +48,10 @@ final class Version20190821123038 extends AbstractMigration
         $objTableInvoice = $objSchema->getTable('invoice');
         if($objTableInvoice->hasColumn("id_salesforce")){
             $objTableInvoice->dropColumn('id_salesforce');
+        }
+        
+        if($objTableInvoice->hasColumn("status_salesforce")){
+            $objTableInvoice->dropColumn('status_salesforce');
         }
     }
 }
