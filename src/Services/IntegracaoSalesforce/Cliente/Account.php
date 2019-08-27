@@ -286,8 +286,6 @@ class Account
             
             $fone = $this->formataFone($objCadUsersTelefone->getDdi().$objCadUsersTelefone->getDdd(). $objCadUsersTelefone->getTelefone());
             $nivel = trim($objCustomers->getPrioridades()->first()->getNivel());
-            print_r("x-$nivel-x");
-            print_r(self::$arrayPrioridade);
             $arrayAccount = [
                 'BairroCobranca__c' => $bairro,
                 'BairroComercial__c' => $bairro,

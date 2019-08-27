@@ -118,13 +118,13 @@ class PedidoFaturamento
         }
     }
     
-    public function create(array $arrayEndereco)
+    public function create(array $arrayPedido)
     {
         try {
             $url = "{$this->params['base']}{$this->params['pedido']['url']}";
             $params = [
                 'headers' => ['Authorization' => $this->accessToken],
-                'json' => $arrayEndereco,
+                'json' => $arrayPedido,
             ];
             
             $this->objLogger->info("Dados da para criar Pedido de Faturamento", [$params, 'url'=>$url]);
@@ -143,13 +143,13 @@ class PedidoFaturamento
         }
     }
     
-    public function update(array $arrayEndereco, string $id)
+    public function update(array $arrayPedido, string $id)
     {
         try {
             $url = "{$this->params['base']}{$this->params['pedido']['url']}/{$id}";
             $params = [
                 'headers' => ['Authorization' => $this->accessToken],
-                'json' => $arrayEndereco,
+                'json' => $arrayPedido,
             ];
             $this->objLogger->info("Dados da para update Pedido de Faturamento", [$params, 'url'=>$url]);
             $objGuzzleHttpResponse = $this->objClient->request("PATCH", $url, $params);

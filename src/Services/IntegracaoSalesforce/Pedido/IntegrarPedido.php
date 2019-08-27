@@ -181,9 +181,9 @@ class IntegrarPedido
                 'CNPJ_Vogel__c'=> str_pad($objCobrador->getCnpj(), 14, '0', STR_PAD_LEFT),
                 'AccountId__c'=> $objAccountSalesforce->Id,
                 'Name'=> "Pedido {$objInvoice->getIdInvoice()}",
-                'Numero_da_Nota__c' => '',
+                'Numero_da_Nota__c' => $objInvoice->getNumeroNota(),
                 'Numero_Pedido__c' => $objInvoice->getIdInvoice(),
-                'Status__c' => 'Faturado' ,
+                'Status__c' => ($objInvoice->getStatusPagamentoSalesforce() ? 'Pago' : 'Faturado'),
                 'Valor__c' => $objInvoice->getValue(),
                 'Vencimento__c' => $objInvoice->getDateValit()->format('Y-m-d')
             ];
@@ -257,66 +257,34 @@ class IntegrarPedido
                 $this->objLogger->info("Pedido {$objInvoice->getIdInvoice()} Account criada com sucesso", ['account'=>$objAccountSalesforce]);
             }
             
-            
-            $objConnection = $this->objEntityManagerProtheus->getConnection();
-            $statement = "";
-            if($objConnection instanceof Connection){
-                //                 $objConnection->connect();
-                //                 $statement = "SELECT
-                // 	E1_NUM AS							'Número do título',
-                // 	RTRIM(E1_P_REF) AS						'Pedido Vogel',
-                // 	E1_NUMBOR AS							'Número do borderô',
-                // 	E1_PORTADO AS							'Portador(banco)',
-                // 	E1_PREFIXO AS							'Prefixo',
-                // 	Convert(varchar(10),cast(E1_BAIXA as date),103) AS		'Data da baixa(Protheus)',
-                // 	Convert(varchar(10),cast(E1_VENCORI as date),103) AS		'Data de vencimento da origem(Protheus)',
-                // 	Convert(varchar(10),cast(E1_VENCTO as date),103) AS 		'Data de vencimento(Protheus)',
-                // 	E1_DESCONT AS							'Desconto'
-                // FROM  SE1V50 AS E1
-                // WHERE E1_P_REF <> '' LIMIT 1;";
-                // //                 $objConnection->prepare($statement);
-                // //                 $objConnection->
-                //                 $a = $objConnection->executeQuery($statement);
-            }
-            echo "<pre>";
-            \Doctrine\Common\Util\Debug::dump($objConnection, 2);
-            \Doctrine\Common\Util\Debug::dump($statement, 2);
-            echo "lajdfahkldjas";
-            exit();
-            
-            
-            $arrayPedido = [
-                'CNPJ_Vogel__c'=> str_pad($objCobrador->getCnpj(), 14, '0', STR_PAD_LEFT),
-                'AccountId__c'=> $objAccountSalesforce->Id,
-                'Name'=> "Pedido {$objInvoice->getIdInvoice()}",
-                'Numero_da_Nota__c' => '',
-                'Numero_Pedido__c' => $objInvoice->getIdInvoice(),
-                'Status__c' => 'Faturado' ,
-                'Valor__c' => $objInvoice->getValue(),
-                'Vencimento__c' => $objInvoice->getDateValit()->format('Y-m-d')
-                ];
-            $objPedidoFaturamento = $this->objPedidoFaturamento->create($arrayPedido);
-            
+            $arrayPedido = (array)$this->objPedidoFaturamento->getById($objInvoice->getIdSalesforce());
+            $id = $arrayPedido['Id'];
+            $arrayPedido['CNPJ_Vogel__c'] = str_pad($objCobrador->getCnpj(), 14, '0', STR_PAD_LEFT);
+            $arrayPedido['AccountId__c'] = $objAccountSalesforce->Id;
+            $arrayPedido['Name'] = "Pedido {$objInvoice->getIdInvoice()}";
+            $arrayPedido['Numero_da_Nota__c'] = $objInvoice->getNumeroNota();
+            $arrayPedido['Numero_Pedido__c'] = $objInvoice->getIdInvoice();
+            $arrayPedido['Status__c'] = ($objInvoice->getStatusPagamentoSalesforce() ? 'Pago' : 'Faturado');
+            $arrayPedido['Valor__c'] = $objInvoice->getValue();
+            $arrayPedido['Vencimento__c'] = $objInvoice->getDateValit()->format('Y-m-d');
+            unset($arrayPedido['AccountId__c'], $arrayPedido['Id'], $arrayPedido['LastModifiedDate'], $arrayPedido['IsDeleted'], $arrayPedido['SystemModstamp']);
+            unset($arrayPedido['SystemModstamp'], $arrayPedido['CreatedById'], $arrayPedido['CreatedDate'], $arrayPedido['LastModifiedById']);
+            $objPedidoFaturamento = $this->objPedidoFaturamento->update($arrayPedido, $id);
+
             $objInvoiceSalesforce->setDataIntegracao(new \DateTime());
-            $objInvoiceSalesforce->setIdSalesforce($objPedidoFaturamento->id);
-            $objInvoice->setIdSalesforce($objPedidoFaturamento->id);
+            $objInvoiceSalesforce->setIdSalesforce($id);
+            $objInvoice->setIdSalesforce($id);
             $this->objEntityManager->merge($objInvoice);
             $this->objEntityManager->merge($objInvoiceSalesforce);
             $this->objEntityManager->flush();
             return $objPedidoFaturamento;
         } catch (\Exception $e){
-            if(isset($objPedidoFaturamento) && is_object($objPedidoFaturamento) &&property_exists($objPedidoFaturamento, 'id')){
-                $objInvoiceSalesforce->setDataIntegracao(new \DateTime());
-                $objInvoiceSalesforce->setIdSalesforce($objPedidoFaturamento->id);
-                $objInvoice->setIdSalesforce($objPedidoFaturamento->id);
-                $this->objEntityManager->merge($objInvoice);
-                $this->objEntityManager->merge($objInvoiceSalesforce);
-                $this->objEntityManager->flush();
-            }else{
-                $objInvoiceSalesforce->setDataIntegracao(new \DateTime());
-                $this->objEntityManager->merge($objInvoiceSalesforce);
-                $this->objEntityManager->flush();
-            }
+            $objInvoiceSalesforce->setDataIntegracao(new \DateTime());
+            $objInvoiceSalesforce->setIdSalesforce($id);
+            $objInvoice->setIdSalesforce($id);
+            $this->objEntityManager->merge($objInvoice);
+            $this->objEntityManager->merge($objInvoiceSalesforce);
+            $this->objEntityManager->flush();
             throw $e;
         }
     }

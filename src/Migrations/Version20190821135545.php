@@ -24,7 +24,11 @@ final class Version20190821135545 extends AbstractMigration
 CREATE OR REPLACE FUNCTION public.insert_invoice_salesforce()
 RETURNS trigger AS \$body\$
 BEGIN
-    IF NEW.id_status_invoice IN(2005, 2006, 2008) THEN
+    IF NEW.id_status_invoice IN(2005, 2006, 2008) AND NEW.id_status_invoice != OLD.id_status_invoice THEN
+        INSERT INTO public.invoice_salesforce(id_invoice, id_salesforce, data_criacao, data_integracao) 
+        VALUES (NEW.id_invoice, NEW.id_salesforce, NOW(), NULL);
+    END IF;
+    IF (NEW.status_pagamento_salesforce != OLD.status_pagamento_salesforce) AND NEW.id_salesforce IS NOT NULL THEN
         INSERT INTO public.invoice_salesforce(id_invoice, id_salesforce, data_criacao, data_integracao) 
         VALUES (NEW.id_invoice, NEW.id_salesforce, NOW(), NULL);
     END IF;

@@ -41,6 +41,10 @@ class Invoice
 
     private $idSalesforce;
 
+    private $statusPagamentoSalesforce;
+
+    private $numeroNota;
+
     private $deliveryInvoice;
 
     private $invoiceInformationLog;
@@ -256,6 +260,30 @@ class Invoice
     public function setIdSalesforce(?string $idSalesforce): self
     {
         $this->idSalesforce = $idSalesforce;
+
+        return $this;
+    }
+
+    public function getStatusPagamentoSalesforce(): ?bool
+    {
+        return $this->statusPagamentoSalesforce;
+    }
+
+    public function setStatusPagamentoSalesforce(bool $statusPagamentoSalesforce): self
+    {
+        $this->statusPagamentoSalesforce = $statusPagamentoSalesforce;
+
+        return $this;
+    }
+
+    public function getNumeroNota(): ?string
+    {
+        return $this->numeroNota;
+    }
+
+    public function setNumeroNota(?string $numeroNota): self
+    {
+        $this->numeroNota = $numeroNota;
 
         return $this;
     }

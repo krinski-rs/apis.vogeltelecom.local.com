@@ -34,8 +34,12 @@ final class Version20190821123038 extends AbstractMigration
             $objTableInvoice->addColumn('id_salesforce', 'string', ['notnull' => false]);
         }
         
-        if(!$objTableInvoice->hasColumn("status_salesforce")){
-            $objTableInvoice->addColumn('status_salesforce', 'boolean', ['default' => false]);
+        if(!$objTableInvoice->hasColumn("status_pagamento_salesforce")){
+            $objTableInvoice->addColumn('status_pagamento_salesforce', 'boolean', ['default' => false]);
+        }
+        
+        if(!$objTableInvoice->hasColumn("numero_nota")){
+            $objTableInvoice->addColumn('numero_nota', 'string', ['notnull' => false, 'default' =>NULL]);
         }
     }
 
@@ -50,8 +54,12 @@ final class Version20190821123038 extends AbstractMigration
             $objTableInvoice->dropColumn('id_salesforce');
         }
         
-        if($objTableInvoice->hasColumn("status_salesforce")){
-            $objTableInvoice->dropColumn('status_salesforce');
+        if($objTableInvoice->hasColumn("status_pagamento_salesforce")){
+            $objTableInvoice->dropColumn('status_pagamento_salesforce');
+        }
+        
+        if($objTableInvoice->hasColumn("numero_nota")){
+            $objTableInvoice->dropColumn('numero_nota');
         }
     }
 }

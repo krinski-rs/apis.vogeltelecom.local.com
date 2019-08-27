@@ -72,6 +72,34 @@ class Listing
         }
     }
     
+    public function getStatusPedidoSalesforce()
+    {
+        try {
+            $objRepositoryInvoice = $this->objEntityManager->getRepository('AppEntity:Cobranca\Invoice');
+            $criteria = [];
+            
+            $objQueryBuilder = $objRepositoryInvoice->createQueryBuilder('invo');
+            
+            $objExprIsNotNull = $objQueryBuilder->expr()->isNotNull('invo.idSalesforce');
+            $objQueryBuilder->andWhere($objExprIsNotNull);
+            
+            $objExprEq = $objQueryBuilder->expr()->eq('invo.statusPagamentoSalesforce', ':statusPagamentoSalesforce');
+            $objQueryBuilder->andWhere($objExprEq);
+            $criteria['statusPagamentoSalesforce'] = false;
+            $objQueryBuilder->setParameters($criteria);
+            
+            $objCriteriaOrderBy = Criteria::create()->orderBy(['invo.idInvoice'=>'ASC']);
+            $objQueryBuilder->addCriteria($objCriteriaOrderBy);
+            $objQueryBuilder->groupBy('invo.idInvoice');
+            
+            return $objQueryBuilder->getQuery()->getResult();
+        }catch (\RuntimeException $e){
+            throw $e;
+        } catch (\Exception $e){
+            throw $e;
+        }
+    }
+    
     public function list(Request $objRequest)
     {
         try {
@@ -99,6 +127,12 @@ class Listing
                 $objExprEq = $objQueryBuilder->expr()->eq('statusInvoice.idStatusInvoice', ':statusInvoice');
                 $objQueryBuilder->andWhere($objExprEq);
                 $criteria['statusInvoice'] = $objRequest->get('statusInvoice', null);
+            }
+            
+            if($objRequest->get('ids', false)){
+                $objExprIn = $objQueryBuilder->expr()->in('invo.idInvoice', ':ids');
+                $objQueryBuilder->andWhere($objExprIn);
+                $criteria['ids'] = $objRequest->get('ids', null);
             }
             
             if(count($criteria)){

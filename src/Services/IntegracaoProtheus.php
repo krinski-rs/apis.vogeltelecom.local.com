@@ -11,6 +11,7 @@ use Doctrine\Bundle\DoctrineBundle\Registry;
 use Monolog\Logger;
 use App\Services\IntegracaoProtheus\Circuito\IntegrarCircuito;
 use App\Services\IntegracaoProtheus\Pedido\FtpProtheus;
+use App\Services\IntegracaoProtheus\Pedido\PedidosProtheus;
 
 /**
  * Class IntegracaoProtheus
@@ -27,6 +28,22 @@ class IntegracaoProtheus
      * @var     \Doctrine\ORM\EntityManager
      */
     private $objEntityManager   = NULL;
+    
+    /**
+     * Variável que irá guardar a referência do manager do ORM.
+     *
+     * @access  private
+     * @var     \Doctrine\ORM\EntityManager
+     */
+    private $objEntityManagerCobranca   = NULL;
+    
+    /**
+     * Variável que irá guardar a referência do manager do ORM.
+     *
+     * @access  private
+     * @var     \Doctrine\ORM\EntityManager
+     */
+    private $objEntityManagerProtheus   = NULL;
     
     /**
      * Variável que irá guardar a referência do serviço de log.
@@ -63,6 +80,7 @@ class IntegracaoProtheus
     {
         $this->objEntityManager         = $objRegistry->getManager('mysql');
         $this->objEntityManagerCobranca = $objRegistry->getManager('cobranca');
+        $this->objEntityManagerProtheus = $objRegistry->getManager('sqlserver_protheus');
         $this->objLogger                = $objLogger;
         $this->objIntegrarCircuito      = $objIntegrarCircuito;
         $this->params                   = $params;
@@ -194,6 +212,43 @@ class IntegracaoProtheus
             return $objFtpProtheus->get($remoteFile);
         } catch (\RuntimeException $e){
             throw $e;
+        } catch (\Exception $e){
+            throw $e;
+        }
+    }
+
+    
+    /**
+     * Função que busca o status do pedido vogel no protheus
+     *
+     * @access  public
+     * @param   int $pedido
+     * @throws  \Exception
+     * @return  object
+     */
+    public function getStatusPedido(int $pedido)
+    {
+        try {
+            $objPedidosProtheus = new PedidosProtheus($this->objEntityManagerProtheus, $this->objLogger);
+            return $objPedidosProtheus->getStatusPedido($pedido);
+        } catch (\Exception $e){
+            throw $e;
+        }
+    }
+    
+    /**
+     * Função que busca o status dos pedidos vogel no protheus
+     *
+     * @access  public
+     * @param   array $pedido
+     * @throws  \Exception
+     * @return  object
+     */
+    public function getStatusPedidos(array $pedidos)
+    {
+        try {
+            $objPedidosProtheus = new PedidosProtheus($this->objEntityManagerProtheus, $this->objLogger);
+            return $objPedidosProtheus->getStatusPedidos($pedidos);
         } catch (\Exception $e){
             throw $e;
         }

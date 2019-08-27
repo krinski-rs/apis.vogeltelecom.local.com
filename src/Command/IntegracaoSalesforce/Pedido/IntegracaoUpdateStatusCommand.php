@@ -5,8 +5,9 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Command\LockableTrait;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Input\InputOption;
-use App\Services\IntegracaoSalesforce;
+use App\Services\Pedido;
+use Symfony\Component\HttpFoundation\Request;
+use App\Services\IntegracaoProtheus;
 
 class IntegracaoUpdateStatusCommand extends Command
 {
@@ -21,31 +22,55 @@ class IntegracaoUpdateStatusCommand extends Command
             return 0;
         }
         try {
-            $objOutputInterface->writeln("<info>Início do update de status do pedidos às ".date("Y-m-d H:i:s")."</info>");
+            $objOutputInterface->writeln("<info>Início do update de status dos pedidos às ".date("Y-m-d H:i:s")."</info>");
 
-            $objIntegracaoSalesforce = $this->getApplication()->getKernel()->getContainer()->get('integracao_salesforce');
-            if(!($objIntegracaoSalesforce instanceof IntegracaoSalesforce)){
-                $objOutputInterface->writeln("\n<error>Serviço de integração não localizado.</error>\n");
+            $objPedido = $this->getApplication()->getKernel()->getContainer()->get('pedido');
+            $objIntegracaoProtheus = $this->getApplication()->getKernel()->getContainer()->get('integracao_protheus');
+            if(!($objPedido instanceof Pedido)){
+                $objOutputInterface->writeln("\n<error>Serviço de Pedido não localizado.</error>\n");
                 return 0;
             }
             
-//             $pedido = $objInputInterface->getOption('pedido');
-//             if($pedido){
-//                 if(!is_numeric($pedido) || ((integer)$pedido <= 0)){
-//                     $objOutputInterface->writeln("\n<error>O parâmetro [--pedido|-p] deve ser um número inteiro maior que zero.</error>\n");
-//                     return 0;
-//                 }
-//                 $objOutputInterface->writeln("<info>Integrar pedido '{$pedido}'</info>");
-//                 $objIntegracaoSalesforce->pedido($pedido);
-//                 $objOutputInterface->writeln("<info>Pedido '{$pedido}' integrado</info>");
-//             }else{
-//                 $objOutputInterface->writeln("<info>Integrar pedidos</info>");
-//                 $objIntegracaoSalesforce->pedidos($objInputInterface->getOption('limit'));
-//                 $objOutputInterface->writeln("<info>Pedidos integrados</info>");
-//             }
-            
+            if(!($objIntegracaoProtheus instanceof IntegracaoProtheus)){
+                $objOutputInterface->writeln("\n<error>Serviço de IntegracaoProtheus não localizado.</error>\n");
+                return 0;
+            }
+                
+            $arrayPedidos = $objPedido->getStatusPedidoSalesforce();
+            if(count($arrayPedidos)){
+                reset($arrayPedidos);
+                $ids = [];
+                while($pedidos = current($arrayPedidos)){
+                    $ids[] = "'{$pedidos['idInvoice']}'";
+                    next($arrayPedidos);
+                }
+                $objRequest = new Request();
+                $objRequest->attributes->set('ids', $ids);
+                $objRequest->attributes->set('limit', 100000);
+                $arrayStatusPedidos = $objIntegracaoProtheus->getStatusPedidos($ids);
+                if(!count($arrayStatusPedidos)){
+                    $objOutputInterface->writeln("<info>Pedidos atualizados</info>");
+                    $this->release();
+                    return 0;
+                }
+                
+                $arrayUpdate = [];
+                $arrayNotas = [];
+                reset($arrayStatusPedidos);
+                while($statusPedidos = current($arrayStatusPedidos)){
+                    if(!trim($statusPedidos['baixa(Protheus)'])){
+                        next($arrayStatusPedidos);
+                    }
+                    $arrayUpdate[] = (integer)$statusPedidos['pedido'];
+                    $arrayNotas[$statusPedidos['pedido']] = $statusPedidos['F2_DOC'];
+                    next($arrayStatusPedidos);
+                }
+                $objRequest->attributes->set('ids', $arrayUpdate);
+                $objRequest->attributes->set('notas', $arrayNotas);
+                $objPedido->updateStatusPagamentoSalesforce($objRequest);
+            }
+            $objOutputInterface->writeln("<info>Pedidos atualizados</info>");
             $this->release();
-            
         } catch (\Exception $e) {
             $objOutputInterface->writeln("<error>ERRO</error>");
             $objOutputInterface->writeln("<error>Code:{$e->getCode()}</error>");
@@ -61,8 +86,6 @@ class IntegracaoUpdateStatusCommand extends Command
     {
         $this->setName('salesforce:update:statuspedido')
             ->setDescription('Comando para atualizar o status do pedido.')
-            ->addOption('pedido', 'p', InputOption::VALUE_OPTIONAL, 'Id do pedido ex.: --pedido=123456', NULL)
-            ->addOption('limit', 'l', InputOption::VALUE_OPTIONAL, 'Limite de registros por execução ex.: --limit=10', 50)
             ->setHelp("Este comando permite que você realize update \nno status do pedido do Salesforce.")
         ;
     }

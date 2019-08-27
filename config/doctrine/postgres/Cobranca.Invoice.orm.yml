@@ -115,6 +115,19 @@ App\Entity\Cobranca\Invoice:
             options:
                 fixed: false
             column: id_salesforce
+        statusPagamentoSalesforce:
+            type: boolean
+            nullable: false
+            options:
+                default: false
+            column: status_pagamento_salesforce
+        numeroNota:
+            type: string
+            nullable: true
+            length: 250
+            options:
+                fixed: false
+            column: numero_nota
     manyToOne:
         statusInvoice:
             targetEntity: App\Entity\Cobranca\StatusInvoice

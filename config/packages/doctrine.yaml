@@ -53,13 +53,12 @@ doctrine:
                 mapping_types:
                     enum: string
             sqlserver_protheus:
-                driver:   'pdo_sqlsrv'
+                driver:   'sqlsrv'
                 host:     '187.94.58.102'
                 port:     '52731'
-                dbname:   'SQLSERVER'
+                dbname:   'NRS3VM'
                 user:     'usr_NRS3VM_READ'
                 password: 'GdZIxcJRlor3gGD'
-                charset:  '%env(resolve:DB_MYSQL_CHARSET)%'
     orm:
         default_entity_manager: default
         auto_generate_proxy_classes: true
