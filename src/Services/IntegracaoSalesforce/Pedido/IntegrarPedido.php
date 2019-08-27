@@ -279,12 +279,18 @@ class IntegrarPedido
             $this->objEntityManager->flush();
             return $objPedidoFaturamento;
         } catch (\Exception $e){
-            $objInvoiceSalesforce->setDataIntegracao(new \DateTime());
-            $objInvoiceSalesforce->setIdSalesforce($id);
-            $objInvoice->setIdSalesforce($id);
-            $this->objEntityManager->merge($objInvoice);
-            $this->objEntityManager->merge($objInvoiceSalesforce);
-            $this->objEntityManager->flush();
+            if(isset($id)){
+                $objInvoiceSalesforce->setDataIntegracao(new \DateTime());
+                $objInvoiceSalesforce->setIdSalesforce($id);
+                $objInvoice->setIdSalesforce($id);
+                $this->objEntityManager->merge($objInvoice);
+                $this->objEntityManager->merge($objInvoiceSalesforce);
+                $this->objEntityManager->flush();
+            }else{
+                $objInvoiceSalesforce->setDataIntegracao(new \DateTime());
+                $this->objEntityManager->merge($objInvoiceSalesforce);
+                $this->objEntityManager->flush();
+            }
             throw $e;
         }
     }
