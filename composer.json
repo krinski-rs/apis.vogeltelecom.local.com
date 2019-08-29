@@ -19,6 +19,7 @@
 		"symfony/lock": "^4.2",
 		"symfony/maker-bundle": "^1.11",
 		"symfony/monolog-bundle": "^3.3",
+		"symfony/serializer": "^4.2",
 		"symfony/translation": "^4.2",
 		"symfony/validator": "^4.2",
 		"symfony/yaml": "^4.2"
