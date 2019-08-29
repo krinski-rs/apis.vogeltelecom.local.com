@@ -1,0 +1,36 @@
+App\Entity\Cobranca\LoteOcorrencia:
+    type: entity
+    table: lote_ocorrencia
+    indexes:
+        index_lote_ocorrencia_cod_ocorrencia:
+            columns:
+                - ocor_codigoid
+    uniqueConstraints:
+        lote_ocorrencia_cod_ocorrencia_key:
+            columns:
+                - cod_ocorrencia
+    id:
+        ocorCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: ocor_codigoid
+            generator:
+                strategy: SEQUENCE
+    fields:
+        codOcorrencia:
+            type: string
+            nullable: false
+            length: 2
+            options:
+                fixed: true
+            column: cod_ocorrencia
+        ocorrencia:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,41 @@
+App\Entity\Cobranca\DeliveryInvoice:
+    type: entity
+    table: delivery_invoice
+    indexes:
+        IDX_9A7BA89A675A0085:
+            columns:
+                - id_delivery
+        IDX_9A7BA89A4EF8BE34:
+            columns:
+                - id_invoice
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    manyToOne:
+        delivery:
+            targetEntity: App\Entity\Cobranca\Delivery
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_delivery:
+                    referencedColumnName: id_delivery
+            orphanRemoval: false
+        invoice:
+            targetEntity: App\Entity\Cobranca\Invoice
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_invoice:
+                    referencedColumnName: id_invoice
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

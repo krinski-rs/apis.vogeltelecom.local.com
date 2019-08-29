@@ -1,0 +1,50 @@
+App\Entity\Cobranca\InvoiceType:
+    type: entity
+    table: invoice_type
+    indexes:
+        index_invoice_type_:
+            columns:
+                - id_type_pai
+        index_invoice_type_id_type_invoice:
+            columns:
+                - id_type_invoice
+    id:
+        idTypeInvoice:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_type_invoice
+            generator:
+                strategy: SEQUENCE
+    fields:
+        description:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+        operacao:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: true
+        relacao:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+    manyToOne:
+        invoiceType:
+            targetEntity: App\Entity\Cobranca\InvoiceType
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_type_pai:
+                    referencedColumnName: id_type_invoice
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

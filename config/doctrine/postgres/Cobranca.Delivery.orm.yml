@@ -1,0 +1,44 @@
+App\Entity\Cobranca\Delivery:
+    type: entity
+    table: delivery
+    id:
+        idDelivery:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_delivery
+            generator:
+                strategy: SEQUENCE
+    fields:
+        createdAt:
+            type: datetime
+            nullable: false
+            column: created_at
+        returnedAt:
+            type: datetime
+            nullable: true
+            column: returned_at
+        deliveryFilenamePedidos:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: delivery_filename_pedidos
+        deliveryFilenameProdutos:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: delivery_filename_produtos
+        deliveryFilenameClientes:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: delivery_filename_clientes
+    lifecycleCallbacks: {  }

@@ -1,0 +1,157 @@
+App\Entity\Cobranca\InvoiceItem:
+    type: entity
+    table: invoice_item
+    indexes:
+        index_invoice_item_banc_codigoid:
+            columns:
+                - banc_codigoid
+        index_invoice_item_invoice_registros:
+            columns:
+                - invoice_registros
+        index_invoice_item_id_status_invoice:
+            columns:
+                - id_status_invoice
+        contract_date_valit:
+            columns:
+                - contract
+                - date_valit
+        index_invoice_item_id_invoice:
+            columns:
+                - id_invoice
+        IDX_1DDE477B23240FE1:
+            columns:
+                - clasitem_codigoid
+        IDX_1DDE477B9B850DC3:
+            columns:
+                - id_type_invoice
+    id:
+        invoiceRegistros:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: invoice_registros
+            generator:
+                strategy: SEQUENCE
+    fields:
+        custumer:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+        contract:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        dateRecord:
+            type: date
+            nullable: false
+            column: date_record
+        dateValit:
+            type: date
+            nullable: false
+            column: date_valit
+        value:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+        designador:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        description:
+            type: string
+            nullable: false
+            length: 400
+            options:
+                fixed: false
+        idUser:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_user
+        cadUsersMatriz:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: cad_users_matriz
+        idTypeServico:
+            type: string
+            nullable: true
+            length: 30
+            options:
+                fixed: false
+            column: id_type_servico
+        dateFirst:
+            type: date
+            nullable: true
+            column: date_first
+        dateLast:
+            type: date
+            nullable: true
+            column: date_last
+        externalDoc:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: external_doc
+    manyToOne:
+        classificacaoItem:
+            targetEntity: App\Entity\Cobranca\ClassificacaoItem
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                clasitem_codigoid:
+                    referencedColumnName: clasitem_codigoid
+            orphanRemoval: false
+        banco:
+            targetEntity: App\Entity\Cobranca\Banco
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                banc_codigoid:
+                    referencedColumnName: banc_codigoid
+            orphanRemoval: false
+        invoice:
+            targetEntity: App\Entity\Cobranca\Invoice
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_invoice:
+                    referencedColumnName: id_invoice
+            orphanRemoval: false
+        statusInvoice:
+            targetEntity: App\Entity\Cobranca\StatusInvoice
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_status_invoice:
+                    referencedColumnName: id_status_invoice
+            orphanRemoval: false
+        invoiceType:
+            targetEntity: App\Entity\Cobranca\InvoiceType
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_type_invoice:
+                    referencedColumnName: id_type_invoice
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

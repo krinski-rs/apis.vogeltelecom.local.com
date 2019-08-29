@@ -1,0 +1,43 @@
+App\Entity\Cobranca\ServicoFilialIss:
+    type: entity
+    table: servico_filial_iss
+    indexes:
+        IDX_ACA3E5F2DFD5DABC:
+            columns:
+                - id_servico
+    id:
+        idServicoFilialIss:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_servico_filial_iss
+            generator:
+                strategy: SEQUENCE
+    fields:
+        idFilial:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: id_filial
+        codigoIss:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: codigo_iss
+    manyToOne:
+        invoiceTypeServico:
+            targetEntity: App\Entity\Cobranca\InvoiceTypeServico
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_servico:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

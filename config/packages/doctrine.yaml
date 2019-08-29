@@ -31,9 +31,20 @@ doctrine:
                 dbname:   '%env(resolve:DB_DBNAME)%'
                 user:     '%env(resolve:DB_USER)%'
                 password: '%env(resolve:DB_PASSWORD)%'
+                server_version: 1
                 charset:  '%env(resolve:DB_CHARSET)%'
                 schema_filter: '%env(resolve:DB_CEP_SCHEMA)%'
+            cobranca:
+                driver:   '%env(resolve:DB_DRIVER)%'
+                host:     '%env(resolve:DB_HOST)%'
+                port:     '%env(resolve:DB_PORT)%'
+                dbname:   '%env(resolve:DB_COBRANCA)%'
+                user:     '%env(resolve:DB_USER)%'
+                password: '%env(resolve:DB_PASSWORD)%'
+                charset:  '%env(resolve:DB_CHARSET)%'
                 server_version: 1
+                mapping_types:
+                    _int4: integer
             mysql:
                 driver:   '%env(resolve:DB_MYSQL_DRIVER)%'
                 host:     '%env(resolve:DB_MYSQL_HOST)%'
@@ -45,6 +56,14 @@ doctrine:
                 server_version: 1
                 mapping_types:
                     enum: string
+            sqlserver_protheus:
+                driver:   'sqlsrv'
+                host:     '187.94.58.102'
+                port:     '52731'
+                dbname:   'NRS3VM'
+                user:     'usr_NRS3VM_READ'
+                password: 'GdZIxcJRlor3gGD'
+                server_version: 1
     orm:
         default_entity_manager: default
         auto_generate_proxy_classes: true
@@ -67,6 +86,15 @@ doctrine:
                         dir: '%kernel.project_dir%/config/doctrine/cep'
                         prefix: 'App\Entity'
                         alias: AppEntity
+            cobranca:
+                connection: cobranca
+                mappings:
+                    Cep:
+                        is_bundle: false
+                        type: yml
+                        dir: '%kernel.project_dir%/config/doctrine/postgres'
+                        prefix: 'App\Entity'
+                        alias: AppEntity
             mysql:
                 connection: mysql
                 mappings:
@@ -74,6 +102,15 @@ doctrine:
                         is_bundle: false
                         type: yml
                         dir: '%kernel.project_dir%/config/doctrine/mysql'
+                        prefix: 'App\Entity'
+                        alias: AppEntity
+            sqlserver_protheus:
+                connection: sqlserver_protheus
+                mappings:
+                    Mysql:
+                        is_bundle: false
+                        type: yml
+                        dir: '%kernel.project_dir%/config/doctrine/sqlserver'
                         prefix: 'App\Entity'
                         alias: AppEntity
 

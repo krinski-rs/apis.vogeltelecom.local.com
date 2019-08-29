@@ -1,0 +1,89 @@
+App\Entity\Cobranca\FinancialPending:
+    type: entity
+    table: financial_pending
+    indexes:
+        id_contract:
+            columns:
+                - id_contrato
+                - status
+        IDX_861638D34EF8BE34:
+            columns:
+                - id_invoice
+    id:
+        idFinancialPending:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_financial_pending
+            generator:
+                strategy: SEQUENCE
+    fields:
+        descricaoPendencia:
+            type: text
+            nullable: false
+            length: null
+            options:
+                fixed: false
+            column: descricao_pendencia
+        tipoPendencia:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: tipo_pendencia
+        valor:
+            type: decimal
+            nullable: true
+            precision: 17
+            scale: 2
+            options:
+                default: '0'
+        idContrato:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_contrato
+        dtLimite:
+            type: date
+            nullable: true
+            column: dt_limite
+        dtRegistro:
+            type: datetime
+            nullable: true
+            options:
+                default: now()
+            column: dt_registro
+        status:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        idInvoiceType:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: id_invoice_type
+        dtPeriodoIni:
+            type: date
+            nullable: true
+            column: dt_periodo_ini
+        dtPeriodoFim:
+            type: date
+            nullable: true
+            column: dt_periodo_fim
+    manyToOne:
+        invoice:
+            targetEntity: App\Entity\Cobranca\Invoice
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_invoice:
+                    referencedColumnName: id_invoice
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,42 @@
+App\Entity\Cobranca\LoteArquivo:
+    type: entity
+    table: lote_arquivo
+    indexes:
+        index_lote_arquivo_arqu_codigoid:
+            columns:
+                - arqu_codigoid
+    id:
+        arquCodigoid:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: arqu_codigoid
+            generator:
+                strategy: SEQUENCE
+    fields:
+        arquivo:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+        codAutenticidade:
+            type: string
+            nullable: false
+            length: 32
+            options:
+                fixed: false
+            column: cod_autenticidade
+        idUser:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+            column: id_user
+        dataInc:
+            type: date
+            nullable: false
+            column: data_inc
+    lifecycleCallbacks: {  }

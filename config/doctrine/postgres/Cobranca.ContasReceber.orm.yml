@@ -1,0 +1,1878 @@
+App\Entity\Cobranca\ContasReceber:
+    type: entity
+    table: contas_receber
+    id:
+        e1Filial:
+            type: text
+            nullable: false
+            length: null
+            options:
+                fixed: false
+            id: true
+            column: e1_filial
+            generator:
+                strategy: SEQUENCE
+    fields:
+        e1Prefixo:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_prefixo
+        e1Num:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_num
+        e1Parcela:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_parcela
+        e1Tipo:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_tipo
+        e1Naturez:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_naturez
+        e1Portado:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_portado
+        e1Agedep:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_agedep
+        e1Cliente:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_cliente
+        e1Loja:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_loja
+        e1Nomcli:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_nomcli
+        e1Emissao:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_emissao
+        e1Vencto:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_vencto
+        e1Vencrea:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_vencrea
+        e1Valor:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_valor
+        e1Irrf:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_irrf
+        e1Iss:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_iss
+        e1Numbco:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_numbco
+        e1Indice:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_indice
+        e1Baixa:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_baixa
+        e1Numbor:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_numbor
+        e1Databor:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_databor
+        e1Emis1:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_emis1
+        e1Hist:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_hist
+        e1La:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_la
+        e1Lote:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_lote
+        e1Motivo:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_motivo
+        e1Movimen:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_movimen
+        e1Op:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_op
+        e1Situaca:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_situaca
+        e1Contrat:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_contrat
+        e1Saldo:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_saldo
+        e1Supervi:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_supervi
+        e1Vend1:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_vend1
+        e1Vend2:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_vend2
+        e1Vend3:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_vend3
+        e1Vend4:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_vend4
+        e1Vend5:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_vend5
+        e1Comis1:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_comis1
+        e1Comis2:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_comis2
+        e1Comis3:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_comis3
+        e1Comis4:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_comis4
+        e1Descont:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_descont
+        e1Comis5:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_comis5
+        e1Multa:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_multa
+        e1Juros:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_juros
+        e1Correc:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_correc
+        e1Valliq:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_valliq
+        e1Vencori:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_vencori
+        e1Conta:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_conta
+        e1Valjur:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_valjur
+        e1Porcjur:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_porcjur
+        e1Moeda:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_moeda
+        e1Bascom1:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_bascom1
+        e1Bascom2:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_bascom2
+        e1Bascom3:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_bascom3
+        e1Bascom4:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_bascom4
+        e1Bascom5:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_bascom5
+        e1Fatpref:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_fatpref
+        e1Fatura:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_fatura
+        e1Ok:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_ok
+        e1Projeto:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_projeto
+        e1Clascon:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_clascon
+        e1Valcom1:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_valcom1
+        e1Valcom2:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_valcom2
+        e1Valcom3:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_valcom3
+        e1Valcom4:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_valcom4
+        e1Valcom5:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_valcom5
+        e1Ocorren:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_ocorren
+        e1Instr1:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_instr1
+        e1Instr2:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_instr2
+        e1Pedido:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_pedido
+        e1Dtvaria:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_dtvaria
+        e1Varurv:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_varurv
+        e1Vlcruz:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_vlcruz
+        e1Dtfatur:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_dtfatur
+        e1Numnota:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_numnota
+        e1Serie:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_serie
+        e1Status:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_status
+        e1Origem:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_origem
+        e1Identee:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_identee
+        e1Numcart:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_numcart
+        e1Fluxo:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_fluxo
+        e1Descfin:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_descfin
+        e1Diadesc:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_diadesc
+        e1Tipodes:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_tipodes
+        e1Cartao:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_cartao
+        e1Cartval:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_cartval
+        e1Cartaut:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_cartaut
+        e1Adm:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_adm
+        e1Vlrreal:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_vlrreal
+        e1Transf:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_transf
+        e1Bcochq:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_bcochq
+        e1Agechq:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_agechq
+        e1Ctachq:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_ctachq
+        e1Numliq:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_numliq
+        e1Ordpago:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_ordpago
+        e1Inss:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_inss
+        e1Filorig:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_filorig
+        e1Tipofat:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_tipofat
+        e1Tipoliq:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_tipoliq
+        e1Csll:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_csll
+        e1Cofins:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_cofins
+        e1Pis:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_pis
+        e1Flagfat:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_flagfat
+        e1Mesbase:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_mesbase
+        e1Anobase:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_anobase
+        e1Plnucob:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_plnucob
+        e1Codtext:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_codtext
+        e1Codemp:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_codemp
+        e1Matric:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_matric
+        e1Txmoeda:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_txmoeda
+        e1Acresc:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_acresc
+        e1Sdacres:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_sdacres
+        e1Decresc:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_decresc
+        e1Sddecre:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_sddecre
+        e1Multnat:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_multnat
+        e1Msfil:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_msfil
+        e1Msemp:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_msemp
+        e1Projpms:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_projpms
+        e1Desdobr:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_desdobr
+        e1Nrdoc:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_nrdoc
+        e1Modspb:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_modspb
+        e1Idcnab:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_idcnab
+        e1Plcoemp:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_plcoemp
+        e1Pltpcoe:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_pltpcoe
+        e1Codcor:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_codcor
+        e1Parccss:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_parccss
+        e1Userlgi:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_userlgi
+        e1Userlga:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_userlga
+        e1Recibo:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_recibo
+        e1Dtacred:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_dtacred
+        e1Emitchq:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_emitchq
+        e1Codorca:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_codorca
+        e1Codimov:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_codimov
+        e1Fildeb:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_fildeb
+        e1Numsol:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_numsol
+        e1Numra:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_numra
+        e1Serrec:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_serrec
+        e1Inscric:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_inscric
+        e1Dataedi:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_dataedi
+        e1Codbar:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_codbar
+        e1Chqdev:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_chqdev
+        e1Coddig:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_coddig
+        e1Lidescf:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_lidescf
+        e1Vlbolsa:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_vlbolsa
+        e1Numcrd:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_numcrd
+        e1Vlfies:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_vlfies
+        e1Debito:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_debito
+        e1Ccd:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_ccd
+        e1Itemd:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_itemd
+        e1Clvldb:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_clvldb
+        e1Credit:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_credit
+        e1Ccc:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_ccc
+        e1Itemc:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_itemc
+        e1Clvlcr:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_clvlcr
+        e1Descon1:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_descon1
+        e1Descon2:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_descon2
+        e1Dtdesc3:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_dtdesc3
+        e1Dtdesc1:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_dtdesc1
+        e1Dtdesc2:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_dtdesc2
+        e1Vlmulta:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_vlmulta
+        e1Descon3:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_descon3
+        e1Motneg:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_motneg
+        e1Sabtpis:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_sabtpis
+        e1Sabtcof:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_sabtcof
+        e1Sabtcsl:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_sabtcsl
+        e1Forniss:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_forniss
+        e1Partot:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_partot
+        e1Sitfat:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_sitfat
+        e1Basepis:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_basepis
+        e1Basecof:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_basecof
+        e1Basecsl:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_basecsl
+        e1Vretiss:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_vretiss
+        e1Parcirf:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_parcirf
+        e1Scorgp:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_scorgp
+        e1Fretiss:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_fretiss
+        e1Txmdcor:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_txmdcor
+        e1Satbirf:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_satbirf
+        e1Tipreg:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_tipreg
+        e1Conemp:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_conemp
+        e1Vercon:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_vercon
+        e1Subcon:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_subcon
+        e1Versub:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_versub
+        e1Pllote:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_pllote
+        e1Plopelt:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_plopelt
+        e1Codrda:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_codrda
+        e1Formrec:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_formrec
+        e1Bcocli:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_bcocli
+        e1Agecli:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_agecli
+        e1Ctacli:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_ctacli
+        e1Parcfet:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_parcfet
+        e1Fethab:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_fethab
+        e1Mdcron:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_mdcron
+        e1Mdcontr:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_mdcontr
+        e1Mednume:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_mednume
+        e1Mdplani:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_mdplani
+        e1Mdparce:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_mdparce
+        e1Mdrevis:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_mdrevis
+        e1Nummov:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_nummov
+        e1Numcon:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_numcon
+        e1Sabtirf:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_sabtirf
+        e1Aplvlmn:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_aplvlmn
+        e1Nfeletr:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_nfeletr
+        e1Nodia:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_nodia
+        e1Diactb:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_diactb
+        e1Vretirf:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_vretirf
+        e1Retcntr:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_retcntr
+        e1Mddesc:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_mddesc
+        e1Mdboni:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_mdboni
+        e1Mdmult:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_mdmult
+        e1Doctef:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_doctef
+        e1Numpro:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_numpro
+        e1Indpro:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_indpro
+        e1Parcfac:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_parcfac
+        e1Parcfab:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_parcfab
+        e1Fabov:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_fabov
+        e1Facs:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_facs
+        e1Codiss:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_codiss
+        e1Baseirf:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_baseirf
+        e1Baseins:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_baseins
+        e1Baseiss:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_baseiss
+        e1Vlminis:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_vlminis
+        e1Prefori:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_prefori
+        e1Titpai:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_titpai
+        e1Jurfat:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_jurfat
+        e1Relato:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_relato
+        e1Multdia:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_multdia
+        e1Turma:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_turma
+        e1Idlan:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_idlan
+        e1Nsutef:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_nsutef
+        e1Idaplic:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_idaplic
+        e1Procel:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_procel
+        e1Noper:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_noper
+        e1Servico:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_servico
+        e1Idbolet:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_idbolet
+        e1Vlbolp:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_vlbolp
+        e1Ltcxa:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_ltcxa
+        e1Numinsc:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_numinsc
+        e1Seqbx:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_seqbx
+        e1Tpdp:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_tpdp
+        e1Partpdp:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_partpdp
+        e1Codirrf:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_codirrf
+        e1Idmov:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_idmov
+        e1Prinss:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_prinss
+        e1Tpdesc:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_tpdesc
+        e1Ratfin:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_ratfin
+        e1Priss:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_priss
+        e1Famad:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_famad
+        e1Parcfam:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_parcfam
+        e1Fmpeq:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_fmpeq
+        e1Parcfmp:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_parcfmp
+        e1PBanri:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_p_banri
+        dELET:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: d_e_l_e_t_
+        rECNO:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: r_e_c_n_o_
+        rECDEL:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: r_e_c_d_e_l_
+        e1PSiste:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_p_siste
+        e1PRef:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_p_ref
+        e1PBol:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_p_bol
+        e1Codret:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_codret
+        e1Ctrbco:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_ctrbco
+        e1Fundesa:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_fundesa
+        e1Imamt:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_imamt
+        e1Fasemt:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_fasemt
+        e1Parfund:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_parfund
+        e1Parima:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_parima
+        e1Parfase:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: e1_parfase
+    lifecycleCallbacks: {  }

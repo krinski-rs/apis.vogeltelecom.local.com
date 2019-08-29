@@ -1,0 +1,48 @@
+App\Entity\Cobranca\CustomerFeature:
+    type: entity
+    table: customer_feature
+    id:
+        customerFeatureid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: customer_featureid
+            generator:
+                strategy: SEQUENCE
+    fields:
+        customer:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        dateRecord:
+            type: datetime
+            nullable: true
+            column: date_record
+        userId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: user_id
+        userModified:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: user_modified
+        description:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+        tipo:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

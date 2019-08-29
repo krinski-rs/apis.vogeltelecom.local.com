@@ -1,0 +1,50 @@
+App\Entity\Cobranca\InvoiceBoleto:
+    type: entity
+    table: invoice_boleto
+    indexes:
+        fki_inv_bol:
+            columns:
+                - id_invoice
+        fki_bol_invo:
+            columns:
+                - bole_codigoid
+        fk_invo_bol_inv:
+            columns:
+                - id_invoice
+    id:
+        idInvoiceBoleto:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_invoice_boleto
+            generator:
+                strategy: SEQUENCE
+    fields:
+        dateRecord:
+            type: date
+            nullable: true
+            column: date_record
+    manyToOne:
+        invoice:
+            targetEntity: App\Entity\Cobranca\Invoice
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_invoice:
+                    referencedColumnName: id_invoice
+            orphanRemoval: false
+        boleto:
+            targetEntity: App\Entity\Cobranca\Boleto
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                bole_codigoid:
+                    referencedColumnName: bole_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

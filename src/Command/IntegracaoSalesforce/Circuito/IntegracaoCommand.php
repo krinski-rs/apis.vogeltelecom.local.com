@@ -7,7 +7,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use App\Services\IntegracaoSalesforce;
-use phpDocumentor\Reflection\Types\Integer;
 
 class IntegracaoCommand extends Command
 {

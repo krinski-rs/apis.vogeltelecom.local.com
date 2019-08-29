@@ -1,0 +1,75 @@
+App\Entity\Cobranca\CcLog:
+    type: entity
+    table: cc_log
+    id:
+        ccCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: cc_codigoid
+        dataIncLog:
+            type: datetime
+            nullable: false
+            options:
+                comment: 'data que foi criado este log'
+                default: now()
+            id: true
+            column: data_inc_log
+    fields:
+        operCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: oper_codigoid
+        customer:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+        dataInc:
+            type: datetime
+            nullable: false
+            column: data_inc
+        valor:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 0
+        tipo:
+            type: string
+            nullable: false
+            length: 1
+            options:
+                fixed: true
+        descricao:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+        saldoAnterior:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 0
+            column: saldo_anterior
+        idUser:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: id_user
+        bancCodigoid:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: banc_codigoid
+        dataRegistroSistema:
+            type: datetime
+            nullable: false
+            column: data_registro_sistema
+    lifecycleCallbacks: {  }

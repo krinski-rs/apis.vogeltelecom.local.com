@@ -1,0 +1,25 @@
+App\Entity\Cobranca\InvoiceContract:
+    type: entity
+    table: invoice_contract
+    id:
+        dateRecord:
+            type: date
+            nullable: false
+            id: true
+            column: date_record
+            generator:
+                strategy: SEQUENCE
+    fields:
+        billed:
+            type: boolean
+            nullable: true
+        idContract:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_contract
+        pendency:
+            type: boolean
+            nullable: true
+    lifecycleCallbacks: {  }

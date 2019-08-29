@@ -1,0 +1,21 @@
+get_pedido_pdf:
+    path: /{idPedido}/pdf
+    controller: 'App\Controller\Cobranca\PedidoController::getPedidoPdf'
+    methods: [GET]
+    requirements:
+        idPedido: '\d+'
+get_pedido:
+    path: /{idPedido}
+    controller: 'App\Controller\Cobranca\PedidoController::getPedido'
+    methods: [GET]
+    requirements:
+        idPedido: '\d+'
+    defaults:
+        _format: json
+list_pedido:
+    path: /
+    controller: 'App\Controller\Cobranca\PedidoController::getPedidos'
+    methods: [GET]
+    defaults:
+        _format: json
+        
