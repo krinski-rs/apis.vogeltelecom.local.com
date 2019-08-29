@@ -17,6 +17,7 @@ doctrine:
                 user:     '%env(resolve:DB_USER)%'
                 password: '%env(resolve:DB_PASSWORD)%'
                 charset:  '%env(resolve:DB_CHARSET)%'
+                server_version: 1
                 mapping_types:
                     tipo_velocidade: string
                     tipo_interface: string
@@ -32,6 +33,7 @@ doctrine:
                 password: '%env(resolve:DB_PASSWORD)%'
                 charset:  '%env(resolve:DB_CHARSET)%'
                 schema_filter: '%env(resolve:DB_CEP_SCHEMA)%'
+                server_version: 1
             mysql:
                 driver:   '%env(resolve:DB_MYSQL_DRIVER)%'
                 host:     '%env(resolve:DB_MYSQL_HOST)%'
@@ -40,6 +42,7 @@ doctrine:
                 user:     '%env(resolve:DB_MYSQL_USER)%'
                 password: '%env(resolve:DB_MYSQL_PASSWORD)%'
                 charset:  '%env(resolve:DB_MYSQL_CHARSET)%'
+                server_version: 1
                 mapping_types:
                     enum: string
     orm:
