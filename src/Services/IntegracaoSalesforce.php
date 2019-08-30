@@ -164,7 +164,7 @@ class IntegracaoSalesforce
     public function pedido(int $pedido)
     {
         try {
-            $this->objLogger->info("Início da integração do circuito {$contCodigoid}");
+            $this->objLogger->info("Início da integração do circuito {$pedido}");
 //             $objCircuitoSalesforceRepository = $this->objEntityManager->getRepository("App\Entity\Financeiro\CircuitoSalesforce");
 //             $arrayCircuitoSalesforce = $objCircuitoSalesforceRepository->findBy(['contCodigoid'=>$contCodigoid, 'dataIntegracao'=>NULL], ['id'=>'DESC']);
 //             if(!count($arrayCircuitoSalesforce)){
