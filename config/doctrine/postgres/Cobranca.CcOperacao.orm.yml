@@ -1,0 +1,27 @@
+App\Entity\Cobranca\CcOperacao:
+    type: entity
+    table: cc_operacao
+    id:
+        operCodigoid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: oper_codigoid
+            generator:
+                strategy: SEQUENCE
+    fields:
+        operacao:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        tipo:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: true
+    lifecycleCallbacks: {  }

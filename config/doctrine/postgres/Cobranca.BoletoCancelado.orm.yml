@@ -1,0 +1,40 @@
+App\Entity\Cobranca\BoletoCancelado:
+    type: entity
+    table: boleto_cancelado
+    uniqueConstraints:
+        boleto_cancelado_bole_codigoid_key:
+            columns:
+                - bole_codigoid
+    id:
+        bocaCodigoid:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: boca_codigoid
+            generator:
+                strategy: SEQUENCE
+    fields:
+        dataInc:
+            type: datetime
+            nullable: false
+            column: data_inc
+        idUser:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+            column: id_user
+    manyToOne:
+        boleto:
+            targetEntity: App\Entity\Cobranca\Boleto
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                bole_codigoid:
+                    referencedColumnName: bole_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

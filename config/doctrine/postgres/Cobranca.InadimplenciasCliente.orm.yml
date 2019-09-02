@@ -1,0 +1,54 @@
+App\Entity\Cobranca\InadimplenciasCliente:
+    type: entity
+    table: inadimplencias_cliente
+    id:
+        cid:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        razao:
+            type: string
+            nullable: true
+            length: 500
+            options:
+                fixed: false
+        segmento:
+            type: string
+            nullable: true
+            length: 200
+            options:
+                fixed: false
+        faturasEmitidas2017:
+            type: bigint
+            nullable: true
+            options:
+                unsigned: false
+            column: faturas_emitidas_2017
+        faturasPagas2017:
+            type: bigint
+            nullable: true
+            options:
+                unsigned: false
+            column: faturas_pagas_2017
+        valorEmAberto2017:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 0
+            column: valor_em_aberto_2017
+        valorVencido2017:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 0
+            column: valor_vencido_2017
+        dataUltimoPagamento:
+            type: datetime
+            nullable: true
+            column: data_ultimo_pagamento
+    lifecycleCallbacks: {  }

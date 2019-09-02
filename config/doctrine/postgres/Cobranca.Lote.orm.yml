@@ -1,0 +1,56 @@
+App\Entity\Cobranca\Lote:
+    type: entity
+    table: lote
+    indexes:
+        index_lote_codigo_envio:
+            columns:
+                - codigo_envio
+        index_lote_banco_codigoid:
+            columns:
+                - banc_codigoid
+        index_lote_lote_codigoid:
+            columns:
+                - lote_codigoid
+    id:
+        loteCodigoid:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: lote_codigoid
+            generator:
+                strategy: SEQUENCE
+    fields:
+        datageracao:
+            type: datetime
+            nullable: false
+        idUser:
+            type: bigint
+            nullable: false
+            options:
+                unsigned: false
+            column: id_user
+        dataEnvio:
+            type: datetime
+            nullable: true
+            column: data_envio
+        codigoEnvio:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: codigo_envio
+    manyToOne:
+        banco:
+            targetEntity: App\Entity\Cobranca\Banco
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                banc_codigoid:
+                    referencedColumnName: banc_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

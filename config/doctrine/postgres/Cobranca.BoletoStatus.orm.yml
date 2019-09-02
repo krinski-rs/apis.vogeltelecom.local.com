@@ -1,0 +1,25 @@
+App\Entity\Cobranca\BoletoStatus:
+    type: entity
+    table: boleto_status
+    indexes:
+        index_boleto_status_id_boleto_status:
+            columns:
+                - id_boleto_status
+    id:
+        idBoletoStatus:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_boleto_status
+            generator:
+                strategy: SEQUENCE
+    fields:
+        descricao:
+            type: string
+            nullable: true
+            length: 40
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

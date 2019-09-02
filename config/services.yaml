@@ -109,7 +109,7 @@ services:
 
     App\Services\IntegracaoSalesforce:
           public: false
-          arguments: ["@doctrine", "@logger", "@integracao_circuito_salesforce"]
+          arguments: ["@doctrine", "@logger", "@integracao_circuito_salesforce", "@integracao_pedido_salesforce"]
           tags:
               - { name: monolog.logger, channel: salesforce }
 
@@ -132,6 +132,16 @@ services:
           arguments: ["@doctrine", "@logger", "@oauth_salesforce", "%salesforce%"]
           tags:
               - { name: monolog.logger, channel: salesforce }
+
+    integracao_pedido_salesforce:
+          alias: App\Services\IntegracaoSalesforce\Pedido\IntegrarPedido
+          public: true
+
+    App\Services\IntegracaoSalesforce\Pedido\IntegrarPedido:
+          public: false
+          arguments: ["@doctrine", "@logger", "@oauth_salesforce", "%salesforce%"]
+          tags:
+              - { name: monolog.logger, channel: salesforce }
 ############################################################################################
 ######################################## SALESFORCE ########################################
 ############################################################################################
@@ -145,7 +155,7 @@ services:
 
     App\Services\IntegracaoProtheus:
           public: false
-          arguments: ["@doctrine", "@logger", "@integracao_circuito_protheus"]
+          arguments: ["@doctrine", "@logger", "@integracao_circuito_protheus", "%protheus%"]
           tags:
               - { name: monolog.logger, channel: protheus }
 
@@ -161,6 +171,48 @@ services:
 
 ############################################################################################
 ######################################### PROTHEUS #########################################
+############################################################################################
+
+############################################################################################
+######################################### PEDIDO #########################################
+############################################################################################
+    pedido:
+          alias: App\Services\Pedido
+          public: true
+
+    App\Services\Pedido:
+          public: false
+          arguments: ["@doctrine", "@logger"]
+          tags:
+              - { name: monolog.logger}
+          
+    App\Controller\Cobranca\PedidoController:
+        arguments:
+            $objPedido: '@pedido'
+            $objIntegracaoProtheus: '@integracao_protheus'
+############################################################################################
+######################################### PEDIDO #########################################
+############################################################################################
+
+############################################################################################
+########################################## CLIENTE #########################################
+############################################################################################
+    App\Services\Cliente:
+          public: false
+          arguments: ["@doctrine", "@logger", "@pedido"]
+          tags:
+              - { name: monolog.logger }
+
+    cliente:
+          alias: App\Services\Cliente
+          public: true
+          
+    App\Controller\Cliente\ClienteController:
+        arguments:
+            $objCliente: '@cliente'
+            $objIntegracaoProtheus: '@integracao_protheus'
+############################################################################################
+########################################## CLIENTE #########################################
 ############################################################################################
 
     

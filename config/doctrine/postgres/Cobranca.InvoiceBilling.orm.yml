@@ -1,0 +1,104 @@
+App\Entity\Cobranca\InvoiceBilling:
+    type: entity
+    table: invoice_billing
+    id:
+        idInvoiceBilling:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_invoice_billing
+            generator:
+                strategy: SEQUENCE
+    fields:
+        cnpj:
+            type: string
+            nullable: true
+            length: 14
+            options:
+                fixed: false
+        idFilial:
+            type: string
+            nullable: true
+            length: 2
+            options:
+                fixed: false
+            column: id_filial
+        recpag:
+            type: string
+            nullable: true
+            length: 1
+            options:
+                fixed: true
+        pedidoOrigem:
+            type: string
+            nullable: true
+            length: 20
+            options:
+                fixed: false
+            column: pedido_origem
+        prefixo:
+            type: string
+            nullable: true
+            length: 3
+            options:
+                fixed: false
+        numero:
+            type: string
+            nullable: true
+            length: 9
+            options:
+                fixed: false
+        parcela:
+            type: decimal
+            nullable: true
+            precision: 1
+            scale: 0
+        tipo:
+            type: string
+            nullable: true
+            length: 3
+            options:
+                fixed: false
+        cgc:
+            type: string
+            nullable: true
+            length: 14
+            options:
+                fixed: false
+        emissao:
+            type: date
+            nullable: true
+        vencimento:
+            type: date
+            nullable: true
+        vencimentoReal:
+            type: date
+            nullable: true
+            column: vencimento_real
+        valor:
+            type: decimal
+            nullable: true
+            precision: 17
+            scale: 2
+        dtBaixa:
+            type: date
+            nullable: true
+            column: dt_baixa
+        saldo:
+            type: decimal
+            nullable: true
+            precision: 17
+            scale: 2
+        dataInc:
+            type: datetime
+            nullable: false
+            column: data_inc
+        nomearquivo:
+            type: text
+            nullable: false
+            length: null
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

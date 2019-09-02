@@ -1,3 +1,18 @@
 parameters:
     protheus:
-        wsdl: 'http://nrs3vm.tst.protheus.totvscloud.com.br:45801/ws/VOGWS02.apw?WSDL'
+        ftp:
+            host: "ftpdtc.totvs.com.br"
+            port: 21
+            timeout: 90
+            user: "nrs3vm_prd@datacenter.local"
+            pass: "Ft#3s@17dt"
+            ambi: "NRS3VM_PRD"
+        webservices:
+            V_PROT_FIN_VOGEL:
+                wsdl: "http://187.94.63.55:14801/ws/V_PROT_FIN_VOGEL.apw?WSDL"
+                methods:
+                    BUSCAFORNECEDOR: BUSCAFORNECEDOR
+                    BUSCAPA: BUSCAPA
+                    GERANFFATURA: GERANFFATURA
+                    INCLUIPA: INCLUIPA
+                    NOVOBOLETO: NOVOBOLETO

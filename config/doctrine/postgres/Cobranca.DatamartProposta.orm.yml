@@ -1,0 +1,97 @@
+App\Entity\Cobranca\DatamartProposta:
+    type: entity
+    table: datamart_proposta
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        proposalId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: proposal_id
+        client:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+        salesman:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+        dateRecord:
+            type: datetime
+            nullable: true
+            column: date_record
+        nameProtocol:
+            type: string
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: name_protocol
+        dateProposal:
+            type: date
+            nullable: true
+            column: date_proposal
+        service:
+            type: string
+            nullable: true
+            length: null
+            options:
+                fixed: false
+        status:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        dateAssignment:
+            type: datetime
+            nullable: true
+            column: date_assignment
+        prevMonthlyPayment:
+            type: string
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: prev_monthly_payment
+        prevSpeed:
+            type: string
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: prev_speed
+        activationRule:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: activation_rule
+        estimatedDate:
+            type: datetime
+            nullable: true
+            column: estimated_date
+        datePayment:
+            type: datetime
+            nullable: true
+            column: date_payment
+        tipoProposta:
+            type: string
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: tipo_proposta
+    lifecycleCallbacks: {  }

@@ -1,0 +1,40 @@
+App\Entity\Cobranca\InvoiceSalesforce:
+    type: entity
+    table: invoice_salesforce
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        idSalesforce:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: id_salesforce
+        dataCriacao:
+            type: datetime
+            nullable: false
+            column: data_criacao
+        dataIntegracao:
+            type: datetime
+            nullable: true
+            column: data_integracao
+    manyToOne:
+        invoice:
+            targetEntity: App\Entity\Cobranca\Invoice
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_invoice:
+                    referencedColumnName: id_invoice
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

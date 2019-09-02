@@ -1,0 +1,41 @@
+App\Entity\Cobranca\CcCreditoCancelado:
+    type: entity
+    table: cc_credito_cancelado
+    id:
+        cc:
+            associationKey: true
+    fields:
+        idUser:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_user
+        dataInc:
+            type: date
+            nullable: false
+            column: data_inc
+        valorAnterior:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+            column: valor_anterior
+        motivo:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+    oneToOne:
+        cc:
+            targetEntity: App\Entity\Cobranca\Cc
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cc_codigoid:
+                    referencedColumnName: cc_codigoid
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

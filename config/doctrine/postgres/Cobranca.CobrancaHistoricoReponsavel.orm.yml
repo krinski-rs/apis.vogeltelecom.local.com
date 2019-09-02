@@ -1,0 +1,48 @@
+App\Entity\Cobranca\CobrancaHistoricoReponsavel:
+    type: entity
+    table: cobranca_historico_reponsavel
+    indexes:
+        index_cobranca_historico_responsavel_id:
+            columns:
+                - id
+        fki_cobr_histo_resp_cobr_histo:
+            columns:
+                - cobranca_historico_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nome:
+            type: string
+            nullable: true
+            length: 90
+            options:
+                fixed: false
+        gcdbAutUsuarioId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: gcdb_aut_usuario_id
+        dataInicial:
+            type: datetime
+            nullable: true
+            column: data_inicial
+    manyToOne:
+        cobrancaHistorico:
+            targetEntity: App\Entity\Cobranca\CobrancaHistorico
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                cobranca_historico_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

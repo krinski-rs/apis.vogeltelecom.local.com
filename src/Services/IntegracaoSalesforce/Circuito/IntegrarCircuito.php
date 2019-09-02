@@ -22,9 +22,6 @@ use App\Entity\Gcdb\Circuito as CircuitoGcdb;
 use App\Entity\Gcdb\CircuitoPop;
 use App\Entity\Luma\Pop;
 use App\Entity\Financeiro\Contratoservico;
-use App\Entity\Luma\Poplocalizacao;
-use App\Entity\Gcdb\AdmUf;
-use App\Entity\Luma\Poprelacaolocalizacao;
 
 /**
  * Class IntegrarCircuito
