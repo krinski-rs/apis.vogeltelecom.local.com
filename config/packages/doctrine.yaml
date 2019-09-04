@@ -17,7 +17,6 @@ doctrine:
                 user:     '%env(resolve:DB_USER)%'
                 password: '%env(resolve:DB_PASSWORD)%'
                 charset:  '%env(resolve:DB_CHARSET)%'
-                server_version: 1
                 mapping_types:
                     tipo_velocidade: string
                     tipo_interface: string
@@ -31,7 +30,6 @@ doctrine:
                 dbname:   '%env(resolve:DB_DBNAME)%'
                 user:     '%env(resolve:DB_USER)%'
                 password: '%env(resolve:DB_PASSWORD)%'
-                server_version: 1
                 charset:  '%env(resolve:DB_CHARSET)%'
                 schema_filter: '%env(resolve:DB_CEP_SCHEMA)%'
             cobranca:
@@ -42,7 +40,6 @@ doctrine:
                 user:     '%env(resolve:DB_USER)%'
                 password: '%env(resolve:DB_PASSWORD)%'
                 charset:  '%env(resolve:DB_CHARSET)%'
-                server_version: 1
                 mapping_types:
                     _int4: integer
             mysql:
@@ -53,7 +50,6 @@ doctrine:
                 user:     '%env(resolve:DB_MYSQL_USER)%'
                 password: '%env(resolve:DB_MYSQL_PASSWORD)%'
                 charset:  '%env(resolve:DB_MYSQL_CHARSET)%'
-                server_version: 1
                 mapping_types:
                     enum: string
             sqlserver_protheus:
@@ -63,7 +59,6 @@ doctrine:
                 dbname:   'NRS3VM'
                 user:     'usr_NRS3VM_READ'
                 password: 'GdZIxcJRlor3gGD'
-                server_version: 1
     orm:
         default_entity_manager: default
         auto_generate_proxy_classes: true
