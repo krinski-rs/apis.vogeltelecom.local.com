@@ -96,9 +96,6 @@ class IntegrarCircuito
     {
         try {
             $objContrato = $objCircuitoSalesforce->getContCodigoid();
-            $objEnderecoentrega = $objContrato->getEndeentrCodigoid();
-            $objAdmCidadesRepository = $this->objEntityManager->getRepository('App\Entity\Gcdb\AdmCidades');
-            $objAdmLogradouroRepository = $this->objEntityManager->getRepository('App\Entity\Gcdb\AdmLogradouro');
             $objCustomersRepository = $this->objEntityManager->getRepository('App\Entity\Gcdb\Customers');
             $objCustomers = $objCustomersRepository->find((integer)$objContrato->getContPaicodigoid()->getClieCodigoid());
             if(!($objCustomers instanceof Customers)){

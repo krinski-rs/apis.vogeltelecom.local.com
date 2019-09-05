@@ -18,7 +18,6 @@ use App\Entity\Cobranca\Cobrador;
 use App\Entity\Gcdb\Customers;
 use App\Entity\Gcdb\Customers2users;
 use App\Entity\Gcdb\CadUsers;
-use Doctrine\DBAL\Connection;
 
 /**
  * Class IntegrarPedido
