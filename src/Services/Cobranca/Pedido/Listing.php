@@ -85,12 +85,16 @@ class Listing
             
             $objExprEq = $objQueryBuilder->expr()->eq('invo.statusPagamentoSalesforce', ':statusPagamentoSalesforce');
             $objQueryBuilder->andWhere($objExprEq);
+            $objExprEq = $objQueryBuilder->expr()->eq('invo.statusInvoice', ':statusInvoice');
+            $objQueryBuilder->andWhere($objExprEq);
             $criteria['statusPagamentoSalesforce'] = false;
+            $criteria['statusInvoice'] = 2006;
             $objQueryBuilder->setParameters($criteria);
             
             $objCriteriaOrderBy = Criteria::create()->orderBy(['invo.idInvoice'=>'ASC']);
             $objQueryBuilder->addCriteria($objCriteriaOrderBy);
             $objQueryBuilder->groupBy('invo.idInvoice');
+            $objQueryBuilder->setMaxResults(300);
             
             return $objQueryBuilder->getQuery()->getResult();
         }catch (\RuntimeException $e){
@@ -148,6 +152,8 @@ class Listing
             $objCriteriaOrderBy = Criteria::create()->orderBy(['invo.idInvoice'=>'ASC']);
             $objQueryBuilder->addCriteria($objCriteriaOrderBy);
             $objQueryBuilder->groupBy('invo.idInvoice');
+            
+            $arrayPedido = [];
             
             $arrayPedido['data'] = $objQueryBuilder->getQuery()->getResult();
             $objQueryBuilder->resetDQLParts(['groupBy', 'orderBy']);

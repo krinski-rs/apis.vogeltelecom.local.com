@@ -70,7 +70,6 @@ class IntegracaoSalesforce
      */
     private $objIntegrarPedido  = NULL;
     
-    
     /**
      * Retorna a instância do objeto.
      * 

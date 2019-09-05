@@ -9,14 +9,6 @@ namespace App\Services\IntegracaoProtheus\Pedido;
 
 use Monolog\Logger;
 use Doctrine\Bundle\DoctrineBundle\Registry;
-use App\Entity\Cobranca\InvoiceSalesforce;
-use App\Entity\Cobranca\Invoice;
-use App\Entity\Cobranca\Banco;
-use App\Entity\Cobranca\Cobrador;
-use App\Entity\Gcdb\Customers;
-use App\Entity\Gcdb\Customers2users;
-use App\Entity\Gcdb\CadUsers;
-use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityManager;
 
 /**
@@ -68,7 +60,6 @@ class PedidosProtheus
     public function getStatusPedido(int $pedido)
     {
         try {
-            $a = implode(",", $pedidos);
             $query = <<<SQL
 SELECT
 	 E1_NUM AS			'titulo'
