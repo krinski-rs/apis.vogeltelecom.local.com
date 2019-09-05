@@ -270,6 +270,7 @@ class IntegrarPedido
             $arrayPedido['Emissao__c'] = $objInvoice->getDateRecord()->format("d/m/Y");
             unset($arrayPedido['AccountId__c'], $arrayPedido['Id'], $arrayPedido['LastModifiedDate'], $arrayPedido['IsDeleted'], $arrayPedido['SystemModstamp']);
             unset($arrayPedido['SystemModstamp'], $arrayPedido['CreatedById'], $arrayPedido['CreatedDate'], $arrayPedido['LastModifiedById']);
+            unset($arrayPedido['Baixar_Fatura__c'], $arrayPedido['LastViewedDate'], $arrayPedido['LastReferencedDate'], $arrayPedido['LastActivityDate']);
             $objPedidoFaturamento = $this->objPedidoFaturamento->update($arrayPedido, $id);
 
             $objInvoiceSalesforce->setDataIntegracao(new \DateTime());
