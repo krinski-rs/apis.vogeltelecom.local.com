@@ -185,7 +185,8 @@ class IntegrarPedido
                 'Numero_Pedido__c' => $objInvoice->getIdInvoice(),
                 'Status__c' => ($objInvoice->getStatusPagamentoSalesforce() ? 'Pago' : 'Faturado'),
                 'Valor__c' => $objInvoice->getValue(),
-                'Vencimento__c' => $objInvoice->getDateValit()->format('Y-m-d')
+                'Vencimento__c' => $objInvoice->getDateValit()->format('Y-m-d'),
+                'Emissao__c' => $objInvoice->getDateRecord()->format("d/m/Y")
             ];
             $objPedidoFaturamento = $this->objPedidoFaturamento->create($arrayPedido);
             
@@ -267,6 +268,7 @@ class IntegrarPedido
             $arrayPedido['Status__c'] = ($objInvoice->getStatusPagamentoSalesforce() ? 'Pago' : 'Faturado');
             $arrayPedido['Valor__c'] = $objInvoice->getValue();
             $arrayPedido['Vencimento__c'] = $objInvoice->getDateValit()->format('Y-m-d');
+            $arrayPedido['Emissao__c'] = $objInvoice->getDateRecord()->format("d/m/Y");
             unset($arrayPedido['AccountId__c'], $arrayPedido['Id'], $arrayPedido['LastModifiedDate'], $arrayPedido['IsDeleted'], $arrayPedido['SystemModstamp']);
             unset($arrayPedido['SystemModstamp'], $arrayPedido['CreatedById'], $arrayPedido['CreatedDate'], $arrayPedido['LastModifiedById']);
             $objPedidoFaturamento = $this->objPedidoFaturamento->update($arrayPedido, $id);

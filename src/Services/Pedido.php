@@ -380,6 +380,7 @@ class Pedido
                     $objInvoice->setNumeroNota($arrayNotas[$objInvoice->getIdInvoice()]);
                     $this->objEntityManagerCobranca->merge($objInvoice);
                 }
+                $this->objEntityManagerCobranca->flush();
                 next($arrayInvoice['data']);
             }
             $this->objEntityManagerCobranca->flush();
