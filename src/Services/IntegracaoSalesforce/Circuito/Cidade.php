@@ -83,7 +83,7 @@ class Cidade
     public function getByCodigoIbge(string $codigoIbge)
     {
         try {
-            $cnpj = $this->somenteNumeros($codigoIbge);
+            $codigoIbge = $this->somenteNumeros($codigoIbge);
             //             $url = "{$this->params['base']}{$this->params['account']['url']}/0012E00001r3jvUQAQ";
             $url = "{$this->params['base']}{$this->params['cidade']['url']}/CodigoIBGE__c/{$codigoIbge}";
             $params = [
