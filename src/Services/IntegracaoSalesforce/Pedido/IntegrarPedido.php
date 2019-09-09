@@ -84,6 +84,8 @@ class IntegrarPedido
      */
     private $params  = NULL;
     
+    const STATUS_CANCELADO_PROTHEUS = 2008;
+    
     /**
      * Retorna a instância do objeto.
      * 
@@ -182,7 +184,7 @@ class IntegrarPedido
                 'Name'=> "Pedido {$objInvoice->getIdInvoice()}",
                 'Numero_da_Nota__c' => $objInvoice->getNumeroNota(),
                 'Numero_Pedido__c' => $objInvoice->getIdInvoice(),
-                'Status__c' => ($objInvoice->getStatusPagamentoSalesforce() ? 'Pago' : 'Faturado'),
+                'Status__c' => (($objInvoice->getStatusInvoice()->getIdStatusInvoice() == self::STATUS_CANCELADO_PROTHEUS) ? "Cancelado" : ($objInvoice->getStatusPagamentoSalesforce() ? 'Pago' : 'Faturado')),
                 'Valor__c' => $objInvoice->getValue(),
                 'Vencimento__c' => $objInvoice->getDateValit()->format('Y-m-d'),
                 'Emissao__c' => $objInvoice->getDateRecord()->format('Y-m-d')
@@ -264,7 +266,7 @@ class IntegrarPedido
             $arrayPedido['Name'] = "Pedido {$objInvoice->getIdInvoice()}";
             $arrayPedido['Numero_da_Nota__c'] = $objInvoice->getNumeroNota();
             $arrayPedido['Numero_Pedido__c'] = $objInvoice->getIdInvoice();
-            $arrayPedido['Status__c'] = ($objInvoice->getStatusPagamentoSalesforce() ? 'Pago' : 'Faturado');
+            $arrayPedido['Status__c'] = (($objInvoice->getStatusInvoice()->getIdStatusInvoice() == self::STATUS_CANCELADO_PROTHEUS) ? "Cancelado" : ($objInvoice->getStatusPagamentoSalesforce() ? 'Pago' : 'Faturado'));
             $arrayPedido['Valor__c'] = $objInvoice->getValue();
             $arrayPedido['Vencimento__c'] = $objInvoice->getDateValit()->format('Y-m-d');
             $arrayPedido['Emissao__c'] = $objInvoice->getDateRecord()->format('Y-m-d');
