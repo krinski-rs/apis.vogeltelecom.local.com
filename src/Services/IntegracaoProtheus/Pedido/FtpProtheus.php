@@ -41,31 +41,14 @@ final class FtpProtheus
     }
     
     
-    public function get(string $remoteFile)
+    public function get(string $localFile, string $remoteFile)
     {
         try {
-            $pos = strrpos($remoteFile, "/" );
-            $file = $remoteFile;
-            if($pos !== FALSE){
-                $file = substr($remoteFile, ($pos+1));
-            }
-            
-            $localFile = fopen(self::PATH_LOCAL.$file, "w+");
-            if($localFile === FALSE){
-                $this->close();
-                throw new \Exception("Erro ao abrir o arquivo local.");
-            }
-            
-            if(ftp_fget($this->resource, $localFile, $remoteFile, FTP_BINARY) === FALSE){
+            if(ftp_get($this->resource, $localFile, $remoteFile, FTP_BINARY) === FALSE){
                 $this->close();
                 throw new \Exception("Erro ao copiar o arquivo remoto.");
             }
-            
-            if($localFile){
-                $this->close();
-            }
-            
-            return self::PATH_LOCAL.$file;
+            return $this;
         } catch (\Exception $e) {
             throw $e;
         }

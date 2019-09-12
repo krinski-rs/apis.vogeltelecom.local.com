@@ -12,8 +12,8 @@ parameters:
     cors:
         allowed_origin:
             - sso.local.com:3000
-            - http://luma.local.com:3000
             - apis.vogeltelecom.local.com
+            - 127.0.0.1
         allowed_headers:
             - AccessToken
             - Content-Type

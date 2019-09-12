@@ -67,13 +67,13 @@ class PedidoController extends AbstractController
                 return new JsonResponse(['message'=> 'Service "Pedido" not found.'], Response::HTTP_INTERNAL_SERVER_ERROR);
             }
             $pedido = $this->objPedido->getPedido($idPedido);
-            $path = $this->objIntegracaoProtheus->getPedidoPdf($pedido['idInvoice'], $pedido['banco']['cobrador']['cnpj']);
-            $objBinaryFileResponse = new BinaryFileResponse($path);
+            $file = $this->objIntegracaoProtheus->getPedidoPdf($pedido['idInvoice'], $pedido['banco']['cobrador']['cnpj']);
+            $objBinaryFileResponse = new BinaryFileResponse($file);
             $objBinaryFileResponse->headers->set('Content-Type', 'application/pdf');
             $objBinaryFileResponse->setContentDisposition(
                 ResponseHeaderBag::DISPOSITION_INLINE, //ResponseHeaderBag::DISPOSITION_ATTACHMENT salva o arquivo
-                "{$idPedido}.pdf"
-                );
+                "Pedido_{$idPedido}.pdf"
+            );
             
             return $objBinaryFileResponse;
         } catch (NotFoundHttpException $e) {

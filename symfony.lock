@@ -114,6 +114,12 @@
     "ralouphie/getallheaders": {
         "version": "3.0.3"
     },
+    "setasign/fpdf": {
+        "version": "1.8.1"
+    },
+    "setasign/fpdi": {
+        "version": "v2.2.0"
+    },
     "symfony/browser-kit": {
         "version": "v4.3.4"
     },
