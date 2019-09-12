@@ -12,6 +12,7 @@ use Monolog\Logger;
 use App\Services\IntegracaoProtheus\Circuito\IntegrarCircuito;
 use App\Services\IntegracaoProtheus\Pedido\FtpProtheus;
 use App\Services\IntegracaoProtheus\Pedido\PedidosProtheus;
+use setasign\Fpdi\Fpdi;
 
 /**
  * Class IntegracaoProtheus
@@ -161,24 +162,23 @@ class IntegracaoProtheus
     public function getPedidoPdf(int $idInvoice, string $cnpj)
     {
         try {
-            $resourceFTP = NULL;
             $wsdl = $this->params['webservices']['V_PROT_FIN_VOGEL']['wsdl'];
-            $method = $this->params['webservices']['V_PROT_FIN_VOGEL']['methods']['GERANFFATURA'];
+            $method = $this->params['webservices']['V_PROT_FIN_VOGEL']['methods']['NOVOBOLETO'];
             $objSoapClient = new \SoapClient($wsdl);
             $result = $objSoapClient->__soapCall($method, [['CPEDVOGEL' => $idInvoice, 'CCNPJEMP' => $cnpj]]);
-            if(!is_object($result) || !property_exists($result, 'GERANFFATURARESULT')){
+            if(!is_object($result) || !property_exists($result, 'NOVOBOLETORESULT')){
                 throw new \Exception("Tipo de retorno inválido.");
             }
             
-            if(!property_exists($result->GERANFFATURARESULT, 'TRETORNO_PROT_FIN')){
+            if(!property_exists($result->NOVOBOLETORESULT, 'TRETORNO_PROT_FIN')){
                 throw new \Exception("Propriedade 'TRETORNO_PROT_FIN' não encontrada.");
             }
             
-            if(!property_exists($result->GERANFFATURARESULT->TRETORNO_PROT_FIN, 'CJSON')){
+            if(!property_exists($result->NOVOBOLETORESULT->TRETORNO_PROT_FIN, 'CJSON')){
                 throw new \Exception("Propriedade 'CJSON' não encontrada.");
             }
             
-            $json = json_decode($result->GERANFFATURARESULT->TRETORNO_PROT_FIN->CJSON);
+            $json = json_decode($result->NOVOBOLETORESULT->TRETORNO_PROT_FIN->CJSON);
             
             if(!is_object($json) || !property_exists($json, 'mensagens') || !array_key_exists(0, $json->mensagens) ){
                 throw new \Exception("Objeto 'CJSON' menssagem inválida.");
@@ -187,6 +187,9 @@ class IntegracaoProtheus
             if(!property_exists($json->mensagens[0], 'tipo') || ($json->mensagens[0]->tipo !== "sucesso")){
                 throw new \Exception("PDF não encontrado.");
             }
+            
+            $files = array_filter(explode(';', $json->mensagens[0]->mensagem));
+            $ambi = $this->params['ftp']['ambi'];
             
             $objFtpProtheus = new FtpProtheus(
                 $this->params['ftp']['host'],
@@ -197,19 +200,42 @@ class IntegracaoProtheus
                     'pass'=>$this->params['ftp']['pass']
                 ]
             );
-            
-            $pos = strrpos($json->mensagens[0]->mensagem, "/" );
-            
-            if($pos === FALSE){
-                throw new \Exception("Erro no path do arquivo remoto.");
+            $objFtpProtheus->pasv(TRUE);
+            $objFtpProtheus->chdir("{$ambi}");
+            $localFiles = [];
+            reset($files);
+            while ($file = current($files)) {                
+                $pos = strrpos($file, "/" );
+                
+                if($pos === FALSE){
+                    throw new \Exception("Erro no path do arquivo remoto.");
+                }
+                
+                $remoteFile = substr($file, ($pos+1));
+                $localFile = FtpProtheus::PATH_LOCAL.$remoteFile;
+                $localFiles[] = $localFile;
+                $objFtpProtheus->get($localFile, ".{$file}");
+                next($files);
             }
             
-            $remotePath = substr($json->mensagens[0]->mensagem, 0, $pos);
-            $remoteFile = substr($json->mensagens[0]->mensagem, ($pos+1));
-            $ambi = $this->params['ftp']['ambi'];
-            
-            $objFtpProtheus->chdir("{$ambi}/{$remotePath}");
-            return $objFtpProtheus->get($remoteFile);
+            reset($localFiles);
+            $localFile = FtpProtheus::PATH_LOCAL."Pedido_{$idInvoice}.pdf";
+            $objFpdi = new Fpdi();
+            while ($file = current($localFiles)) {
+                $pageCount = $objFpdi->setSourceFile($file);
+                $pageNo = 1;
+                while($pageNo <= $pageCount){
+                    $pageId = $objFpdi->ImportPage($pageNo);
+                    $s = $objFpdi->getTemplateSize($pageId);
+                    $objFpdi->AddPage($s['orientation'], $s);
+                    $objFpdi->useImportedPage($pageId);
+
+                    $pageNo++;
+                }
+                next($localFiles);
+            }
+            $objFpdi->Output("F", $localFile);
+            return $localFile;
         } catch (\RuntimeException $e){
             throw $e;
         } catch (\Exception $e){
