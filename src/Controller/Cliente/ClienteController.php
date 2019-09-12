@@ -132,7 +132,7 @@ class ClienteController extends AbstractController
                 return new JsonResponse(['message'=> 'Class "App\Services\Cliente" not found.'], Response::HTTP_INTERNAL_SERVER_ERROR);
             }
             $pedido = $this->objCliente->getClientePedido($idCliente, $idPedido);
-            $path = $this->objIntegracaoProtheus->getPedidoPdf($pedido['idInvoice'], $pedido['banco']['cobrador']['cnpj']);
+            $path = $this->objIntegracaoProtheus->getPedidoPdf($pedido['idInvoice'], (strlen($pedido['cnpjCobrador'])==14?$pedido['cnpjCobrador']:$pedido['banco']['cobrador']['cnpj']));
             $objBinaryFileResponse = new BinaryFileResponse($path);
             $objBinaryFileResponse->headers->set('Content-Type', 'application/pdf');
             $objBinaryFileResponse->setContentDisposition(
