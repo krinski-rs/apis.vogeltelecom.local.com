@@ -16,6 +16,7 @@ use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Cobranca\InvoiceItem;
 
 /**
  * Class Pedido
@@ -80,6 +81,13 @@ class Pedido
             if(!($objInvoice instanceof Invoice)){
                 throw new NotFoundHttpException('Pedido não Encontrado.');
             }
+            
+            $objInvoiceItem = $objInvoice->getInvoiceItem()->first();
+            $objCadUsers = NULL;
+            if($objInvoiceItem instanceof InvoiceItem){
+                $objCadUsers = $this->objEntityManager->getRepository('AppEntity:Gcdb\CadUsers')->find($objInvoiceItem->getCadUsersMatriz());
+            }
+            
             $defaultContext = [
                 AbstractNormalizer::CALLBACKS => [
                     'dateRecord' => function ($dateTime) {
@@ -151,7 +159,9 @@ class Pedido
             
             $objGetSetMethodNormalizer = new GetSetMethodNormalizer(null, null, null, null, null, $defaultContext);
             $objSerializer = new Serializer([$objGetSetMethodNormalizer]);
-            return $objSerializer->normalize($objInvoice);
+            $normalize = $objSerializer->normalize($objInvoice);
+            $normalize['cnpjCobrador'] = ($objCadUsers ? str_pad($objCadUsers->getCnpj(), 14, '0', STR_PAD_LEFT) : '');
+            return $normalize;
             
         } catch (NotFoundHttpException $e){
             throw $e;
