@@ -16,3 +16,23 @@ parameters:
                     GERANFFATURA: GERANFFATURA
                     INCLUIPA: INCLUIPA
                     NOVOBOLETO: NOVOBOLETO
+services:
+    integracao_protheus:
+          alias: App\Services\IntegracaoProtheus
+          public: true
+
+    App\Services\IntegracaoProtheus:
+          public: false
+          arguments: ["@doctrine", "@logger", "@integracao_circuito_protheus", "%protheus%"]
+          tags:
+              - { name: monolog.logger, channel: protheus }
+
+    integracao_circuito_protheus:
+          alias: App\Services\IntegracaoProtheus\Circuito\IntegrarCircuito
+          public: true
+
+    App\Services\IntegracaoProtheus\Circuito\IntegrarCircuito:
+          public: false
+          arguments: ["@doctrine", "@logger", "%protheus%"]
+          tags:
+              - { name: monolog.logger, channel: protheus }

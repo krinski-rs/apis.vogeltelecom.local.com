@@ -60,7 +60,8 @@
 		}
 	},
 	"require-dev" : {
-		"symfony/phpunit-bridge" : "^4.2"
+		"symfony/phpunit-bridge": "^4.2",
+		"symfony/var-dumper": "^4.2"
 	},
 	"scripts": {
 		"auto-scripts": {

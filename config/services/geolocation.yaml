@@ -3,4 +3,15 @@ parameters:
         uri_geolocation: "https://maps.google.com/maps/api/geocode/"
         type: "json"
         api_key: "AIzaSyAOVR9o2zqxa51mt4SLErE7_wonK9kDTVs"
-   
+services:
+    geoloc:
+          alias: App\Services\Geolocation
+          public: true
+
+    App\Services\Geolocation:
+          public: false
+          arguments: ["@logger", "%geolocation%"]
+          
+    App\Controller\Geolocation\GeolocationController:
+        arguments:
+            $objGeolocation: '@geoloc'

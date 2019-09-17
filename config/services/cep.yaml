@@ -7,4 +7,24 @@ parameters:
             - Outros
             - Rua
             - Travessa
-    
+services:
+    cep:
+          alias: App\Services\Cep
+          public: true
+
+    App\Services\Cep:
+          public: false
+          arguments: ["@doctrine", "@viacep", "%cep%", "@logger"]
+          
+    App\Controller\Cep\CepController:
+        arguments:
+            $objCep: '@cep'
+
+    viacep:
+          alias: App\Services\ViaCep
+          public: true
+
+    App\Services\ViaCep:
+          public: false
+          arguments: ["@logger"]
+ 
