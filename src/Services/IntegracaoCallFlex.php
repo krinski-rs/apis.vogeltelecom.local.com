@@ -11,7 +11,6 @@ use Monolog\Logger;
 use App\Services\IntegracaoSalesforce\DBAL\Cases;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use App\Services\IntegracaoCallFlex\FtpCallFlex;
-use Symfony\Component\VarDumper\VarDumper;
 
 /**
  * Class IntegracaoCallFlex

@@ -8,19 +8,7 @@
 namespace App\Services\IntegracaoSalesforce\DBAL;
 
 use Monolog\Logger;
-use App\Entity\Financeiro\CircuitoSalesforce;
-use App\Entity\Financeiro\Contrato;
-use App\Entity\Gcdb\AdmCidades;
-use App\Entity\Gcdb\Customers;
-use App\Entity\Gcdb\Customers2users;
-use App\Entity\Gcdb\CadUsers;
-use Doctrine\Bundle\DoctrineBundle\Registry;
 use App\Services\IntegracaoSalesforce\OAuthSalesforce;
-use App\Entity\Financeiro\Enderecoentregaatributovalor;
-use App\Entity\Gcdb\Circuito as CircuitoGcdb;
-use App\Entity\Gcdb\CircuitoPop;
-use App\Entity\Luma\Pop;
-use App\Entity\Financeiro\Contratoservico;
 
 /**
  * Class IntegrarCircuito
