@@ -103,7 +103,41 @@ class Listing
             throw $e;
         }
     }
-    
+
+    public function getPedidoStatusSalesforce()
+    {
+        try {
+            $criteria = [];
+            $objRepositoryInvoice = $this->objEntityManager->getRepository('AppEntity:Cobranca\Invoice');
+            $objQueryBuilder = $objRepositoryInvoice->createQueryBuilder('invo');
+
+            $objExprIsNotNull = $objQueryBuilder->expr()->isNotNull('invo.idSalesforce');
+            $objQueryBuilder->andWhere($objExprIsNotNull);
+
+            $objExprEq = $objQueryBuilder->expr()->eq('invo.statusInvoice', ':statusInvoice');
+            $objQueryBuilder->andWhere($objExprEq);
+
+            $ultimosTresMeses = new \DateTime('-3 month');
+            $ultimosTresMeses = $ultimosTresMeses->format('Y-m-d');
+            $objExprGt = $objQueryBuilder->expr()->gte('invo.dateValit', ':filtroData');
+            $objQueryBuilder->andWhere($objExprGt);
+
+            $criteria['statusInvoice'] = 2006;
+            $criteria['filtroData'] = $ultimosTresMeses;
+            $objQueryBuilder->setParameters($criteria);
+
+            $objCriteriaOrderBy = Criteria::create()->orderBy(['invo.idInvoice'=>'ASC']);
+            $objQueryBuilder->addCriteria($objCriteriaOrderBy);
+            $objQueryBuilder->groupBy('invo.idInvoice');
+
+            return $objQueryBuilder->getQuery()->getResult();
+        }catch (\RuntimeException $e){
+            throw $e;
+        } catch (\Exception $e){
+            throw $e;
+        }
+    }
+
     public function list(Request $objRequest)
     {
         try {

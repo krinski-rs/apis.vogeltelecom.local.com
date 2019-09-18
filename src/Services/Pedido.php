@@ -364,6 +364,102 @@ class Pedido
             throw $e;
         }
     }
+
+    /**
+     * Retorna uma lista de pedidos.
+     *
+     * @access  public
+     * @return  array
+     * @throws  \RuntimeException
+     * @throws  \Exception
+     */
+    public function getPedidoStatusSalesforce()
+    {
+        try {
+            $objListing = new Listing($this->objEntityManagerCobranca, $this->objLogger);
+            $arrayInvoice = $objListing->getPedidoStatusSalesforce();
+            if(!count($arrayInvoice)){
+                throw new NotFoundHttpException("Not Found");
+            }
+            
+            $defaultContext = [
+                AbstractNormalizer::CALLBACKS => [
+                    'dateRecord' => function ($dateTime) {
+                        return $dateTime instanceof \DateTime ? $dateTime->format(\DateTime::ISO8601) : NULL;
+                    },
+                    'dateFirst' => function ($dateTime) {
+                        return $dateTime instanceof \DateTime ? $dateTime->format(\DateTime::ISO8601) : NULL;
+                    },
+                    'dateLast' => function ($dateTime) {
+                        return $dateTime instanceof \DateTime ? $dateTime->format(\DateTime::ISO8601) : NULL;
+                    },
+                    'dateValit' => function ($dateTime) {
+                        return $dateTime instanceof \DateTime ? $dateTime->format(\DateTime::ISO8601) : NULL;
+                    },
+                    'deliveryInvoice' => function ($objDeliveryInvoice) {
+                        $retorno = [];
+                        if(!$objDeliveryInvoice->count()){
+                            return $retorno;
+                        }
+                        $objDeliveryInvoice->first();
+                        while ($obj = $objDeliveryInvoice->current()){
+                            $retorno[] = $obj->getId();
+                            $objDeliveryInvoice->next();
+                        }
+                        return $retorno;
+                    },
+                    'cc' => function ($objCc) {
+                        $retorno = [];
+                        if(!$objCc->count()){
+                            return $retorno;
+                        }
+                        $objCc->first();
+                        while ($obj = $objCc->current()){
+                            $retorno[] = $obj->getCcCodigoid();
+                            $objCc->next();
+                        }
+                        return $retorno;
+                    },
+                    'invoiceInformationLog' => function ($objInvoiceInformationLog) {
+                        $retorno = [];
+                        if(!$objInvoiceInformationLog->count()){
+                            return $retorno;
+                        }
+                        $objInvoiceInformationLog->first();
+                        while ($obj = $objInvoiceInformationLog->current()){
+                            $retorno[] = [
+                                'id' => $obj->getIdInvoiceInformationLog(),
+                                'nf' => $obj->getInvoiceNumero(),
+                                'status' => $obj->getStatus()
+                            ];
+                            $objInvoiceInformationLog->next();
+                        }
+                        return $retorno;
+                    },
+                    'invoiceItem' => function ($objInvoiceItem) {
+                        $retorno = [];
+                        if(!$objInvoiceItem->count()){
+                            return $retorno;
+                        }
+                        $objInvoiceItem->first();
+                        while ($obj = $objInvoiceItem->current()){
+                            $retorno[] = $obj->getInvoiceRegistros();
+                            $objInvoiceItem->next();
+                        }
+                        return $retorno;
+                    },
+                ],
+            ];
+            
+            $objGetSetMethodNormalizer = new GetSetMethodNormalizer(null, null, null, null, null, $defaultContext);
+            $objSerializer = new Serializer([$objGetSetMethodNormalizer]);
+            return $objSerializer->normalize($arrayInvoice);
+        } catch (\RuntimeException $e){
+            throw $e;
+        } catch (\Exception $e){
+            throw $e;
+        }
+    }
     
     /**
      * atualiza o campo status_pagamento_salesforce para true de todos os id's presentes em $pedidos.
@@ -384,9 +480,12 @@ class Pedido
             }            
             reset($arrayInvoice['data']);
             $arrayNotas = $objRequest->attributes->get('notas');
+            $arrayStatus = $objRequest->attributes->get('status', []);
+            $temStatus = count($arrayStatus) > 0;
             while ($objInvoice = current($arrayInvoice['data'])){
                 if($objInvoice instanceof Invoice){
-                    $objInvoice->setStatusPagamentoSalesforce(true);
+                    $default = $temStatus ? $arrayStatus[$objInvoice->getIdInvoice()] : true;
+                    $objInvoice->setStatusPagamentoSalesforce($default);
                     $objInvoice->setNumeroNota($arrayNotas[$objInvoice->getIdInvoice()]);
                     $this->objEntityManagerCobranca->merge($objInvoice);
                 }
