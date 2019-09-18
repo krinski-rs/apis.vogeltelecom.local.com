@@ -17,9 +17,8 @@ class IntegracaoCommand extends Command
     protected function configure()
     {
         $this->setName('callflex:robo:createfile')
-            ->setDescription('Comando para integração dos casos resovildos no salesforce.')
-            ->setHelp("Este comando permite que você realize a integração dos casos \nresolvidos no salesforce com a mailing da callflex.")
-        ;
+             ->setDescription('Comando para integração dos casos resovildos no salesforce.')
+             ->setHelp("Este comando permite que você realize a integração dos casos \nresolvidos no salesforce com a mailing da callflex.");
     }
     
     protected function execute(InputInterface $objInputInterface, OutputInterface $objOutputInterface)
@@ -39,21 +38,6 @@ class IntegracaoCommand extends Command
             }
 
             $objIntegracaoCallflex->createMailingFile();
-
-//             $contCodigoid = $objInputInterface->getOption('circ');
-//             if($contCodigoid){
-//                 if(!is_numeric($contCodigoid) || ((integer)$contCodigoid <= 0)){
-//                     $objSymfonyStyle->caution("O parâmetro [--circ|-c] deve ser um número inteiro maior que zero.");
-//                     return 0;
-//                 }
-//                 $objSymfonyStyle->note("Integrar circuito '{$contCodigoid}'");
-// //                 $objIntegracaoProtheus->circuito($contCodigoid);
-//                 $objSymfonyStyle->success("Circuito '{$contCodigoid}' integrado");
-//             }else{
-//                 $objSymfonyStyle->note("Integrar circuitos");
-//                 $objIntegracaoProtheus->circuitos($objInputInterface->getOption('limit'));
-//                 $objSymfonyStyle->success("Circuitos integrados");
-//             }
             
             $this->release();
             
