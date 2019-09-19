@@ -56,18 +56,25 @@ class IntegracaoUpdateStatusCommand extends Command
                 
                 $arrayUpdate = [];
                 $arrayNotas = [];
+                $arrayStatus = [];
                 reset($arrayStatusPedidos);
+                $pedido = 0;
                 while($statusPedidos = current($arrayStatusPedidos)){
-                    if(!trim($statusPedidos['baixa(Protheus)'])){
-                        next($arrayStatusPedidos);
-                        continue;
+                    if($pedido !== $statusPedidos['pedido']){
+                        $pedido = $statusPedidos['pedido'];
+                        $baixa = TRUE;
+                    }
+                    if(!$statusPedidos['baixa(Protheus)']){
+                        $baixa = FALSE;
                     }
                     $arrayUpdate[] = (integer)$statusPedidos['pedido'];
                     $arrayNotas[$statusPedidos['pedido']] = $statusPedidos['F2_DOC'];
+                    $arrayStatus[$statusPedidos['pedido']] = $baixa;
                     next($arrayStatusPedidos);
                 }
                 $objRequest->attributes->set('ids', $arrayUpdate);
                 $objRequest->attributes->set('notas', $arrayNotas);
+                $objRequest->attributes->set('status', $arrayStatus);
                 $objPedido->updateStatusPagamentoSalesforce($objRequest);
             }
             $objOutputInterface->writeln("<info>Pedidos atualizados</info>");
