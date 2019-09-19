@@ -9,6 +9,8 @@ use App\Services\Pedido;
 use Symfony\Component\HttpFoundation\Request;
 use App\Services\IntegracaoProtheus;
 
+ini_set('memory_limit', '2G');
+
 class IntegracaoPedidoStatusCommand extends Command
 {
     use LockableTrait;
@@ -61,11 +63,14 @@ class IntegracaoPedidoStatusCommand extends Command
                 $arrayNotas = [];
                 $arrayStatus = [];
                 reset($arrayStatusPedidos);
+                $pedido = 0;
                 while($statusPedidos = current($arrayStatusPedidos)){
-                    $baixa = true;
-                    $baixaProtheus = (bool) trim($statusPedidos['baixa(Protheus)']);
-                    if($baixaProtheus != $pedidosComparar[$statusPedidos['pedido']]){
-                        $baixa = $baixaProtheus;
+                    if($pedido !== $statusPedidos['pedido']){
+                        $pedido = $statusPedidos['pedido'];
+                        $baixa = TRUE;
+                    }
+                    if(!$statusPedidos['baixa(Protheus)']){
+                        $baixa = FALSE;
                     }
                     $arrayUpdate[] = (integer)$statusPedidos['pedido'];
                     $arrayNotas[$statusPedidos['pedido']] = $statusPedidos['F2_DOC'];
