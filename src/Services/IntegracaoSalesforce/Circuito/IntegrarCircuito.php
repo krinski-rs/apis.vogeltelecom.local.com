@@ -22,6 +22,7 @@ use App\Entity\Gcdb\Circuito as CircuitoGcdb;
 use App\Entity\Gcdb\CircuitoPop;
 use App\Entity\Luma\Pop;
 use App\Entity\Financeiro\Contratoservico;
+use App\Entity\Financeiro\Contratovalor;
 
 /**
  * Class IntegrarCircuito
@@ -238,7 +239,6 @@ class IntegrarCircuito
             }
             
             $objCidadeSalesforce = $this->objCidade->getByCodigoIbge($objCidade->getCodigoIbge());
-            $id = explode('/', $this->objOAuthSalesforce->getContents()->id);
             $logradouro = explode('-::-', $objEnderecoentrega->getEndeentrLogradouro());
             
             $arrayEndereco = [];
@@ -331,7 +331,8 @@ class IntegrarCircuito
             }else{
                 $status = $objContrato->getStatCodigoid()->getStatNome();
             }
-                        
+            
+            $numeroContrato = ($objContrato->getContPaicodigoid() ? $objContrato->getContPaicodigoid()->getContNumero() : $objContrato->getContNumero());
             $arrayCircuit = [
                 'Name' => trim($objContrato->getStt()),
                 'CNPJ__c' => $objAccountSalesforce->CNPJ__c,
@@ -344,7 +345,9 @@ class IntegrarCircuito
                 'ProdutoContratado__c' => $objProdutoSalesforce->Id,
                 'Status__c' => $status,
                 'Velocidade__c' => $velocidade,
-                'Un_Medida_Velocidade__c' => $medida
+                'Un_Medida_Velocidade__c' => $medida,
+                'Contrato_Sistech__c' => $numeroContrato,
+                'Mensalidade_Circuito__c' => $this->getMensalidade($objContrato)
             ];
 
             $objCircuito = $this->objCircuit->create($arrayCircuit);
@@ -396,6 +399,34 @@ class IntegrarCircuito
         }
     }
     
+    
+    private function getMensalidade(Contrato $objContrato)
+    {
+        $arrayContratovalor = $objContrato->getContratovalor();
+        if(!$arrayContratovalor->count()){
+            return "0.00";
+        }
+        $arrayContratovalorTmp = $arrayContratovalor->filter(
+            function(Contratovalor $objContratovalor){
+                if($objContratovalor->getContvaloDatafim()){
+                    return FALSE;
+                }
+                if($objContratovalor->getContvaloProximocodigoid()){
+                    return FALSE;
+                }
+                if($objContratovalor->getNatureza()->getNatuCodigoid() !== 4){
+                    return FALSE;
+                }
+                return TRUE;
+            }
+        );
+        
+        if(!$arrayContratovalorTmp->count()){
+            return "0.00";
+        }
+        $objContratovalor = $arrayContratovalorTmp->first();
+        return $objContratovalor->getContvaloValor();
+    }
     /**
      * Função que atualiza um circuito no salesforce
      * 
@@ -452,13 +483,14 @@ class IntegrarCircuito
             }
             
             $objCidadeSalesforce = $this->objCidade->getByCodigoIbge($objCidade->getCodigoIbge());
-            $id = explode('/', $this->objOAuthSalesforce->getContents()->id);
             $logradouro = explode('-::-', $objEnderecoentrega->getEndeentrLogradouro());
             
             $stt = $objContrato->getStt();
             if($objContrato->getDesigCodigoid() && $objContrato->getDesigCodigoid()->getDesigStt()){
                 $stt = "{$objContrato->getStt()}-{$objContrato->getDesigCodigoid()->getDesigPonta()}";
             }
+            
+            $numeroContrato = ($objContrato->getContPaicodigoid() ? $objContrato->getContPaicodigoid()->getContNumero() : $objContrato->getContNumero());
             
             $arrayEndereco = (array)$this->objEndereco->getByDesignador($stt);
             $tipoLogradouro = $objEnderecoentrega->getAdmLogradouro();
@@ -475,14 +507,13 @@ class IntegrarCircuito
             $arrayEndereco['Numero__c'] = $objEnderecoentrega->getEndeentrNumero();
             $arrayEndereco['TipoEndereco__c'] = 'Instalação';
             $arrayEndereco['TipoLogradouro__c'] = ($tipoLogradouro ? $tipoLogradouro->getId() : '160');
+            $arrayEndereco['Contrato_Sistech__c'] = $numeroContrato;
+            $arrayEndereco['Mensalidade_Circuito__c'] = $this->getMensalidade($objContrato);
             $idEndereco = $arrayEndereco['Id'];
             unset($arrayEndereco['Id'], $arrayEndereco['LastModifiedDate'], $arrayEndereco['LastReferencedDate'], $arrayEndereco['Geolocalizacao__c']);
             unset($arrayEndereco['CreatedById'], $arrayEndereco['IsDeleted'], $arrayEndereco['LastViewedDate'], $arrayEndereco['SystemModstamp']);
             unset($arrayEndereco['CreatedDate'], $arrayEndereco['LastModifiedById']);
-//             print_r($id);
-//             print_r($arrayEndereco);
             
-            $objEndereco = $this->objEndereco->update($arrayEndereco, $idEndereco);
             $objEnderecoPontaB = NULL;
             if($objEnderecoentrega->getCircuitos()->count()){
                 $objCircuitoGcdb = $objEnderecoentrega->getCircuitos()->first();
@@ -509,10 +540,7 @@ class IntegrarCircuito
             
             $velocidade = NULL;
             $objContratoservico = $objContrato->getContratoservico()->first();
-            $objProdutoSalesforce = NULL;
             if($objContratoservico instanceof Contratoservico){
-                $produto = $objContratoservico->getServcapaCodigoid()->getServCodigoid()->getServNome();
-                $objProdutoSalesforce = $this->objProduto->getByName($produto);
                 $medida = $objContratoservico->getServcapaCodigoid()->getMediCodigoid()->getMediNome();
                 $velocidade = $objContratoservico->getServcapaCodigoid()->getCapaCodigoid()->getCapaCapacidade();
                 switch($medida){

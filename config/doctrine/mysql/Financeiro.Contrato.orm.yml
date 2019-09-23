@@ -330,4 +330,9 @@ App\Entity\Financeiro\Contrato:
             cascade: {  }
             fetch: LAZY
             mappedBy: contrato
+        contratovalor:
+            targetEntity: App\Entity\Financeiro\Contratovalor
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: contrato
     lifecycleCallbacks: {  }

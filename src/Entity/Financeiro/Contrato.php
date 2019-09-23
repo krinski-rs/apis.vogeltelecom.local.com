@@ -72,6 +72,8 @@ class Contrato
 
     private $contratoservico;
 
+    private $contratovalor;
+
     private $contSubstituircodigoid;
 
     private $contProximocodigoid;
@@ -97,6 +99,7 @@ class Contrato
         $this->contratos = new ArrayCollection();
         $this->enderecoentregaatributovalor = new ArrayCollection();
         $this->contratoservico = new ArrayCollection();
+        $this->contratovalor = new ArrayCollection();
     }
 
     public function getContCodigoid(): ?int
@@ -212,12 +215,12 @@ class Contrato
         return $this;
     }
 
-    public function getContIndisponibilidade()
+    public function getContIndisponibilidade(): ?string
     {
         return $this->contIndisponibilidade;
     }
 
-    public function setContIndisponibilidade($contIndisponibilidade): self
+    public function setContIndisponibilidade(string $contIndisponibilidade): self
     {
         $this->contIndisponibilidade = $contIndisponibilidade;
 
@@ -380,12 +383,12 @@ class Contrato
         return $this;
     }
 
-    public function getContValorDelta()
+    public function getContValorDelta(): ?string
     {
         return $this->contValorDelta;
     }
 
-    public function setContValorDelta($contValorDelta): self
+    public function setContValorDelta(?string $contValorDelta): self
     {
         $this->contValorDelta = $contValorDelta;
 
@@ -527,6 +530,37 @@ class Contrato
             // set the owning side to null (unless already changed)
             if ($contratoservico->getContrato() === $this) {
                 $contratoservico->setContrato(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Contratovalor[]
+     */
+    public function getContratovalor(): Collection
+    {
+        return $this->contratovalor;
+    }
+
+    public function addContratovalor(Contratovalor $contratovalor): self
+    {
+        if (!$this->contratovalor->contains($contratovalor)) {
+            $this->contratovalor[] = $contratovalor;
+            $contratovalor->setContrato($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContratovalor(Contratovalor $contratovalor): self
+    {
+        if ($this->contratovalor->contains($contratovalor)) {
+            $this->contratovalor->removeElement($contratovalor);
+            // set the owning side to null (unless already changed)
+            if ($contratovalor->getContrato() === $this) {
+                $contratovalor->setContrato(null);
             }
         }
 
