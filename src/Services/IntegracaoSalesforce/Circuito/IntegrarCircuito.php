@@ -399,7 +399,6 @@ class IntegrarCircuito
         }
     }
     
-    
     private function getMensalidade(Contrato $objContrato)
     {
         $arrayContratovalor = $objContrato->getContratovalor();
