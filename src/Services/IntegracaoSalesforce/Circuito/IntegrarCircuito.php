@@ -22,6 +22,7 @@ use App\Entity\Gcdb\Circuito as CircuitoGcdb;
 use App\Entity\Gcdb\CircuitoPop;
 use App\Entity\Luma\Pop;
 use App\Entity\Financeiro\Contratoservico;
+use App\Entity\Financeiro\Contratovalor;
 
 /**
  * Class IntegrarCircuito
@@ -331,7 +332,8 @@ class IntegrarCircuito
             }else{
                 $status = $objContrato->getStatCodigoid()->getStatNome();
             }
-                        
+            
+            $numeroContrato = ($objContrato->getContPaicodigoid() ? $objContrato->getContPaicodigoid()->getContNumero() : $objContrato->getContNumero());            
             $arrayCircuit = [
                 'Name' => trim($objContrato->getStt()),
                 'CNPJ__c' => $objAccountSalesforce->CNPJ__c,
@@ -344,7 +346,9 @@ class IntegrarCircuito
                 'ProdutoContratado__c' => $objProdutoSalesforce->Id,
                 'Status__c' => $status,
                 'Velocidade__c' => $velocidade,
-                'Un_Medida_Velocidade__c' => $medida
+                'Un_Medida_Velocidade__c' => $medida,
+                'Mensalidade_Circuito__c' => $this->getMensalidade($objContrato),
+                'Contrato_Sistech__c' => $numeroContrato
             ];
 
             $objCircuito = $this->objCircuit->create($arrayCircuit);
@@ -394,6 +398,38 @@ class IntegrarCircuito
             }
             throw $e;
         }
+    }
+    
+    private function getMensalidade(Contrato $objContrato)
+    {
+        $arrayContratovalor = $objContrato->getContratovalor();
+        if(!$arrayContratovalor->count()){
+            return "0,00";
+        }
+        
+        $arrayContratovalorTmp = $arrayContratovalor->filter(
+            function(Contratovalor $objContratovalor){
+                if($objContratovalor->getContvaloDatafim() instanceof \DateTime){
+                    return FALSE;
+                }
+                
+                if($objContratovalor->getContvaloProximocodigoid() instanceof Contratovalor){
+                    return FALSE;
+                }
+                
+                if($objContratovalor->getNatureza()->getNatuCodigoid() !== 4){
+                    return false;
+                }
+                return true;
+            }
+        );
+        
+        if($arrayContratovalorTmp->count()){
+            $objContratovalor = $arrayContratovalorTmp->first();
+            return number_format($objContratovalor->getContvaloValor(), 2, "", ",");
+        }
+        
+        return "0,00";
     }
     
     /**
@@ -460,6 +496,7 @@ class IntegrarCircuito
                 $stt = "{$objContrato->getStt()}-{$objContrato->getDesigCodigoid()->getDesigPonta()}";
             }
             
+            $numeroContrato = ($objContrato->getContPaicodigoid() ? $objContrato->getContPaicodigoid()->getContNumero() : $objContrato->getContNumero());
             $arrayEndereco = (array)$this->objEndereco->getByDesignador($stt);
             $tipoLogradouro = $objEnderecoentrega->getAdmLogradouro();
             $arrayEndereco['Bairro__c'] = trim($objEnderecoentrega->getEndeentrBairro());
@@ -475,6 +512,8 @@ class IntegrarCircuito
             $arrayEndereco['Numero__c'] = $objEnderecoentrega->getEndeentrNumero();
             $arrayEndereco['TipoEndereco__c'] = 'Instalação';
             $arrayEndereco['TipoLogradouro__c'] = ($tipoLogradouro ? $tipoLogradouro->getId() : '160');
+            $arrayEndereco['Mensalidade_Circuito__c'] = $this->getMensalidade($objContrato);
+            $arrayEndereco['Contrato_Sistech__c'] = $numeroContrato;
             $idEndereco = $arrayEndereco['Id'];
             unset($arrayEndereco['Id'], $arrayEndereco['LastModifiedDate'], $arrayEndereco['LastReferencedDate'], $arrayEndereco['Geolocalizacao__c']);
             unset($arrayEndereco['CreatedById'], $arrayEndereco['IsDeleted'], $arrayEndereco['LastViewedDate'], $arrayEndereco['SystemModstamp']);

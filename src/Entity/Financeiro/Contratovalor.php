@@ -20,15 +20,15 @@ class Contratovalor
 
     private $contvaloScm;
 
-    private $contCodigoid;
+    private $contrato;
 
     private $contvaloProximocodigoid;
 
     private $contvaloAnteriorcodigoid;
 
-    private $moedCodigoid;
+    private $moeda;
 
-    private $natuCodigoid;
+    private $natureza;
 
     public function getContvaloCodigoid(): ?int
     {
@@ -59,74 +59,74 @@ class Contratovalor
         return $this;
     }
 
-    public function getContvaloValor()
+    public function getContvaloValor(): ?string
     {
         return $this->contvaloValor;
     }
 
-    public function setContvaloValor($contvaloValor): self
+    public function setContvaloValor(string $contvaloValor): self
     {
         $this->contvaloValor = $contvaloValor;
 
         return $this;
     }
 
-    public function getContvaloValorsemdesconto()
+    public function getContvaloValorsemdesconto(): ?string
     {
         return $this->contvaloValorsemdesconto;
     }
 
-    public function setContvaloValorsemdesconto($contvaloValorsemdesconto): self
+    public function setContvaloValorsemdesconto(?string $contvaloValorsemdesconto): self
     {
         $this->contvaloValorsemdesconto = $contvaloValorsemdesconto;
 
         return $this;
     }
 
-    public function getContvaloValorsemimposto()
+    public function getContvaloValorsemimposto(): ?string
     {
         return $this->contvaloValorsemimposto;
     }
 
-    public function setContvaloValorsemimposto($contvaloValorsemimposto): self
+    public function setContvaloValorsemimposto(?string $contvaloValorsemimposto): self
     {
         $this->contvaloValorsemimposto = $contvaloValorsemimposto;
 
         return $this;
     }
 
-    public function getContvaloSva()
+    public function getContvaloSva(): ?string
     {
         return $this->contvaloSva;
     }
 
-    public function setContvaloSva($contvaloSva): self
+    public function setContvaloSva(?string $contvaloSva): self
     {
         $this->contvaloSva = $contvaloSva;
 
         return $this;
     }
 
-    public function getContvaloScm()
+    public function getContvaloScm(): ?string
     {
         return $this->contvaloScm;
     }
 
-    public function setContvaloScm($contvaloScm): self
+    public function setContvaloScm(?string $contvaloScm): self
     {
         $this->contvaloScm = $contvaloScm;
 
         return $this;
     }
 
-    public function getContCodigoid(): ?Contrato
+    public function getContrato(): ?Contrato
     {
-        return $this->contCodigoid;
+        return $this->contrato;
     }
 
-    public function setContCodigoid(?Contrato $contCodigoid): self
+    public function setContrato(?Contrato $contrato): self
     {
-        $this->contCodigoid = $contCodigoid;
+        $this->contrato = $contrato;
 
         return $this;
     }
@@ -155,26 +155,26 @@ class Contratovalor
         return $this;
     }
 
-    public function getMoedCodigoid(): ?Moeda
+    public function getMoeda(): ?Moeda
     {
-        return $this->moedCodigoid;
+        return $this->moeda;
     }
 
-    public function setMoedCodigoid(?Moeda $moedCodigoid): self
+    public function setMoeda(?Moeda $moeda): self
     {
-        $this->moedCodigoid = $moedCodigoid;
+        $this->moeda = $moeda;
 
         return $this;
     }
 
-    public function getNatuCodigoid(): ?Natureza
+    public function getNatureza(): ?Natureza
     {
-        return $this->natuCodigoid;
+        return $this->natureza;
     }
 
-    public function setNatuCodigoid(?Natureza $natuCodigoid): self
+    public function setNatureza(?Natureza $natureza): self
     {
-        $this->natuCodigoid = $natuCodigoid;
+        $this->natureza = $natureza;
 
         return $this;
     }
