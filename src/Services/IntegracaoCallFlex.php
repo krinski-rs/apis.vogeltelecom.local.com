@@ -120,7 +120,7 @@ class IntegracaoCallFlex
              * ***************************************************************************************** *
              * ***************************************************************************************** *
              */
-//             $objFtpCallFlex->put("{$this->params['ftp']['pathLocal']}{$localFile}", "{$this->params['ftp']['pathRemoto']}{$localFile}");
+            $objFtpCallFlex->put("{$this->params['ftp']['pathLocal']}{$localFile}", "{$this->params['ftp']['pathRemoto']}{$localFile}");
             $this->objLogger->info("Finalizado Upload.", ["{$this->params['ftp']['pathRemoto']}{$localFile}"]);
         } catch (NotFoundHttpException $e){
             throw $e;

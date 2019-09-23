@@ -245,7 +245,7 @@ class IntegrarCircuito
             $arrayEndereco = [];
             $tipoLogradouro = $objEnderecoentrega->getAdmLogradouro();
             $stt = $objContrato->getStt();
-            if($objContrato->getDesigCodigoid()->getDesigStt()){
+            if($objContrato->getDesigCodigoid() && $objContrato->getDesigCodigoid()->getDesigStt()){
                 $stt = "{$objContrato->getStt()}-{$objContrato->getDesigCodigoid()->getDesigPonta()}";
             }
             
@@ -492,7 +492,7 @@ class IntegrarCircuito
             $logradouro = explode('-::-', $objEnderecoentrega->getEndeentrLogradouro());
             
             $stt = $objContrato->getStt();
-            if($objContrato->getDesigCodigoid()->getDesigStt()){
+            if($objContrato->getDesigCodigoid() && $objContrato->getDesigCodigoid()->getDesigStt()){
                 $stt = "{$objContrato->getStt()}-{$objContrato->getDesigCodigoid()->getDesigPonta()}";
             }
             
