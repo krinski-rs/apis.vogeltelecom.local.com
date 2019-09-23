@@ -113,6 +113,13 @@ class IntegracaoCallFlex
             fclose($file);
             
             $this->objLogger->info("Iniciando Upload.", ["{$this->params['ftp']['pathRemoto']}{$localFile}"]);
+            
+            /* ***************************************************************************************** *
+             * ***************************************************************************************** *
+             * ************************************ NÃO DESCOMENTAR ************************************ *
+             * ***************************************************************************************** *
+             * ***************************************************************************************** *
+             */
 //             $objFtpCallFlex->put("{$this->params['ftp']['pathLocal']}{$localFile}", "{$this->params['ftp']['pathRemoto']}{$localFile}");
             $this->objLogger->info("Finalizado Upload.", ["{$this->params['ftp']['pathRemoto']}{$localFile}"]);
         } catch (NotFoundHttpException $e){

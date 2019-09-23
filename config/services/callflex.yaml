@@ -8,7 +8,7 @@ parameters:
                 user: "vogspo"
                 pass: "6aec6621a494"
             pathLocal: "/tmp/"
-            pathRemoto: "/callflex/processados/"
+            pathRemoto: "/callflex/importar/"
 services:
     integracao_callflex:
           alias: App\Services\IntegracaoCallFlex
