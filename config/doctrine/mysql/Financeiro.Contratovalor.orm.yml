@@ -72,7 +72,7 @@ App\Entity\Financeiro\Contratovalor:
             scale: 2
             column: contvalo_SCM
     manyToOne:
-        contCodigoid:
+        contrato:
             targetEntity: App\Entity\Financeiro\Contrato
             cascade: {  }
             fetch: LAZY
@@ -102,7 +102,7 @@ App\Entity\Financeiro\Contratovalor:
                 contvalo_anteriorcodigoid:
                     referencedColumnName: contvalo_codigoid
             orphanRemoval: false
-        moedCodigoid:
+        moeda:
             targetEntity: App\Entity\Financeiro\Moeda
             cascade: {  }
             fetch: LAZY
@@ -112,7 +112,7 @@ App\Entity\Financeiro\Contratovalor:
                 moed_codigoid:
                     referencedColumnName: moed_codigoid
             orphanRemoval: false
-        natuCodigoid:
+        natureza:
             targetEntity: App\Entity\Financeiro\Natureza
             cascade: {  }
             fetch: LAZY

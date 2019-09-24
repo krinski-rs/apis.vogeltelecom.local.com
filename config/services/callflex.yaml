@@ -1,0 +1,21 @@
+parameters:
+    callflex:
+        ftp:
+            host: "10.0.23.185"
+            port: 21
+            timeout: 90
+            auth:
+                user: "vogspo"
+                pass: "6aec6621a494"
+            pathLocal: "/tmp/"
+            pathRemoto: "/callflex/importar/"
+services:
+    integracao_callflex:
+          alias: App\Services\IntegracaoCallFlex
+          public: true
+          
+    App\Services\IntegracaoCallFlex:
+          public: false
+          arguments: ["@logger", "@dbal.cases", "%callflex%"]
+          tags:
+              - { name: monolog.logger, channel: callflex }
