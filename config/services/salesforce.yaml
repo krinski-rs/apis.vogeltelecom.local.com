@@ -1,50 +1,18 @@
 parameters:
 #########################  DEV ######################### 
-#    salesforce:
-#        base: 'https://vogeltelecom--dev2.my.salesforce.com'
-#        oauth:
-#            authorize: 'https://vogeltelecom--dev2.my.salesforce.com/services/oauth2/authorize'
-#            token: 'https://vogeltelecom--dev2.my.salesforce.com/services/oauth2/token'
-#            revoke: 'https://vogeltelecom--dev2.my.salesforce.com/services/oauth2/revoke'
-#            redirect_uri: https://apis.dev.vogeltelecom.com
-#            auth:
-#                grant_type: 'password'
-#                client_id: '3MVG9KsVczVNcM8xIKdNJSIss8vFB8cG0hdbPFPi0n8dAbJ6iTqAqcJUpKoVqK.UOqcUDPbUYBcoTGMPA7S4P'
-#                client_secret: '696B0CFFB85B4671160CB8C6DE943FCB913F6574DC1E929DD1ED99BDC8962274'
-#                username: 'sistemas@vogeltelecom.com.dev2'
-#                password: 'Vogel#telecom1jJTldgBxg9PGxQqnxj1NkLdps'
-#        account:
-#            url: /services/data/v39.0/sobjects/Account
-#        circuito:
-#            url: /services/data/v39.0/sobjects/Circuito__c
-#        endereco:
-#            url: /services/data/v39.0/sobjects/Endereco__c
-#        cidade:
-#            url: /services/data/v39.0/sobjects/Cidade__c
-#        circuito_atributo:
-#            url: /services/data/v39.0/sobjects/CircuitoAtributo__c
-#        produto:
-#            url: /services/data/v39.0/sobjects/Product2
-#        pedido:
-#            url: /services/data/v39.0/sobjects/PedidoFaturamento__c
-#        query:
-#            url: "/services/data/v44.0/query?q="
-#########################  DEV ######################### 
-######################### PROD ######################### 
     salesforce:
-        base: 'https://vogeltelecom.my.salesforce.com'
+        base: 'https://vogeltelecom--dev2.my.salesforce.com'
         oauth:
-            authorize: 'https://login.salesforce.com/services/oauth2/authorize'
-            token: 'https://login.salesforce.com/services/oauth2/token'
-            revoke: 'https://login.salesforce.com/services/oauth2/revoke'
-            redirect_uri: https://apis.vogeltelecom.com
+            authorize: 'https://vogeltelecom--dev2.my.salesforce.com/services/oauth2/authorize'
+            token: 'https://vogeltelecom--dev2.my.salesforce.com/services/oauth2/token'
+            revoke: 'https://vogeltelecom--dev2.my.salesforce.com/services/oauth2/revoke'
+            redirect_uri: https://apis.dev.vogeltelecom.com
             auth:
                 grant_type: 'password'
                 client_id: '3MVG9KsVczVNcM8xIKdNJSIss8vFB8cG0hdbPFPi0n8dAbJ6iTqAqcJUpKoVqK.UOqcUDPbUYBcoTGMPA7S4P'
                 client_secret: '696B0CFFB85B4671160CB8C6DE943FCB913F6574DC1E929DD1ED99BDC8962274'
-                username: 'sistemas@vogeltelecom.com'
+                username: 'sistemas@vogeltelecom.com.dev2'
                 password: 'Vogel#telecom1jJTldgBxg9PGxQqnxj1NkLdps'
-
         account:
             url: /services/data/v39.0/sobjects/Account
         circuito:
@@ -61,6 +29,38 @@ parameters:
             url: /services/data/v39.0/sobjects/PedidoFaturamento__c
         query:
             url: "/services/data/v44.0/query?q="
+#########################  DEV ######################### 
+########################## PROD ######################### 
+#    salesforce:
+#        base: 'https://vogeltelecom.my.salesforce.com'
+#        oauth:
+#            authorize: 'https://login.salesforce.com/services/oauth2/authorize'
+#            token: 'https://login.salesforce.com/services/oauth2/token'
+#            revoke: 'https://login.salesforce.com/services/oauth2/revoke'
+#            redirect_uri: https://apis.vogeltelecom.com
+#            auth:
+#                grant_type: 'password'
+#                client_id: '3MVG9KsVczVNcM8xIKdNJSIss8vFB8cG0hdbPFPi0n8dAbJ6iTqAqcJUpKoVqK.UOqcUDPbUYBcoTGMPA7S4P'
+#                client_secret: '696B0CFFB85B4671160CB8C6DE943FCB913F6574DC1E929DD1ED99BDC8962274'
+#                username: 'sistemas@vogeltelecom.com'
+#                password: 'Vogel#telecom1jJTldgBxg9PGxQqnxj1NkLdps'
+
+#        account:
+#            url: /services/data/v39.0/sobjects/Account
+#        circuito:
+#            url: /services/data/v39.0/sobjects/Circuito__c
+#        endereco:
+#            url: /services/data/v39.0/sobjects/Endereco__c
+#        cidade:
+#            url: /services/data/v39.0/sobjects/Cidade__c
+#        circuito_atributo:
+#            url: /services/data/v39.0/sobjects/CircuitoAtributo__c
+#        produto:
+#            url: /services/data/v39.0/sobjects/Product2
+#        pedido:
+#            url: /services/data/v39.0/sobjects/PedidoFaturamento__c
+#        query:
+#            url: "/services/data/v44.0/query?q="
 ######################### PROD ######################### 
 services:
     integracao_salesforce:
