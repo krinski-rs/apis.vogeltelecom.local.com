@@ -102,7 +102,7 @@ App\Entity\Financeiro\Contratovalor:
                 contvalo_anteriorcodigoid:
                     referencedColumnName: contvalo_codigoid
             orphanRemoval: false
-        moedCodigoid:
+        moeda:
             targetEntity: App\Entity\Financeiro\Moeda
             cascade: {  }
             fetch: LAZY

@@ -26,7 +26,7 @@ class Contratovalor
 
     private $contvaloAnteriorcodigoid;
 
-    private $moedCodigoid;
+    private $moeda;
 
     private $natureza;
 
@@ -155,14 +155,14 @@ class Contratovalor
         return $this;
     }
 
-    public function getMoedCodigoid(): ?Moeda
+    public function getMoeda(): ?Moeda
     {
-        return $this->moedCodigoid;
+        return $this->moeda;
     }
 
-    public function setMoedCodigoid(?Moeda $moedCodigoid): self
+    public function setMoeda(?Moeda $moeda): self
     {
-        $this->moedCodigoid = $moedCodigoid;
+        $this->moeda = $moeda;
 
         return $this;
     }

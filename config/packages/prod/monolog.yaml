@@ -11,6 +11,11 @@ monolog:
             type:     stream
             path:     '%kernel.logs_dir%/%kernel.environment%.protheus.log'
             channels: [protheus]
+        callflex:
+            level:    debug
+            type:     stream
+            path:     '%kernel.logs_dir%/%kernel.environment%.callflex.log'
+            channels: [callflex]
         main:
             type: fingers_crossed
             action_level: error
@@ -25,7 +30,7 @@ monolog:
         console:
             type: console
             process_psr_3_messages: false
-            channels: ["!event", "!doctrine", "!salesforce", "!protheus"]
+            channels: ["!event", "!doctrine", "!salesforce", "!protheus", "!callflex"]
         deprecation:
             type: stream
             path: "%kernel.logs_dir%/%kernel.environment%.deprecations.log"

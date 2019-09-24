@@ -346,8 +346,8 @@ class IntegrarCircuito
                 'Status__c' => $status,
                 'Velocidade__c' => $velocidade,
                 'Un_Medida_Velocidade__c' => $medida,
-                'Contrato_Sistech__c' => $numeroContrato,
-                'Mensalidade_Circuito__c' => $this->getMensalidade($objContrato)
+                'Mensalidade_Circuito__c' => $this->getMensalidade($objContrato),
+                'Contrato_Sistech__c' => $numeroContrato
             ];
 
             $objCircuito = $this->objCircuit->create($arrayCircuit);
@@ -426,6 +426,7 @@ class IntegrarCircuito
         $objContratovalor = $arrayContratovalorTmp->first();
         return $objContratovalor->getContvaloValor();
     }
+    
     /**
      * Função que atualiza um circuito no salesforce
      * 
@@ -490,7 +491,6 @@ class IntegrarCircuito
             }
             
             $numeroContrato = ($objContrato->getContPaicodigoid() ? $objContrato->getContPaicodigoid()->getContNumero() : $objContrato->getContNumero());
-            
             $arrayEndereco = (array)$this->objEndereco->getByDesignador($stt);
             $tipoLogradouro = $objEnderecoentrega->getAdmLogradouro();
             $arrayEndereco['Bairro__c'] = trim($objEnderecoentrega->getEndeentrBairro());
@@ -506,8 +506,8 @@ class IntegrarCircuito
             $arrayEndereco['Numero__c'] = $objEnderecoentrega->getEndeentrNumero();
             $arrayEndereco['TipoEndereco__c'] = 'Instalação';
             $arrayEndereco['TipoLogradouro__c'] = ($tipoLogradouro ? $tipoLogradouro->getId() : '160');
-            $arrayEndereco['Contrato_Sistech__c'] = $numeroContrato;
             $arrayEndereco['Mensalidade_Circuito__c'] = $this->getMensalidade($objContrato);
+            $arrayEndereco['Contrato_Sistech__c'] = $numeroContrato;
             $idEndereco = $arrayEndereco['Id'];
             unset($arrayEndereco['Id'], $arrayEndereco['LastModifiedDate'], $arrayEndereco['LastReferencedDate'], $arrayEndereco['Geolocalizacao__c']);
             unset($arrayEndereco['CreatedById'], $arrayEndereco['IsDeleted'], $arrayEndereco['LastViewedDate'], $arrayEndereco['SystemModstamp']);
