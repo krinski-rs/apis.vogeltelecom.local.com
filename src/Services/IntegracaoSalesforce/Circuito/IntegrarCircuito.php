@@ -328,6 +328,8 @@ class IntegrarCircuito
             $status = NULL;
             if(array_key_exists($objContrato->getStatCodigoid()->getStatCodigoid(), Circuit::$arrayEmAtivacao)){
                 $status = Circuit::$arrayEmAtivacao[$objContrato->getStatCodigoid()->getStatCodigoid()];
+            }elseif(array_key_exists($objContrato->getStatCodigoid()->getStatCodigoid(), Circuit::$arrayStatusBloqueio)){
+                $status = Circuit::$arrayStatusBloqueio[$objContrato->getStatCodigoid()->getStatCodigoid()];
             }else{
                 $status = $objContrato->getStatCodigoid()->getStatNome();
             }
@@ -573,10 +575,12 @@ class IntegrarCircuito
             $status = NULL;
             if(array_key_exists($objContrato->getStatCodigoid()->getStatCodigoid(), Circuit::$arrayEmAtivacao)){
                 $status = Circuit::$arrayEmAtivacao[$objContrato->getStatCodigoid()->getStatCodigoid()];
+            }elseif(array_key_exists($objContrato->getStatCodigoid()->getStatCodigoid(), Circuit::$arrayStatusBloqueio)){
+                $status = Circuit::$arrayStatusBloqueio[$objContrato->getStatCodigoid()->getStatCodigoid()];
             }else{
                 $status = $objContrato->getStatCodigoid()->getStatNome();
             }
-
+            
             $numeroContrato = ($objContrato->getContPaicodigoid() ? $objContrato->getContPaicodigoid()->getContNumero() : $objContrato->getContNumero());
             $arrayCircuit = (array)$this->objCircuit->getByCircuito($objContrato->getContCodigoid());
             $arrayCircuit['Name'] = trim($objContrato->getStt());

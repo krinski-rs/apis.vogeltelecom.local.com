@@ -19,6 +19,7 @@ class Circuit
 {
     
     public static $arrayEmAtivacao = [2=>'Em Ativação',12=>'Em Ativação'];
+    public static $arrayStatusBloqueio = [10=>'Bloqueio Total'];
     
     /**
      * Variável que irá guardar a referência do GuzzleHttp\Client.
