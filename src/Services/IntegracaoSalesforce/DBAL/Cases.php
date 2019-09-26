@@ -105,7 +105,7 @@ class Cases
     public function listBaResolvido()
     {
         try {
-            $query = "select id, CaseNumber, Account.Name, Account.id, Account.CNPJ__c, Account.CID__c, Circuito__r.Codigo__c, Contact.id, Contact.Name, Contact.Phone, Contact.MobilePhone from Case where Type = 'BA' AND StatusAtendimento__c = 'Resolvido'";
+            $query = "SELECT id, CaseNumber, Account.Name, Account.id, Account.CNPJ__c, Account.CID__c, Circuito__r.Codigo__c, Contact.id, Contact.Name, Contact.Phone, Contact.MobilePhone FROM Case where Type = 'BA' AND StatusAtendimento__c = 'Resolvido'and Contact.id <> '' AND Status = 'Aberto' AND Fechar_Manualmente__c = false";
             $url = "{$this->params['base']}{$this->params['query']['url']}".$query;
             $params = [
                 'headers' => ['Authorization' => $this->accessToken]
