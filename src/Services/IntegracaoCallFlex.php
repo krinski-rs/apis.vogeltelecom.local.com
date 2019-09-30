@@ -78,7 +78,7 @@ class IntegracaoCallFlex
             $objFtpCallFlex =  new FtpCallFlex($this->params['ftp']['host'], $this->params['ftp']['port'], $this->params['ftp']['timeout'], $this->params['ftp']['auth']);
             $objFtpCallFlex->pasv(TRUE);
 
-            $localFile = date("Ymd_His_2_")."INCREMENTAL.csv";
+            $localFile = date("Ymd_His_2_")."FULL.csv";
             $this->objLogger->info("Criando arquivo local.", []);
             $file = fopen("{$this->params['ftp']['pathLocal']}{$localFile}", "w");
             $linha = "Id;CaseNumber;Account;Account.Name;Account.CNPJ__c;Account.CID__c;tCircuito__r.Codigo__c;tContact;Contact.Name;Contact.Phone\n";
