@@ -25,7 +25,7 @@ DROP TRIGGER IF EXISTS `financeiro`.`UPDATE_CONTRATOVALOR`;
 CREATE DEFINER=`root`@`%` TRIGGER `financeiro`.`UPDATE_CONTRATOVALOR` AFTER UPDATE ON `financeiro`.`contratovalor` FOR EACH ROW
 BEGIN
     DECLARE contCodigoid INT(11) DEFAULT NULL;
-    DECLARE salesforceId INT(11) DEFAULT NULL;
+    DECLARE salesforceId VARCHAR(50) DEFAULT NULL;
     DECLARE contvaloValor DECIMAL(10, 2) DEFAULT NULL;
     IF NEW.contvalo_proximocodigoid IS NOT NULL AND NEW.natu_codigoid = 4 THEN
         SELECT salesforce_id, cont.cont_codigoid, contvalo_valor INTO salesforceId, contCodigoid, contvaloValor FROM `financeiro`.`contrato` AS cont
