@@ -53,7 +53,7 @@ final class Version20190708134433 extends AbstractMigration
                     SET NEW.cont_tipo = 'F';
                 END IF;
                 
-            	IF NEW.cont_paicodigoid IS NOT NULL AND clieCodigoid > 0 AND (NEW.salesforce_id != OLD.salesforce_id) THEN
+            	IF NEW.cont_paicodigoid IS NOT NULL AND clieCodigoid > 0 AND (NEW.stat_codigoid != OLD.stat_codigoid) THEN
             		INSERT INTO financeiro.circuito_salesforce 
             		(cont_codigoid, id_circuito_salesforce, data_criacao, data_integracao)
             		VALUES

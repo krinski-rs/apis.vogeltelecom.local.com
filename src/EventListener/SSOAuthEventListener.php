@@ -81,9 +81,9 @@ class SSOAuthEventListener
         $objRequest = $objGetResponseEvent->getRequest();
         $method  = $objRequest->getRealMethod();
         $allowed_origin = array_search($objRequest->headers->get('referer'), $this->corsParameters['allowed_origin']);
-        $allowed_origin = (!$allowed_origin ? array_search($objRequest->getClientIp(), $this->corsParameters['allowed_origin']) : $allowed_origin);
+        $allowed_origin = (($allowed_origin === FALSE) ? array_search($objRequest->getClientIp(), $this->corsParameters['allowed_origin']) : $allowed_origin);
 
-        if(!$allowed_origin){
+        if($allowed_origin === FALSE){
             $objResponse = new Response();
             $objResponse->headers->set('status', 403);
             $objGetResponseEvent->setResponse($objResponse);
@@ -133,8 +133,8 @@ class SSOAuthEventListener
             return;
         }
         $allowed_origin = array_search($objRequest->headers->get('referer'), $this->corsParameters['allowed_origin']);
-        $allowed_origin = (!$allowed_origin ? array_search($objRequest->getClientIp(), $this->corsParameters['allowed_origin']) : $allowed_origin);
-        if(!$allowed_origin){
+        $allowed_origin = (($allowed_origin === FALSE) ? array_search($objRequest->getClientIp(), $this->corsParameters['allowed_origin']) : $allowed_origin);
+        if($allowed_origin === FALSE){
             $objResponse = $objFilterResponseEvent->getResponse();
             return $objResponse->headers->set('status', 403);
         }
