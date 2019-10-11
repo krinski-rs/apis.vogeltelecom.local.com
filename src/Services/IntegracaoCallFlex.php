@@ -93,10 +93,10 @@ class IntegracaoCallFlex
                     if(property_exists($case->Contact, "Name")){
                         $contactName = $case->Contact->Name;
                     }
-                    if(property_exists($case->Contact, "Phone") && (strlen(trim($case->Contact->Phone)))){
-                        $contactPhone = preg_replace("/[^0-9]/", "", str_replace(["+055", "+55"], "", $case->Contact->Phone));
-                    } elseif (property_exists($case->Contact, "MobilePhone") && (strlen(trim($case->Contact->MobilePhone)))){
+                    if (property_exists($case->Contact, "MobilePhone") && (strlen(trim($case->Contact->MobilePhone)))){
                         $contactPhone = preg_replace("/[^0-9]/", "", str_replace(["+055", "+55"], "", $case->Contact->MobilePhone));
+                    } elseif(property_exists($case->Contact, "Phone") && (strlen(trim($case->Contact->Phone)))){
+                        $contactPhone = preg_replace("/[^0-9]/", "", str_replace(["+055", "+55"], "", $case->Contact->Phone));
                     }
                     
                     if(property_exists($case->Contact, "Id")){
